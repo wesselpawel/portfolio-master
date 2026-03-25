@@ -1,4 +1,4 @@
-import { NavLeft, NavRight } from "@/components/Navigation";
+import { NavRight } from "@/components/Navigation";
 import "aos/dist/aos.css";
 import Link from "next/link";
 export default function Layout({ children }: { children: React.ReactNode }) {
