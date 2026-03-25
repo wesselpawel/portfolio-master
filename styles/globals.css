@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.linear-gradient {
+  background: linear-gradient(
+    -45deg,
+    #4be483,
+    rgb(75, 107, 211),
+    #e8a057,
+    #af5cea
+  );
+  background-size: 400% 400%;
+  animation: linearGradient 15s ease infinite;
+}
+.text-rotator {
+  transition: transform 0.5s ease;
+}
+
+.text-rotator.animate {
+  transform: translateY(-40px);
+}
+.scrollbarBlack::-webkit-scrollbar {
+  width: 15px;
+  height: 20px;
+}
+html {
+  scroll-behavior: smooth;
+  /* Prevent mobile viewport resize jump when address bar shows/hides */
+  min-height: 100%;
+  min-height: 100svh;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  min-height: 100%;
+  min-height: 100svh;
+  /* Reduce overscroll bounce that can feel unstable on mobile */
+  overscroll-behavior-y: none;
+}
+.scrollbarBlack::-webkit-scrollbar-thumb {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: linearGradient 15s ease infinite;
+}
+
+.scrollbarBlack::-webkit-scrollbar-thumb:hover {
+  background: #ae5ef8;
+}
+.background-animate {
+  background-size: 400%;
+  -webkit-animation: AnimationStart 3s ease 1;
+  -moz-animation: AnimationStart 3s ease 1;
+  animation: AnimationStart 3s ease 1;
+  animation-delay: 1000ms;
+  opacity: 0.85;
+}
+.background-position {
+  background-size: 400%;
+  background-position: 0% 50%;
+}
+@keyframes AnimationStart {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.background-animate-projects {
+  background-size: 400%;
+  -webkit-animation: AnimationStartProjects 1s ease-in 1;
+  -moz-animation: AnimationStartProjects 1s ease-in 1;
+  animation: AnimationStartProjects 1s ease-in 1;
+  animation-delay: 1000ms;
+  background-color: #a855f7;
+}
+/* google auth */
+.google-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #474749;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 100%;
+  background: linear-gradient(265.27deg, #0000 20.55%, #414350 94.17%);
+  background-color: #414350;
+  transition: all 0.2s ease-in;
+  color: white;
+  margin-top: 20px;
+  font-family: Founders Grotesk, Arial Black, sans-serif;
+}
+
+.google-button:hover {
+  background-color: #47afae;
+  border-color: white;
+}
+
+.google-button:active {
+  opacity: 0.2;
+}
+
+@media (min-width: 1024px) {
+  .google-button {
+    font-size: 18px;
+    margin-top: 40px;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@keyframes AnimationStartProjects {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+
+@keyframes linearGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
