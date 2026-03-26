@@ -9,6 +9,7 @@ import Image from "next/image";
 import { FaQuoteLeft, FaStar } from "react-icons/fa";
 import type { HeroSceneProps } from "./hero-scene";
 import WebsiteOrderForm from "./WebsiteOrderForm";
+import type { LandingPageContent } from "@/data/landingPages";
 const BOT_USER_AGENT_REGEX =
   /bot|crawler|spider|crawling|googlebot|google-inspectiontool|inspectiontool|bingbot|yandex|duckduckbot|baiduspider|slurp|lighthouse|pagespeed/i;
 
@@ -17,7 +18,11 @@ const HeroScene = dynamic<HeroSceneProps>(() => import("./hero-scene"), {
   loading: () => null,
 });
 
-export default function HeroSection() {
+type HeroSectionProps = {
+  pageContent: LandingPageContent;
+};
+
+export default function HeroSection({ pageContent }: HeroSectionProps) {
   //todo typescript
   const gltfPath = "/assets/untitled5.glb";
   const gltfPath2 = "/assets/untitled.glb";
@@ -124,24 +129,23 @@ export default function HeroSection() {
             </div>
             <h1 className="lg:overflow-hidden text-2xl lg:text-3xl 2xl:text-4xl font-extrabold lg:max-w-[35vw]">
               <span className="text-white font-sans">
-                TWORZĘ{" "}
-                <span className="text-yellow-300">STRONY INTERNETOWE</span> -
-                ZWIĘKSZ SWOJĄ WIDOCZNOŚĆ W GOOGLE
+                {pageContent.hero.headingPrefix}
+                <span className="text-yellow-300">
+                  {pageContent.hero.headingHighlight}
+                </span>
+                {pageContent.hero.headingSuffix}
               </span>
             </h1>
             <p className="mt-4 text-base lg:text-lg 2xl:text-2xl font-dosis text-white">
-              <b>Strona dla glazurnika z Grudziądza</b>,{" "}
-              <b>stylistek paznokci</b> z całej Polski, czy{" "}
-              <b>generator diety AI</b> - zrobiłem to.{" "}
-              <b className="text-yellow-300">Z pączkiem w ręku</b>.
+              {pageContent.hero.description}
             </p>
           </div>
           <div className="flex items-center justify-center mt-8">
-            <WebsiteOrderForm />
+            <WebsiteOrderForm content={pageContent.form} />
           </div>
         </div>
       </motion.div>
-      <ProjectShowcase />
+      <ProjectShowcase pageContent={pageContent} />
       <motionDiv.div
         className="absolute left-0 top-0 h-[700vh] w-screen"
         ref={mainWrapper}
@@ -155,7 +159,7 @@ export default function HeroSection() {
           className="font-bold bottom-36 text-center w-[90%] md:w-[70%] lg:w-[60%] left-1/2 fixed z-[500] font-sans"
         >
           <h2 className="rounded-3xl bg-yellow-300 select-none p-6 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
-            Masz pomysł na stronę internetową?
+            {pageContent.hero.floatingPromptPrimary}
           </h2>
         </motionDiv.div>
         <motionDiv.h2
@@ -167,7 +171,7 @@ export default function HeroSection() {
           className="font-bold bottom-36 text-center w-[90%] md:w-[70%] lg:w-[60%] left-1/2 fixed z-[500] font-sans"
         >
           <div className="rounded-3xl bg-yellow-300 select-none p-6 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
-            Porozmawiajmy o Twoim projekcie
+            {pageContent.hero.floatingPromptSecondary}
           </div>
         </motionDiv.h2>
         <motionDiv.div

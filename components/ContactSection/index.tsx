@@ -5,7 +5,13 @@ import { FaEnvelope, FaPaperPlane, FaPhone } from "react-icons/fa";
 import { useState } from "react";
 import Image from "next/image";
 import donutImage from "@/public/assets/donuts.png";
-export default function ContactSection() {
+import type { LandingPageContactContent } from "@/data/landingPages";
+
+type ContactSectionProps = {
+  content: LandingPageContactContent;
+};
+
+export default function ContactSection({ content }: ContactSectionProps) {
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
@@ -109,10 +115,10 @@ export default function ContactSection() {
       <div className="rounded-t-2xl font-dosis lg:mx-12 w-full lg:max-w-[1024px] bg-black/75 pt-0 border-t-2 border-yellow-300 pb-36 lg:pb-12 text-xl flex flex-col items-center justify-center z-[600] relative">
         <div className="font-cocosharp rounded-t-2xl bg-slate-800 w-full p-4 lg:p-6">
           <h2 className="text-2xl font-bold text-yellow-300">
-            Masz pomysł na stronę internetową?
+            {content.title}
           </h2>
           <p className="text-sm text-white">
-            Zamów darmową wycenę, wypełniając formularz poniżej
+            {content.subtitle}
           </p>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-6">
@@ -212,7 +218,7 @@ export default function ContactSection() {
         <div className="mt-12 flex items-center justify-center rounded-b-xl">
           <Image
             src={donutImage}
-            alt="Zamów stronę internetową"
+            alt={content.imageAlt}
             width={1024}
             height={1024}
             className="px-4 lg:px-0 sm:max-w-[500px] max-w-[90%]"

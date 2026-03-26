@@ -4,9 +4,15 @@ import Link from "next/link";
 import ProjectImages from "./ProjectImages";
 import { ProjectGalleryProvider } from "./ProjectGalleryContext";
 import ContactSection from "../ContactSection";
+import HomeIntentLayer from "../HomeIntentLayer";
 import { PORTFOLIO_PROJECTS } from "@/data/portfolioProjects";
+import type { LandingPageContent } from "@/data/landingPages";
 
-export default function ProjectShowcase() {
+type ProjectShowcaseProps = {
+  pageContent: LandingPageContent;
+};
+
+export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
   const mainWrapper = useRef<any>();
   const { scrollYProgress } = useScroll({
     target: mainWrapper,
@@ -30,6 +36,7 @@ export default function ProjectShowcase() {
         id="projects"
         className="flex-col flex w-screen relative mt-[470vh]"
       >
+        <HomeIntentLayer content={pageContent.intent} />
         <motionDiv.div
           style={{
             opacity: h1TextOpacity,
@@ -40,7 +47,7 @@ export default function ProjectShowcase() {
           className="h-[20vh] lg:h-[50vh] relative w-screen flex justify-center"
         >
           <motionDiv.h2 className="h-max font-bold font-sans rounded-3xl bg-yellow-300 select-none p-6 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl w-[90%] md:w-[70%] lg:w-[50%] z-[550] sticky top-44 lg:top-32 text-black text-center shadow-[0_20px_60px_rgba(0,0,0,0.25)] border border-black/10">
-            Moje realizacje stron internetowych
+            {pageContent.portfolioHeading}
           </motionDiv.h2>
         </motionDiv.div>
         <div className="z-auto top-0 w-screen flex flex-col items-center">
@@ -241,7 +248,7 @@ export default function ProjectShowcase() {
             </div>
           ))}
         </div>{" "}
-        <ContactSection />
+        <ContactSection content={pageContent.contact} />
       </div>
     </ProjectGalleryProvider>
   );

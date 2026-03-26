@@ -256,7 +256,7 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
     },
   },
   {
-    name: "Blackbell Studio",
+    name: "Sklep internetowy",
     shortDescription:
       "Sklep internetowy z pracami artystycznymi Blackbell Studio.",
     images: [
@@ -362,7 +362,7 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
     },
   },
   {
-    name: "Dzien Diety",
+    name: "Dietetyka online",
     shortDescription: "Strona internetowa z dziennym planem diety.",
     images: [
       "/images/projects/dziendiety/hero.png",
@@ -467,7 +467,7 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
     },
   },
   {
-    name: "Stickerka",
+    name: "Sklep internetowy",
     shortDescription: "Sklep internetowy z naklejkami.",
     images: [
       "/images/projects/stickerka/hero.png",

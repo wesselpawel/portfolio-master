@@ -4,31 +4,35 @@ import React, { useMemo, useState } from "react";
 import { FaPaperPlane } from "react-icons/fa";
 import donutImage from "@/public/ponczek.png";
 import Image from "next/image";
+import type { LandingPageFormContent } from "@/data/landingPages";
 type FormStatus = "idle" | "sending" | "success" | "error";
 
-export default function WebsiteOrderForm() {
+type WebsiteOrderFormProps = {
+  content: LandingPageFormContent;
+};
+
+export default function WebsiteOrderForm({ content }: WebsiteOrderFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [statusMessage, setStatusMessage] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
 
   const t = useMemo(
     () => ({
-      title: "Formularz kontaktowy",
-      subtitle: "",
+      title: content.title,
+      subtitle: content.subtitle,
       namePlaceholder: "Imię i nazwisko",
       phoneNumberPlaceholder: "Numer telefonu",
-      requirementsPlaceholder:
-        "Wymagania / opis projektu (funkcje, styl, termin)...",
-      send: "Wyślij zapytanie",
+      requirementsPlaceholder: content.requirementsPlaceholder,
+      send: content.sendLabel,
       sending: "Wysyłanie…",
-      success: "Dzięki! Twoje zapytanie zostało wysłane.",
+      success: content.successMessage,
       errorGeneric: "Coś poszło nie tak. Spróbuj ponownie.",
       errorMissing: "Uzupełnij wszystkie pola.",
       errorInvalidPhoneNumber:
         "Podaj poprawny 9-cyfrowy numer telefonu (np. 721 417 154).",
       phoneHint: "Może być wpisany z przerwami/spacjami.",
     }),
-    [],
+    [content],
   );
 
   /** Normalize to 9 digits: strip non-digits, optionally remove leading 48 (Polish country code). */

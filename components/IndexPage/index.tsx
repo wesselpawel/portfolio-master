@@ -4,11 +4,17 @@ import AOS from "aos";
 import HeroSection from "@/components/HeroSection";
 import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
+import type { LandingPageContent } from "@/data/landingPages";
 
 const StarsBg = dynamic(() => import("@/components/StarsBg"), {
   ssr: false,
 });
-export default function IndexPage() {
+
+type IndexPageProps = {
+  pageContent: LandingPageContent;
+};
+
+export default function IndexPage({ pageContent }: IndexPageProps) {
   useEffect(() => {
     AOS.init({
       offset: 100,
@@ -41,7 +47,7 @@ export default function IndexPage() {
           ></motion.div>
         </div>
         <Suspense>
-          <HeroSection />
+          <HeroSection pageContent={pageContent} />
         </Suspense>
       </motion.div>
     </div>
