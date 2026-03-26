@@ -5,24 +5,31 @@ import { useProjectGallery } from "./ProjectGalleryContext";
 
 type ProjectImagesProps = {
   images: readonly string[];
+  imageAlts?: readonly string[];
   title?: string;
 };
 
-export default function ProjectImages({ images, title }: ProjectImagesProps) {
+export default function ProjectImages({
+  images,
+  imageAlts,
+  title,
+}: ProjectImagesProps) {
   const { openGallery } = useProjectGallery();
   const first = images[0];
+  const firstAlt =
+    imageAlts?.[0] || (title ? `Podgląd projektu: ${title}` : "Podgląd projektu");
   if (!first) return null;
 
   return (
     <button
       type="button"
-      onClick={() => openGallery(images, 0, title)}
+      onClick={() => openGallery(images, 0, title, imageAlts)}
       className="group relative mt-4 w-full overflow-hidden rounded-xl border border-white/10 bg-black/25 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition hover:border-white/20 hover:bg-black/35 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300/70"
     >
       <div className="relative aspect-[16/10] w-full">
         <Image
           src={first}
-          alt={title ? `Podgląd projektu: ${title}` : "Podgląd projektu"}
+          alt={firstAlt}
           fill
           className="object-cover object-top transition duration-500 ease-out group-hover:scale-[1.03]"
           sizes="(max-width: 1100px) 100vw, 1100px"

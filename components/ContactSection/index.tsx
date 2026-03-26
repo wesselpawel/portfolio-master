@@ -105,9 +105,9 @@ export default function ContactSection() {
     }
   };
   return (
-    <div className="w-full flex items-center justify-center">
-      <div className="font-dosis lg:mx-12 w-full lg:max-w-[1024px] bg-black/75 pt-0 border-t-2 border-yellow-300 pb-36 lg:pb-12 text-xl flex flex-col items-center justify-center z-[600] relative">
-        <div className="font-cocosharp bg-slate-800 w-full p-4 lg:p-6">
+    <div id="contact" className="w-full flex items-center justify-center">
+      <div className="rounded-t-2xl font-dosis lg:mx-12 w-full lg:max-w-[1024px] bg-black/75 pt-0 border-t-2 border-yellow-300 pb-36 lg:pb-12 text-xl flex flex-col items-center justify-center z-[600] relative">
+        <div className="font-cocosharp rounded-t-2xl bg-slate-800 w-full p-4 lg:p-6">
           <h2 className="text-2xl font-bold text-yellow-300">
             Masz pomysł na stronę internetową?
           </h2>

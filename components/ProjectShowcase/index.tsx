@@ -76,42 +76,163 @@ export default function ProjectShowcase() {
                         </p>
                       </div>
                     </div>
-                    <ProjectImages images={item.images} title={item.name} />
-                    <p className="mt-3 text-center text-lg font-dosis text-white/90">
-                      {item.shortDescription}
-                    </p>
+                    <ProjectImages
+                      images={item.images}
+                      imageAlts={item.imageAlts}
+                      title={item.name}
+                    />
 
-                    {item.type ? (
-                      <div className="mt-4 flex items-center justify-center">
-                        <span
-                          className="px-3 py-1 rounded-full text-xs sm:text-sm font-dosis border border-white/10 bg-black/20"
-                          style={{
-                            boxShadow: `0 0 0 1px rgba(255,255,255,0.06) inset`,
-                          }}
-                        >
-                          {item.type}
-                        </span>
-                      </div>
-                    ) : null}
+                    {item.caseStudy ? (
+                      <div className="mt-5 rounded-xl border border-white/10 bg-black/20 p-4 sm:p-5">
+                        {item.link ? (
+                          <div className="mb-4">
+                            <Link
+                              href={item.link}
+                              target="_blank"
+                              className="inline-flex items-center gap-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 px-4 py-2 transition-all"
+                            >
+                              <div className="animate-bounce block w-2.5 h-2.5 rounded-full bg-green-500" />
+                              <span className="text-white text-sm sm:text-base font-dosis break-all">
+                                {item.linkText}
+                              </span>
+                            </Link>
+                          </div>
+                        ) : null}
+                        <div className="space-y-4 font-dosis text-white/90">
+                          <div>
+                            <p className="text-xs uppercase tracking-[0.18em] text-white/60">
+                              Wdrozenie
+                            </p>
+                            <p className="mt-2 text-sm sm:text-base leading-relaxed">
+                              {item.caseStudy.implementationSummary}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-xs uppercase tracking-[0.18em] text-white/60">
+                              Zakres
+                            </p>
+                            <p className="mt-2 text-sm sm:text-base leading-relaxed">
+                              {item.caseStudy.serviceScope}
+                            </p>
+                          </div>
+                          {item.caseStudy.applied.length ? (
+                            <div>
+                              <p className="text-xs uppercase tracking-[0.18em] text-white/60">
+                                Zastosowano
+                              </p>
+                              <ul className="mt-2 list-disc pl-5 space-y-1 text-sm sm:text-base">
+                                {item.caseStudy.applied.map((point) => (
+                                  <li key={point} className="leading-relaxed">
+                                    {point}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ) : null}
+                          <div>
+                            <p className="text-xs uppercase tracking-[0.18em] text-white/60">
+                              Efekt
+                            </p>
+                            <p className="mt-2 text-sm sm:text-base leading-relaxed">
+                              {item.caseStudy.result}
+                            </p>
+                          </div>
+                        </div>
 
-                    {item.link ? (
-                      <div className="mt-4 flex justify-center">
-                        <Link
-                          href={item.link}
-                          target="_blank"
-                          className="inline-flex items-center gap-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 px-4 py-2 transition-all"
-                        >
-                          <div
-                            className="block w-2.5 h-2.5 rounded-full"
-                            style={{
-                              background: item.colors?.[0] ?? "#22c55e",
-                              boxShadow: `0 0 20px ${item.colors?.[0] ?? "#22c55e"}55`,
-                            }}
-                          />
-                          <span className="text-white text-sm sm:text-base font-dosis break-all">
-                            {item.link}
-                          </span>
-                        </Link>
+                        {item.portfolioSections ? (
+                          <div className="mt-6 space-y-6">
+                            <div>
+                              <p className="text-xs uppercase tracking-[0.18em] text-white/60">
+                                Pricing
+                              </p>
+                              <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
+                                {item.portfolioSections.pricing.map((plan) => (
+                                  <div
+                                    key={`${item.name}-${plan.name}`}
+                                    className={`rounded-xl border p-4 ${
+                                      plan.highlighted
+                                        ? "border-yellow-300/70 bg-yellow-300/10"
+                                        : "border-white/10 bg-white/5"
+                                    }`}
+                                  >
+                                    <p className="text-sm text-white/70">{plan.name}</p>
+                                    <p className="mt-1 text-lg font-semibold text-white">
+                                      {plan.price}
+                                    </p>
+                                    <p className="mt-2 text-sm text-white/80 leading-relaxed">
+                                      {plan.description}
+                                    </p>
+                                    <ul className="mt-3 space-y-1 text-sm text-white/85">
+                                      {plan.features.map((feature) => (
+                                        <li key={feature}>- {feature}</li>
+                                      ))}
+                                    </ul>
+                                    <button
+                                      type="button"
+                                      onClick={() =>
+                                        document
+                                          .getElementById("contact")
+                                          ?.scrollIntoView({ behavior: "smooth" })
+                                      }
+                                      className="mt-4 inline-flex items-center justify-center rounded-lg border border-yellow-300/60 bg-yellow-300/10 px-3 py-2 text-sm font-semibold text-yellow-200 transition hover:bg-yellow-300/20 hover:text-yellow-100"
+                                    >
+                                      Kontakt
+                                    </button>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                              <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                                <p className="text-xs uppercase tracking-[0.18em] text-white/60">
+                                  Jak dzialam
+                                </p>
+                                <ul className="mt-3 space-y-2 text-sm sm:text-base text-white/90">
+                                  {item.portfolioSections.howIWork.map((step) => (
+                                    <li key={step} className="leading-relaxed">
+                                      {step}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                                <p className="text-xs uppercase tracking-[0.18em] text-white/60">
+                                  Co kupujesz
+                                </p>
+                                <ul className="mt-3 space-y-2 text-sm sm:text-base text-white/90">
+                                  {item.portfolioSections.whatYouBuy.map((benefit) => (
+                                    <li key={benefit} className="leading-relaxed">
+                                      - {benefit}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+
+                            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                              <p className="text-xs uppercase tracking-[0.18em] text-white/60">
+                                FAQ
+                              </p>
+                              <div className="mt-3 space-y-2">
+                                {item.portfolioSections.faq.map((qa) => (
+                                  <details
+                                    key={qa.question}
+                                    className="rounded-lg border border-white/10 bg-black/20 px-3 py-2"
+                                  >
+                                    <summary className="cursor-pointer list-none text-sm sm:text-base font-medium text-white">
+                                      {qa.question}
+                                    </summary>
+                                    <p className="mt-2 text-sm text-white/80 leading-relaxed">
+                                      {qa.answer}
+                                    </p>
+                                  </details>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        ) : null}
                       </div>
                     ) : null}
                   </div>{" "}

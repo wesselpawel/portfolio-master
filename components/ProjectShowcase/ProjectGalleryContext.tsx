@@ -16,6 +16,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 type GalleryOpenState = {
   open: true;
   images: readonly string[];
+  imageAlts?: readonly string[];
   index: number;
   title?: string;
 };
@@ -27,6 +28,7 @@ type ProjectGalleryContextValue = {
     images: readonly string[],
     startIndex?: number,
     title?: string,
+    imageAlts?: readonly string[],
   ) => void;
   closeGallery: () => void;
 };
@@ -84,7 +86,10 @@ function ProjectGalleryModal({
 
   const { images, index, title } = state;
   const src = images[index];
-  const label = title ? `${title} — ${index + 1} / ${images.length}` : `${index + 1} / ${images.length}`;
+  const fallbackLabel = title
+    ? `${title} — ${index + 1} / ${images.length}`
+    : `${index + 1} / ${images.length}`;
+  const label = state.imageAlts?.[index] || fallbackLabel;
 
   return createPortal(
     <div
@@ -195,10 +200,15 @@ export function ProjectGalleryProvider({
   const [state, setState] = useState<GalleryState>({ open: false });
 
   const openGallery = useCallback(
-    (images: readonly string[], startIndex = 0, title?: string) => {
+    (
+      images: readonly string[],
+      startIndex = 0,
+      title?: string,
+      imageAlts?: readonly string[],
+    ) => {
       if (!images.length) return;
       const idx = Math.max(0, Math.min(startIndex, images.length - 1));
-      setState({ open: true, images, index: idx, title });
+      setState({ open: true, images, imageAlts, index: idx, title });
     },
     [],
   );

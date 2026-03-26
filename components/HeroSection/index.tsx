@@ -122,10 +122,11 @@ export default function HeroSection() {
               <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />
               <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />
             </div>
-            <h1 className="lg:overflow-hidden text-2xl lg:text-4xl 2xl:text-6xl font-extrabold lg:max-w-[35vw]">
+            <h1 className="lg:overflow-hidden text-2xl lg:text-3xl 2xl:text-4xl font-extrabold lg:max-w-[35vw]">
               <span className="text-white font-sans">
-                <b className="text-yellow-300">NAJLEPSZE</b> STRONY INTERNETOWE
-                W GRUDZIĄDZU
+                TWORZĘ{" "}
+                <span className="text-yellow-300">STRONY INTERNETOWE</span> -
+                ZWIĘKSZ SWOJĄ WIDOCZNOŚĆ W GOOGLE
               </span>
             </h1>
             <p className="mt-4 text-base lg:text-lg 2xl:text-2xl font-dosis text-white">
