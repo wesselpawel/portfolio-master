@@ -8,6 +8,65 @@ import HomeIntentLayer from "../HomeIntentLayer";
 import { PORTFOLIO_PROJECTS } from "@/data/portfolioProjects";
 import type { LandingPageContent } from "@/data/landingPages";
 
+type PortfolioProjectItem = (typeof PORTFOLIO_PROJECTS)[number];
+
+const SERVICE_LINKS = {
+  website: {
+    href: "/strony-internetowe-grudziadz",
+    label: "Strony internetowe Grudziądz",
+  },
+  design: {
+    href: "/projektowanie-stron-www-grudziadz",
+    label: "Projektowanie stron www",
+  },
+  landing: {
+    href: "/landing-page-grudziadz",
+    label: "Landing page Grudziądz",
+  },
+  business: {
+    href: "/strona-internetowa-dla-firmy-grudziadz",
+    label: "Strona internetowa dla firmy",
+  },
+  store: {
+    href: "/sklepy-internetowe-grudziadz",
+    label: "Sklepy internetowe Grudziądz",
+  },
+  seo: {
+    href: "/pozycjonowanie-stron-internetowych-grudziadz",
+    label: "Pozycjonowanie stron",
+  },
+} as const;
+
+function getRelatedServiceLinks(project: PortfolioProjectItem) {
+  const searchableText = [
+    project.name,
+    project.linkText ?? "",
+    project.type,
+    project.caseStudy?.implementationSummary ?? "",
+    project.caseStudy?.serviceScope ?? "",
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  if (searchableText.includes("sklep")) {
+    return [SERVICE_LINKS.store, SERVICE_LINKS.design, SERVICE_LINKS.landing];
+  }
+
+  if (searchableText.includes("platform")) {
+    return [SERVICE_LINKS.business, SERVICE_LINKS.design, SERVICE_LINKS.landing];
+  }
+
+  if (
+    searchableText.includes("diet") ||
+    searchableText.includes("rezerw") ||
+    searchableText.includes("uslug")
+  ) {
+    return [SERVICE_LINKS.landing, SERVICE_LINKS.business, SERVICE_LINKS.design];
+  }
+
+  return [SERVICE_LINKS.website, SERVICE_LINKS.business, SERVICE_LINKS.seo];
+}
+
 type ProjectShowcaseProps = {
   pageContent: LandingPageContent;
 };
@@ -36,7 +95,10 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
         id="projects"
         className="flex-col flex w-screen relative mt-[470vh]"
       >
-        <HomeIntentLayer content={pageContent.intent} />
+        <HomeIntentLayer
+          content={pageContent.intent}
+          currentSlug={pageContent.slug}
+        />
         <motionDiv.div
           style={{
             opacity: h1TextOpacity,
@@ -143,6 +205,22 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                             <p className="mt-2 text-sm sm:text-base leading-relaxed">
                               {item.caseStudy.result}
                             </p>
+                          </div>
+                          <div>
+                            <p className="text-xs uppercase tracking-[0.18em] text-white/60">
+                              Powiązane usługi
+                            </p>
+                            <div className="mt-3 flex flex-wrap gap-2">
+                              {getRelatedServiceLinks(item).map((link) => (
+                                <Link
+                                  key={`${item.name}-${link.href}`}
+                                  href={link.href}
+                                  className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+                                >
+                                  {link.label}
+                                </Link>
+                              ))}
+                            </div>
                           </div>
                         </div>
 

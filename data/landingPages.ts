@@ -14,6 +14,12 @@ export type LandingPageStep = {
 export type LandingPageFaqItem = {
   question: string;
   answer: string;
+  relatedLinks?: readonly LandingPageLink[];
+};
+
+export type LandingPageLink = {
+  href: string;
+  label: string;
 };
 
 export type LandingPageHeroContent = {
@@ -258,6 +264,20 @@ function createWebsitePage({
           question: "Ile kosztuje strona internetowa w Grudziądzu?",
           answer:
             "Cena zależy od zakresu: liczby sekcji, podstron, funkcji i ilości treści. Najczęściej najlepszym rozwiązaniem jest strona firmowa z ofertą, procesem, FAQ i wyraźnym kontaktem.",
+          relatedLinks: [
+            {
+              href: "/strona-internetowa-dla-firmy-grudziadz",
+              label: "Strona internetowa dla firmy",
+            },
+            {
+              href: "/landing-page-grudziadz",
+              label: "Landing page Grudziądz",
+            },
+            {
+              href: "/sklepy-internetowe-grudziadz",
+              label: "Sklepy internetowe Grudziądz",
+            },
+          ],
         },
         {
           question: "Jak długo trwa realizacja?",
@@ -268,11 +288,31 @@ function createWebsitePage({
           question: "Czy pomagasz z treściami?",
           answer:
             "Tak. Pomagam uporządkować ofertę, zaplanować strukturę i przygotować treści, które lepiej sprzedają.",
+          relatedLinks: [
+            {
+              href: "/projektowanie-stron-www-grudziadz",
+              label: "Projektowanie stron www",
+            },
+            {
+              href: "/strona-internetowa-dla-firmy-grudziadz",
+              label: "Strona dla firmy",
+            },
+          ],
         },
         {
           question: "Czy strona będzie przygotowana pod SEO lokalne?",
           answer:
             "Tak - jeśli działasz lokalnie, strona może wspierać frazy takie jak:\n\n- strony internetowe Grudziądz\n- tworzenie stron Grudziądz\n- strona www dla firmy Grudziądz",
+          relatedLinks: [
+            {
+              href: "/pozycjonowanie-stron-internetowych-grudziadz",
+              label: "Pozycjonowanie stron internetowych",
+            },
+            {
+              href: "/projektowanie-stron-www-grudziadz",
+              label: "Projektowanie stron www",
+            },
+          ],
         },
       ],
       faqCtaLabel: "Przejdź do formularza",
@@ -1062,4 +1102,52 @@ export function getAllLandingPageSlugs(): string[] {
 
 export function getLandingPageMetadata(page: LandingPageContent): Metadata {
   return createMetadata(page);
+}
+
+const KEY_LANDING_PAGE_LINKS = [
+  {
+    slug: "projektowanie-stron-www-grudziadz",
+    label: "Projektowanie stron www",
+  },
+  {
+    slug: "landing-page-grudziadz",
+    label: "Landing page Grudziądz",
+  },
+  {
+    slug: "strona-internetowa-dla-firmy-grudziadz",
+    label: "Strona internetowa dla firmy",
+  },
+  {
+    slug: "pozycjonowanie-stron-internetowych-grudziadz",
+    label: "Pozycjonowanie stron",
+  },
+  {
+    slug: "sklepy-internetowe-grudziadz",
+    label: "Sklepy internetowe",
+  },
+] as const;
+
+export function getHomepageSectionLinks(isHomepage: boolean): LandingPageLink[] {
+  return [
+    {
+      href: isHomepage ? "#projects" : "/#projects",
+      label: "Zobacz realizacje",
+    },
+    {
+      href: isHomepage ? "#contact" : "/#contact",
+      label: "Zamów wycenę",
+    },
+  ];
+}
+
+export function getContextualLandingPageLinks(
+  currentSlug?: string,
+  limit = 3,
+): LandingPageLink[] {
+  return KEY_LANDING_PAGE_LINKS.filter((item) => item.slug !== currentSlug)
+    .slice(0, limit)
+    .map((item) => ({
+      href: `/${item.slug}`,
+      label: item.label,
+    }));
 }

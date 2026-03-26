@@ -7,11 +7,19 @@ import Image from "next/image";
 import donutImage from "@/public/assets/donuts.png";
 import type { LandingPageContactContent } from "@/data/landingPages";
 
-type ContactSectionProps = {
-  content: LandingPageContactContent;
+const DEFAULT_CONTACT_CONTENT: LandingPageContactContent = {
+  title: "Masz pomysł na stronę internetową?",
+  subtitle: "Zamów darmową wycenę, wypełniając formularz poniżej",
+  imageAlt: "Zamów stronę internetową",
 };
 
-export default function ContactSection({ content }: ContactSectionProps) {
+type ContactSectionProps = {
+  content?: LandingPageContactContent;
+};
+
+export default function ContactSection({
+  content = DEFAULT_CONTACT_CONTENT,
+}: ContactSectionProps) {
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");

@@ -2,6 +2,7 @@
 import authorImage from "@/public/assets/author.png";
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useScroll, useTransform, motion as motionDiv } from "framer-motion";
 import { motion } from "framer-motion-3d";
 import ProjectShowcase from "../ProjectShowcase";
@@ -9,7 +10,11 @@ import Image from "next/image";
 import { FaQuoteLeft, FaStar } from "react-icons/fa";
 import type { HeroSceneProps } from "./hero-scene";
 import WebsiteOrderForm from "./WebsiteOrderForm";
-import type { LandingPageContent } from "@/data/landingPages";
+import {
+  getContextualLandingPageLinks,
+  getHomepageSectionLinks,
+  type LandingPageContent,
+} from "@/data/landingPages";
 const BOT_USER_AGENT_REGEX =
   /bot|crawler|spider|crawling|googlebot|google-inspectiontool|inspectiontool|bingbot|yandex|duckduckbot|baiduspider|slurp|lighthouse|pagespeed/i;
 
@@ -96,6 +101,8 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
     ["-50%", "0%", "100%"],
   );
   const [canRender3D, setCanRender3D] = useState(false);
+  const sectionLinks = getHomepageSectionLinks(!pageContent.slug);
+  const contextualLandingLinks = getContextualLandingPageLinks(pageContent.slug);
 
   useEffect(() => {
     const userAgent = navigator.userAgent || "";
@@ -139,6 +146,26 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
             <p className="mt-4 text-base lg:text-lg 2xl:text-2xl font-dosis text-white">
               {pageContent.hero.description}
             </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {sectionLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/15"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              {contextualLandingLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-black/20 px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
           <div className="flex items-center justify-center mt-8">
             <WebsiteOrderForm content={pageContent.form} />
