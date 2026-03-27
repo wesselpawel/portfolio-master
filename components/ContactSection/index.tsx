@@ -6,6 +6,7 @@ import { useState } from "react";
 import Image from "next/image";
 import donutImage from "@/public/assets/donuts.png";
 import type { LandingPageContactContent } from "@/data/landingPages";
+import { openCookiePopup } from "@/components/CookieConsent";
 
 const DEFAULT_CONTACT_CONTENT: LandingPageContactContent = {
   title: "Masz pomysł na stronę internetową?",
@@ -120,7 +121,7 @@ export default function ContactSection({
   };
   return (
     <div id="contact" className="w-full flex items-center justify-center">
-      <div className="rounded-t-2xl font-dosis lg:mx-12 w-full lg:max-w-[1024px] bg-black/75 pt-0 border-t-2 border-yellow-300 pb-36 lg:pb-12 text-xl flex flex-col items-center justify-center z-[600] relative">
+      <div className="rounded-t-2xl font-dosis lg:mx-12 w-[90vw] bg-black/75 pt-0 border-t-2 border-yellow-300 pb-36 lg:pb-12 text-xl flex flex-col items-center justify-center z-[600] relative">
         <div className="font-cocosharp rounded-t-2xl bg-slate-800 w-full p-4 lg:p-6">
           <h2 className="text-2xl font-bold text-yellow-300">
             {content.title}
@@ -232,18 +233,96 @@ export default function ContactSection({
             className="px-4 lg:px-0 sm:max-w-[500px] max-w-[90%]"
           />
         </div>
-        <div className="h-max px-4 mt-12 flex flex-row items-center justify-between w-full">
-          <div className="flex flex-col">
-            <span className="font-light text-white/60">wesselpawel.com </span>
-            <span className="font-light text-white/60">2026</span>
-          </div>
-          <div className="mt-4 flex flex-col w-full items-end justify-end text-white/60">
-            <Link title="Call me" href="tel:+48721417154">
-              +48 721 417 154
-            </Link>
-            <Link title="Send me an email" href="mailto:wesiudev@gmail.com">
-              <FaEnvelope className="h-8 w-8" />
-            </Link>
+
+        <div className="mt-12 w-full px-4 lg:px-6">
+          <div className="overflow-hidden rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(253,224,71,0.12),transparent_32%),linear-gradient(180deg,rgba(30,41,59,0.92),rgba(15,23,42,0.88))] shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
+            <div className="grid grid-cols-1 gap-4 border-b border-white/10 p-5 md:grid-cols-3 lg:p-6">
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-yellow-200/80">
+                  Właściciel serwisu
+                </p>
+                <p className="mt-3 text-xl font-bold text-white">PAWEŁ WESSEL</p>
+                <p className="mt-3 text-sm leading-relaxed text-white/65">
+                  Dane przedsiębiorcy i kontakt do bezpośredniej współpracy przy
+                  stronach internetowych, landing page oraz SEO lokalnym.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-yellow-200/80">
+                  Dane firmy
+                </p>
+                <div className="mt-3 space-y-3 text-sm text-white/80">
+                  <div className="flex items-center justify-between gap-4 rounded-xl bg-white/5 px-4 py-3">
+                    <span className="text-white/60">NIP</span>
+                    <span className="font-semibold text-white">8762494772</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 rounded-xl bg-white/5 px-4 py-3">
+                    <span className="text-white/60">REGON</span>
+                    <span className="font-semibold text-white">387851407</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-yellow-200/80">
+                  Kontakt
+                </p>
+                <div className="mt-3 space-y-3">
+                  <Link
+                    title="Call me"
+                    href="tel:+48721417154"
+                    className="flex items-center justify-between gap-4 rounded-xl bg-white/5 px-4 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
+                  >
+                    <span className="flex items-center gap-3">
+                      <FaPhone className="h-4 w-4 text-yellow-200" />
+                      Telefon
+                    </span>
+                    <span className="font-semibold text-white">721 417 154</span>
+                  </Link>
+                  <Link
+                    title="Send me an email"
+                    href="mailto:hello@wesselpawel.com"
+                    className="flex items-center justify-between gap-4 rounded-xl bg-white/5 px-4 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
+                  >
+                    <span className="flex items-center gap-3">
+                      <FaEnvelope className="h-4 w-4 text-yellow-200" />
+                      E-mail
+                    </span>
+                    <span className="font-semibold text-white">
+                      hello@wesselpawel.com
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3 px-5 py-4 text-sm text-white/65 lg:flex-row lg:items-center lg:justify-between lg:px-6">
+              <p>© 2026 wesselpawel.com · PAWEŁ WESSEL</p>
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  href="/polityka-prywatnosci"
+                  className="transition hover:text-yellow-200"
+                >
+                  Polityka prywatności
+                </Link>
+                <span className="text-white/25">/</span>
+                <Link
+                  href="/polityka-cookies"
+                  className="transition hover:text-yellow-200"
+                >
+                  Polityka cookies
+                </Link>
+                <span className="text-white/25">/</span>
+                <button
+                  type="button"
+                  onClick={openCookiePopup}
+                  className="transition hover:text-yellow-200"
+                >
+                  Ustawienia cookies
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

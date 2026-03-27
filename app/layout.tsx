@@ -1,14 +1,14 @@
 import "@/styles/globals.css";
 import localFont from "next/font/local";
 import { Lato } from "next/font/google";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import "aos/dist/aos.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { NavRight } from "@/components/Navigation";
-import Script from "next/script";
+import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
-  title: "Strony internetowe Grudziądz - Paweł Wessel - Programista",
+  title: "Tworzenie stron www | SEO | Strony firmowe Paweł Wessel",
   description:
     "Tworzę strony internetowe dla firm i osób prywatnych. Zajmuję się projektowaniem graficznym i designem. Programuję w Next.js, Tailwind CSS, TypeScript. Tworzę strony internetowe w Grudziądzu.",
   icons: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://wesselpawel.com/",
-    title: "Strony internetowe Grudziądz - Paweł Wessel - Programista",
+    title: "Tworzenie stron www | SEO | Strony firmowe Paweł Wessel",
     description:
       "Tworzę strony internetowe dla firm i osób prywatnych. Zajmuję się projektowaniem graficznym i designem. Programuję w Next.js, Tailwind CSS, TypeScript. Tworzę strony internetowe w Grudziądzu.",
     siteName: "wesselpawel.com",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     site: "@wesiudev",
-    title: "Strony internetowe Paweł Wessel - Front-end Developer",
+    title: "Tworzenie stron www | SEO | Strony firmowe Paweł Wessel",
     description:
       "Tworzę strony i aplikacje internetowe, sklepy internetowe, prowadzę marketing w Google Ads. Zajmuję się projektowaniem graficznym i designem.",
     images: [
@@ -43,6 +43,12 @@ export const metadata: Metadata = {
       },
     ],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -57,18 +63,7 @@ export default function RootLayout({
       >
         <NavRight />
         {children}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-ZHR2XRP7YX"
-        />
-        <Script strategy="afterInteractive" id="google-analytics">
-          {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-ZHR2XRP7YX');
-          `}
-        </Script>
+        <CookieConsent />
       </body>
     </html>
   );

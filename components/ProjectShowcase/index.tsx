@@ -6,38 +6,17 @@ import { ProjectGalleryProvider } from "./ProjectGalleryContext";
 import ContactSection from "../ContactSection";
 import HomeIntentLayer from "../HomeIntentLayer";
 import { PORTFOLIO_PROJECTS } from "@/data/portfolioProjects";
-import type { LandingPageContent } from "@/data/landingPages";
+import {
+  getLandingPageLink,
+  type LandingPageContent,
+  type LandingPageServiceKey,
+} from "@/data/landingPages";
 
 type PortfolioProjectItem = (typeof PORTFOLIO_PROJECTS)[number];
 
-const SERVICE_LINKS = {
-  website: {
-    href: "/strony-internetowe-grudziadz",
-    label: "Strony internetowe Grudziądz",
-  },
-  design: {
-    href: "/projektowanie-stron-www-grudziadz",
-    label: "Projektowanie stron www",
-  },
-  landing: {
-    href: "/landing-page-grudziadz",
-    label: "Landing page Grudziądz",
-  },
-  business: {
-    href: "/strona-internetowa-dla-firmy-grudziadz",
-    label: "Strona internetowa dla firmy",
-  },
-  store: {
-    href: "/sklepy-internetowe-grudziadz",
-    label: "Sklepy internetowe Grudziądz",
-  },
-  seo: {
-    href: "/pozycjonowanie-stron-internetowych-grudziadz",
-    label: "Pozycjonowanie stron",
-  },
-} as const;
-
-function getRelatedServiceLinks(project: PortfolioProjectItem) {
+function getRelatedServiceKeys(
+  project: PortfolioProjectItem,
+): LandingPageServiceKey[] {
   const searchableText = [
     project.name,
     project.linkText ?? "",
@@ -49,11 +28,11 @@ function getRelatedServiceLinks(project: PortfolioProjectItem) {
     .toLowerCase();
 
   if (searchableText.includes("sklep")) {
-    return [SERVICE_LINKS.store, SERVICE_LINKS.design, SERVICE_LINKS.landing];
+    return ["store", "design", "landing"];
   }
 
   if (searchableText.includes("platform")) {
-    return [SERVICE_LINKS.business, SERVICE_LINKS.design, SERVICE_LINKS.landing];
+    return ["business", "design", "landing"];
   }
 
   if (
@@ -61,10 +40,10 @@ function getRelatedServiceLinks(project: PortfolioProjectItem) {
     searchableText.includes("rezerw") ||
     searchableText.includes("uslug")
   ) {
-    return [SERVICE_LINKS.landing, SERVICE_LINKS.business, SERVICE_LINKS.design];
+    return ["landing", "business", "design"];
   }
 
-  return [SERVICE_LINKS.website, SERVICE_LINKS.business, SERVICE_LINKS.seo];
+  return ["website", "business", "seo"];
 }
 
 type ProjectShowcaseProps = {
@@ -211,7 +190,19 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                               Powiązane usługi
                             </p>
                             <div className="mt-3 flex flex-wrap gap-2">
-                              {getRelatedServiceLinks(item).map((link) => (
+                              {getRelatedServiceKeys(item)
+                                .map((serviceKey) =>
+                                  getLandingPageLink(serviceKey, pageContent.slug),
+                                )
+                                .filter(
+                                  (
+                                    link,
+                                  ): link is ReturnType<typeof getLandingPageLink> &
+                                    { href: string; label: string } =>
+                                    link !== null,
+                                )
+                                .filter((link) => link.href !== `/${pageContent.slug}`)
+                                .map((link) => (
                                 <Link
                                   key={`${item.name}-${link.href}`}
                                   href={link.href}
@@ -219,7 +210,7 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                                 >
                                   {link.label}
                                 </Link>
-                              ))}
+                                ))}
                             </div>
                           </div>
                         </div>

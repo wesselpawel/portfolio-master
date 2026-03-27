@@ -4,6 +4,8 @@ import Link from "next/link";
 import {
   getContextualLandingPageLinks,
   getHomepageSectionLinks,
+  getSiblingCityLinks,
+  type LandingPageLink,
   type LandingPageIntentContent,
 } from "@/data/landingPages";
 
@@ -18,6 +20,23 @@ export default function HomeIntentLayer({
 }: HomeIntentLayerProps) {
   const sectionLinks = getHomepageSectionLinks(!currentSlug);
   const contextualLandingLinks = getContextualLandingPageLinks(currentSlug);
+  const siblingCityLinks = getSiblingCityLinks(currentSlug, 6);
+
+  function renderInlineLinks(links: LandingPageLink[]) {
+    return links.map((link, index) => {
+      const isLast = index === links.length - 1;
+      const isSecondToLast = index === links.length - 2;
+
+      return (
+        <span key={link.href}>
+          <Link href={link.href} className="text-yellow-200 underline decoration-yellow-300/60 underline-offset-4 transition hover:text-yellow-100">
+            {link.label}
+          </Link>
+          {!isLast ? (isSecondToLast ? " oraz " : ", ") : null}
+        </span>
+      );
+    });
+  }
 
   return (
     <section className="z-[51] mx-auto w-[90vw]  pt-8 pb-10 lg:pt-12 lg:pb-16">
@@ -38,6 +57,13 @@ export default function HomeIntentLayer({
                 {paragraph}
               </p>
             ))}
+            {contextualLandingLinks.length ? (
+              <p className="mt-4 max-w-3xl font-dosis text-base leading-relaxed text-white/75 lg:text-lg">
+                Jeśli chcesz porównać inne warianty dla tego samego miasta, zobacz
+                {" "}
+                {renderInlineLinks(contextualLandingLinks)}.
+              </p>
+            ) : null}
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-black/25 p-5">
@@ -62,7 +88,7 @@ export default function HomeIntentLayer({
                   Zadzwoń
                 </Link>
                 <Link
-                  href="mailto:wesiudev@gmail.com"
+                  href="mailto:hello@wesselpawel.com"
                   className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
                 >
                   Napisz maila
@@ -92,6 +118,11 @@ export default function HomeIntentLayer({
             </div>
           ))}
         </div>
+        {content.offerSupportingLinks?.length ? (
+          <p className="mt-5 max-w-4xl font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
+            Jeśli porównujesz warianty, sprawdź też {renderInlineLinks(content.offerSupportingLinks)}.
+          </p>
+        ) : null}
       </div>
 
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -217,6 +248,13 @@ export default function HomeIntentLayer({
             <p className="mt-2 font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
               {content.faqIntro}
             </p>
+            {contextualLandingLinks.length ? (
+              <p className="mt-3 font-dosis text-sm leading-relaxed text-white/70 sm:text-base">
+                W obrębie tego samego miasta możesz też sprawdzić
+                {" "}
+                {renderInlineLinks(contextualLandingLinks)}.
+              </p>
+            ) : null}
           </div>
           <Link
             href="#contact"
@@ -254,6 +292,18 @@ export default function HomeIntentLayer({
             </details>
           ))}
         </div>
+        {siblingCityLinks.length ? (
+          <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
+            <p className="text-xs uppercase tracking-[0.18em] text-white/60">
+              Te same usługi w innych miastach
+            </p>
+            <p className="mt-2 font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
+              Jeśli rozwijasz widoczność szerzej niż jedno miasto, sprawdź też:
+              {" "}
+              {renderInlineLinks(siblingCityLinks)}.
+            </p>
+          </div>
+        ) : null}
       </section>
 
       <div className="bg-slate-800/50 backdrop-blur-sm mt-6 rounded-[28px] border border-yellow-300/35 bg-gradient-to-r from-yellow-300/15 to-transparent p-6">

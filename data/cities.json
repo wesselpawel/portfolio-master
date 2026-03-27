@@ -1,0 +1,132 @@
+[
+  {
+    "slug": "warszawa",
+    "name": "Warszawa",
+    "cases": {
+      "mianownik": "Warszawa",
+      "dopelniacz": "Warszawy",
+      "celownik": "Warszawie",
+      "biernik": "Warszawę",
+      "narzednik": "Warszawą",
+      "miejscownik": "Warszawie",
+      "wolacz": "Warszawo"
+    }
+  },
+  {
+    "slug": "krakow",
+    "name": "Kraków",
+    "cases": {
+      "mianownik": "Kraków",
+      "dopelniacz": "Krakowa",
+      "celownik": "Krakowowi",
+      "biernik": "Kraków",
+      "narzednik": "Krakowem",
+      "miejscownik": "Krakowie",
+      "wolacz": "Krakowie"
+    }
+  },
+  {
+    "slug": "wroclaw",
+    "name": "Wrocław",
+    "cases": {
+      "mianownik": "Wrocław",
+      "dopelniacz": "Wrocławia",
+      "celownik": "Wrocławiowi",
+      "biernik": "Wrocław",
+      "narzednik": "Wrocławiem",
+      "miejscownik": "Wrocławiu",
+      "wolacz": "Wrocławiu"
+    }
+  },
+  {
+    "slug": "poznan",
+    "name": "Poznań",
+    "cases": {
+      "mianownik": "Poznań",
+      "dopelniacz": "Poznania",
+      "celownik": "Poznaniowi",
+      "biernik": "Poznań",
+      "narzednik": "Poznaniem",
+      "miejscownik": "Poznaniu",
+      "wolacz": "Poznaniu"
+    }
+  },
+  {
+    "slug": "gdansk",
+    "name": "Gdańsk",
+    "cases": {
+      "mianownik": "Gdańsk",
+      "dopelniacz": "Gdańska",
+      "celownik": "Gdańskowi",
+      "biernik": "Gdańsk",
+      "narzednik": "Gdańskiem",
+      "miejscownik": "Gdańsku",
+      "wolacz": "Gdańsku"
+    }
+  },
+  {
+    "slug": "lodz",
+    "name": "Łódź",
+    "cases": {
+      "mianownik": "Łódź",
+      "dopelniacz": "Łodzi",
+      "celownik": "Łodzi",
+      "biernik": "Łódź",
+      "narzednik": "Łodzią",
+      "miejscownik": "Łodzi",
+      "wolacz": "Łodzi"
+    }
+  },
+  {
+    "slug": "szczecin",
+    "name": "Szczecin",
+    "cases": {
+      "mianownik": "Szczecin",
+      "dopelniacz": "Szczecina",
+      "celownik": "Szczecinowi",
+      "biernik": "Szczecin",
+      "narzednik": "Szczecinem",
+      "miejscownik": "Szczecinie",
+      "wolacz": "Szczecinie"
+    }
+  },
+  {
+    "slug": "bydgoszcz",
+    "name": "Bydgoszcz",
+    "cases": {
+      "mianownik": "Bydgoszcz",
+      "dopelniacz": "Bydgoszczy",
+      "celownik": "Bydgoszczy",
+      "biernik": "Bydgoszcz",
+      "narzednik": "Bydgoszczą",
+      "miejscownik": "Bydgoszczy",
+      "wolacz": "Bydgoszczy"
+    }
+  },
+  {
+    "slug": "lublin",
+    "name": "Lublin",
+    "cases": {
+      "mianownik": "Lublin",
+      "dopelniacz": "Lublina",
+      "celownik": "Lublinowi",
+      "biernik": "Lublin",
+      "narzednik": "Lublinem",
+      "miejscownik": "Lublinie",
+      "wolacz": "Lublinie"
+    }
+  },
+  {
+    "slug": "katowice",
+    "name": "Katowice",
+    "cases": {
+      "mianownik": "Katowice",
+      "dopelniacz": "Katowic",
+      "celownik": "Katowicom",
+      "biernik": "Katowice",
+      "narzednik": "Katowicami",
+      "miejscownik": "Katowicach",
+      "wolacz": "Katowice"
+    }
+  }
+]

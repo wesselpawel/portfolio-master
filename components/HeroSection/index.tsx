@@ -11,6 +11,7 @@ import { FaQuoteLeft, FaStar } from "react-icons/fa";
 import type { HeroSceneProps } from "./hero-scene";
 import WebsiteOrderForm from "./WebsiteOrderForm";
 import {
+  getBreadcrumbLinks,
   getContextualLandingPageLinks,
   getHomepageSectionLinks,
   type LandingPageContent,
@@ -101,6 +102,7 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
     ["-50%", "0%", "100%"],
   );
   const [canRender3D, setCanRender3D] = useState(false);
+  const breadcrumbLinks = getBreadcrumbLinks(pageContent.slug);
   const sectionLinks = getHomepageSectionLinks(!pageContent.slug);
   const contextualLandingLinks = getContextualLandingPageLinks(
     pageContent.slug,
@@ -129,10 +131,30 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
           translateX: welcomeBoxTranslateX,
           translateY: welcomeBoxTranslateY,
         }}
-        className="flex mt-12 lg:mt-0 lg:items-center justify-center absolute left-0 top-0 w-full h-[100svh] min-h-[100svh] z-[501] rounded-3xl"
+        className="absolute left-0 top-0 z-[501] flex h-[100svh] min-h-[100svh] w-full justify-center rounded-3xl pt-28 sm:pt-32 lg:items-center lg:pt-0"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 w-[90vw]  h-[60vh]">
           <div className="rounded-3xl relative">
+            {breadcrumbLinks.length ? (
+              <nav
+                aria-label="Breadcrumb"
+                className="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/60"
+              >
+                {breadcrumbLinks.map((link, index) => (
+                  <React.Fragment key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="transition hover:text-yellow-200"
+                    >
+                      {link.label}
+                    </Link>
+                    {index < breadcrumbLinks.length - 1 ? (
+                      <span className="text-white/30">/</span>
+                    ) : null}
+                  </React.Fragment>
+                ))}
+              </nav>
+            ) : null}
             <div className="flex flex-row gap-3 mb-4">
               <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />
               <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />

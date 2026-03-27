@@ -2,18 +2,18 @@ import Content from "./Content";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Jak zostałem front-end developerem?",
+  title: "O mnie | Tworzenie stron internetowych Grudziądz",
   description:
-    "Jak zacząłem programować, jak zostałem front-end developer, historia, motywacja, timeline i plany na przyszłość.",
+    "Poznaj moją drogę od technikum informatycznego do tworzenia stron, sklepów i platform internetowych. Front-end, SEO i strony internetowe w Grudziądzu.",
   openGraph: {
-    title: "Jak zostałem front-end developerem?",
+    title: "O mnie | Tworzenie stron internetowych Grudziądz",
     description:
-      "Jak zacząłem programować, jak zostałem front-end developer, historia, motywacja, timeline i plany na przyszłość.",
+      "Poznaj moją drogę od technikum informatycznego do tworzenia stron, sklepów i platform internetowych. Front-end, SEO i strony internetowe w Grudziądzu.",
   },
   twitter: {
-    title: "Jak zostałem front-end developerem?",
+    title: "O mnie | Tworzenie stron internetowych Grudziądz",
     description:
-      "Jak zacząłem programować, jak zostałem front-end developer, historia, motywacja, timeline i plany na przyszłość.",
+      "Poznaj moją drogę od technikum informatycznego do tworzenia stron, sklepów i platform internetowych. Front-end, SEO i strony internetowe w Grudziądzu.",
   },
 };
 
