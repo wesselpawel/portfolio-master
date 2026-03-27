@@ -105,10 +105,10 @@ export default function WebsiteOrderForm({ content }: WebsiteOrderFormProps) {
   };
 
   return (
-    <div className="pl-12 w-full h-full flex items-center justify-center overflow-y-auto">
+    <div className="w-full h-full flex items-center justify-center">
       <div className="w-full max-w-[520px] border-t-2 border-yellow-300 rounded-3xl relative">
-        <div className="bg-black/70 backdrop-blur-sm rounded-2xl p-4 lg:p-5">
-          <h2 className="pl-[54px] text-nowrap w-max text-xl lg:text-2xl font-bold text-white">
+        <div className="bg-slate-800/70 backdrop-blur-sm rounded-2xl p-4 lg:p-5">
+          <h2 className="text-nowrap w-max text-xl lg:text-2xl font-bold text-white">
             {t.title}
           </h2>
           <p className="mt-3 text-sm text-white/80">{t.subtitle}</p>

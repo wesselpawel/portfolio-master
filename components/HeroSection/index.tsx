@@ -162,15 +162,6 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
                   {link.label}
                 </Link>
               ))}
-              {contextualLandingLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={secondaryQuickLinkClass}
-                >
-                  {link.label}
-                </Link>
-              ))}
             </div>
           </div>
           <div className="flex items-center justify-center mt-8">
