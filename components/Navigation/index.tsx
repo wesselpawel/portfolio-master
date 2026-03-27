@@ -17,7 +17,7 @@ export function NavRight() {
     });
   }, []);
   return (
-    <div className="text-white sticky top-6 mx-auto p-3 rounded-full w-[90vw] lg:w-[77vw] justify-between flex flex-row space-x-3 z-[1000] font-regular text-xl font-anta bg-slate-800/50 backdrop-blur-sm">
+    <div className="text-white sticky top-6 mx-auto p-3 rounded-full w-[90vw]  justify-between flex flex-row space-x-3 z-[1000] font-regular text-xl font-anta bg-slate-800/50 backdrop-blur-sm">
       <Link href="/" className="flex flex-row gap-2">
         <Image
           src={authorImage}
@@ -27,9 +27,9 @@ export function NavRight() {
           className="w-14 rotate-12 h-14 rounded-full"
         />
         <div className="flex flex-col items-start justify-center">
-          <h2 className="italic font-bold text-2xl text-white drop-shadow-md">
+          <div className="italic font-bold text-2xl text-white drop-shadow-md">
             Paweł Wessel
-          </h2>
+          </div>
           <div className="flex flex-row items-center text-sm font-dosis text-white">
             <b>Programista</b> <FaLongArrowAltRight className="ml-2" />
           </div>

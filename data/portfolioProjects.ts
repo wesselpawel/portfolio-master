@@ -362,8 +362,8 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
     },
   },
   {
-    name: "Dietetyka online",
-    shortDescription: "Strona internetowa z dziennym planem diety.",
+    name: "Platforma Dietetyczna",
+    shortDescription: "Platforma dietetyczna z dziennym planem diety.",
     images: [
       "/images/projects/dziendiety/hero.png",
       "/images/projects/dziendiety/underhero.png",

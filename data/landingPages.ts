@@ -480,18 +480,18 @@ function createSeoPage(): LandingPageContent {
     slug: "pozycjonowanie-stron-internetowych-grudziadz",
     seo: {
       title:
-        "Pozycjonowanie stron internetowych Grudziądz - SEO lokalne dla firm",
+        "Pozycjonowanie stron internetowych Grudziądz - SEO Grudziądz dla firm",
       description:
         "Pomagam lokalnym firmom zwiększać widoczność w Google. Pozycjonowanie stron internetowych w Grudziądzu z naciskiem na lokalne frazy i zapytania od klientów.",
     },
     hero: {
       headingPrefix: "PROWADZĘ ",
-      headingHighlight: "POZYCJONOWANIE STRON",
+      headingHighlight: "POZYCJONOWANIE STRON INTERNETOWYCH",
       headingSuffix: " - ZWIĘKSZ LOKALNĄ WIDOCZNOŚĆ W GOOGLE",
       description:
         "Pomagam firmom z Grudziądza poprawić widoczność w Google, uporządkować treści i lepiej odpowiadać na lokalne zapytania klientów.",
-      floatingPromptPrimary: "Chcesz zwiększyć widoczność strony?",
-      floatingPromptSecondary: "Porozmawiajmy o lokalnym SEO",
+      floatingPromptPrimary: "Chcesz pozycjonować stronę lokalnie?",
+      floatingPromptSecondary: "Porozmawiajmy o SEO dla Twojej firmy",
     },
     form: {
       ...DEFAULT_FORM_CONTENT,
@@ -500,7 +500,8 @@ function createSeoPage(): LandingPageContent {
     },
     intent: {
       eyebrow: "Pozycjonowanie stron internetowych Grudziądz",
-      heading: "SEO lokalne, które wspiera pozyskiwanie klientów",
+      heading:
+        "Pozycjonowanie stron internetowych w Grudziądzu, które wspiera pozyskiwanie klientów",
       paragraphs: [
         "Pomagam firmom z Grudziądza i okolic zwiększać widoczność strony na lokalne frazy oraz lepiej odpowiadać na realne intencje użytkowników.",
         "Jeśli interesuje Cię pozycjonowanie strony internetowej w Grudziądzu, zacznijmy od analizy tego, co już masz i gdzie najszybciej można poprawić wyniki.",
@@ -528,7 +529,7 @@ function createSeoPage(): LandingPageContent {
             "Dla firm, które chcą etapowo rozbudowywać widoczność strony, sekcje ofertowe i long-tail.",
         },
       ],
-      whyTitle: "Dlaczego warto ze mną współpracować",
+      whyTitle: "Dlaczego warto zlecić mi pozycjonowanie strony",
       whyIntro:
         "SEO lokalne nie polega tylko na dodaniu kilku słów kluczowych. Liczy się struktura, treść i intencja użytkownika.",
       whyPoints: [
@@ -538,7 +539,7 @@ function createSeoPage(): LandingPageContent {
         "Jasne rekomendacje zamiast chaotycznych zmian bez planu",
         "Bezpośredni kontakt i konkretne priorytety wdrożeniowe",
       ],
-      processTitle: "Jak wygląda współpraca",
+      processTitle: "Jak wygląda pozycjonowanie strony",
       processSteps: [
         {
           title: "1. Analiza strony i fraz",
@@ -561,7 +562,7 @@ function createSeoPage(): LandingPageContent {
             "Ustalamy kolejne kroki, jeśli chcesz rozwijać stronę o nowe treści i lokalne landing pages.",
         },
       ],
-      includedTitle: "Co otrzymujesz w cenie",
+      includedTitle: "Co otrzymujesz w ramach pozycjonowania",
       includedParagraphs: [
         "Zakres dopasowuję do tego, czy potrzebujesz szybkiego audytu, lokalnego SEO czy dalszego rozwoju treści.",
         "Celem jest lepsza widoczność strony na frazy lokalne i większa liczba wartościowych zapytań.",
@@ -576,7 +577,7 @@ function createSeoPage(): LandingPageContent {
         "przygotowanie planu dalszego rozwoju",
       ],
       includedCtaLabel: "Chcę dostać wycenę SEO",
-      faqTitle: "FAQ",
+      faqTitle: "FAQ o pozycjonowaniu stron",
       faqIntro:
         "Najczęstsze pytania od firm, które planują pozycjonowanie strony internetowej w Grudziądzu.",
       faqItems: [
@@ -610,9 +611,9 @@ function createSeoPage(): LandingPageContent {
       nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
       nextStepSecondaryCtaLabel: "Wyślij brief",
     },
-    portfolioHeading: "Wybrane realizacje i wdrożenia",
+    portfolioHeading: "Realizacje stron wspierających SEO lokalne",
     contact: {
-      title: "Chcesz poprawić widoczność swojej strony?",
+      title: "Chcesz poprawić widoczność strony w Google?",
       subtitle: "Opisz obecną stronę i cele, a przygotuję kierunek działań",
       imageAlt: "Zamów pozycjonowanie strony internetowej",
     },
@@ -624,19 +625,18 @@ function createWebDesignPage(): LandingPageContent {
     key: "projektowanie-stron-www-grudziadz",
     slug: "projektowanie-stron-www-grudziadz",
     seo: {
-      title:
-        "Projektowanie stron www Grudziądz - nowoczesne strony dla firm",
+      title: "Projektowanie stron www Grudziądz - nowoczesne strony dla firm",
       description:
-        "Projektowanie stron www w Grudziądzu dla lokalnych firm. Tworzę nowoczesne, przemyślane strony internetowe, które dobrze prezentują ofertę i wspierają kontakt.",
+        "Projektowanie stron www w Grudziądzu dla lokalnych firm. Wdrażam nowoczesny i przemyślany design na strony internetowe, które dobrze prezentują ofertę i wspierają kontakt.",
     },
     hero: {
       headingPrefix: "PROJEKTUJĘ ",
-      headingHighlight: "STRONY WWW",
+      headingHighlight: "STRONY WWW DLA FIRM",
       headingSuffix: " - NOWOCZEŚNIE, CZYTELNIE I SKUTECZNIE",
       description:
-        "Projektuję strony www dla firm, które chcą wyglądać profesjonalnie, jasno komunikować ofertę i ułatwiać klientowi podjęcie decyzji.",
-      floatingPromptPrimary: "Chcesz zaprojektować nową stronę www?",
-      floatingPromptSecondary: "Porozmawiajmy o układzie i komunikacji strony",
+        "Tworzę design i implementuję strony www dla firm, które chcą wyglądać profesjonalnie, jasno komunikować ofertę i ułatwiać klientowi podjęcie decyzji.",
+      floatingPromptPrimary: "Chcesz zaprojektować stronę www dla firmy?",
+      floatingPromptSecondary: "Porozmawiajmy o projekcie strony w Grudziądzu",
     },
     form: {
       ...DEFAULT_FORM_CONTENT,
@@ -645,7 +645,8 @@ function createWebDesignPage(): LandingPageContent {
     },
     intent: {
       eyebrow: "Projektowanie stron www - Grudziądz",
-      heading: "Projektowanie stron www, które porządkuje ofertę i zwiększa zaufanie",
+      heading:
+        "Projektowanie stron www, które porządkuje ofertę i zwiększa zaufanie",
       paragraphs: [
         "Projektuję strony www dla firm z Grudziądza i okolic, które chcą lepiej pokazać ofertę, wyróżnić się wizualnie i prowadzić użytkownika prosto do kontaktu.",
         "Jeśli interesuje Cię projektowanie strony www w Grudziądzu, zacznijmy od przemyślanego układu treści, hierarchii sekcji i komunikacji dopasowanej do Twojej firmy.",
@@ -657,38 +658,38 @@ function createWebDesignPage(): LandingPageContent {
       offerLabel: "Oferta",
       offerOptions: [
         {
-          name: "Projekt landing page",
+          name: "Design landing page",
           description:
             "Dla jednej oferty lub kampanii. Skupia się na przejrzystym układzie i mocnym CTA.",
         },
         {
-          name: "Projekt strony firmowej",
+          name: "Design strony firmowej",
           description:
             "Najlepsza opcja dla firm, które chcą uporządkować ofertę, proces współpracy i zbudować profesjonalny wizerunek.",
           highlighted: true,
         },
         {
-          name: "Projekt rozbudowanego serwisu",
+          name: "Design rozbudowanego serwisu",
           description:
             "Dla firm, które potrzebują większej liczby podstron, bloga, rozbudowanej struktury lub rozwoju etapami.",
         },
       ],
-      whyTitle: "Dlaczego warto ze mną współpracować",
+      whyTitle: "Dlaczego warto zlecić mi projektowanie designu strony www",
       whyIntro:
-        "Dobre projektowanie strony www to nie tylko estetyka. To przede wszystkim czytelny układ, właściwe komunikaty i wygodna ścieżka użytkownika.",
+        "Dobry design strony www to nie tylko estetyka. To przede wszystkim czytelny układ, właściwe komunikaty i wygodna ścieżka użytkownika.",
       whyPoints: [
-        "Projekt dopasowany do branży, oferty i celu strony",
+        "Design dopasowany do branży, oferty i celu strony",
         "Przemyślana hierarchia sekcji i komunikatów sprzedażowych",
         "Układ wspierający kontakt, telefon lub zapytanie ofertowe",
         "Spójne połączenie estetyki, użyteczności i SEO lokalnego",
         "Bezpośredni kontakt od pomysłu po finalne wdrożenie",
       ],
-      processTitle: "Jak wygląda współpraca",
+      processTitle: "Jak wygląda projektowanie designu i wdrożenie strony www",
       processSteps: [
         {
           title: "1. Analiza celu i zakresu",
           description:
-            "Ustalamy, do kogo ma trafiać strona, jaki ma mieć cel i jakie sekcje są naprawdę potrzebne.",
+            "Ustalamy, do kogo ma trafiać design strony, jaki ma mieć cel i jakie sekcje są naprawdę potrzebne.",
         },
         {
           title: "2. Koncepcja układu i komunikacji",
@@ -698,7 +699,7 @@ function createWebDesignPage(): LandingPageContent {
         {
           title: "3. Projekt i wdrożenie",
           description:
-            "Tworzę stronę, dbam o czytelność, responsywność i konfiguruję najważniejsze elementy kontaktowe.",
+            "Tworzę design strony, dbam o czytelność, responsywność i konfiguruję najważniejsze elementy kontaktowe.",
         },
         {
           title: "4. Publikacja i rozwój",
@@ -706,7 +707,7 @@ function createWebDesignPage(): LandingPageContent {
             "Po uruchomieniu strony wiesz, jak dalej ją rozwijać i jakie kolejne elementy można rozbudować.",
         },
       ],
-      includedTitle: "Co otrzymujesz w cenie",
+      includedTitle: "Co otrzymujesz w ramach projektu strony www",
       includedParagraphs: [
         "Zakres dopasowuję do projektu - od prostego landing page po rozbudowaną stronę firmową.",
         "Celem jest strona www, która dobrze wygląda, ale przede wszystkim porządkuje ofertę i ułatwia klientowi kontakt.",
@@ -721,7 +722,7 @@ function createWebDesignPage(): LandingPageContent {
         "podstawy local SEO i przygotowanie do publikacji",
       ],
       includedCtaLabel: "Chcę dostać wycenę projektu",
-      faqTitle: "FAQ",
+      faqTitle: "FAQ o projektowaniu stron www",
       faqIntro:
         "Najczęstsze pytania od firm, które planują projektowanie strony www w Grudziądzu.",
       faqItems: [
@@ -755,11 +756,329 @@ function createWebDesignPage(): LandingPageContent {
       nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
       nextStepSecondaryCtaLabel: "Wyślij brief",
     },
-    portfolioHeading: "Wybrane realizacje stron internetowych",
+    portfolioHeading: "Realizacje projektów stron www",
     contact: {
-      title: "Chcesz zaprojektować nową stronę www?",
+      title: "Chcesz zaprojektować stronę www dla firmy?",
       subtitle: "Opisz projekt, a przygotuję kierunek i wycenę",
       imageAlt: "Projektowanie strony www",
+    },
+  };
+}
+
+function createWebsitesGrudziadzPage(): LandingPageContent {
+  return {
+    key: "strony-internetowe-grudziadz",
+    slug: "strony-internetowe-grudziadz",
+    seo: {
+      title: "Strony internetowe Grudziądz - nowoczesne strony dla firm",
+      description:
+        "Tworzę strony internetowe dla firm z Grudziądza. Nowoczesne strony www, które pomagają lepiej prezentować ofertę, budować zaufanie i zdobywać klientów.",
+    },
+    hero: {
+      headingPrefix: "TWORZĘ ",
+      headingHighlight: "STRONY INTERNETOWE W GRUDZIĄDZU",
+      headingSuffix: " - NOWOCZEŚNIE, SKUTECZNIE I POD KLIENTÓW",
+      description:
+        "Pomagam lokalnym firmom budować strony internetowe, które dobrze pokazują ofertę, wzmacniają wiarygodność i prowadzą użytkownika do kontaktu.",
+      floatingPromptPrimary: "Chcesz stronę internetową dla swojej firmy?",
+      floatingPromptSecondary:
+        "Porozmawiajmy o stronie internetowej w Grudziądzu",
+    },
+    form: DEFAULT_FORM_CONTENT,
+    intent: {
+      eyebrow: "Strony internetowe Grudziądz",
+      heading:
+        "Strony internetowe w Grudziądzu, które pomagają zdobywać klientów",
+      paragraphs: [
+        "Tworzę strony internetowe dla firm z Grudziądza i okolic, które chcą lepiej prezentować ofertę, szybciej domykać zapytania i budować profesjonalny wizerunek w sieci.",
+        "Jeśli interesują Cię strony internetowe w Grudziądzu, zaplanujmy rozwiązanie dopasowane do branży, budżetu i tego, jak Twoi klienci podejmują decyzję.",
+      ],
+      ctaTitle: "Chcesz zamówić stronę internetową?",
+      ctaDescription:
+        "Przejdź do formularza i opisz firmę, zakres strony oraz główny cel projektu.",
+      primaryCtaLabel: "Przejdź do formularza i opisz stronę",
+      offerLabel: "Oferta",
+      offerOptions: [
+        {
+          name: "Landing page",
+          description:
+            "Dla jednej usługi lub kampanii. Szybki start i prosty układ nastawiony na kontakt.",
+        },
+        {
+          name: "Strona firmowa",
+          description:
+            "Najlepsza opcja dla lokalnych firm. Pozwala pokazać ofertę, proces i regularnie pozyskiwać klientów z Google.",
+          highlighted: true,
+        },
+        {
+          name: "Rozbudowany serwis",
+          description:
+            "Dla firm, które potrzebują większej liczby podstron, bloga, rozbudowanej oferty lub rozwoju etapami.",
+        },
+      ],
+      whyTitle: "Dlaczego warto zlecić mi wykonanie strony internetowej",
+      whyIntro:
+        "Dobra strona internetowa powinna nie tylko dobrze wyglądać, ale przede wszystkim ułatwiać klientowi zrozumienie oferty i wykonanie następnego kroku.",
+      whyPoints: [
+        "Projekt dopasowany do branży, oferty i celu strony",
+        "Układ i treści prowadzące użytkownika do kontaktu",
+        "Połączenie estetyki, użyteczności i local SEO",
+        "Responsywność i szybkość działania od początku wdrożenia",
+        "Bezpośredni kontakt od pomysłu po publikację",
+      ],
+      processTitle: "Jak wygląda tworzenie strony internetowej",
+      processSteps: [
+        {
+          title: "1. Rozmowa i wycena",
+          description:
+            "Ustalamy cel strony, zakres projektu i najlepszy kierunek dla Twojej firmy.",
+        },
+        {
+          title: "2. Struktura i komunikacja",
+          description:
+            "Przygotowuję układ sekcji, hierarchię treści i sposób prezentacji oferty.",
+        },
+        {
+          title: "3. Wdrożenie i poprawki",
+          description:
+            "Tworzę stronę, konfiguruję formularze i dopracowuję detale potrzebne do startu.",
+        },
+        {
+          title: "4. Publikacja i rozwój",
+          description:
+            "Po uruchomieniu strony możesz rozwijać kolejne podstrony, treści i działania SEO.",
+        },
+      ],
+      includedTitle: "Co otrzymujesz w ramach strony internetowej",
+      includedParagraphs: [
+        "Zakres dopasowuję do tego, czy potrzebujesz prostego landing page, klasycznej strony firmowej czy bardziej rozbudowanego serwisu.",
+        "Celem jest strona internetowa, która porządkuje ofertę, wspiera sprzedaż i buduje zaufanie do Twojej firmy.",
+      ],
+      includedListLabel: "W standardzie otrzymujesz:",
+      includedItems: [
+        "projekt dopasowany do marki, oferty i odbiorcy",
+        "pełną responsywność na telefon, tablet i desktop",
+        "mocne CTA do formularza, telefonu i maila",
+        "sekcje sprzedażowe: oferta, proces, argumenty, FAQ",
+        "podstawy local SEO i przygotowanie do publikacji",
+        "konfigurację formularza kontaktowego",
+      ],
+      includedCtaLabel: "Chcę dostać wycenę strony internetowej",
+      faqTitle: "FAQ o stronach internetowych w Grudziądzu",
+      faqIntro:
+        "Najczęstsze pytania od firm, które planują nową stronę internetową w Grudziądzu.",
+      faqItems: [
+        {
+          question: "Ile kosztuje strona internetowa w Grudziądzu?",
+          answer:
+            "Cena zależy od zakresu: liczby sekcji, podstron, funkcji i ilości treści. Najczęściej najlepszym rozwiązaniem jest strona firmowa z ofertą, procesem, FAQ i wyraźnym kontaktem.",
+          relatedLinks: [
+            {
+              href: "/strona-internetowa-dla-firmy-grudziadz",
+              label: "Strona internetowa dla firmy",
+            },
+            {
+              href: "/landing-page-grudziadz",
+              label: "Landing page Grudziądz",
+            },
+          ],
+        },
+        {
+          question: "Jak długo trwa realizacja strony internetowej?",
+          answer:
+            "Proste projekty można zrealizować szybciej, a bardziej rozbudowane wdrażane są etapami. Dokładny termin ustalam po krótkiej rozmowie.",
+        },
+        {
+          question: "Czy pomagasz z treściami i układem strony?",
+          answer:
+            "Tak. Pomagam uporządkować ofertę, zaplanować strukturę i przygotować komunikaty, które lepiej sprzedają.",
+          relatedLinks: [
+            {
+              href: "/projektowanie-stron-www-grudziadz",
+              label: "Projektowanie stron www",
+            },
+          ],
+        },
+        {
+          question: "Czy strona może wspierać SEO lokalne?",
+          answer:
+            "Tak. Dobrze zaplanowana strona może wspierać frazy lokalne, budować widoczność i ułatwiać rozwój kolejnych podstron SEO.",
+          relatedLinks: [
+            {
+              href: "/pozycjonowanie-stron-internetowych-grudziadz",
+              label: "Pozycjonowanie stron internetowych",
+            },
+          ],
+        },
+      ],
+      faqCtaLabel: "Przejdź do formularza",
+      nextStepEyebrow: "Następny krok",
+      nextStepTitle:
+        "Chcesz stronę internetową, która będzie pracować na klientów?",
+      nextStepDescription:
+        "Opisz, czym zajmuje się Twoja firma i czego oczekujesz od strony. Wrócę z propozycją rozwiązania oraz wyceną.",
+      nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
+      nextStepSecondaryCtaLabel: "Wyślij brief",
+    },
+    portfolioHeading: "Realizacje stron internetowych z Grudziądza i okolic",
+    contact: {
+      title: "Chcesz nową stronę internetową?",
+      subtitle:
+        "Opisz firmę i zakres strony, a przygotuję propozycję rozwiązania",
+      imageAlt: "Strona internetowa dla firmy z Grudziądza",
+    },
+  };
+}
+
+function createWebsiteCreationPage(): LandingPageContent {
+  return {
+    key: "tworzenie-stron-www-grudziadz",
+    slug: "tworzenie-stron-www-grudziadz",
+    seo: {
+      title: "Tworzenie stron www Grudziądz - projekt i wdrożenie",
+      description:
+        "Tworzenie stron www w Grudziądzu dla lokalnych firm. Projektuję i wdrażam strony nastawione na kontakt, sprzedaż i SEO lokalne.",
+    },
+    hero: {
+      headingPrefix: "TWORZĘ ",
+      headingHighlight: "STRONY WWW W GRUDZIĄDZU",
+      headingSuffix: " - OD PROJEKTU PO WDROŻENIE",
+      description:
+        "Tworzę strony www dla firm, które chcą uporządkować ofertę, lepiej wyglądać online i skuteczniej zamieniać ruch w zapytania.",
+      floatingPromptPrimary: "Chcesz zlecić stworzenie strony www?",
+      floatingPromptSecondary:
+        "Porozmawiajmy o wdrożeniu strony dla Twojej firmy",
+    },
+    form: DEFAULT_FORM_CONTENT,
+    intent: {
+      eyebrow: "Tworzenie stron www - Grudziądz",
+      heading:
+        "Tworzenie stron www w Grudziądzu, które wspiera sprzedaż i kontakt",
+      paragraphs: [
+        "Tworzę strony www dla firm z Grudziądza i okolic, które chcą mieć nowoczesną, szybką i czytelną stronę dopasowaną do realnych potrzeb klientów.",
+        "Jeśli interesuje Cię tworzenie stron www w Grudziądzu, pomogę Ci przejść od pomysłu do gotowego wdrożenia, które będzie wspierać widoczność i pozyskiwanie zapytań.",
+      ],
+      ctaTitle: "Chcesz stworzyć stronę www?",
+      ctaDescription:
+        "Przejdź do formularza i opisz, jakiej strony potrzebujesz oraz jaki ma mieć cel.",
+      primaryCtaLabel: "Przejdź do formularza i opisz wdrożenie",
+      offerLabel: "Oferta",
+      offerOptions: [
+        {
+          name: "Landing page",
+          description:
+            "Dla jednej usługi lub kampanii. Prosta struktura, szybkie wdrożenie i mocny kontakt.",
+        },
+        {
+          name: "Strona firmowa",
+          description:
+            "Najlepsza opcja dla firm, które chcą połączyć ofertę, proces i SEO lokalne w jednym spójnym wdrożeniu.",
+          highlighted: true,
+        },
+        {
+          name: "Rozbudowany serwis",
+          description:
+            "Dla firm, które potrzebują większej liczby podstron, bloga, bardziej rozbudowanej architektury i rozwoju etapami.",
+        },
+      ],
+      whyTitle: "Dlaczego warto zlecić mi tworzenie strony www",
+      whyIntro:
+        "Tworzenie strony www to nie tylko samo wdrożenie. Liczy się także właściwa struktura, treść i sposób prowadzenia użytkownika do kontaktu.",
+      whyPoints: [
+        "Połączenie projektu, wdrożenia i myślenia o konwersji",
+        "Struktura dopasowana do branży i sposobu sprzedaży",
+        "Szybka, responsywna strona gotowa na ruch mobilny",
+        "Podstawy SEO lokalnego już na etapie budowy strony",
+        "Bezpośredni kontakt i jasny proces współpracy",
+      ],
+      processTitle: "Jak wygląda tworzenie strony www",
+      processSteps: [
+        {
+          title: "1. Brief i ustalenie celu",
+          description:
+            "Rozmawiamy o firmie, ofercie i tym, jaki efekt ma przynieść nowa strona.",
+        },
+        {
+          title: "2. Struktura i plan wdrożenia",
+          description:
+            "Przygotowuję układ sekcji, priorytety treści i kierunek, w jakim powinna pójść strona.",
+        },
+        {
+          title: "3. Realizacja i poprawki",
+          description:
+            "Tworzę stronę, podpinam formularze i wprowadzam uzgodnione poprawki przed publikacją.",
+        },
+        {
+          title: "4. Publikacja i rozwój",
+          description:
+            "Po starcie strona jest gotowa do działania i może być dalej rozwijana o kolejne podstrony i treści.",
+        },
+      ],
+      includedTitle: "Co otrzymujesz w ramach tworzenia strony www",
+      includedParagraphs: [
+        "Zakres dopasowuję do tego, czy potrzebujesz szybkiego landing page, strony firmowej czy bardziej rozbudowanego serwisu.",
+        "Celem jest wdrożenie strony www, która dobrze wygląda, działa szybko i wspiera kontakt z klientem.",
+      ],
+      includedListLabel: "W standardzie otrzymujesz:",
+      includedItems: [
+        "projekt i wdrożenie dopasowane do firmy",
+        "pełną responsywność na telefon, tablet i desktop",
+        "mocne CTA i formularz kontaktowy",
+        "sekcje sprzedażowe: oferta, proces, argumenty, FAQ",
+        "podstawy local SEO i przygotowanie do publikacji",
+        "bazę pod dalszy rozwój strony",
+      ],
+      includedCtaLabel: "Chcę dostać wycenę stworzenia strony",
+      faqTitle: "FAQ o tworzeniu stron www",
+      faqIntro:
+        "Najczęstsze pytania od firm, które planują tworzenie strony www w Grudziądzu.",
+      faqItems: [
+        {
+          question: "Od czego zaczyna się tworzenie strony www?",
+          answer:
+            "Zaczynamy od rozmowy o firmie, ofercie i celu strony. Dzięki temu wiadomo, jaki zakres i jakie sekcje mają największy sens.",
+        },
+        {
+          question: "Czy pomagasz też zaplanować treści i układ?",
+          answer:
+            "Tak. Pomagam uporządkować ofertę, sekcje i komunikaty, aby strona była czytelna i bardziej skuteczna.",
+          relatedLinks: [
+            {
+              href: "/projektowanie-stron-www-grudziadz",
+              label: "Projektowanie stron www",
+            },
+          ],
+        },
+        {
+          question: "Czy strona będzie przygotowana pod SEO lokalne?",
+          answer:
+            "Tak. Już na etapie tworzenia strony można przygotować ją pod rozwój widoczności na lokalne frazy.",
+          relatedLinks: [
+            {
+              href: "/pozycjonowanie-stron-internetowych-grudziadz",
+              label: "Pozycjonowanie stron internetowych",
+            },
+          ],
+        },
+        {
+          question: "Czy stronę można później rozbudować?",
+          answer:
+            "Tak. To jeden z najczęstszych scenariuszy - najpierw powstaje solidna baza, a później rozwijane są kolejne sekcje i podstrony.",
+        },
+      ],
+      faqCtaLabel: "Przejdź do formularza",
+      nextStepEyebrow: "Następny krok",
+      nextStepTitle: "Chcesz stworzyć stronę www bez chaotycznego procesu?",
+      nextStepDescription:
+        "Opisz firmę, ofertę i oczekiwania wobec strony. Wrócę z propozycją rozwiązania oraz wyceną.",
+      nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
+      nextStepSecondaryCtaLabel: "Wyślij brief",
+    },
+    portfolioHeading: "Realizacje wdrożeń stron www",
+    contact: {
+      title: "Chcesz stworzyć stronę www?",
+      subtitle: "Opisz zakres i cel strony, a przygotuję propozycję wdrożenia",
+      imageAlt: "Tworzenie strony www w Grudziądzu",
     },
   };
 }
@@ -775,12 +1094,12 @@ function createLandingPageServicePage(): LandingPageContent {
     },
     hero: {
       headingPrefix: "TWORZĘ ",
-      headingHighlight: "LANDING PAGE",
+      headingHighlight: "LANDING PAGE DLA FIRM",
       headingSuffix: " - POD LEADY, REKLAMY I KONKRETNĄ OFERTĘ",
       description:
         "Projektuję landing page dla firm, które chcą szybko przetestować ofertę, wesprzeć kampanię i kierować użytkownika do jednego celu.",
       floatingPromptPrimary: "Chcesz uruchomić skuteczny landing page?",
-      floatingPromptSecondary: "Porozmawiajmy o stronie pod kampanię lub usługę",
+      floatingPromptSecondary: "Porozmawiajmy o landing page pod kampanię",
     },
     form: {
       ...DEFAULT_FORM_CONTENT,
@@ -817,7 +1136,7 @@ function createLandingPageServicePage(): LandingPageContent {
             "Dla firm, które chcą zacząć od jednej strony i z czasem rozbudować ją o kolejne warianty lub sekcje.",
         },
       ],
-      whyTitle: "Dlaczego warto ze mną współpracować",
+      whyTitle: "Dlaczego warto zlecić mi stworzenie landing page",
       whyIntro:
         "Dobry landing page nie ma być rozbudowany. Ma być prosty, czytelny i skupiony na jednym działaniu użytkownika.",
       whyPoints: [
@@ -827,7 +1146,7 @@ function createLandingPageServicePage(): LandingPageContent {
         "Dopasowanie strony do reklamy, usługi lub konkretnej oferty",
         "Szybkie wdrożenie bez zbędnej rozbudowy",
       ],
-      processTitle: "Jak wygląda współpraca",
+      processTitle: "Jak wygląda tworzenie landing page",
       processSteps: [
         {
           title: "1. Ustalenie celu landing page",
@@ -850,7 +1169,7 @@ function createLandingPageServicePage(): LandingPageContent {
             "Po uruchomieniu strony możesz dalej rozwijać kolejne warianty kampanii lub ofert.",
         },
       ],
-      includedTitle: "Co otrzymujesz w cenie",
+      includedTitle: "Co otrzymujesz w ramach landing page",
       includedParagraphs: [
         "Zakres dopasowuję do celu strony - od prostego landing page pod jedną usługę po bardziej rozbudowaną stronę kampanijną.",
         "Najważniejsze jest to, żeby landing page był szybki, konkretny i skuteczny sprzedażowo.",
@@ -865,7 +1184,7 @@ function createLandingPageServicePage(): LandingPageContent {
         "konfigurację formularza kontaktowego i przygotowanie do publikacji",
       ],
       includedCtaLabel: "Chcę dostać wycenę landing page",
-      faqTitle: "FAQ",
+      faqTitle: "FAQ o landing page",
       faqIntro:
         "Najczęstsze pytania od firm, które planują landing page w Grudziądzu.",
       faqItems: [
@@ -899,9 +1218,9 @@ function createLandingPageServicePage(): LandingPageContent {
       nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
       nextStepSecondaryCtaLabel: "Wyślij brief",
     },
-    portfolioHeading: "Wybrane realizacje stron sprzedażowych",
+    portfolioHeading: "Realizacje landing page i stron sprzedażowych",
     contact: {
-      title: "Chcesz uruchomić landing page?",
+      title: "Chcesz landing page dla swojej oferty?",
       subtitle: "Opisz ofertę lub kampanię, a przygotuję propozycję strony",
       imageAlt: "Landing page dla firmy",
     },
@@ -920,12 +1239,12 @@ function createBusinessWebsitePage(): LandingPageContent {
     },
     hero: {
       headingPrefix: "TWORZĘ ",
-      headingHighlight: "STRONY DLA FIRM",
+      headingHighlight: "STRONY INTERNETOWE DLA FIRM",
       headingSuffix: " - PROFESJONALNE, CZYTELNE I SKUTECZNE",
       description:
         "Pomagam firmom zbudować stronę internetową, która dobrze pokazuje ofertę, wzmacnia wiarygodność i ułatwia klientom kontakt.",
       floatingPromptPrimary: "Chcesz stronę internetową dla firmy?",
-      floatingPromptSecondary: "Porozmawiajmy o firmowej stronie, która sprzedaje",
+      floatingPromptSecondary: "Porozmawiajmy o stronie firmowej w Grudziądzu",
     },
     form: {
       ...DEFAULT_FORM_CONTENT,
@@ -934,7 +1253,8 @@ function createBusinessWebsitePage(): LandingPageContent {
     },
     intent: {
       eyebrow: "Strona internetowa dla firmy - Grudziądz",
-      heading: "Strona internetowa dla firmy, która buduje zaufanie i wspiera sprzedaż",
+      heading:
+        "Strona internetowa dla firmy, która buduje zaufanie i wspiera sprzedaż",
       paragraphs: [
         "Tworzę strony internetowe dla firm z Grudziądza i okolic, które chcą wyglądać profesjonalnie, jasno komunikować ofertę i ułatwiać klientom podjęcie decyzji.",
         "Jeśli potrzebna Ci strona internetowa dla firmy w Grudziądzu, zaplanujmy ją tak, aby wspierała zarówno wizerunek marki, jak i codzienne pozyskiwanie zapytań.",
@@ -962,7 +1282,7 @@ function createBusinessWebsitePage(): LandingPageContent {
             "Dla firm, które chcą zacząć od solidnej bazy i stopniowo dodawać nowe podstrony, treści i sekcje.",
         },
       ],
-      whyTitle: "Dlaczego warto ze mną współpracować",
+      whyTitle: "Dlaczego warto zlecić mi wykonanie strony dla firmy",
       whyIntro:
         "Strona firmowa powinna jednocześnie wyglądać profesjonalnie, porządkować ofertę i wspierać pozyskiwanie klientów.",
       whyPoints: [
@@ -972,7 +1292,7 @@ function createBusinessWebsitePage(): LandingPageContent {
         "Podstawy SEO lokalnego od początku planowania strony",
         "Bezpośredni kontakt od strategii po wdrożenie",
       ],
-      processTitle: "Jak wygląda współpraca",
+      processTitle: "Jak wygląda tworzenie strony internetowej dla firmy",
       processSteps: [
         {
           title: "1. Poznanie firmy i celu strony",
@@ -995,7 +1315,7 @@ function createBusinessWebsitePage(): LandingPageContent {
             "Po starcie strona jest gotowa do działania, a Ty możesz dalej rozwijać ofertę i lokalne podstrony SEO.",
         },
       ],
-      includedTitle: "Co otrzymujesz w cenie",
+      includedTitle: "Co otrzymujesz w ramach strony internetowej dla firmy",
       includedParagraphs: [
         "Zakres dopasowuję do wielkości firmy, liczby usług i tego, jak rozbudowana ma być strona.",
         "Celem jest profesjonalna strona internetowa dla firmy, która wspiera sprzedaż i buduje wiarygodność.",
@@ -1010,7 +1330,7 @@ function createBusinessWebsitePage(): LandingPageContent {
         "konfigurację formularza kontaktowego",
       ],
       includedCtaLabel: "Chcę dostać wycenę strony firmowej",
-      faqTitle: "FAQ",
+      faqTitle: "FAQ o stronie internetowej dla firmy",
       faqIntro:
         "Najczęstsze pytania od firm, które planują nową stronę internetową w Grudziądzu.",
       faqItems: [
@@ -1044,10 +1364,11 @@ function createBusinessWebsitePage(): LandingPageContent {
       nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
       nextStepSecondaryCtaLabel: "Wyślij brief",
     },
-    portfolioHeading: "Wybrane realizacje stron dla firm",
+    portfolioHeading: "Realizacje stron internetowych dla firm",
     contact: {
       title: "Chcesz stronę internetową dla firmy?",
-      subtitle: "Opisz firmę i zakres strony, a przygotuję propozycję rozwiązania",
+      subtitle:
+        "Opisz firmę i zakres strony, a przygotuję propozycję rozwiązania",
       imageAlt: "Strona internetowa dla firmy",
     },
   };
@@ -1063,24 +1384,8 @@ export const HOME_LANDING_PAGE = createWebsitePage({
 });
 
 export const SEO_LANDING_PAGES: LandingPageContent[] = [
-  createWebsitePage({
-    key: "strony-internetowe-grudziadz",
-    slug: "strony-internetowe-grudziadz",
-    seoTitle: "Strony internetowe Grudziądz - nowoczesne strony dla firm",
-    seoDescription:
-      "Tworzę strony internetowe dla firm z Grudziądza. Projektuję nowoczesne, szybkie strony www, które pomagają lepiej prezentować ofertę i zdobywać klientów.",
-    heroHighlight: "STRONY INTERNETOWE",
-    intentEyebrow: "Strony internetowe Grudziądz",
-  }),
-  createWebsitePage({
-    key: "tworzenie-stron-www-grudziadz",
-    slug: "tworzenie-stron-www-grudziadz",
-    seoTitle: "Tworzenie stron www Grudziądz - projekt i wdrożenie",
-    seoDescription:
-      "Tworzenie stron www w Grudziądzu dla lokalnych firm. Pomagam zaprojektować i wdrożyć strony nastawione na sprzedaż, kontakt i lokalne SEO.",
-    heroHighlight: "STRONY WWW",
-    intentEyebrow: "Tworzenie stron www - Grudziądz",
-  }),
+  createWebsitesGrudziadzPage(),
+  createWebsiteCreationPage(),
   createWebDesignPage(),
   createLandingPageServicePage(),
   createBusinessWebsitePage(),
@@ -1127,7 +1432,9 @@ const KEY_LANDING_PAGE_LINKS = [
   },
 ] as const;
 
-export function getHomepageSectionLinks(isHomepage: boolean): LandingPageLink[] {
+export function getHomepageSectionLinks(
+  isHomepage: boolean,
+): LandingPageLink[] {
   return [
     {
       href: isHomepage ? "#projects" : "/#projects",

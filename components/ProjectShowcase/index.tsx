@@ -133,9 +133,9 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                     }}
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <h2 className="bg-yellow-300 w-max px-6 py-3 shadow-sm shadow-black rounded-xl font-anta text-center text-black font-bold text-lg lg:text-xl">
+                      <h3 className="bg-yellow-300 w-max px-6 py-3 shadow-sm shadow-black rounded-xl font-anta text-center text-black font-bold text-lg lg:text-xl">
                         {item.name}
-                      </h2>
+                      </h3>
                       <div className="text-right">
                         <p className="text-xs sm:text-sm text-white/70 font-dosis">
                           Projekt

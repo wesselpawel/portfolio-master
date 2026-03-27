@@ -20,7 +20,7 @@ export default function HomeIntentLayer({
   const contextualLandingLinks = getContextualLandingPageLinks(currentSlug);
 
   return (
-    <section className="z-[51] mx-auto w-[90vw] lg:w-[77vw] px-6 lg:px-12 pt-8 pb-10 lg:pt-12 lg:pb-16">
+    <section className="z-[51] mx-auto w-[90vw]  pt-8 pb-10 lg:pt-12 lg:pb-16">
       <div className="rounded-[28px] border border-yellow-300/40 bg-slate-900/80 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-sm lg:p-8">
         <p className="text-xs font-dosis uppercase tracking-[0.22em] text-yellow-200/90">
           {content.eyebrow}
@@ -96,9 +96,7 @@ export default function HomeIntentLayer({
 
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <section className="rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
-          <h3 className="text-xl font-bold text-white">
-            {content.whyTitle}
-          </h3>
+          <h3 className="text-xl font-bold text-white">{content.whyTitle}</h3>
           <p className="mt-3 font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
             {content.whyIntro}
           </p>
@@ -123,7 +121,7 @@ export default function HomeIntentLayer({
               <Link
                 key={link.href}
                 href={link.href}
-                className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-black/20 px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+                className="inline-flex items-center justify-center rounded-xl bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
               >
                 {link.label}
               </Link>
@@ -204,7 +202,7 @@ export default function HomeIntentLayer({
             <Link
               key={`${link.href}-included`}
               href={link.href}
-              className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-black/20 px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+              className="inline-flex items-center justify-center rounded-xl bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
             >
               {link.label}
             </Link>

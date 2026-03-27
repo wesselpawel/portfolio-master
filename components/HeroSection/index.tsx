@@ -102,7 +102,13 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
   );
   const [canRender3D, setCanRender3D] = useState(false);
   const sectionLinks = getHomepageSectionLinks(!pageContent.slug);
-  const contextualLandingLinks = getContextualLandingPageLinks(pageContent.slug);
+  const contextualLandingLinks = getContextualLandingPageLinks(
+    pageContent.slug,
+  );
+  const primaryQuickLinkClass =
+    "inline-flex min-h-11 max-w-full items-center justify-center rounded-full border border-yellow-200/40 bg-yellow-300 px-5 py-3 text-center text-sm font-semibold leading-tight text-slate-950 shadow-[0_10px_30px_rgba(253,224,71,0.22)] transition duration-200 hover:-translate-y-0.5 hover:brightness-105";
+  const secondaryQuickLinkClass =
+    "inline-flex min-h-11 max-w-full items-center justify-center rounded-full border border-white/20 bg-slate-950/50 px-5 py-3 text-center text-sm font-medium leading-tight text-white/90 shadow-[0_10px_30px_rgba(15,23,42,0.18)] backdrop-blur-md transition duration-200 hover:-translate-y-0.5 hover:border-white/35 hover:bg-slate-950/35 hover:text-white";
 
   useEffect(() => {
     const userAgent = navigator.userAgent || "";
@@ -125,7 +131,7 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
         }}
         className="flex mt-12 lg:mt-0 lg:items-center justify-center absolute left-0 top-0 w-full h-[100svh] min-h-[100svh] z-[501] rounded-3xl"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 w-[90vw] lg:w-[77vw] h-[60vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 w-[90vw]  h-[60vh]">
           <div className="rounded-3xl relative">
             <div className="flex flex-row gap-3 mb-4">
               <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />
@@ -146,12 +152,12 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
             <p className="mt-4 text-base lg:text-lg 2xl:text-2xl font-dosis text-white">
               {pageContent.hero.description}
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex max-w-3xl flex-wrap items-stretch gap-3">
               {sectionLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="inline-flex items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/15"
+                  className={primaryQuickLinkClass}
                 >
                   {link.label}
                 </Link>
@@ -160,7 +166,7 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-black/20 px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+                  className={secondaryQuickLinkClass}
                 >
                   {link.label}
                 </Link>
@@ -185,11 +191,11 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
           }}
           className="font-bold bottom-36 text-center w-[90%] md:w-[70%] lg:w-[60%] left-1/2 fixed z-[500] font-sans"
         >
-          <h2 className="rounded-3xl bg-yellow-300 select-none p-6 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
+          <div className="rounded-3xl bg-yellow-300 select-none p-6 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
             {pageContent.hero.floatingPromptPrimary}
-          </h2>
+          </div>
         </motionDiv.div>
-        <motionDiv.h2
+        <motionDiv.div
           style={{
             opacity: h2TextOpacity,
             translateX: "-50%",
@@ -200,7 +206,7 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
           <div className="rounded-3xl bg-yellow-300 select-none p-6 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
             {pageContent.hero.floatingPromptSecondary}
           </div>
-        </motionDiv.h2>
+        </motionDiv.div>
         <motionDiv.div
           className="duration-500"
           style={{ opacity: menuOpacity }}

@@ -105,20 +105,13 @@ export default function WebsiteOrderForm({ content }: WebsiteOrderFormProps) {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center overflow-y-auto">
+    <div className="pl-12 w-full h-full flex items-center justify-center overflow-y-auto">
       <div className="w-full max-w-[520px] border-t-2 border-yellow-300 rounded-3xl relative">
-        <Image
-          src={donutImage}
-          alt="Donut"
-          width={175}
-          height={175}
-          className="absolute top-3 left-3 w-12 h-12 rounded-xl"
-        />
-        <div className="bg-slate-800 rounded-2xl p-4 lg:p-5">
+        <div className="bg-black/70 backdrop-blur-sm rounded-2xl p-4 lg:p-5">
           <h2 className="pl-[54px] text-nowrap w-max text-xl lg:text-2xl font-bold text-white">
             {t.title}
           </h2>
-          <p className="mt-1 text-sm text-white/80">{t.subtitle}</p>
+          <p className="mt-3 text-sm text-white/80">{t.subtitle}</p>
 
           <form onSubmit={handleSubmit} className="mt-5 flex flex-col gap-4">
             <div className="flex flex-col gap-2">
