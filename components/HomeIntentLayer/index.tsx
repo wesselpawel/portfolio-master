@@ -39,7 +39,7 @@ export default function HomeIntentLayer({
   }
 
   return (
-    <section className="z-[51] mx-auto w-[90vw]  pt-8 pb-10 lg:pt-12 lg:pb-16">
+    <section className="z-[501] mx-auto w-[90vw]  pt-8 pb-10 lg:pt-12 lg:pb-16">
       <div className="rounded-[28px] border border-yellow-300/40 bg-slate-900/80 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-sm lg:p-8">
         <p className="text-xs font-dosis uppercase tracking-[0.22em] text-yellow-200/90">
           {content.eyebrow}

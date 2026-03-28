@@ -133,8 +133,8 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
         }}
         className="absolute left-0 top-0 z-[501] flex min-h-[100svh] w-full justify-center rounded-3xl pt-28 sm:pt-32 lg:items-center lg:pt-0"
       >
-        <div className="mx-auto items-center mt-24 justify-evenly grid grid-cols-1 lg:flex flex-row w-[90vw] h-[60vh]">
-          <div className="rounded-3xl relative lg:pr-12 lg:w-[40vw] bg-slate-800/30 p-8">
+        <div className="mx-auto items-center mt-24 justify-evenly grid grid-cols-1 lg:flex flex-row w-[90vw] max-h-[60vh] 2xl:h-[100vh]">
+          <div className="rounded-3xl relative lg:pr-12 lg:w-[50vw] bg-slate-800/40 p-8">
             {breadcrumbLinks.length ? (
               <nav
                 aria-label="Breadcrumb"
@@ -155,12 +155,12 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
                 ))}
               </nav>
             ) : null}
-            <div className="flex flex-row gap-3 mb-4">
-              <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />
-              <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />
-              <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />
-              <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />
-              <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />
+            <div className="flex flex-row gap-2 mb-2">
+              <FaStar className="w-5 h-5 text-yellow-300" />
+              <FaStar className="w-5 h-5 text-yellow-300" />
+              <FaStar className="w-5 h-5 text-yellow-300" />
+              <FaStar className="w-5 h-5 text-yellow-300" />
+              <FaStar className="w-5 h-5 text-yellow-300" />
             </div>
             <h1 className="lg:overflow-hidden text-2xl lg:text-3xl 2xl:text-4xl font-extrabold">
               <span className="text-white font-sans">
@@ -189,8 +189,8 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
           {/* <div className="flex items-center justify-center mt-8">
             <WebsiteOrderForm content={pageContent.form} />
           </div> */}
+           <Image src="/assets/herogif.gif" alt="download" width={400} height={400} className="mt-12 -ml-3 w-[100vw] lg:w-auto flex max-h-[80vh] w-auto aspect-auto" />
           
-           <Image src="/assets/herogif.gif" alt="download" width={400} height={400} className="mt-12 -ml-3 w-[100vw] lg:w-auto lg:min-w-[400px] xl:min-w-[350px] flex h-max" />
         </div>
       </motion.div>
       <ProjectShowcase pageContent={pageContent} />

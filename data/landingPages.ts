@@ -89,6 +89,7 @@ export type LandingPageServiceKey =
   | "landing"
   | "business"
   | "store"
+  | "sale"
   | "seo";
 
 type LandingPageCityCases = {
@@ -138,6 +139,7 @@ const ALL_SERVICE_KEYS: LandingPageServiceKey[] = [
   "landing",
   "business",
   "store",
+  "sale",
   "seo",
 ];
 const DEFAULT_CONTEXTUAL_SERVICE_KEYS: LandingPageServiceKey[] = [
@@ -155,6 +157,7 @@ const SERVICE_LABELS: Record<LandingPageServiceKey, string> = {
   landing: "Landing page",
   business: "Strona internetowa dla firmy",
   store: "Sklepy internetowe",
+  sale: "Strony internetowe na sprzedaż",
   seo: "Pozycjonowanie stron internetowych",
 };
 
@@ -241,6 +244,8 @@ function createSlug(serviceKey: LandingPageServiceKey, citySlug: string): string
       return `strona-internetowa-dla-firmy-${citySlug}`;
     case "store":
       return `sklepy-internetowe-${citySlug}`;
+    case "sale":
+      return `strony-internetowe-na-sprzedaz-${citySlug}`;
     case "seo":
       return `pozycjonowanie-stron-internetowych-${citySlug}`;
   }
@@ -1469,19 +1474,333 @@ function createSeoPage(city: LandingPageCity): LandingPageContent {
   });
 }
 
+function createSaleHomePage(): LandingPageContent {
+  return {
+    key: "strony-internetowe-na-sprzedaz",
+    slug: "strony-internetowe-na-sprzedaz",
+    serviceKey: "sale",
+    seo: {
+      title:
+        "Strony internetowe na sprzedaż - gotowe strony, sklepy i platformy",
+      description:
+        "Gotowe strony internetowe, sklepy internetowe i platformy internetowe na sprzedaż dla firm. Tworzę także dedykowane oprogramowanie dopasowane do procesów, sprzedaży i rozwoju biznesu.",
+    },
+    hero: {
+      headingPrefix: "TWORZĘ ",
+      headingHighlight: "STRONY INTERNETOWE NA SPRZEDAŻ",
+      headingSuffix:
+        " - GOTOWE WDROŻENIA, SKLEPY I SYSTEMY DLA FIRM",
+      description:
+        "Projektuję i wdrażam gotowe strony internetowe, sklepy internetowe, platformy oraz dedykowane oprogramowanie dla firm, które chcą szybciej wejść online lub rozwinąć własny produkt.",
+      floatingPromptPrimary: "Szukasz strony, sklepu lub platformy na sprzedaż?",
+      floatingPromptSecondary: "Porozmawiajmy o rozwiązaniu dla Twojej firmy",
+    },
+    form: {
+      ...DEFAULT_FORM_CONTENT,
+      requirementsPlaceholder:
+        "Opisz, czy potrzebujesz strony, sklepu, platformy albo dedykowanego oprogramowania i jaki cel ma realizować projekt...",
+    },
+    intent: {
+      eyebrow:
+        "Gotowe strony internetowe, sklepy internetowe i platformy na sprzedaż",
+      heading:
+        "Rozwiązania, które można dopasować do firmy, procesu sprzedaży i dalszego rozwoju",
+      paragraphs: [
+        "Pomagam firmom uruchamiać gotowe strony internetowe, sklepy internetowe oraz platformy, które można szybko dopasować do konkretnej oferty, modelu działania i potrzeb klientów.",
+        "Jeśli poza stroną potrzebujesz bardziej rozbudowanego systemu, przygotuję także dedykowane oprogramowanie dla firmy - od panelu klienta po procesy, automatyzacje i logikę biznesową.",
+      ],
+      ctaTitle: "Chcesz omówić gotowe rozwiązanie dla firmy?",
+      ctaDescription:
+        "Przejdź do formularza i opisz, czy interesuje Cię gotowa strona, sklep, platforma czy dedykowane oprogramowanie.",
+      primaryCtaLabel: "Przejdź do formularza i opisz projekt",
+      offerLabel: "Oferta",
+      offerOptions: [
+        {
+          name: "Gotowa strona firmowa",
+          description:
+            "Dla firm, które chcą szybciej wystartować z dopracowaną stroną internetową i dopasować ją do własnej oferty.",
+        },
+        {
+          name: "Sklep internetowy na sprzedaż",
+          description:
+            "Dla firm, które chcą sprzedawać online na gotowym fundamencie z możliwością dalszej rozbudowy.",
+          highlighted: true,
+        },
+        {
+          name: "Platforma lub system dedykowany",
+          description:
+            "Dla firm, które potrzebują bardziej zaawansowanego rozwiązania: paneli, procesów, automatyzacji i logiki biznesowej.",
+        },
+      ],
+      whyTitle: "Dlaczego warto zlecić mi takie wdrożenie",
+      whyIntro:
+        "Nie sprzedaję przypadkowych szablonów. Buduję rozwiązania, które można realnie dopasować do procesu sprzedaży, oferty i dalszego rozwoju firmy.",
+      whyPoints: [
+        "Szybszy start niż przy budowie wszystkiego od zera",
+        "Dopasowanie układu, treści i funkcji do konkretnej firmy",
+        "Możliwość rozbudowy o sklep, platformę lub dedykowany moduł",
+        "Myślenie o sprzedaży, wygodzie użytkownika i SEO lokalnym",
+        "Bezpośredni kontakt od planu po publikację",
+      ],
+      processTitle: "Jak wygląda przygotowanie rozwiązania na sprzedaż",
+      processSteps: [
+        {
+          title: "1. Analiza potrzeb i zakresu",
+          description:
+            "Ustalamy, czy najlepsza będzie gotowa strona, sklep, platforma czy bardziej dedykowany system dla Twojej firmy.",
+        },
+        {
+          title: "2. Dopasowanie struktury i funkcji",
+          description:
+            "Przygotowuję układ, sekcje, komunikację oraz funkcje, które mają wspierać sprzedaż i codzienną obsługę.",
+        },
+        {
+          title: "3. Wdrożenie i personalizacja",
+          description:
+            "Dostosowuję rozwiązanie do Twojej marki, oferty, procesu i potrzebnych integracji.",
+        },
+        {
+          title: "4. Publikacja i dalszy rozwój",
+          description:
+            "Po wdrożeniu możesz rozwijać projekt o kolejne moduły, podstrony, automatyzacje i funkcje dedykowane.",
+        },
+      ],
+      includedTitle:
+        "Co otrzymujesz w ramach strony, sklepu lub platformy na sprzedaż",
+      includedParagraphs: [
+        "Zakres dopasowuję do tego, czy potrzebujesz szybkiego wdrożenia strony firmowej, sklepu internetowego czy bardziej rozbudowanego systemu.",
+        "Celem jest rozwiązanie, które daje dobry punkt startowy, a jednocześnie pozwala firmie rosnąć bez przebudowy wszystkiego od zera.",
+      ],
+      includedListLabel: "Najczęściej w projekcie uwzględniam:",
+      includedItems: [
+        "dopasowanie projektu do marki, oferty i modelu działania firmy",
+        "sekcje lub widoki wspierające sprzedaż, kontakt i decyzję zakupową",
+        "konfigurację formularzy, procesów i podstawowych integracji",
+        "responsywność na telefon, tablet i desktop",
+        "bazę pod rozwój sklepu, platformy lub funkcji dedykowanych",
+        "przygotowanie do publikacji i dalszego skalowania",
+      ],
+      includedCtaLabel: "Chcę dostać wycenę rozwiązania",
+      faqTitle: "FAQ o stronach, sklepach i platformach na sprzedaż",
+      faqIntro:
+        "Najczęstsze pytania od firm, które szukają gotowej strony, sklepu internetowego lub platformy do wdrożenia.",
+      faqItems: [
+        {
+          question: "Co oznacza strona internetowa na sprzedaż?",
+          answer:
+            "To gotowe lub częściowo gotowe rozwiązanie, które można dopasować do firmy, oferty i procesu działania bez budowy wszystkiego od zera.",
+        },
+        {
+          question: "Czy mogę kupić gotową stronę i dopasować ją do swojej firmy?",
+          answer:
+            "Tak. Właśnie na tym polega ten model: bazowe rozwiązanie przyspiesza start, a ja dopasowuję układ, treści, funkcje i identyfikację do Twojego biznesu.",
+        },
+        {
+          question: "Czy przygotowujesz także sklepy internetowe i platformy?",
+          answer:
+            "Tak. Oprócz stron firmowych tworzę sklepy internetowe, platformy oraz bardziej rozbudowane rozwiązania dla firm.",
+        },
+        {
+          question: "Czy da się rozbudować takie wdrożenie o dedykowane funkcje?",
+          answer:
+            "Tak. Jeśli potrzebujesz panelu klienta, automatyzacji, procesu zamówień albo innej logiki biznesowej, mogę rozbudować projekt o dedykowane oprogramowanie.",
+        },
+      ],
+      faqCtaLabel: "Przejdź do formularza",
+      nextStepEyebrow: "Następny krok",
+      nextStepTitle:
+        "Chcesz sprawdzić, czy gotowa strona, sklep lub platforma będzie dobra dla Twojej firmy?",
+      nextStepDescription:
+        "Opisz branżę, model działania i to, czego potrzebujesz. Przygotuję kierunek rozwiązania oraz wycenę wdrożenia.",
+      nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
+      nextStepSecondaryCtaLabel: "Wyślij brief",
+    },
+    portfolioHeading:
+      "Wybrane realizacje stron, sklepów i platform internetowych",
+    contact: {
+      title: "Chcesz kupić gotową stronę, sklep lub platformę?",
+      subtitle:
+        "Opisz potrzeby firmy, a przygotuję propozycję rozwiązania i wycenę",
+      imageAlt:
+        "Gotowa strona internetowa, sklep internetowy lub platforma na sprzedaż",
+    },
+  };
+}
+
+function createSalePage(city: LandingPageCity): LandingPageContent {
+  const c = getCityContext(city);
+
+  return createCityLandingPage("sale", city, {
+    seo: {
+      title: `Strony internetowe na sprzedaż ${city.name} - gotowe wdrożenia dla firm`,
+      description: `Gotowe strony internetowe, sklepy internetowe i platformy internetowe na sprzedaż ${c.inLocative}. Tworzę także dedykowane oprogramowanie dla firm ${c.fromGenitive}.`,
+    },
+    hero: {
+      headingPrefix: "GOTOWE ",
+      headingHighlight: `STRONY NA SPRZEDAŻ ${city.name.toUpperCase()}`,
+      headingSuffix: " - STRONY, SKLEPY I SYSTEMY DLA FIRM",
+      description: `Pomagam firmom ${c.fromGenitive} uruchamiać gotowe strony internetowe, sklepy, platformy i rozwiązania dopasowane do sprzedaży, procesu działania oraz rozwoju biznesu.`,
+      floatingPromptPrimary:
+        "Szukasz gotowej strony, sklepu lub platformy dla firmy?",
+      floatingPromptSecondary: `Porozmawiajmy o wdrożeniu ${c.inLocative}`,
+    },
+    form: {
+      requirementsPlaceholder:
+        "Opisz, czy potrzebujesz strony, sklepu, platformy albo systemu dedykowanego i jaki problem ma rozwiązać wdrożenie...",
+    },
+    intent: {
+      eyebrow: `Strony internetowe na sprzedaż ${city.name}`,
+      heading: `Gotowe strony, sklepy i platformy ${c.inLocative} dla firm, które chcą szybciej wdrożyć rozwiązanie`,
+      paragraphs: [
+        `Tworzę dla firm ${c.fromGenitive} gotowe strony internetowe, sklepy internetowe i platformy, które można dopasować do oferty, procesu sprzedaży i realnych potrzeb biznesu.`,
+        `Jeśli interesują Cię strony internetowe na sprzedaż ${c.inLocative}, mogę przygotować zarówno szybsze wdrożenie na gotowym fundamencie, jak i bardziej rozbudowane rozwiązanie z funkcjami dedykowanymi.`,
+      ],
+      ctaTitle: "Chcesz omówić gotowe rozwiązanie dla firmy?",
+      ctaDescription:
+        "Przejdź do formularza i opisz, czy interesuje Cię strona, sklep, platforma czy dedykowane oprogramowanie.",
+      primaryCtaLabel: "Przejdź do formularza i opisz projekt",
+      offerLabel: "Oferta",
+      offerOptions: [
+        {
+          name: "Gotowa strona firmowa",
+          description:
+            "Dla firm, które chcą szybciej wystartować z dopracowaną stroną i dopasować ją do swojej oferty.",
+        },
+        {
+          name: "Sklep internetowy na sprzedaż",
+          description:
+            "Dla firm, które chcą sprzedawać online na gotowym fundamencie z opcją dalszej rozbudowy.",
+          highlighted: true,
+        },
+        {
+          name: "Platforma lub system dedykowany",
+          description:
+            "Dla firm, które potrzebują paneli, procesów, automatyzacji lub bardziej złożonego rozwiązania.",
+        },
+      ],
+      offerSupportingLinks: [
+        createServiceLink("website", city),
+        createServiceLink("store", city),
+        createServiceLink("business", city),
+      ],
+      whyTitle:
+        "Dlaczego warto zlecić mi przygotowanie strony lub platformy na sprzedaż",
+      whyIntro:
+        "Chodzi nie tylko o szybszy start. Najważniejsze jest to, żeby rozwiązanie było dopasowane do firmy, sposobu działania i dalszego rozwoju.",
+      whyPoints: [
+        "Szybsze wejście online niż przy budowie wszystkiego od zera",
+        "Możliwość dopasowania projektu do marki, oferty i procesu",
+        "Rozbudowa o sklep, platformę lub funkcje dedykowane",
+        "Myślenie o sprzedaży, wygodzie użytkownika i SEO lokalnym",
+        "Bezpośredni kontakt od analizy po publikację",
+      ],
+      processTitle:
+        "Jak wygląda przygotowanie strony, sklepu lub platformy na sprzedaż",
+      processSteps: [
+        {
+          title: "1. Analiza potrzeb firmy",
+          description:
+            "Ustalamy, czy najlepsza będzie gotowa strona, sklep, platforma czy rozwiązanie rozbudowane o funkcje dedykowane.",
+        },
+        {
+          title: "2. Dopasowanie układu i funkcji",
+          description:
+            "Przygotowuję strukturę, komunikację i funkcje pod ofertę, sprzedaż oraz codzienną pracę firmy.",
+        },
+        {
+          title: "3. Personalizacja i wdrożenie",
+          description:
+            "Dostosowuję rozwiązanie do marki, procesu i potrzebnych integracji, a następnie przygotowuję je do startu.",
+        },
+        {
+          title: "4. Publikacja i rozwój",
+          description:
+            "Po wdrożeniu możesz dalej rozwijać projekt o kolejne sekcje, moduły, automatyzacje i funkcje.",
+        },
+      ],
+      includedTitle:
+        "Co otrzymujesz w ramach rozwiązania na sprzedaż dla firmy",
+      includedParagraphs: [
+        `Zakres dopasowuję do tego, czy potrzebujesz gotowej strony internetowej, sklepu internetowego czy bardziej rozbudowanej platformy dla firmy ${c.fromGenitive}.`,
+        "Celem jest wdrożenie, które daje szybki punkt startowy, ale jednocześnie pozwala rozwijać firmę bez chaotycznej przebudowy.",
+      ],
+      includedListLabel: "W standardzie otrzymujesz:",
+      includedItems: [
+        "dopasowanie układu, treści i funkcji do firmy",
+        "sekcje lub widoki wspierające sprzedaż i kontakt",
+        "konfigurację formularzy, procesów i podstawowych integracji",
+        "responsywność na telefon, tablet i desktop",
+        "bazę pod rozwój sklepu, platformy lub systemu dedykowanego",
+        "przygotowanie do publikacji i dalszego skalowania",
+      ],
+      includedCtaLabel: "Chcę dostać wycenę rozwiązania",
+      faqTitle:
+        "FAQ o stronach, sklepach i platformach internetowych na sprzedaż",
+      faqIntro: `Najczęstsze pytania od firm, które szukają gotowego rozwiązania ${c.inLocative}.`,
+      faqItems: [
+        {
+          question: "Co oznacza strona internetowa na sprzedaż?",
+          answer:
+            "To gotowe lub częściowo gotowe rozwiązanie, które można dopasować do firmy, oferty i procesu bez budowy wszystkiego od zera.",
+        },
+        {
+          question: "Czy mogę kupić gotową stronę i dopasować ją do swojej firmy?",
+          answer:
+            "Tak. To właśnie główna zaleta takiego wdrożenia: bazę przygotowuję wcześniej, a potem dopasowuję ją do Twojej marki, treści i funkcji.",
+          relatedLinks: [
+            createServiceLink("website", city),
+            createServiceLink("design", city),
+          ],
+        },
+        {
+          question: "Czy przygotowujesz także sklepy internetowe i platformy?",
+          answer:
+            "Tak. Oprócz stron firmowych tworzę sklepy internetowe, platformy i bardziej rozbudowane systemy dla firm.",
+          relatedLinks: [
+            createServiceLink("store", city),
+            createServiceLink("business", city),
+          ],
+        },
+        {
+          question: "Czy takie wdrożenie można rozbudować o dedykowane funkcje?",
+          answer:
+            "Tak. Jeśli potrzebujesz panelu klienta, automatyzacji, dodatkowych kroków procesu albo niestandardowej logiki biznesowej, mogę rozbudować projekt o dedykowane oprogramowanie.",
+        },
+      ],
+      faqCtaLabel: "Przejdź do formularza",
+      nextStepEyebrow: "Następny krok",
+      nextStepTitle:
+        "Chcesz sprawdzić, czy gotowa strona, sklep lub platforma będzie dobra dla Twojej firmy?",
+      nextStepDescription:
+        "Opisz branżę, model działania i zakres potrzebnego wdrożenia. Przygotuję propozycję rozwiązania oraz wycenę.",
+      nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
+      nextStepSecondaryCtaLabel: "Wyślij brief",
+    },
+    portfolioHeading: `Realizacje stron, sklepów i platform dla firm ${c.fromGenitive}`,
+    contact: {
+      title: "Chcesz kupić gotową stronę, sklep lub platformę?",
+      subtitle:
+        "Opisz potrzeby firmy, a przygotuję propozycję rozwiązania i wycenę",
+      imageAlt: `Gotowa strona internetowa, sklep lub platforma dla firmy ${c.fromGenitive}`,
+    },
+  });
+}
+
 export const HOME_LANDING_PAGE = createHomepageLandingPage();
 
-export const SEO_LANDING_PAGES: LandingPageContent[] = ALL_CITIES.flatMap(
-  (city) => [
+export const SEO_LANDING_PAGES: LandingPageContent[] = [
+  createSaleHomePage(),
+  ...ALL_CITIES.flatMap((city) => [
     createWebsitePage(city),
     createWebsiteCreationPage(city),
     createWebDesignPage(city),
     createLandingPageServicePage(city),
     createBusinessWebsitePage(city),
     createStorePage(city),
+    createSalePage(city),
     createSeoPage(city),
-  ],
-);
+  ]),
+];
 
 const LANDING_PAGE_BY_SLUG = new Map(
   SEO_LANDING_PAGES.map((page) => [page.slug as string, page]),
