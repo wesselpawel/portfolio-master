@@ -277,22 +277,16 @@ export default function ContactSection({
                     href="tel:+48721417154"
                     className="flex items-center justify-between gap-4 rounded-xl bg-white/5 px-4 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
                   >
-                    <span className="flex items-center gap-3">
-                      <FaPhone className="h-4 w-4 text-yellow-200" />
-                      Telefon
-                    </span>
-                    <span className="font-semibold text-white">721 417 154</span>
+                    
+                    <span className="font-semibold text-white text-base">721 417 154</span>
                   </Link>
                   <Link
                     title="Send me an email"
                     href="mailto:hello@wesselpawel.com"
-                    className="flex items-center justify-between gap-4 rounded-xl bg-white/5 px-4 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
+                    className="relative flex items-center justify-between gap-4 rounded-xl bg-white/5 px-4 py-3 text-white/85 transition hover:bg-white/10 hover:text-white"
                   >
-                    <span className="flex items-center gap-3">
-                      <FaEnvelope className="h-4 w-4 text-yellow-200" />
-                      E-mail
-                    </span>
-                    <span className="font-semibold text-white">
+                    
+                    <span className="font-semibold text-white text-base">
                       hello@wesselpawel.com
                     </span>
                   </Link>

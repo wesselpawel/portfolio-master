@@ -11,13 +11,33 @@ export const metadata: Metadata = {
   title: "Tworzenie stron www | SEO | Strony firmowe Paweł Wessel",
   description:
     "Tworzę strony internetowe dla firm i osób prywatnych. Zajmuję się projektowaniem graficznym i designem. Programuję w Next.js, Tailwind CSS, TypeScript. Tworzę strony internetowe w Grudziądzu.",
-  icons: [
-    {
-      url: "/favicon.ico",
-      sizes: "32x32",
-      type: "image/x-icon",
-    },
-  ],
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.ico",
+        type: "image/x-icon",
+      },
+      {
+        url: "/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+    shortcut: ["/favicon.ico"],
+  },
   openGraph: {
     type: "website",
     url: "https://wesselpawel.com/",
@@ -27,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "wesselpawel.com",
     images: [
       {
-        url: "https://wesselpawel.com/assets/donuts.png",
+        url: "https://wesselpawel.com/assets/pinkdonut.png",
         type: "image/png",
       },
     ],
@@ -39,7 +59,7 @@ export const metadata: Metadata = {
       "Tworzę strony i aplikacje internetowe, sklepy internetowe, prowadzę marketing w Google Ads. Zajmuję się projektowaniem graficznym i designem.",
     images: [
       {
-        url: "https://wesselpawel.com/assets/donuts.png",
+        url: "https://wesselpawel.com/assets/pinkdonut.png",
       },
     ],
   },
@@ -49,6 +69,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#0c0c0c",
 };
 
 export default function RootLayout({

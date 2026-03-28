@@ -1,0 +1,31 @@
+{
+  "name": "Paweł Wessel - Strony internetowe i SEO",
+  "short_name": "wesselpawel.com",
+  "description": "Strony internetowe, sklepy internetowe, landing pages, SEO lokalne i dedykowane rozwiązania dla firm.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0c0c0c",
+  "theme_color": "#0c0c0c",
+  "lang": "pl",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

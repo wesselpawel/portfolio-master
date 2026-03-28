@@ -134,7 +134,7 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
         className="absolute left-0 top-0 z-[501] flex min-h-[100svh] w-full justify-center rounded-3xl pt-28 sm:pt-32 lg:items-center lg:pt-0"
       >
         <div className="mx-auto items-center mt-24 justify-evenly grid grid-cols-1 lg:flex flex-row w-[90vw] max-h-[60vh] 2xl:h-[100vh]">
-          <div className="rounded-3xl relative lg:pr-12 lg:w-[50vw] bg-slate-800/40 p-8">
+          <div className="rounded-3xl relative lg:w-[40vw] bg-slate-800/40 p-8">
             {breadcrumbLinks.length ? (
               <nav
                 aria-label="Breadcrumb"

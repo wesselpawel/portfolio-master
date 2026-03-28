@@ -7,14 +7,10 @@ function toAbsoluteUrl(pathname: string): string {
 }
 
 export function getLandingPageStructuredData(page: LandingPageContent) {
-  if (!page.slug) {
-    return null;
-  }
+  const pageUrl = page.slug ? toAbsoluteUrl(`/${page.slug}`) : SITE_URL;
+  const breadcrumbLinks = page.slug ? getBreadcrumbLinks(page.slug) : [];
 
-  const pageUrl = toAbsoluteUrl(`/${page.slug}`);
-  const breadcrumbLinks = getBreadcrumbLinks(page.slug);
-
-  const graph = [
+  const graph: Record<string, unknown>[] = [
     {
       "@type": "ProfessionalService",
       "@id": `${pageUrl}#service`,
@@ -45,16 +41,6 @@ export function getLandingPageStructuredData(page: LandingPageContent) {
       ],
     },
     {
-      "@type": "BreadcrumbList",
-      "@id": `${pageUrl}#breadcrumbs`,
-      itemListElement: breadcrumbLinks.map((link, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: link.label,
-        item: toAbsoluteUrl(link.href),
-      })),
-    },
-    {
       "@type": "FAQPage",
       "@id": `${pageUrl}#faq`,
       mainEntity: page.intent.faqItems.map((item) => ({
@@ -67,6 +53,19 @@ export function getLandingPageStructuredData(page: LandingPageContent) {
       })),
     },
   ];
+
+  if (breadcrumbLinks.length) {
+    graph.splice(1, 0, {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumbs`,
+      itemListElement: breadcrumbLinks.map((link, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: link.label,
+        item: toAbsoluteUrl(link.href),
+      })),
+    });
+  }
 
   return {
     "@context": "https://schema.org",
