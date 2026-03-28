@@ -108,7 +108,7 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
     pageContent.slug,
   );
   const primaryQuickLinkClass =
-    "inline-flex min-h-11 max-w-full items-center justify-center rounded-full border border-yellow-200/40 bg-yellow-300 px-5 py-3 text-center text-sm font-semibold leading-tight text-slate-950 shadow-[0_10px_30px_rgba(253,224,71,0.22)] transition duration-200 hover:-translate-y-0.5 hover:brightness-105";
+    "inline-flex min-h-11 max-w-full items-center justify-center rounded-2xl border border-yellow-200/40 bg-yellow-300 px-5 py-3 text-center text-sm font-semibold leading-tight text-slate-950 shadow-[0_10px_30px_rgba(253,224,71,0.22)] transition duration-200 hover:-translate-y-0.5 hover:brightness-105";
   const secondaryQuickLinkClass =
     "inline-flex min-h-11 max-w-full items-center justify-center rounded-full border border-white/20 bg-slate-950/50 px-5 py-3 text-center text-sm font-medium leading-tight text-white/90 shadow-[0_10px_30px_rgba(15,23,42,0.18)] backdrop-blur-md transition duration-200 hover:-translate-y-0.5 hover:border-white/35 hover:bg-slate-950/35 hover:text-white";
 
@@ -131,10 +131,10 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
           translateX: welcomeBoxTranslateX,
           translateY: welcomeBoxTranslateY,
         }}
-        className="absolute left-0 top-0 z-[501] flex h-[100svh] min-h-[100svh] w-full justify-center rounded-3xl pt-28 sm:pt-32 lg:items-center lg:pt-0"
+        className="absolute left-0 top-0 z-[501] flex min-h-[100svh] w-full justify-center rounded-3xl pt-28 sm:pt-32 lg:items-center lg:pt-0"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 w-[90vw]  h-[60vh]">
-          <div className="rounded-3xl relative">
+        <div className="mx-auto items-center mt-24 justify-evenly grid grid-cols-1 lg:flex flex-row w-[90vw] h-[60vh]">
+          <div className="rounded-3xl relative lg:pr-12 lg:w-[40vw] bg-slate-800/30 p-8">
             {breadcrumbLinks.length ? (
               <nav
                 aria-label="Breadcrumb"
@@ -162,7 +162,7 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
               <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />
               <FaStar className="w-5 h-5 lg:w-8 2xl:w-10 2xl:h-10 text-yellow-300" />
             </div>
-            <h1 className="lg:overflow-hidden text-2xl lg:text-3xl 2xl:text-4xl font-extrabold lg:max-w-[35vw]">
+            <h1 className="lg:overflow-hidden text-2xl lg:text-3xl 2xl:text-4xl font-extrabold">
               <span className="text-white font-sans">
                 {pageContent.hero.headingPrefix}
                 <span className="text-yellow-300">
@@ -186,9 +186,11 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
               ))}
             </div>
           </div>
-          <div className="flex items-center justify-center mt-8">
+          {/* <div className="flex items-center justify-center mt-8">
             <WebsiteOrderForm content={pageContent.form} />
-          </div>
+          </div> */}
+          
+           <Image src="/assets/herogif.gif" alt="download" width={400} height={400} className="mt-12 -ml-3 w-[100vw] lg:w-auto lg:min-w-[400px] xl:min-w-[350px] flex h-max" />
         </div>
       </motion.div>
       <ProjectShowcase pageContent={pageContent} />

@@ -318,7 +318,7 @@ function createHomepageLandingPage(): LandingPageContent {
       headingHighlight: "STRONY INTERNETOWE",
       headingSuffix: " - POD SPRZEDAŻ, WIDOCZNOŚĆ I REALNE ZAPYTANIA",
       description:
-        "Projektuję i wdrażam strony internetowe dla firm, które mają lepiej prezentować ofertę, budować zaufanie i prowadzić użytkownika prosto do kontaktu.",
+        "Projektuję i wdrażam strony internetowe dla firm, które chcą lepiej prezentować ofertę, budować zaufanie i prowadzić użytkownika prosto do kontaktu.",
       floatingPromptPrimary: "Masz pomysł na stronę internetową?",
       floatingPromptSecondary: "Porozmawiajmy o Twoim projekcie",
     },
@@ -1597,10 +1597,6 @@ export function getHomepageSectionLinks(
   isHomepage: boolean,
 ): LandingPageLink[] {
   return [
-    {
-      href: isHomepage ? "#projects" : "/#projects",
-      label: "Zobacz realizacje",
-    },
     {
       href: isHomepage ? "#contact" : "/#contact",
       label: "Zamów wycenę",

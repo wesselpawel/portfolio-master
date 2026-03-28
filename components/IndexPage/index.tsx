@@ -39,11 +39,11 @@ export default function IndexPage({ pageContent }: IndexPageProps) {
         className="relative duration-500"
       >
         <div className="relative h-[120svh] w-full min-h-[120svh]">
-          <div className="fixed top-0 left-0 w-full h-[120svh] min-h-[120svh] bg-gradient-to-br from-black via-zinc-800 to-black scale-150"></div>
+          <div className="fixed top-0 left-0 w-full h-[120svh] min-h-[120svh] bg-slate-800/30 scale-150"></div>
           <StarsBg />
           <motion.div
             style={{ opacity }}
-            className="z-[0] duration-500 fixed left-0 top-0 bg-gradient-to-br from-blue-500 via-green-300 to-blue-500 background-animate delay-1000 h-[100svh] min-h-[120svh] w-full"
+            className="z-[0] duration-500 fixed left-0 top-0 bg-gradient-to-br from-blue-500 via-green-300 to-blue-500 background-animate h-[100svh] min-h-[120svh] w-full"
           ></motion.div>
         </div>
         <Suspense>

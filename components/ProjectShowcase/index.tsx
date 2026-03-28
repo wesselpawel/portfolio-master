@@ -149,7 +149,7 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                         <div className="space-y-4 font-dosis text-white/90">
                           <div>
                             <p className="text-xs uppercase tracking-[0.18em] text-white/60">
-                              Wdrozenie
+                              Wdrożenie
                             </p>
                             <p className="mt-2 text-sm sm:text-base leading-relaxed">
                               {item.caseStudy.implementationSummary}
@@ -219,7 +219,7 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                           <div className="mt-6 space-y-6">
                             <div>
                               <p className="text-xs uppercase tracking-[0.18em] text-white/60">
-                                Pricing
+                                Cennik
                               </p>
                               <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
                                 {item.portfolioSections.pricing.map((plan) => (
@@ -262,7 +262,7 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                               <div className="rounded-xl border border-white/10 bg-white/5 p-4">
                                 <p className="text-xs uppercase tracking-[0.18em] text-white/60">
-                                  Jak dzialam
+                                  Jak działam
                                 </p>
                                 <ul className="mt-3 space-y-2 text-sm sm:text-base text-white/90">
                                   {item.portfolioSections.howIWork.map((step) => (

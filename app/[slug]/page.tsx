@@ -5,6 +5,7 @@ import {
   getLandingPageMetadata,
 } from "@/data/landingPages";
 import { notFound } from "next/navigation";
+import { getLandingPageStructuredData } from "@/utils/structuredData";
 
 type LandingPageRouteProps = {
   params: {
@@ -33,5 +34,19 @@ export default function LandingPageRoute({ params }: LandingPageRouteProps) {
     notFound();
   }
 
-  return <IndexPage pageContent={page} />;
+  const structuredData = getLandingPageStructuredData(page);
+
+  return (
+    <>
+      {structuredData ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+      ) : null}
+      <IndexPage pageContent={page} />
+    </>
+  );
 }

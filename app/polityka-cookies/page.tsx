@@ -1,10 +1,28 @@
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 
+const SITE_URL = "https://wesselpawel.com";
+
 export const metadata: Metadata = {
   title: "Polityka cookies | wesselpawel.com",
   description:
     "Informacje o plikach cookies, zgodach i narzędziach analitycznych wykorzystywanych w serwisie wesselpawel.com.",
+  alternates: {
+    canonical: `${SITE_URL}/polityka-cookies`,
+  },
+  openGraph: {
+    type: "website",
+    url: `${SITE_URL}/polityka-cookies`,
+    title: "Polityka cookies | wesselpawel.com",
+    description:
+      "Informacje o plikach cookies, zgodach i narzędziach analitycznych wykorzystywanych w serwisie wesselpawel.com.",
+    siteName: "wesselpawel.com",
+  },
+  twitter: {
+    title: "Polityka cookies | wesselpawel.com",
+    description:
+      "Informacje o plikach cookies, zgodach i narzędziach analitycznych wykorzystywanych w serwisie wesselpawel.com.",
+  },
 };
 
 const sections = [

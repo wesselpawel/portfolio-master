@@ -55,7 +55,7 @@ function NavLinkGroup({
   onNavigate,
 }: NavLinkGroupProps) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-4 sm:p-5">
+    <div className="rounded-3xl border border-white/10 bg-slate-800/30 p-4 sm:p-5">
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-yellow-200/80">
         {title}
       </p>
@@ -167,14 +167,6 @@ export function NavRight() {
       href: "/about",
       label: "O mnie",
     },
-    {
-      href: getSectionHref(pathname, "projects"),
-      label: "Realizacje",
-    },
-    {
-      href: getSectionHref(pathname, "contact"),
-      label: "Kontakt",
-    },
   ];
 
   const dropdownTitle = currentPage?.cityName
@@ -187,7 +179,7 @@ export function NavRight() {
   return (
     <header
       ref={navRef}
-      className="fixed inset-x-0 top-4 z-[1100] mx-auto w-[94vw] max-w-[1320px] text-white"
+      className="fixed inset-x-0 top-4 z-[1100] mx-auto w-[90vw] text-white"
     >
       <div className="rounded-[30px] border border-white/10 bg-slate-950/72 px-3 py-3 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
         <div className="flex items-center justify-between gap-3">
@@ -243,11 +235,11 @@ export function NavRight() {
               onClick={() => setIsStructureMenuOpen((value) => !value)}
               className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold transition ${
                 isStructureMenuOpen
-                  ? "border-yellow-300/60 bg-yellow-300/15 text-yellow-100"
-                  : "border-white/10 bg-white/[0.03] text-white/85 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
+                  ? "border-white/10 bg-white/[0.03] text-white/85 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
+                  : "border-yellow-300/60 bg-yellow-300/15 text-yellow-100"
               }`}
             >
-              Miasta i usługi
+              Moje usługi
               <FaChevronDown
                 className={`transition duration-300 ${
                   isStructureMenuOpen ? "rotate-180" : ""
@@ -255,12 +247,7 @@ export function NavRight() {
               />
             </button>
 
-            <Link
-              href={getSectionHref(pathname, "contact")}
-              className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-yellow-300/40 bg-yellow-300 px-5 py-2 text-sm font-semibold text-slate-950 shadow-[0_12px_30px_rgba(253,224,71,0.22)] transition hover:-translate-y-0.5 hover:brightness-105"
-            >
-              Zamów wycenę
-            </Link>
+           
 
             <div className="ml-1 flex items-center gap-1 rounded-2xl border border-white/10 bg-black/20 px-2 py-2">
               <Link
