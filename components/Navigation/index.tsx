@@ -15,8 +15,9 @@ import {
 } from "react-icons/fa";
 import authorImage from "@/public/assets/author.png";
 import {
-  getCurrentCityServiceLinks,
   getLandingPageBySlug,
+  getPrimaryLandingPageLink,
+  getPrimaryServiceLinks,
   getSiblingCityLinks,
   type LandingPageLink,
 } from "@/data/landingPages";
@@ -97,9 +98,12 @@ export function NavRight() {
     [pathname],
   );
   const currentPage = currentSlug ? getLandingPageBySlug(currentSlug) : null;
-  const currentCityServiceLinks = getCurrentCityServiceLinks(currentSlug, true);
-  const siblingCityLinks = getSiblingCityLinks(currentSlug, 8);
   const activeHref = currentSlug ? `/${currentSlug}` : pathname || "/";
+  const primaryServiceLinks = getPrimaryServiceLinks();
+  const activePrimaryServiceHref = currentPage?.serviceKey
+    ? getPrimaryLandingPageLink(currentPage.serviceKey)?.href ?? activeHref
+    : pathname || "/";
+  const siblingCityLinks = getSiblingCityLinks(currentSlug, 8);
 
   useEffect(() => {
     setIsStructureMenuOpen(false);
@@ -173,7 +177,7 @@ export function NavRight() {
     ? `Struktura SEO dla ${currentPage.cityName}`
     : "Struktura SEO dla miast";
   const dropdownSubtitle = currentPage?.serviceKey
-    ? "Przechodź między usługami w tym samym mieście oraz między wariantami miejskimi tej samej usługi."
+    ? "Przechodź między głównymi usługami oraz wariantami miejskimi tej samej usługi."
     : "Otwórz siatkę usług i miast, żeby szybko przejść do kluczowych wariantów podstron.";
 
   return (
@@ -277,7 +281,7 @@ export function NavRight() {
             }`}
           >
             <Link
-              href={getSectionHref(pathname, "contact")}
+              href={getSectionHref(pathname, "darmowa-wycena")}
               className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-yellow-300/40 bg-yellow-300 px-4 py-2 text-sm font-semibold text-slate-950 shadow-[0_12px_30px_rgba(253,224,71,0.22)] transition hover:brightness-105"
             >
               Kontakt
@@ -331,10 +335,10 @@ export function NavRight() {
 
                 <div className="mt-5 grid gap-4 xl:grid-cols-[1.2fr_1fr]">
                   <NavLinkGroup
-                    title={currentPage?.cityName ? `Usługi w ${currentPage.cityName}` : "Usługi w strukturze"}
-                    description="To warianty usług dostępne w ramach bieżącego lub domyślnego miasta."
-                    links={currentCityServiceLinks}
-                    activeHref={activeHref}
+                    title="Moje usługi"
+                    description="To główne, city-neutral wersje najważniejszych usług."
+                    links={primaryServiceLinks}
+                    activeHref={activePrimaryServiceHref}
                     onNavigate={() => setIsStructureMenuOpen(false)}
                   />
                   <NavLinkGroup
@@ -388,10 +392,10 @@ export function NavRight() {
 
                 <div className="mt-4 space-y-4">
                   <NavLinkGroup
-                    title={currentPage?.cityName ? `Usługi w ${currentPage.cityName}` : "Usługi"}
-                    description="Najważniejsze podstrony dla bieżącego kontekstu miasta."
-                    links={currentCityServiceLinks}
-                    activeHref={activeHref}
+                    title="Moje usługi"
+                    description="To główne, city-neutral wersje najważniejszych usług."
+                    links={primaryServiceLinks}
+                    activeHref={activePrimaryServiceHref}
                     onNavigate={() => setIsMobileMenuOpen(false)}
                   />
                   <NavLinkGroup

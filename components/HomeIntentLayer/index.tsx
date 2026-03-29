@@ -75,7 +75,7 @@ export default function HomeIntentLayer({
             </p>
             <div className="mt-5 flex flex-col gap-3">
               <Link
-                href="#contact"
+                href="#darmowa-wycena"
                 className="inline-flex items-center justify-center rounded-xl bg-yellow-300 px-4 py-3 text-sm font-bold text-black transition hover:brightness-105"
               >
                 {content.primaryCtaLabel}
@@ -202,7 +202,7 @@ export default function HomeIntentLayer({
           </div>
 
           <Link
-            href="#contact"
+            href="#darmowa-wycena"
             className="inline-flex items-center justify-center rounded-xl border border-yellow-300/60 bg-yellow-300/10 px-4 py-3 text-sm font-semibold text-yellow-100 transition hover:bg-yellow-300/20"
           >
             {content.includedCtaLabel}
@@ -257,7 +257,7 @@ export default function HomeIntentLayer({
             ) : null}
           </div>
           <Link
-            href="#contact"
+            href="#darmowa-wycena"
             className="inline-flex items-center justify-center rounded-xl bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
             {content.faqCtaLabel}
@@ -322,13 +322,13 @@ export default function HomeIntentLayer({
 
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
-              href="#contact"
+              href="#darmowa-wycena"
               className="inline-flex items-center justify-center rounded-xl bg-yellow-300 px-5 py-3 text-sm font-bold text-black transition hover:brightness-105"
             >
               {content.nextStepPrimaryCtaLabel}
             </Link>
             <Link
-              href="#contact"
+              href="#darmowa-wycena"
               className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
             >
               {content.nextStepSecondaryCtaLabel}

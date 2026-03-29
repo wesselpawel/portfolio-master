@@ -32,7 +32,7 @@ function getRelatedServiceKeys(
   }
 
   if (searchableText.includes("platform")) {
-    return ["business", "design", "landing"];
+    return [ "design", "landing"];
   }
 
   if (
@@ -40,10 +40,10 @@ function getRelatedServiceKeys(
     searchableText.includes("rezerw") ||
     searchableText.includes("uslug")
   ) {
-    return ["landing", "business", "design"];
+    return ["landing", "design"];
   }
 
-  return ["website", "business", "seo"];
+  return ["website", "seo"];
 }
 
 type ProjectShowcaseProps = {
@@ -243,17 +243,12 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                                         <li key={feature}>- {feature}</li>
                                       ))}
                                     </ul>
-                                    <button
-                                      type="button"
-                                      onClick={() =>
-                                        document
-                                          .getElementById("contact")
-                                          ?.scrollIntoView({ behavior: "smooth" })
-                                      }
+                                    <Link
+                                      href="#darmowa-wycena"
                                       className="mt-4 inline-flex items-center justify-center rounded-lg border border-yellow-300/60 bg-yellow-300/10 px-3 py-2 text-sm font-semibold text-yellow-200 transition hover:bg-yellow-300/20 hover:text-yellow-100"
                                     >
                                       Kontakt
-                                    </button>
+                                    </Link>
                                   </div>
                                 ))}
                               </div>

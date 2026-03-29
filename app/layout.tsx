@@ -8,9 +8,9 @@ import { NavRight } from "@/components/Navigation";
 import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
-  title: "Tworzenie stron www | SEO | Strony firmowe Paweł Wessel",
+  title: "Strony internetowe | SEO | Strony firmowe Paweł Wessel",
   description:
-    "Tworzę strony internetowe dla firm i osób prywatnych. Zajmuję się projektowaniem graficznym i designem. Programuję w Next.js, Tailwind CSS, TypeScript. Tworzę strony internetowe w Grudziądzu.",
+    "Tworzę strony internetowe dla firm, landing page, sklepy internetowe i rozwiązania pod SEO lokalne. Projektuję, wdrażam i rozwijam strony internetowe w Grudziądzu.",
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://wesselpawel.com/",
-    title: "Tworzenie stron www | SEO | Strony firmowe Paweł Wessel",
+    title: "Strony internetowe | SEO | Strony firmowe Paweł Wessel",
     description:
-      "Tworzę strony internetowe dla firm i osób prywatnych. Zajmuję się projektowaniem graficznym i designem. Programuję w Next.js, Tailwind CSS, TypeScript. Tworzę strony internetowe w Grudziądzu.",
+      "Tworzę strony internetowe dla firm, landing page, sklepy internetowe i rozwiązania pod SEO lokalne. Projektuję, wdrażam i rozwijam strony internetowe w Grudziądzu.",
     siteName: "wesselpawel.com",
     images: [
       {
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     site: "@wesiudev",
-    title: "Tworzenie stron www | SEO | Strony firmowe Paweł Wessel",
+    title: "Strony internetowe | SEO | Strony firmowe Paweł Wessel",
     description:
-      "Tworzę strony i aplikacje internetowe, sklepy internetowe, prowadzę marketing w Google Ads. Zajmuję się projektowaniem graficznym i designem.",
+      "Tworzę strony internetowe, landing page, sklepy internetowe i rozwiązania pod SEO lokalne dla firm.",
     images: [
       {
         url: "https://wesselpawel.com/assets/pinkdonut.png",

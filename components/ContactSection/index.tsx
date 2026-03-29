@@ -122,7 +122,7 @@ export default function ContactSection({
   return (
     <div className="relative w-full flex items-center justify-center">
       <div className="w-[1px] h-[1px] bg-transparent -top-32 left-0 absolute"
-      id="contact"
+      id="darmowa-wycena"
       ></div>
       <div className="font-dosis w-full bg-slate-800/30 pt-0 border-t-2 border-yellow-300 pb-36 lg:pb-12 text-xl flex flex-col items-center justify-center z-[600] relative">
         <div className="font-cocosharp bg-slate-800 w-full p-4 lg:p-24 lg:px-24">
