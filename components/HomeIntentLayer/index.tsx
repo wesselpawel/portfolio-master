@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import CompanyDirectorySection from "@/components/CompanyDirectorySection";
 import {
   getContextualLandingPageLinks,
   getHomepageSectionLinks,
@@ -240,6 +241,8 @@ export default function HomeIntentLayer({
           ))}
         </div>
       </section>
+
+      <CompanyDirectorySection currentSlug={currentSlug} />
 
       <section className="mt-6 rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">

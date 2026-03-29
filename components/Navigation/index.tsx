@@ -45,6 +45,10 @@ function getSectionHref(pathname: string, sectionId: string): string {
     return `/#${sectionId}`;
   }
 
+  if (pathname.startsWith("/company/")) {
+    return `/#${sectionId}`;
+  }
+
   return `${pathname}#${sectionId}`;
 }
 
