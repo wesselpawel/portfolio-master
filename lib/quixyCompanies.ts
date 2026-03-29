@@ -185,7 +185,6 @@ function createHeadline(user: QuixyUser): string {
 function normalizeCompanyUser(user: QuixyUser): CompanyProfile | null {
   if (
     user.seek !== false ||
-    user.seek === "ask" ||
     !user.emailVerified ||
     !user.configured ||
     !user.access ||
