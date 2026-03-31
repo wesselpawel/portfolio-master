@@ -1,19 +1,70 @@
 "use client";
 
 import Link from "next/link";
-import CompanyDirectorySection from "@/components/CompanyDirectorySection";
+import { motion } from "framer-motion";
 import {
   getContextualLandingPageLinks,
   getHomepageSectionLinks,
-  getSiblingCityLinks,
+  type LandingPageStep,
   type LandingPageLink,
   type LandingPageIntentContent,
 } from "@/data/landingPages";
+import Image from "next/image";
 
 type HomeIntentLayerProps = {
   content: LandingPageIntentContent;
   currentSlug?: string;
 };
+
+type ProcessStepCardProps = {
+  step: LandingPageStep;
+  index: number;
+};
+
+function ProcessStepCard({ step, index }: ProcessStepCardProps) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 28, scale: 0.985 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.08 }}
+      className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-4 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition hover:border-white/20 hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] sm:p-5"
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-yellow-300/40 to-transparent" />
+      <div className="absolute right-3 top-2 hidden text-[4.5rem] font-extrabold leading-none text-white/[0.045] sm:block lg:text-[6rem]">
+        {index + 1}
+      </div>
+
+      <div className="flex items-start gap-3 sm:gap-4">
+        {step.image ? (
+          <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-white/10 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.12)] sm:h-20 sm:w-20">
+            <Image
+              src={step.image}
+              alt={step.imageAlt || step.title}
+              fill
+              className="object-cover transition duration-300 group-hover:scale-[1.04]"
+              sizes="80px"
+            />
+          </div>
+        ) : null}
+
+        <div className="min-w-0 flex-1 pr-0 sm:pr-16">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center rounded-full border border-yellow-300/25 bg-yellow-300/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-yellow-100 sm:text-xs">
+              Krok {index + 1}
+            </span>
+          </div>
+          <h4 className="mt-3 text-lg font-bold leading-tight text-yellow-100 sm:text-xl lg:text-2xl">
+            {step.title}
+          </h4>
+          <p className="mt-3 max-w-[52ch] font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
+            {step.description}
+          </p>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
 
 export default function HomeIntentLayer({
   content,
@@ -21,7 +72,6 @@ export default function HomeIntentLayer({
 }: HomeIntentLayerProps) {
   const sectionLinks = getHomepageSectionLinks(!currentSlug);
   const contextualLandingLinks = getContextualLandingPageLinks(currentSlug);
-  const siblingCityLinks = getSiblingCityLinks(currentSlug, 6);
 
   function renderInlineLinks(links: LandingPageLink[]) {
     return links.map((link, index) => {
@@ -40,7 +90,7 @@ export default function HomeIntentLayer({
   }
 
   return (
-    <section className="z-[501] mx-auto w-[90vw]  pt-8 pb-10 lg:pt-12 lg:pb-16">
+    <section className="z-[501] mx-auto w-[90vw] pt-8 pb-10 lg:pt-12 lg:pb-16">
       <div className="rounded-[28px] border border-yellow-300/40 bg-slate-900/80 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-sm lg:p-8">
         <p className="text-xs font-dosis uppercase tracking-[0.22em] text-yellow-200/90">
           {content.eyebrow}
@@ -58,13 +108,7 @@ export default function HomeIntentLayer({
                 {paragraph}
               </p>
             ))}
-            {contextualLandingLinks.length ? (
-              <p className="mt-4 max-w-3xl font-dosis text-base leading-relaxed text-white/75 lg:text-lg">
-                Jeśli chcesz porównać inne warianty dla tego samego miasta, zobacz
-                {" "}
-                {renderInlineLinks(contextualLandingLinks)}.
-              </p>
-            ) : null}
+            
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-black/25 p-5">
@@ -81,20 +125,7 @@ export default function HomeIntentLayer({
               >
                 {content.primaryCtaLabel}
               </Link>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <Link
-                  href="tel:+48721417154"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-                >
-                  Zadzwoń
-                </Link>
-                <Link
-                  href="mailto:hello@wesselpawel.com"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-                >
-                  Napisz maila
-                </Link>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -112,7 +143,8 @@ export default function HomeIntentLayer({
                   : "border-white/10 bg-white/5"
               }`}
             >
-              <p className="text-lg font-semibold text-white">{option.name}</p>
+              <Image src={option.image!} alt={option.imageAlt!} width={200} height={200} className=" rounded-xl w-full h-auto" />
+              <p className="text-lg font-semibold text-white mt-4">{option.name} ~ od {option.price} zł</p>
               <p className="mt-2 font-dosis text-sm leading-relaxed text-white/75">
                 {option.description}
               </p>
@@ -126,8 +158,8 @@ export default function HomeIntentLayer({
         ) : null}
       </div>
 
-      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <section className="rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
+      <div className="mt-8">
+        {/* <section className="rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
           <h3 className="text-xl font-bold text-white">{content.whyTitle}</h3>
           <p className="mt-3 font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
             {content.whyIntro}
@@ -159,31 +191,28 @@ export default function HomeIntentLayer({
               </Link>
             ))}
           </div>
-        </section>
+        </section> */}
 
-        <section className="rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
-          <h3 className="text-xl font-bold text-white">
-            {content.processTitle}
-          </h3>
-          <div className="mt-4 space-y-3">
-            {content.processSteps.map((step) => (
-              <div
-                key={step.title}
-                className="rounded-xl bg-black/20 px-4 py-4"
-              >
-                <p className="text-sm font-semibold text-yellow-200 sm:text-base">
-                  {step.title}
-                </p>
-                <p className="mt-2 font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
-                  {step.description}
-                </p>
-              </div>
+        <section className="overflow-hidden rounded-[28px] border border-white/10 bg-slate-900/60 p-5 backdrop-blur-sm sm:p-6 lg:p-7">
+          <div className="max-w-3xl">
+            <h3 className="text-2xl font-bold text-white sm:text-3xl">
+              {content.processTitle}
+            </h3>
+            <p className="mt-3 font-dosis text-sm leading-relaxed text-white/70 sm:text-base">
+              Każdy etap ma jasno określony cel: od ustalenia kierunku, przez
+              strukturę i wdrożenie, aż po rozwój po publikacji.
+            </p>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-5">
+            {content.processSteps.map((step, index) => (
+              <ProcessStepCard key={step.title} step={step} index={index} />
             ))}
           </div>
         </section>
       </div>
 
-      <section className="mt-6 rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
+      {/* <section className="mt-6 rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
             <h3 className="text-xl font-bold text-white">
@@ -240,77 +269,12 @@ export default function HomeIntentLayer({
             </Link>
           ))}
         </div>
-      </section>
+      </section> */}
 
-      <CompanyDirectorySection currentSlug={currentSlug} />
-
-      <section className="mt-6 rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
-        <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <h3 className="text-xl font-bold text-white">{content.faqTitle}</h3>
-            <p className="mt-2 font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
-              {content.faqIntro}
-            </p>
-            {contextualLandingLinks.length ? (
-              <p className="mt-3 font-dosis text-sm leading-relaxed text-white/70 sm:text-base">
-                W obrębie tego samego miasta możesz też sprawdzić
-                {" "}
-                {renderInlineLinks(contextualLandingLinks)}.
-              </p>
-            ) : null}
-          </div>
-          <Link
-            href="#darmowa-wycena"
-            className="inline-flex items-center justify-center rounded-xl bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-          >
-            {content.faqCtaLabel}
-          </Link>
-        </div>
-
-        <div className="mt-5 space-y-3">
-          {content.faqItems.map((item) => (
-            <details
-              key={item.question}
-              className="rounded-xl border border-white/10 bg-black/20 px-4 py-3"
-            >
-              <summary className="cursor-pointer list-none text-sm font-semibold text-white sm:text-base">
-                {item.question}
-              </summary>
-              <p className="mt-3 whitespace-pre-line font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
-                {item.answer}
-              </p>
-              {item.relatedLinks?.length ? (
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {item.relatedLinks.map((link) => (
-                    <Link
-                      key={`${item.question}-${link.href}`}
-                      href={link.href}
-                      className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-            </details>
-          ))}
-        </div>
-        {siblingCityLinks.length ? (
-          <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
-            <p className="text-xs uppercase tracking-[0.18em] text-white/60">
-              Te same usługi w innych miastach
-            </p>
-            <p className="mt-2 font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
-              Jeśli rozwijasz widoczność szerzej niż jedno miasto, sprawdź też:
-              {" "}
-              {renderInlineLinks(siblingCityLinks)}.
-            </p>
-          </div>
-        ) : null}
-      </section>
 
       <div className="bg-slate-800/50 backdrop-blur-sm mt-6 rounded-[28px] border border-yellow-300/35 bg-gradient-to-r from-yellow-300/15 to-transparent p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-yellow-200/90">
               {content.nextStepEyebrow}

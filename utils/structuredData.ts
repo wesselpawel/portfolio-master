@@ -1,4 +1,5 @@
 import { getBreadcrumbLinks, type LandingPageContent } from "@/data/landingPages";
+import { PORTFOLIO_PROJECTS } from "@/data/portfolioProjects";
 
 const SITE_URL = "https://wesselpawel.com";
 
@@ -9,6 +10,15 @@ function toAbsoluteUrl(pathname: string): string {
 export function getLandingPageStructuredData(page: LandingPageContent) {
   const pageUrl = page.slug ? toAbsoluteUrl(`/${page.slug}`) : SITE_URL;
   const breadcrumbLinks = page.slug ? getBreadcrumbLinks(page.slug) : [];
+  const projectImages = PORTFOLIO_PROJECTS.flatMap((project) =>
+    project.images.map((image, index) => ({
+      url: toAbsoluteUrl(image),
+      name: project.name,
+      description:
+        project.imageAlts?.[index] ||
+        `${project.name} - obraz projektu ${index + 1}`,
+    })),
+  );
 
   const graph: Record<string, unknown>[] = [
     {
@@ -34,11 +44,16 @@ export function getLandingPageStructuredData(page: LandingPageContent) {
       address: {
         "@type": "PostalAddress",
         addressCountry: "PL",
+        addressLocality: "Grudziądz",
+        addressRegion: "Kujawsko-Pomorskie",
+        postalCode: "86-300",        
+        streetAddress: "ul. Janusza Korczaka 15",
       },
       sameAs: [
         "https://github.com/wesiudev",
         "https://linkedin.com/in/wesselpawel",
       ],
+      image: projectImages.map((image) => image.url),
     },
     {
       "@type": "FAQPage",
@@ -52,6 +67,14 @@ export function getLandingPageStructuredData(page: LandingPageContent) {
         },
       })),
     },
+    ...projectImages.map((image, index) => ({
+      "@type": "ImageObject",
+      "@id": `${pageUrl}#portfolio-image-${index + 1}`,
+      contentUrl: image.url,
+      url: image.url,
+      name: image.name,
+      description: image.description,
+    })),
   ];
 
   if (breadcrumbLinks.length) {

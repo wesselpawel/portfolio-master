@@ -26,7 +26,7 @@ export default function IndexPage({ pageContent }: IndexPageProps) {
     offset: ["start end", "end end"],
   });
   const background = useTransform(scrollYProgress, (pos) =>
-    pos >= 0.35 ? "rgb(12,12,12)" : "",
+    pos >= 0.35 ? "rgb(48, 43, 43)" : "",
   );
   const opacity = useTransform(scrollYProgress, (pos) =>
     pos >= 0.35 ? "0" : "1",

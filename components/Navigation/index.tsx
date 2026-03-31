@@ -45,10 +45,6 @@ function getSectionHref(pathname: string, sectionId: string): string {
     return `/#${sectionId}`;
   }
 
-  if (pathname.startsWith("/company/")) {
-    return `/#${sectionId}`;
-  }
-
   return `${pathname}#${sectionId}`;
 }
 
@@ -103,9 +99,10 @@ export function NavRight() {
   );
   const currentPage = currentSlug ? getLandingPageBySlug(currentSlug) : null;
   const activeHref = currentSlug ? `/${currentSlug}` : pathname || "/";
-  const primaryServiceLinks = getPrimaryServiceLinks();
+  const primaryServiceLinks = getPrimaryServiceLinks(currentSlug);
   const activePrimaryServiceHref = currentPage?.serviceKey
-    ? getPrimaryLandingPageLink(currentPage.serviceKey)?.href ?? activeHref
+    ? getPrimaryLandingPageLink(currentPage.serviceKey, currentSlug)?.href ??
+      activeHref
     : pathname || "/";
   const siblingCityLinks = getSiblingCityLinks(currentSlug, 8);
 
@@ -116,7 +113,7 @@ export function NavRight() {
 
   useEffect(() => {
     function updateViewportState() {
-      setIsDesktopViewport(window.innerWidth >= 1180);
+      setIsDesktopViewport(window.innerWidth >= 1024);
       setHasMeasuredViewport(true);
     }
 
@@ -173,17 +170,9 @@ export function NavRight() {
   const quickLinks = [
     {
       href: "/about",
-      label: "O mnie",
+      label: "Paweł Wessel - WWW Expert",
     },
   ];
-
-  const dropdownTitle = currentPage?.cityName
-    ? `Struktura SEO dla ${currentPage.cityName}`
-    : "Struktura SEO dla miast";
-  const dropdownSubtitle = currentPage?.serviceKey
-    ? "Przechodź między głównymi usługami oraz wariantami miejskimi tej samej usługi."
-    : "Otwórz siatkę usług i miast, żeby szybko przejść do kluczowych wariantów podstron.";
-
   return (
     <header
       ref={navRef}
@@ -207,14 +196,14 @@ export function NavRight() {
                 height={88}
                 className="h-12 w-12 rounded-full border border-yellow-300/30 object-cover shadow-[0_12px_30px_rgba(253,224,71,0.2)] transition duration-300 group-hover:rotate-6"
               />
-              <div className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full border border-slate-950 bg-emerald-400 shadow-[0_0_0_6px_rgba(52,211,153,0.12)]" />
+              <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border border-slate-950 bg-emerald-400 shadow-[0_0_0_6px_rgba(52,211,153,0.12)]" />
             </div>
             <div className="min-w-0">
               <div className="truncate text-base font-bold text-white sm:text-xl">
                 Paweł Wessel
               </div>
               <div className="flex items-center gap-2 text-xs text-white/65 sm:text-sm">
-                <span className="font-dosis">Strony, SEO i landing pages</span>
+                <span className="font-dosis">Tworzę strony internetowe</span>
                 <FaLongArrowAltRight className="hidden sm:block" />
               </div>
             </div>
@@ -260,6 +249,7 @@ export function NavRight() {
             <div className="ml-1 flex items-center gap-1 rounded-2xl border border-white/10 bg-black/20 px-2 py-2">
               <Link
                 target="_blank"
+                rel="nofollow"
                 title="Przejdź do Github.com"
                 href="https://github.com/wesiudev"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-white/75 transition hover:bg-white/10 hover:text-white"
@@ -268,6 +258,7 @@ export function NavRight() {
               </Link>
               <Link
                 target="_blank"
+                rel="nofollow"
                 title="Przejdź do Linkedin.com"
                 href="https://linkedin.com/in/wesselpawel"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-white/75 transition hover:bg-white/10 hover:text-white"
@@ -285,8 +276,9 @@ export function NavRight() {
             }`}
           >
             <Link
+              rel="nofollow"
               href={getSectionHref(pathname, "darmowa-wycena")}
-              className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-yellow-300/40 bg-yellow-300 px-4 py-2 text-sm font-semibold text-slate-950 shadow-[0_12px_30px_rgba(253,224,71,0.22)] transition hover:brightness-105"
+              className="hidden sm:inline-flex min-h-11 items-center justify-center rounded-2xl border border-yellow-300/40 bg-yellow-300 px-4 py-2 text-sm font-semibold text-slate-950 shadow-[0_12px_30px_rgba(253,224,71,0.22)] transition hover:brightness-105"
             >
               Kontakt
             </Link>
@@ -311,43 +303,19 @@ export function NavRight() {
               className={hasMeasuredViewport && !isDesktopViewport ? "hidden" : "hidden lg:block"}
             >
               <div className="mt-3 rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(253,224,71,0.12),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-5 shadow-[0_20px_80px_rgba(0,0,0,0.28)]">
-                <div className="flex flex-col gap-2 border-b border-white/10 pb-4 sm:flex-row sm:items-end sm:justify-between">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-yellow-200/80">
-                      Nawigacja programmatic SEO
-                    </p>
-                    <h2 className="mt-2 text-xl font-bold text-white">
-                      {dropdownTitle}
-                    </h2>
-                    <p className="mt-2 max-w-3xl text-sm leading-relaxed text-white/65">
-                      {dropdownSubtitle}
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70">
-                    {currentPage?.cityName ? (
-                      <>
-                        <span className="font-semibold text-white">
-                          Aktywna strona:
-                        </span>{" "}
-                        {currentPage.cityName}
-                      </>
-                    ) : (
-                      "Przeglądaj najważniejsze miasta i usługi"
-                    )}
-                  </div>
-                </div>
+                
 
-                <div className="mt-5 grid gap-4 xl:grid-cols-[1.2fr_1fr]">
+                <div className="grid gap-4 xl:grid-cols-[1.2fr_1fr]">
                   <NavLinkGroup
                     title="Moje usługi"
-                    description="To główne, city-neutral wersje najważniejszych usług."
+                    description=""
                     links={primaryServiceLinks}
                     activeHref={activePrimaryServiceHref}
                     onNavigate={() => setIsStructureMenuOpen(false)}
                   />
                   <NavLinkGroup
                     title="Ta sama usługa w innych miastach"
-                    description="Przydatne do przeglądania skali wewnętrznej siatki city pages."
+                    description=""
                     links={siblingCityLinks}
                     activeHref={activeHref}
                     onNavigate={() => setIsStructureMenuOpen(false)}
@@ -372,43 +340,29 @@ export function NavRight() {
               }`}
             >
               <div className="mt-3 max-h-[calc(100svh-6.5rem)] overflow-y-auto overscroll-contain rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-4 pr-3">
-                <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-yellow-200/80">
-                    Menu
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/70">
-                    {dropdownSubtitle}
-                  </p>
-                </div>
+               
 
-                <div className="mt-4 grid grid-cols-1 gap-2">
+                
                   {quickLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-medium text-white/85 transition hover:border-white/20 hover:bg-white/[0.08]"
+                      className="w-full inline-flex min-h-12 items-center justify-center rounded-2xl border border-yellow-300/60 bg-slate-800/30 px-4 py-3 text-sm font-medium text-yellow-300/85 transition hover:border-white/20 hover:bg-slate-800/20"
                     >
                       {link.label}
                     </Link>
                   ))}
-                </div>
 
                 <div className="mt-4 space-y-4">
                   <NavLinkGroup
                     title="Moje usługi"
-                    description="To główne, city-neutral wersje najważniejszych usług."
+                    description=""
                     links={primaryServiceLinks}
                     activeHref={activePrimaryServiceHref}
                     onNavigate={() => setIsMobileMenuOpen(false)}
                   />
-                  <NavLinkGroup
-                    title="Inne miasta"
-                    description="Ten sam typ podstrony w innych lokalizacjach."
-                    links={siblingCityLinks.slice(0, 6)}
-                    activeHref={activeHref}
-                    onNavigate={() => setIsMobileMenuOpen(false)}
-                  />
+                  
                 </div>
 
                 <div className="mt-4 flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-4 py-3">

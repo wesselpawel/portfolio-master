@@ -86,6 +86,8 @@ function ProjectGalleryModal({
 
   const { images, index, title } = state;
   const src = images[index];
+  const prevIndex = index > 0 ? index - 1 : images.length - 1;
+  const nextIndex = index < images.length - 1 ? index + 1 : 0;
   const fallbackLabel = title
     ? `${title} — ${index + 1} / ${images.length}`
     : `${index + 1} / ${images.length}`;
@@ -110,11 +112,7 @@ function ProjectGalleryModal({
       >
         <div className="flex shrink-0 items-center justify-between gap-3 border-b border-white/10 bg-zinc-900/90 px-4 py-3 sm:px-5">
           <div className="min-w-0">
-            {title ? (
-              <p className="truncate text-sm font-semibold text-white sm:text-base">
-                {title}
-              </p>
-            ) : null}
+            
             <p className="text-xs text-white/60 sm:text-sm font-dosis">
               {index + 1} / {images.length}
             </p>
@@ -142,6 +140,26 @@ function ProjectGalleryModal({
               priority
             />
           </div>
+
+          {/* Preload adjacent gallery images to make modal navigation faster. */}
+          {images.length > 1 ? (
+            <div className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0">
+              <Image
+                src={images[prevIndex]}
+                alt={state.imageAlts?.[prevIndex] || `${fallbackLabel} - poprzednie`}
+                width={32}
+                height={32}
+                loading="eager"
+              />
+              <Image
+                src={images[nextIndex]}
+                alt={state.imageAlts?.[nextIndex] || `${fallbackLabel} - następne`}
+                width={32}
+                height={32}
+                loading="eager"
+              />
+            </div>
+          ) : null}
 
           <div
             className="pointer-events-none absolute inset-0 z-20 flex items-center justify-between px-1 sm:px-2"

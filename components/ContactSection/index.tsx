@@ -121,120 +121,214 @@ export default function ContactSection({
   };
   return (
     <div className="relative w-full flex items-center justify-center">
-      <div className="w-[1px] h-[1px] bg-transparent -top-32 left-0 absolute"
-      id="darmowa-wycena"
+      <div
+        className="w-[1px] h-[1px] bg-transparent -top-32 left-0 absolute"
+        id="darmowa-wycena"
       ></div>
-      <div className="font-dosis w-full bg-slate-800/30 pt-0 border-t-2 border-yellow-300 pb-36 lg:pb-12 text-xl flex flex-col items-center justify-center z-[600] relative">
-        <div className="font-cocosharp bg-slate-800 w-full p-4 lg:p-24 lg:px-24">
-          <h2 className="text-2xl font-bold text-yellow-300">
-            {content.title}
-          </h2>
-          <p className="text-sm text-white">
-            {content.subtitle}
-          </p>
-
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-6">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:items-stretch">
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm text-white" htmlFor="contact-name">
-                    {t.namePlaceholder}
-                  </label>
-                  <input
-                    id="contact-name"
-                    name="name"
-                    type="text"
-                    placeholder={t.namePlaceholder}
-                    autoComplete="name"
-                    required
-                    className="w-full rounded-lg border border-black/15 bg-white px-3 py-2 text-base text-black outline-none focus:border-black/40 focus:ring-2 focus:ring-black/10"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm text-white" htmlFor="contact-phone">
-                    {t.phoneNumberPlaceholder}
-                  </label>
-                  <input
-                    id="contact-phone"
-                    name="phoneNumber"
-                    type="tel"
-                    value={phoneValue}
-                    onChange={(e) => setPhoneValue(e.target.value)}
-                    placeholder={t.phoneNumberPlaceholder}
-                    autoComplete="tel"
-                    required
-                    inputMode="numeric"
-                    aria-invalid={phoneTouched && !phoneValid}
-                    aria-describedby={
-                      phoneTouched ? "contact-phone-hint" : undefined
-                    }
-                    className={`w-full rounded-lg border bg-white px-3 py-2 text-base text-black outline-none focus:ring-2 ${
-                      !phoneTouched
-                        ? "border-black/15 focus:border-black/40 focus:ring-black/10"
-                        : phoneValid
-                          ? "border-green-500/60 focus:border-green-500 focus:ring-green-500/20"
-                          : "border-red-500/60 focus:border-red-500 focus:ring-red-500/20"
-                    }`}
-                  />
-                </div>
-              </div>
-
-              <div className="flex h-full flex-col gap-2">
-                <label className="text-sm text-white" htmlFor="contact-message">
-                  {t.messagePlaceholder}
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  placeholder={t.messagePlaceholder}
-                  required
-                  rows={6}
-                  className="w-full flex-1 resize-y rounded-lg border border-black/15 bg-white px-3 py-2 text-base text-black outline-none focus:border-black/40 focus:ring-2 focus:ring-black/10 md:min-h-[8.5rem]"
-                />
-              </div>
-            </div>
-
-            {/* Honeypot (bots tend to fill this). */}
-            <input
-              name="website"
-              tabIndex={-1}
-              autoComplete="off"
-              className="hidden"
-              aria-hidden="true"
-            />
-
-            <button
-              type="submit"
-              disabled={status === "sending"}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-black px-4 py-3 text-base font-medium text-white shadow-[0_0_12px_rgba(253,224,71,0.35)] transition-all duration-200 hover:shadow-[0_0_20px_rgba(253,224,71,0.5)] hover:brightness-110 disabled:opacity-60 disabled:hover:brightness-100 disabled:hover:shadow-[0_0_12px_rgba(253,224,71,0.35)] md:w-max"
-            >
-              <FaPaperPlane className="h-5 w-5" />
-              <span>{status === "sending" ? t.sending : t.send}</span>
-            </button>
-
-            {statusMessage ? (
-              <p
-                className={
-                  status === "success"
-                    ? "text-sm text-green-700"
-                    : "text-sm text-red-600"
-                }
-                role={status === "error" ? "alert" : "status"}
-              >
-                {statusMessage}
+      <div className="font-dosis w-full border-t-2 border-yellow-300 bg-slate-800/30 pb-24 pt-0 text-xl flex flex-col items-center justify-center z-[600] relative lg:pb-12">
+        <div className="w-full bg-slate-800 px-4 py-8 lg:px-24 lg:py-20">
+          <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 xl:grid-cols-[0.95fr_1.05fr] xl:gap-8">
+            <section className="overflow-hidden rounded-[30px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(253,224,71,0.12),transparent_28%),linear-gradient(180deg,rgba(15,23,42,0.94),rgba(15,23,42,0.82))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.28)] sm:p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-yellow-200/85">
+                Kontakt
               </p>
-            ) : null}
-          </form>
-        </div>
-        <div className="mt-12 flex items-center justify-center rounded-b-xl">
-          <Image
-            src={donutImage}
-            alt={content.imageAlt}
-            width={1024}
-            height={1024}
-            className="px-4 lg:px-0 sm:max-w-[500px] max-w-[90%]"
-          />
+              <h2 className="mt-4 font-cocosharp text-3xl font-bold leading-tight text-yellow-300 sm:text-4xl">
+                {content.title}
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/75 sm:text-base">
+                {content.subtitle}
+              </p>
+
+              <div className="mt-6 grid grid-cols-1 gap-3">
+                <div className="rounded-2xl border border-white/10 bg-black/20 px-4 py-4">
+                  <p className="text-sm font-semibold text-white">
+                    Opisz projekt tak, jak Ci wygodnie
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/70">
+                    Wystarczy krótki opis usługi, miasta albo celu strony.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-black/20 px-4 py-4">
+                  <p className="text-sm font-semibold text-white">
+                    Wrócę z kierunkiem i wyceną
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/70">
+                    Najpierw porządkujemy zakres, potem dobieramy najlepszy model:
+                    landing page, strona firmowa, sklep albo rozbudowa pod SEO.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <Link
+                  href="tel:+48721417154"
+                  className="inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  <FaPhone className="h-4 w-4 text-yellow-200" />
+                  <span>721 417 154</span>
+                </Link>
+                <Link
+                  href="mailto:hello@wesselpawel.com"
+                  className="inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  <FaEnvelope className="h-4 w-4 text-yellow-200" />
+                  <span>hello@wesselpawel.com</span>
+                </Link>
+              </div>
+
+              <div className="mt-8 overflow-hidden rounded-[26px] border border-white/10 bg-black/20 px-4 py-4 sm:px-5">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-sm font-semibold text-white">
+                      Krótka wiadomość wystarczy na start
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-white/70">
+                      Odpowiadam zwykle szybko i od razu proponuję kolejny krok.
+                    </p>
+                  </div>
+                  <Image
+                    src={donutImage}
+                    alt={content.imageAlt}
+                    width={420}
+                    height={420}
+                    className="mx-auto w-full max-w-[220px] opacity-90 sm:mx-0"
+                  />
+                </div>
+              </div>
+            </section>
+
+            <section className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] sm:p-7">
+              <div className="flex flex-col gap-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/55">
+                  Formularz
+                </p>
+                <p className="text-xl font-bold text-white sm:text-2xl">
+                  Opisz projekt. Przygotuję kierunek i wycenę.
+                </p>
+                <p className="text-sm leading-relaxed text-white/70 sm:text-base">
+                  Napisz, czego potrzebujesz i jaki
+                  efekt ma dać nowa strona.
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-5">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:items-stretch">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-2">
+                      <label className="text-sm font-semibold text-white" htmlFor="contact-name">
+                        {t.namePlaceholder}
+                      </label>
+                      
+                      <input
+                        id="contact-name"
+                        name="name"
+                        type="text"
+                        placeholder={t.namePlaceholder}
+                        autoComplete="name"
+                        required
+                        className="w-full rounded-xl border border-white/10 bg-white px-4 py-3 text-base text-black outline-none transition focus:border-yellow-300/70 focus:ring-2 focus:ring-yellow-300/20"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label className="text-sm font-semibold text-white" htmlFor="contact-phone">
+                        {t.phoneNumberPlaceholder}
+                      </label>
+                     
+                      <input
+                        id="contact-phone"
+                        name="phoneNumber"
+                        type="tel"
+                        value={phoneValue}
+                        onChange={(e) => setPhoneValue(e.target.value)}
+                        placeholder={t.phoneNumberPlaceholder}
+                        autoComplete="tel"
+                        required
+                        inputMode="numeric"
+                        aria-invalid={phoneTouched && !phoneValid}
+                        aria-describedby={
+                          phoneTouched ? "contact-phone-hint" : undefined
+                        }
+                        className={`w-full rounded-xl border bg-white px-4 py-3 text-base text-black outline-none transition focus:ring-2 ${
+                          !phoneTouched
+                            ? "border-white/10 focus:border-yellow-300/70 focus:ring-yellow-300/20"
+                            : phoneValid
+                              ? "border-green-500/60 focus:border-green-500 focus:ring-green-500/20"
+                              : "border-red-500/60 focus:border-red-500 focus:ring-red-500/20"
+                        }`}
+                      />
+                      <p
+                        id="contact-phone-hint"
+                        className={`text-xs ${
+                          !phoneTouched
+                            ? "text-white/45"
+                            : phoneValid
+                              ? "text-green-300"
+                              : "text-red-300"
+                        }`}
+                      >
+                        {phoneTouched
+                          ? phoneValid
+                            ? "Numer wygląda poprawnie."
+                            : `${phoneDigitCount}/9 cyfr. Podaj poprawny numer telefonu.`
+                          : "Możesz wpisać numer z odstępami, np. 721 417 154."}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex h-full flex-col gap-2">
+                    <label className="text-sm font-semibold text-white" htmlFor="contact-message">
+                      {t.messagePlaceholder}
+                    </label>
+                    
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      placeholder={t.messagePlaceholder}
+                      required
+                      rows={8}
+                      className="w-full flex-1 resize-y rounded-xl border border-white/10 bg-white px-4 py-3 text-base text-black outline-none transition focus:border-yellow-300/70 focus:ring-2 focus:ring-yellow-300/20 md:min-h-[12rem]"
+                    />
+                  </div>
+                </div>
+
+                <input
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                />
+
+                <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-black/20 p-4 sm:p-5">
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-yellow-300 px-5 py-4 text-base font-bold text-black shadow-[0_12px_30px_rgba(253,224,71,0.24)] transition-all duration-200 hover:brightness-105 hover:shadow-[0_16px_36px_rgba(253,224,71,0.32)] disabled:opacity-60 disabled:hover:brightness-100"
+                  >
+                    <FaPaperPlane className="h-5 w-5" />
+                    <span>{status === "sending" ? t.sending : t.send}</span>
+                  </button>
+
+                  <div className="grid grid-cols-1 gap-2 text-sm text-white/60 sm:grid-cols-2">
+                    <p>Odpowiadam zwykle w 24h.</p>
+                    <p>Krótka wiadomość wystarczy na start.</p>
+                  </div>
+
+                  {statusMessage ? (
+                    <p
+                      className={`text-sm ${
+                        status === "success" ? "text-green-300" : "text-red-300"
+                      }`}
+                      role={status === "error" ? "alert" : "status"}
+                    >
+                      {statusMessage}
+                    </p>
+                  ) : null}
+                </div>
+              </form>
+            </section>
+          </div>
         </div>
 
         <div className="mt-12 w-full px-4 lg:px-6">

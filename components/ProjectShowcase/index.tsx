@@ -5,6 +5,7 @@ import ProjectImages from "./ProjectImages";
 import { ProjectGalleryProvider } from "./ProjectGalleryContext";
 import ContactSection from "../ContactSection";
 import HomeIntentLayer from "../HomeIntentLayer";
+import LandingFaqSection from "../LandingFaqSection";
 import { PORTFOLIO_PROJECTS } from "@/data/portfolioProjects";
 import {
   getLandingPageLink,
@@ -95,7 +96,7 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
           {PORTFOLIO_PROJECTS.map((item, i) => (
             <div
               key={i}
-              className="w-full max-w-[1100px] relative h-max py-3 lg:py-24 my-12 lg:my-0 flex items-center duration-75 px-6 lg:px-12"
+              className="w-full max-w-[1100px] relative h-max py-3 lg:py-24 my-12 lg:my-0 flex items-center duration-75 "
             >
               <div className="w-full grid grid-cols-1 gap-6 h-max">
                 <div
@@ -111,29 +112,8 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                         "linear-gradient(135deg, rgba(253,224,71,0.25), rgba(0,0,0,0))",
                     }}
                   >
-                    <div className="flex items-start justify-between gap-4">
-                      <h3 className="bg-yellow-300 w-max px-6 py-3 shadow-sm shadow-black rounded-xl font-anta text-center text-black font-bold text-lg lg:text-xl">
-                        {item.name}
-                      </h3>
-                      <div className="text-right">
-                        <p className="text-xs sm:text-sm text-white/70 font-dosis">
-                          Projekt
-                        </p>
-                        <p className="text-sm sm:text-base text-white font-semibold font-dosis">
-                          #{i + 1}
-                        </p>
-                      </div>
-                    </div>
-                    <ProjectImages
-                      images={item.images}
-                      imageAlts={item.imageAlts}
-                      title={item.name}
-                    />
-
-                    {item.caseStudy ? (
-                      <div className="mt-5 rounded-xl border border-white/10 bg-black/20 p-4 sm:p-5">
-                        {item.link ? (
-                          <div className="mb-4">
+                   {item.link ? (
+                          <div className="mb-4 mx-auto">
                             <Link
                               href={item.link}
                               target="_blank"
@@ -146,6 +126,15 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                             </Link>
                           </div>
                         ) : null}
+                    <ProjectImages
+                      images={item.images}
+                      imageAlts={item.imageAlts}
+                      title={item.name}
+                    />
+
+                    {item.caseStudy ? (
+                      <div className="mt-5 rounded-xl border border-white/10 bg-black/20 p-4 sm:p-5">
+                        
                         <div className="space-y-4 font-dosis text-white/90">
                           <div>
                             <p className="text-xs uppercase tracking-[0.18em] text-white/60">
@@ -185,37 +174,10 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                               {item.caseStudy.result}
                             </p>
                           </div>
-                          <div>
-                            <p className="text-xs uppercase tracking-[0.18em] text-white/60">
-                              Powiązane usługi
-                            </p>
-                            <div className="mt-3 flex flex-wrap gap-2">
-                              {getRelatedServiceKeys(item)
-                                .map((serviceKey) =>
-                                  getLandingPageLink(serviceKey, pageContent.slug),
-                                )
-                                .filter(
-                                  (
-                                    link,
-                                  ): link is ReturnType<typeof getLandingPageLink> &
-                                    { href: string; label: string } =>
-                                    link !== null,
-                                )
-                                .filter((link) => link.href !== `/${pageContent.slug}`)
-                                .map((link) => (
-                                <Link
-                                  key={`${item.name}-${link.href}`}
-                                  href={link.href}
-                                  className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
-                                >
-                                  {link.label}
-                                </Link>
-                                ))}
-                            </div>
-                          </div>
+                          
                         </div>
 
-                        {item.portfolioSections ? (
+                        {/* {item.portfolioSections ? (
                           <div className="mt-6 space-y-6">
                             <div>
                               <p className="text-xs uppercase tracking-[0.18em] text-white/60">
@@ -303,7 +265,7 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                               </div>
                             </div>
                           </div>
-                        ) : null}
+                        ) : null} */}
                       </div>
                     ) : null}
                   </div>{" "}
@@ -312,6 +274,12 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
             </div>
           ))}
         </div>{" "}
+        <div className="z-auto top-0 w-screen flex flex-col items-center px-6 lg:px-12">
+          <LandingFaqSection
+            content={pageContent.intent}
+            currentSlug={pageContent.slug}
+          />
+        </div>
         <ContactSection content={pageContent.contact} />
       </div>
     </ProjectGalleryProvider>

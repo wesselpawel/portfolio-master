@@ -486,7 +486,7 @@ export const PORTFOLIO_PROJECTS: readonly PortfolioProject[] = [
     ],
     link: "https://stickerka.pl/",
     linkText:
-      "Stickerka.pl – sklep internetowy z naklejkami (e-commerce / personalizacja)",
+      "Stickerka.pl – sklep internetowy z naklejkami",
     type: "Projekt E-commerce",
     technologies: [
       "Next",

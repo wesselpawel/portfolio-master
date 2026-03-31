@@ -5,11 +5,16 @@ export type LandingPageOffer = {
   name: string;
   description: string;
   highlighted?: boolean;
+  image?: string;
+  imageAlt?: string;
+  price?: number;
 };
 
 export type LandingPageStep = {
   title: string;
   description: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 export type LandingPageFaqItem = {
@@ -141,16 +146,14 @@ const SITE_URL = "https://wesselpawel.com";
 const DEFAULT_CITY_SLUG = "grudziadz";
 const ALL_SERVICE_KEYS: LandingPageServiceKey[] = [
   "website",
-  "design",
   "landing",
   "store",
-  "sale",
   "seo",
 ];
 const DEFAULT_CONTEXTUAL_SERVICE_KEYS: LandingPageServiceKey[] = [
   "website",
-  "design",
   "landing",
+  "store",
   "seo",
 ];
 
@@ -235,17 +238,17 @@ function createMetadata(page: LandingPageContent): Metadata {
 function createSlug(serviceKey: LandingPageServiceKey, citySlug: string): string {
   switch (serviceKey) {
     case "website":
-      return `strony-internetowe-${citySlug}`;
+      return `tworzenie-stron-internetowych-${citySlug}`;
     case "design":
       return `projektowanie-stron-www-${citySlug}`;
     case "landing":
-      return `landing-page-${citySlug}`;
+      return `tworzenie-landing-page-${citySlug}`;
     case "store":
-      return `sklepy-internetowe-${citySlug}`;
+      return `tworzenie-sklepow-internetowych-${citySlug}`;
     case "sale":
       return `strony-internetowe-na-sprzedaz-${citySlug}`;
     case "seo":
-      return `pozycjonowanie-stron-internetowych-${citySlug}`;
+      return `seo-${citySlug}`;
   }
 }
 
@@ -273,10 +276,7 @@ function createOfferSupportingLinks(
   currentServiceKey: LandingPageServiceKey,
   city: LandingPageCity,
 ): LandingPageLink[] {
-  const preferredKeys: LandingPageServiceKey[] = ["website", "design", "landing"];
-  const fallbackKeys: LandingPageServiceKey[] = ["seo", "store", "sale"];
-
-  const selectedKeys = [...preferredKeys, ...fallbackKeys]
+  const selectedKeys = ALL_SERVICE_KEYS
     .filter((serviceKey) => serviceKey !== currentServiceKey)
     .slice(0, 3);
 
@@ -332,48 +332,54 @@ function createHomepageLandingPage(): LandingPageContent {
   return {
     key: "home",
     seo: {
-      title: "Strony internetowe dla firm - Paweł Wessel",
+      title: "Tworzenie stron internetowych - Paweł Wessel",
       description:
-        "Tworzę strony internetowe, landing page, sklepy internetowe i podstrony SEO dla firm, które chcą zdobywać więcej wartościowych zapytań.",
+        "Projektuję i wdrażam strony internetowe, które pomagają firmom zdobywać klientów — nie tylko dobrze wyglądać.",
     },
     hero: {
-      headingPrefix: "TWORZĘ ",
-      headingHighlight: "STRONY INTERNETOWE",
-      headingSuffix: " - POD SPRZEDAŻ, WIDOCZNOŚĆ I REALNE ZAPYTANIA",
+      headingPrefix: "Tworzenie ",
+      headingHighlight: "stron internetowych",
+      headingSuffix: " - design, wdrożenie i rozwój",
       description:
-        "Projektuję i wdrażam strony internetowe dla firm, które chcą lepiej prezentować ofertę, budować zaufanie i prowadzić użytkownika prosto do kontaktu.",
+        "Projektuję i wdrażam strony internetowe, które pomagają firmom zdobywać klientów — nie tylko dobrze wyglądać.",
       floatingPromptPrimary: "Masz pomysł na stronę internetową?",
-      floatingPromptSecondary: "Porozmawiajmy o Twoim projekcie",
+      floatingPromptSecondary: "Porozmawiajmy o Twoim projekcie.",
     },
     form: DEFAULT_FORM_CONTENT,
     intent: {
-      eyebrow: "Strony internetowe, landing page i SEO lokalne",
-      heading: "Wdrożenia, które łączą design, sprzedaż i lokalne SEO",
+      eyebrow: "Strony WWW - szybkie i solidne",
+      heading: "Strony internetowe, które realnie sprzedają — nie tylko dobrze wyglądają.",
       paragraphs: [
-        "Pomagam firmom planować strony internetowe tak, aby dobrze komunikowały ofertę i wspierały konkretny cel biznesowy.",
-        "Jeśli chcesz rozwijać widoczność na miasta i usługi, przygotuję strukturę, treści oraz landing pages gotowe do dalszego skalowania.",
+        "Projektuję responsywne strony WWW, z nowoczesnym designem i pozycjonowaniem SEO - większa widoczność witryny i klienci z Google? Skontaktuj się.",
+        
       ],
       ctaTitle: "Chcesz omówić projekt?",
       ctaDescription:
-        "Przejdź do formularza i opisz, czego potrzebujesz. Możemy zacząć od jednej strony albo od całej struktury pod SEO lokalne.",
-      primaryCtaLabel: "Przejdź do formularza i opisz projekt",
+        "Przejdź do formularza i opisz, czego potrzebujesz.",
+      primaryCtaLabel: "Darmowa wycena",
       offerLabel: "Oferta",
       offerOptions: [
         {
-          name: "Strona firmowa",
-          description:
-            "Dla firm, które chcą uporządkować ofertę, wizerunek i proces pozyskiwania zapytań.",
-          highlighted: true,
-        },
-        {
           name: "Landing page",
           description:
-            "Dla jednej usługi, kampanii albo oferty, gdy najważniejsza jest szybka konwersja.",
+            "Strona WWW dla jednej usługi lub kampanii Google Ads.",
+          highlighted: true,
+          image:"/images/projects/hexon/hero.png",
+          imageAlt: "Strona internetowa landing page z branży energetycznej",price:700,
         },
         {
-          name: "SEO lokalne i city pages",
+          name: "Strona wizytówka",
           description:
-            "Dla firm, które chcą rozwijać widoczność na miasta, usługi i intencje lokalne.",
+            "Strona internetowa wyświetlająca ofertę w Google.",
+          image:"/images/projects/kancelariadeluga/hero.webp",
+          imageAlt: "Strona internetowa wizytówka kancelarii prawniczej w Grudziądzu",price:1200,
+        },
+        {
+          name: "Strona firmowa",
+          description:
+            "Strona internetowa dla firmy, z pozycjonowaniem SEO.",
+          image:"/images/projects/glazurnikgrudziadz/hero.png",
+          imageAlt: "Strona firmowa dla glazurnika z Grudziądza",price:2000,
         },
       ],
       whyTitle: "Dlaczego warto ze mną współpracować",
@@ -386,27 +392,31 @@ function createHomepageLandingPage(): LandingPageContent {
         "Nacisk na szybkość działania, mobile i czytelne CTA",
         "Możliwość skalowania strony na kolejne miasta i usługi",
       ],
-      processTitle: "Jak wygląda współpraca",
+      processTitle: "Jak powstaje strona, która zdobywa klientów",
       processSteps: [
         {
-          title: "1. Ustalenie celu i zakresu",
+          title: "Ustalenie celu i zakresu",
           description:
-            "Rozmawiamy o ofercie, odbiorcy i tym, co ma realnie dawać nowa strona.",
+            "Nie zaczynam od designu — zaczynam od tego, co ma zarabiać. Ustalamy, kto jest Twoim klientem i co strona ma dla niego zrobić.",
+            image:"/tworzenie-strony-internetowej/poczatek-tworzenia-strony-internetowej.png",
         },
         {
-          title: "2. Struktura i komunikacja",
+          title: "Struktura i komunikacja",
           description:
-            "Układam sekcje, nagłówki i kierunek treści pod sprzedaż oraz SEO.",
+            "Układam stronę tak, żeby prowadziła użytkownika krok po kroku do kontaktu. Treści, nagłówki i sekcje mają sprzedawać — nie tylko wyglądać.",
+            image:"/tworzenie-strony-internetowej/strona-internetowa-w-trakcie-tworzenia.png",
         },
         {
-          title: "3. Wdrożenie i iteracja",
+          title: "Wdrożenie i dopracowanie",
           description:
-            "Buduję stronę, konfiguruję kontakt i dopracowuję szczegóły przed publikacją.",
+            "Buduję stronę, dbam o szybkość, SEO i działanie na każdym urządzeniu. Testujemy, poprawiamy i dopinamy wszystko przed publikacją.",
+            image:"/tworzenie-strony-internetowej/strona-internetowa-jest-prawie-gotowa.png",
         },
         {
-          title: "4. Rozwój pod kolejne podstrony",
+          title: "Rozwój i skalowanie",
           description:
-            "Jeśli chcesz, rozbudowujemy serwis o lokalne landing pages i kolejne usługi.",
+            "Strona startuje, ale to dopiero początek. Możemy ją rozwijać o kolejne podstrony, SEO i nowe źródła klientów.",
+            image:"/tworzenie-strony-internetowej/twoja-strona-internetowa-została-stworzona.png",
         },
       ],
       includedTitle: "Co otrzymujesz w standardzie",
@@ -966,7 +976,7 @@ function createStoreOverviewPage(): LandingPageContent {
         "Dbałość o szybkość działania oraz doświadczenie na telefonie",
         "Bezpośredni kontakt od planu sklepu po publikację",
       ],
-      processTitle: "Jak wygląda współpraca",
+      processTitle: "Jak powstaje strona, która zdobywa klientów",
       processSteps: [
         {
           title: "1. Analiza sprzedaży i zakresu",
@@ -1200,7 +1210,7 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
 
   return createCityLandingPage("website", city, {
     seo: {
-      title: `Strony internetowe ${city.name} - tworzenie stron www dla firm`,
+      title: `Tworzenie stron internetowych ${city.name} - strony www dla firm`,
       description: `Tworzę strony internetowe i strony www dla firm ${c.fromGenitive}. Projektuję i wdrażam serwisy, które pomagają lepiej prezentować ofertę, budować zaufanie i zdobywać klientów.`,
     },
     hero: {
@@ -1228,17 +1238,26 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
           name: "Landing page",
           description:
             "Dla jednej usługi lub kampanii. Szybki start i prosty układ nastawiony na kontakt.",
+          image: "/images/projects/hexon/hero.png",
+          imageAlt: "Landing page dla jednej usługi z wyraźnym CTA i sekcją hero",
+          price: 700,
         },
         {
           name: "Strona firmowa",
           description:
             "Najlepsza opcja dla lokalnych firm. Pozwala pokazać ofertę, proces i regularnie pozyskiwać klientów z Google.",
           highlighted: true,
+          image: "/images/projects/glazurnikgrudziadz/hero.png",
+          imageAlt: "Strona firmowa lokalnej firmy usługowej z sekcją oferty i CTA",
+          price: 2000,
         },
         {
           name: "Rozbudowany serwis",
           description:
             "Dla firm, które potrzebują większej liczby podstron, bloga, rozbudowanej oferty lub rozwoju etapami.",
+          image: "/images/projects/dziendiety/hero.png",
+          imageAlt: "Rozbudowany serwis usługowy z wieloma sekcjami i ofertą etapową",
+          price: 4000,
         },
       ],
       offerSupportingLinks: createOfferSupportingLinks("website", city),
@@ -1258,21 +1277,37 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
           title: "1. Rozmowa i wycena",
           description:
             "Ustalamy cel strony, zakres projektu i najlepszy kierunek dla Twojej firmy.",
+          image:
+            "/tworzenie-strony-internetowej/poczatek-tworzenia-strony-internetowej.png",
+          imageAlt:
+            "Pierwszy etap tworzenia strony internetowej: rozmowa o celu i zakresie projektu",
         },
         {
           title: "2. Struktura i komunikacja",
           description:
             "Przygotowuję układ sekcji, hierarchię treści i sposób prezentacji oferty.",
+          image:
+            "/tworzenie-strony-internetowej/strona-internetowa-w-trakcie-tworzenia.png",
+          imageAlt:
+            "Drugi etap tworzenia strony internetowej: projektowanie struktury i komunikacji",
         },
         {
           title: "3. Wdrożenie i poprawki",
           description:
             "Tworzę stronę, konfiguruję formularze i dopracowuję detale potrzebne do startu.",
+          image:
+            "/tworzenie-strony-internetowej/strona-internetowa-jest-prawie-gotowa.png",
+          imageAlt:
+            "Trzeci etap tworzenia strony internetowej: wdrożenie i dopracowanie szczegółów",
         },
         {
           title: "4. Publikacja i rozwój",
           description:
             "Po uruchomieniu strony możesz rozwijać kolejne podstrony, treści i działania SEO.",
+          image:
+            "/tworzenie-strony-internetowej/twoja-strona-internetowa-została-stworzona.png",
+          imageAlt:
+            "Czwarty etap tworzenia strony internetowej: publikacja i dalszy rozwój serwisu",
         },
       ],
       includedTitle: "Co otrzymujesz w ramach strony internetowej",
@@ -1300,7 +1335,7 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
           relatedLinks: [
             createServiceLink("landing", city),
             createServiceLink("store", city),
-            createServiceLink("design", city),
+            createServiceLink("seo", city),
           ],
         },
         {
@@ -1313,8 +1348,8 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
           answer:
             "Tak. Pomagam uporządkować ofertę, zaplanować strukturę i przygotować komunikaty, które lepiej sprzedają.",
           relatedLinks: [
-            createServiceLink("design", city),
             createServiceLink("landing", city),
+            createServiceLink("seo", city),
           ],
         },
         {
@@ -1500,7 +1535,7 @@ function createLandingPageServicePage(city: LandingPageCity): LandingPageContent
 
   return createCityLandingPage("landing", city, {
     seo: {
-      title: `Landing page ${city.name} - strony sprzedażowe pod kampanie i leady`,
+      title: `Tworzenie landing page ${city.name} - strony pod kampanie i leady`,
       description: `Tworzę landing page dla firm ${c.fromGenitive}. Strony pod kampanie, usługi i reklamy, zaprojektowane tak, by zwiększać liczbę zapytań i kontaktów.`,
     },
     hero: {
@@ -1534,16 +1569,28 @@ function createLandingPageServicePage(city: LandingPageCity): LandingPageContent
           description:
             "Dla jednej usługi, gdy liczy się prosty układ, szybki kontakt i wysoka czytelność oferty.",
           highlighted: true,
+          image: "/images/projects/hexon/hero.png",
+          imageAlt:
+            "Landing page pod jedną usługę z mocnym nagłówkiem i prostym CTA",
+          price: 700,
         },
         {
           name: "Landing page pod kampanię",
           description:
             "Dla działań reklamowych, promocji lub okresowych akcji, gdzie liczy się szybki start i dobra konwersja.",
+          image: "/images/projects/dziendiety/test.png",
+          imageAlt:
+            "Landing page kampanijny z formularzem leadowym i prostą ścieżką konwersji",
+          price: 1100,
         },
         {
           name: "Landing page rozwijany etapami",
           description:
             "Dla firm, które chcą zacząć od jednej strony i z czasem rozbudować ją o kolejne warianty lub sekcje.",
+          image: "/images/projects/dziendiety/howitworks.png",
+          imageAlt:
+            "Landing page przygotowany do dalszej rozbudowy o kolejne sekcje i warianty",
+          price: 1600,
         },
       ],
       offerSupportingLinks: createOfferSupportingLinks("landing", city),
@@ -1563,21 +1610,33 @@ function createLandingPageServicePage(city: LandingPageCity): LandingPageContent
           title: "1. Ustalenie celu landing page",
           description:
             "Definiujemy, czy najważniejszy ma być telefon, formularz, lead czy zapis.",
+          image: "/images/projects/dziendiety/howitworks.png",
+          imageAlt:
+            "Planowanie celu i konwersji dla landing page pod kampanię lub usługę",
         },
         {
           title: "2. Układ treści i argumentów",
           description:
             "Przygotowuję strukturę sekcji, argumenty sprzedażowe i sposób prowadzenia użytkownika.",
+          image: "/images/projects/dziendiety/underhero.png",
+          imageAlt:
+            "Projekt sekcji, argumentów sprzedażowych i logiki komunikacji na landing page",
         },
         {
           title: "3. Wdrożenie i konfiguracja",
           description:
             "Tworzę landing page, dbam o responsywność i podpinam formularz lub inne elementy kontaktowe.",
+          image: "/images/projects/hexon/hero.png",
+          imageAlt:
+            "Wdrożenie landing page z wyraźnym CTA i układem nastawionym na leady",
         },
         {
           title: "4. Publikacja i dalsze testy",
           description:
             "Po uruchomieniu strony możesz dalej rozwijać kolejne warianty kampanii lub ofert.",
+          image: "/images/projects/dziendiety/faq.png",
+          imageAlt:
+            "Rozwój landing page po publikacji poprzez testy i dalszą optymalizację treści",
         },
       ],
       includedTitle: "Co otrzymujesz w ramach landing page",
@@ -1614,7 +1673,7 @@ function createLandingPageServicePage(city: LandingPageCity): LandingPageContent
             "Czasem tak, jeśli na start chcesz promować jedną usługę. Przy większej ofercie zwykle lepsza będzie pełna strona firmowa.",
           relatedLinks: [
             createServiceLink("website", city),
-            createServiceLink("design", city),
+            createServiceLink("store", city),
           ],
         },
         {
@@ -1646,7 +1705,7 @@ function createStorePage(city: LandingPageCity): LandingPageContent {
 
   return createCityLandingPage("store", city, {
     seo: {
-      title: `Sklepy internetowe ${city.name} - projekt i wdrożenie ecommerce`,
+      title: `Tworzenie sklepów internetowych ${city.name} - ecommerce dla firm`,
       description: `Tworzę sklepy internetowe dla firm ${c.fromGenitive}. Projektuję sprzedaż online, wdrażam koszyk, płatności i układ nastawiony na konwersję.`,
     },
     hero: {
@@ -1679,17 +1738,29 @@ function createStorePage(city: LandingPageCity): LandingPageContent {
           name: "Sklep start",
           description:
             "Dla mniejszej oferty i szybkiego wejścia w ecommerce. Najważniejsze funkcje gotowe do startu.",
+          image: "/images/projects/stickerka/hero.png",
+          imageAlt:
+            "Sklep internetowy start z prostą ofertą produktów i szybkim wejściem online",
+          price: 2500,
         },
         {
           name: "Sklep firmowy",
           description:
             "Najlepsza opcja dla firm, które chcą połączyć sprzedaż online z czytelną prezentacją marki i oferty.",
           highlighted: true,
+          image: "/images/projects/blackbellart/hero.png",
+          imageAlt:
+            "Sklep internetowy firmowy łączący markę, ofertę i sprzedaż produktów",
+          price: 4500,
         },
         {
           name: "Rozbudowany ecommerce",
           description:
             "Dla firm, które potrzebują większej liczby kategorii, integracji, automatyzacji lub rozwoju etapami.",
+          image: "/images/projects/stickerka/checkout.png",
+          imageAlt:
+            "Rozbudowany sklep internetowy z bardziej zaawansowanym procesem zakupowym",
+          price: 8000,
         },
       ],
       offerSupportingLinks: createOfferSupportingLinks("store", city),
@@ -1703,27 +1774,39 @@ function createStorePage(city: LandingPageCity): LandingPageContent {
         "Dbałość o szybkość działania oraz doświadczenie na telefonie",
         "Bezpośredni kontakt od planu sklepu po publikację",
       ],
-      processTitle: "Jak wygląda współpraca",
+      processTitle: "Jak powstaje strona, która zdobywa klientów",
       processSteps: [
         {
           title: "1. Analiza sprzedaży i zakresu",
           description:
             "Ustalamy, co sprzedajesz, jak wygląda proces zamówienia i jakie funkcje są potrzebne na start.",
+          image: "/images/projects/stickerka/underHero.png",
+          imageAlt:
+            "Analiza oferty, kategorii i modelu sprzedaży przed wdrożeniem sklepu internetowego",
         },
         {
           title: "2. Struktura sklepu i makieta",
           description:
             "Planowanie kategorii, produktu, koszyka oraz sekcji, które mają wspierać decyzję zakupową.",
+          image: "/images/projects/blackbellart/products.png",
+          imageAlt:
+            "Projekt struktury sklepu internetowego z kategoriami i kartami produktów",
         },
         {
           title: "3. Wdrożenie i konfiguracja",
           description:
             "Tworzę sklep, konfiguruję formularze, podstawowe elementy sprzedaży i niezbędne poprawki.",
+          image: "/images/projects/blackbellart/cart.png",
+          imageAlt:
+            "Wdrożenie sklepu internetowego z koszykiem i kluczowymi funkcjami sprzedażowymi",
         },
         {
           title: "4. Publikacja i rozwój",
           description:
             "Po starcie sklep jest gotowy do działania, a Ty możesz rozwijać go etapami wraz ze wzrostem oferty.",
+          image: "/images/projects/stickerka/chart.png",
+          imageAlt:
+            "Rozwój sklepu internetowego po publikacji wraz ze wzrostem oferty i sprzedaży",
         },
       ],
       includedTitle: "Co otrzymujesz w cenie",
@@ -1755,7 +1838,7 @@ function createStorePage(city: LandingPageCity): LandingPageContent {
           answer:
             "Tak. Pomagam uporządkować kategorie, strukturę sklepu, najważniejsze sekcje i ścieżkę zakupową.",
           relatedLinks: [
-            createServiceLink("design", city),
+            createServiceLink("website", city),
             createServiceLink("landing", city),
           ],
         },
@@ -1825,17 +1908,29 @@ function createSeoPage(city: LandingPageCity): LandingPageContent {
           name: "Audyt SEO",
           description:
             "Dla firm, które chcą zrozumieć, co blokuje widoczność strony i od czego zacząć poprawę.",
+          image: "/images/projects/glazurnikgrudziadz/underHero.png",
+          imageAlt:
+            "Audyt SEO strony internetowej z analizą treści, struktury i widoczności",
+          price: 600,
         },
         {
           name: "SEO lokalne",
           description:
             `Najlepsza opcja dla firm, które działają ${c.inLocative} i chcą być częściej znajdowane przez klientów.`,
           highlighted: true,
+          image: "/images/projects/glazurnikgrudziadz/hero.png",
+          imageAlt:
+            "Lokalne SEO dla firm usługowych z widocznością na frazy miejskie",
+          price: 1200,
         },
         {
           name: "Stałe rozwijanie treści",
           description:
             "Dla firm, które chcą etapowo rozbudowywać widoczność strony, sekcje ofertowe i long-tail.",
+          image: "/images/projects/dziendiety/faq.png",
+          imageAlt:
+            "Rozwój treści SEO i sekcji odpowiadających na pytania użytkowników",
+          price: 1800,
         },
       ],
       offerSupportingLinks: createOfferSupportingLinks("seo", city),
@@ -1855,21 +1950,33 @@ function createSeoPage(city: LandingPageCity): LandingPageContent {
           title: "1. Audyt SEO i analiza fraz",
           description:
             "Sprawdzam obecną widoczność, lokalne frazy, strukturę treści, nagłówki i elementy, które blokują wzrost.",
+          image: "/images/projects/glazurnikgrudziadz/hero.png",
+          imageAlt:
+            "Audyt SEO strony internetowej i analiza lokalnych fraz kluczowych",
         },
         {
           title: "2. Plan zmian contentowych i on-page",
           description:
             "Układam priorytety: co poprawić najpierw w treści, strukturze informacji, sekcjach i lokalnych sygnałach SEO.",
+          image: "/images/projects/glazurnikgrudziadz/wspolpraca.png",
+          imageAlt:
+            "Plan zmian contentowych, struktury strony i priorytetów SEO on-page",
         },
         {
           title: "3. Wdrożenie rekomendacji SEO",
           description:
             "Wprowadzam lub rozpisuję zmiany w treści, nagłówkach, sekcjach i stronach, które wspierają widoczność oraz jakość ruchu.",
+          image: "/images/projects/glazurnikgrudziadz/cennik.png",
+          imageAlt:
+            "Wdrożenie rekomendacji SEO w treści, sekcjach i układzie strony internetowej",
         },
         {
           title: "4. Monitoring i dalszy rozwój",
           description:
             "Ustalamy kolejne kroki: rozwój contentu, dalszą optymalizację lokalnych fraz i porządkowanie architektury strony.",
+          image: "/images/projects/glazurnikgrudziadz/footer.png",
+          imageAlt:
+            "Dalszy rozwój SEO lokalnego i porządkowanie architektury strony po wdrożeniu",
         },
       ],
       includedTitle: "Co otrzymujesz w ramach pozycjonowania",
@@ -2244,30 +2351,16 @@ function createSalePage(city: LandingPageCity): LandingPageContent {
 export const HOME_LANDING_PAGE = createHomepageLandingPage();
 
 export const SEO_LANDING_PAGES: LandingPageContent[] = [
-  createWebsiteOverviewPage(),
-  createWebDesignOverviewPage(),
-  createLandingPageOverviewPage(),
-  createStoreOverviewPage(),
-  createSaleHomePage(),
-  createSeoOverviewPage(),
   ...ALL_CITIES.flatMap((city) => [
     createWebsitePage(city),
-    createWebDesignPage(city),
     createLandingPageServicePage(city),
     createStorePage(city),
-    createSalePage(city),
     createSeoPage(city),
   ]),
 ];
 
 const LANDING_PAGE_BY_SLUG = new Map(
   SEO_LANDING_PAGES.map((page) => [page.slug as string, page]),
-);
-
-const GENERIC_LANDING_PAGE_BY_SERVICE = new Map(
-  SEO_LANDING_PAGES.filter((page) => page.serviceKey && !page.citySlug).map(
-    (page) => [page.serviceKey as LandingPageServiceKey, page],
-  ),
 );
 
 const LANDING_PAGE_BY_SERVICE_AND_CITY = new Map(
@@ -2404,21 +2497,6 @@ export function getLandingPageLink(
   serviceKey: LandingPageServiceKey,
   currentSlug?: string,
 ): LandingPageLink | null {
-  const currentPage = LANDING_PAGE_BY_SLUG.get(currentSlug ?? "");
-
-  if (currentPage && !currentPage.citySlug) {
-    const genericPage = GENERIC_LANDING_PAGE_BY_SERVICE.get(serviceKey);
-
-    if (!genericPage?.slug) {
-      return null;
-    }
-
-    return {
-      href: `/${genericPage.slug}`,
-      label: SERVICE_LABELS[serviceKey],
-    };
-  }
-
   const citySlug = getCitySlugForContext(currentSlug);
   const page = LANDING_PAGE_BY_SERVICE_AND_CITY.get(`${serviceKey}:${citySlug}`);
 
@@ -2434,22 +2512,24 @@ export function getLandingPageLink(
 
 export function getPrimaryLandingPageLink(
   serviceKey: LandingPageServiceKey,
+  currentSlug?: string,
 ): LandingPageLink | null {
-  const page = GENERIC_LANDING_PAGE_BY_SERVICE.get(serviceKey);
+  const citySlug = getCitySlugForContext(currentSlug);
+  const page = LANDING_PAGE_BY_SERVICE_AND_CITY.get(`${serviceKey}:${citySlug}`);
 
-  if (!page?.slug) {
+  if (!page?.slug || !page.cityName) {
     return null;
   }
 
   return {
     href: `/${page.slug}`,
-    label: SERVICE_LABELS[serviceKey],
+    label: `${SERVICE_LABELS[serviceKey]} ${page.cityName}`,
   };
 }
 
-export function getPrimaryServiceLinks(): LandingPageLink[] {
+export function getPrimaryServiceLinks(currentSlug?: string): LandingPageLink[] {
   return ALL_SERVICE_KEYS.map((serviceKey) =>
-    getPrimaryLandingPageLink(serviceKey),
+    getPrimaryLandingPageLink(serviceKey, currentSlug),
   ).filter((link): link is LandingPageLink => Boolean(link));
 }
 

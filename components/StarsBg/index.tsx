@@ -42,7 +42,7 @@ function Stars(props: any) {
       >
         <PointMaterial
           transparent
-          color="rgb(150,150,150)"
+          color="rgb(255, 255, 255)"
           size={4}
           sizeAttenuation={false}
           depthWrite={false}

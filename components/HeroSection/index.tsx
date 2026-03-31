@@ -126,14 +126,10 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
   return (
     <div>
       <motion.div
-        style={{
-          opacity: welcomeBoxOpacity,
-          translateX: welcomeBoxTranslateX,
-          translateY: welcomeBoxTranslateY,
-        }}
+       
         className="absolute left-0 top-0 z-[501] flex min-h-[100svh] w-full justify-center rounded-3xl pt-28 sm:pt-32 lg:items-center lg:pt-0"
       >
-        <div className="mx-auto items-center mt-24 justify-evenly grid grid-cols-1 lg:flex flex-row w-[90vw] max-h-[60vh] 2xl:h-[100vh]">
+        <div className="mx-auto items-center justify-center mt-12 justify-evenly grid grid-cols-1 lg:flex flex-row w-[90vw] max-h-[60vh] 2xl:h-[100vh]">
           <div className="rounded-3xl relative lg:w-[40vw] bg-slate-800/40 p-8">
             {breadcrumbLinks.length ? (
               <nav
@@ -189,8 +185,15 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
           {/* <div className="flex items-center justify-center mt-8">
             <WebsiteOrderForm content={pageContent.form} />
           </div> */}
-           <Image src="/assets/herogif.gif" alt="download" width={400} height={400} className="mt-12 -ml-3 w-[100vw] lg:w-auto flex max-h-[80vh] w-auto aspect-auto" />
-          
+          <div className="w-full lg:w-auto flex items-center justify-center">
+           <Image 
+             src={require('@/public/assets/herogif.gif')} 
+             alt="Prezentacja responsywności stron internetowych na mockupie urządzenia mobilnego" 
+             width={400} 
+             height={400} 
+             className="mt-12 -ml-3 w-[100vw] lg:w-auto flex max-h-[80vh] w-auto aspect-auto" 
+           />
+          </div>
         </div>
       </motion.div>
       <ProjectShowcase pageContent={pageContent} />
