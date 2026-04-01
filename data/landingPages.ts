@@ -281,7 +281,7 @@ function createMetadata(page: LandingPageContent): Metadata {
       url,
       title: page.seo.title,
       description: page.seo.description,
-      siteName: "wesselpawel.com",
+      siteName: "Paweł Wessel - WWW Expert",
       images: [
         {
           url: `${SITE_URL}/assets/pinkdonut.png`,

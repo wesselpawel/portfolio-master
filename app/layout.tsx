@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Strony internetowe | SEO | Strony firmowe Paweł Wessel",
     description:
       "Tworzę strony internetowe dla firm, landing page, sklepy internetowe i rozwiązania pod SEO lokalne. Projektuję, wdrażam i rozwijam strony internetowe w Grudziądzu.",
-    siteName: "wesselpawel.com",
+    siteName: "Paweł Wessel - WWW Expert",
     images: [
       {
         url: "https://wesselpawel.com/assets/pinkdonut.png",

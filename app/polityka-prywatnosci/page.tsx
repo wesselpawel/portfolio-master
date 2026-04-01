@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Polityka prywatności | wesselpawel.com",
     description:
       "Informacje o przetwarzaniu danych osobowych i zasadach kontaktu na stronie wesselpawel.com.",
-    siteName: "wesselpawel.com",
+    siteName: "Paweł Wessel - WWW Expert",
   },
   twitter: {
     title: "Polityka prywatności | wesselpawel.com",

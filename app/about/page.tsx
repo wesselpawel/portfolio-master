@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "O mnie | Tworzenie stron internetowych Grudziądz",
     description:
       "Poznaj moją drogę od technikum informatycznego do tworzenia stron, sklepów i platform internetowych. Front-end, SEO i strony internetowe w Grudziądzu.",
-    siteName: "wesselpawel.com",
+    siteName: "Paweł Wessel - WWW Expert",
   },
   twitter: {
     title: "O mnie | Tworzenie stron internetowych Grudziądz",

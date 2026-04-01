@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Polityka cookies | wesselpawel.com",
     description:
       "Informacje o plikach cookies, zgodach i narzędziach analitycznych wykorzystywanych w serwisie wesselpawel.com.",
-    siteName: "wesselpawel.com",
+    siteName: "Paweł Wessel - WWW Expert",
   },
   twitter: {
     title: "Polityka cookies | wesselpawel.com",
