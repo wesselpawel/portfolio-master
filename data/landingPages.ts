@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import citiesData from "@/data/cities.json";
 import {
   getLandingPageTargetRecords,
   type LandingPageTargetRecord,
 } from "@/data/landingPageTargets";
+import {
+  ALL_POLISH_CITIES,
+  type LandingPageCity,
+} from "@/data/polishCities";
 
 export type LandingPageOffer = {
   name: string;
@@ -98,22 +101,6 @@ export type LandingPageServiceKey =
   | "store"
   | "sale"
   | "seo";
-
-type LandingPageCityCases = {
-  mianownik: string;
-  dopelniacz: string;
-  celownik: string;
-  biernik: string;
-  narzednik: string;
-  miejscownik: string;
-  wolacz: string;
-};
-
-type LandingPageCity = {
-  slug: string;
-  name: string;
-  cases: LandingPageCityCases;
-};
 
 export type LandingPageContent = {
   key: string;
@@ -247,24 +234,12 @@ function getLandingPageAddedDate(key: LandingPageDateKey): string {
   return LANDING_PAGE_ADDED_DATES[key];
 }
 
-const GRUDZIADZ_CITY: LandingPageCity = {
-  slug: "grudziadz",
-  name: "Grudziądz",
-  cases: {
-    mianownik: "Grudziądz",
-    dopelniacz: "Grudziądza",
-    celownik: "Grudziądzowi",
-    biernik: "Grudziądz",
-    narzednik: "Grudziądzem",
-    miejscownik: "Grudziądzu",
-    wolacz: "Grudziądzu",
-  },
-};
+const ALL_CITIES: LandingPageCity[] = ALL_POLISH_CITIES;
+const DEFAULT_CITY = ALL_CITIES.find((city) => city.slug === DEFAULT_CITY_SLUG);
 
-const ALL_CITIES: LandingPageCity[] = [
-  GRUDZIADZ_CITY,
-  ...(citiesData as LandingPageCity[]),
-];
+if (!DEFAULT_CITY) {
+  throw new Error(`Default city "${DEFAULT_CITY_SLUG}" was not found in the city dataset.`);
+}
 
 function createMetadata(page: LandingPageContent): Metadata {
   const pathname = page.slug ? `/${page.slug}` : "/";
@@ -351,9 +326,7 @@ function createTargetSlug(targetSlug: string, citySlug: string): string {
 function getCityContext(city: LandingPageCity) {
   return {
     ...city,
-    inLocative: `w ${city.cases.miejscownik}`,
-    fromGenitive: `z ${city.cases.dopelniacz}`,
-    locativeUpper: city.cases.miejscownik.toUpperCase(),
+    ...city.context,
     upperName: city.name.toUpperCase(),
   };
 }
@@ -2652,7 +2625,7 @@ function createTargetAudiencePage(
   };
 }
 
-export const HOME_LANDING_PAGE = createWebsitePage(GRUDZIADZ_CITY);
+export const HOME_LANDING_PAGE = createWebsitePage(DEFAULT_CITY);
 
 const TARGET_LANDING_PAGE_RECORDS = getLandingPageTargetRecords();
 
