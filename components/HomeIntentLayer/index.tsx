@@ -3,15 +3,19 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
+  getCurrentCityTargetLinks,
   getContextualLandingPageLinks,
   getHomepageSectionLinks,
+  type LandingPageContent,
   type LandingPageStep,
   type LandingPageLink,
   type LandingPageIntentContent,
 } from "@/data/landingPages";
 import Image from "next/image";
+import { highlightLandingKeywords } from "@/utils/highlightLandingKeywords";
 
 type HomeIntentLayerProps = {
+  pageContent: LandingPageContent;
   content: LandingPageIntentContent;
   currentSlug?: string;
 };
@@ -67,11 +71,13 @@ function ProcessStepCard({ step, index }: ProcessStepCardProps) {
 }
 
 export default function HomeIntentLayer({
+  pageContent,
   content,
   currentSlug,
 }: HomeIntentLayerProps) {
   const sectionLinks = getHomepageSectionLinks(!currentSlug);
   const contextualLandingLinks = getContextualLandingPageLinks(currentSlug);
+  const currentCityTargetLinks = getCurrentCityTargetLinks(currentSlug, false);
 
   function renderInlineLinks(links: LandingPageLink[]) {
     return links.map((link, index) => {
@@ -89,6 +95,18 @@ export default function HomeIntentLayer({
     });
   }
 
+  function renderLinkChips(links: LandingPageLink[], keyPrefix: string) {
+    return links.map((link) => (
+      <Link
+        key={`${keyPrefix}-${link.href}`}
+        href={link.href}
+        className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-medium text-white/85 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
+      >
+        {link.label}
+      </Link>
+    ));
+  }
+
   return (
     <section className="z-[501] mx-auto w-[90vw] pt-8 pb-10 lg:pt-12 lg:pb-16">
       <div className="rounded-[28px] border border-yellow-300/40 bg-slate-900/80 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-sm lg:p-8">
@@ -98,14 +116,14 @@ export default function HomeIntentLayer({
         <div className="mt-4 grid grid-cols-1 gap-6 lg:grid-cols-[1.35fr_0.9fr] lg:items-center">
           <div>
             <h2 className="font-sans text-3xl font-extrabold text-white lg:text-4xl">
-              {content.heading}
+              {highlightLandingKeywords(content.heading, pageContent)}
             </h2>
             {content.paragraphs.map((paragraph) => (
               <p
                 key={paragraph}
                 className="mt-4 max-w-3xl font-dosis text-base leading-relaxed text-white/80 lg:text-lg"
               >
-                {paragraph}
+                {highlightLandingKeywords(paragraph, pageContent)}
               </p>
             ))}
             
@@ -209,6 +227,21 @@ export default function HomeIntentLayer({
               <ProcessStepCard key={step.title} step={step} index={index} />
             ))}
           </div>
+
+          {currentCityTargetLinks.length ? (
+            <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-yellow-200/85">
+                Powiązane podstrony targetowe
+              </p>
+              <p className="mt-2 max-w-3xl font-dosis text-sm leading-relaxed text-white/70 sm:text-base">
+                Jeśli porównujesz branże i typy klientów w tym mieście, sprawdź też{" "}
+                {renderInlineLinks(currentCityTargetLinks)}.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {renderLinkChips(currentCityTargetLinks, "process-target")}
+              </div>
+            </div>
+          ) : null}
         </section>
       </div>
 

@@ -76,6 +76,7 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
         className="flex-col flex w-screen relative mt-[470vh]"
       >
         <HomeIntentLayer
+          pageContent={pageContent}
           content={pageContent.intent}
           currentSlug={pageContent.slug}
         />
@@ -276,6 +277,7 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
         </div>{" "}
         <div className="z-auto top-0 w-screen flex flex-col items-center px-6 lg:px-12">
           <LandingFaqSection
+            pageContent={pageContent}
             content={pageContent.intent}
             currentSlug={pageContent.slug}
           />

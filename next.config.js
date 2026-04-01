@@ -12,7 +12,7 @@ const nextConfig = {
       { source: "/en/:path*", destination: "/:path*", permanent: true },
       {
         source: "/strony-internetowe",
-        destination: "/tworzenie-stron-internetowych-grudziadz",
+        destination: "/",
         permanent: true,
       },
       {
@@ -31,8 +31,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/landing-page",
-        destination: "/tworzenie-landing-page-grudziadz",
+        source: "/tworzenie-landing-page-grudziadz",
+        destination: "/landing-page",
         permanent: true,
       },
       {
@@ -41,8 +41,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/sklepy-internetowe",
-        destination: "/tworzenie-sklepow-internetowych-grudziadz",
+        source: "/tworzenie-sklepow-internetowych-grudziadz",
+        destination: "/sklepy-internetowe",
         permanent: true,
       },
       {
@@ -62,12 +62,27 @@ const nextConfig = {
       },
       {
         source: "/pozycjonowanie-stron-internetowych",
-        destination: "/seo-grudziadz",
+        destination: "/seo",
+        permanent: true,
+      },
+      {
+        source: "/pozycjonowanie-stron-internetowych-grudziadz",
+        destination: "/seo",
+        permanent: true,
+      },
+      {
+        source: "/seo-grudziadz",
+        destination: "/seo",
         permanent: true,
       },
       {
         source: "/pozycjonowanie-stron-internetowych-:city",
         destination: "/seo-:city",
+        permanent: true,
+      },
+      {
+        source: "/tworzenie-stron-internetowych-grudziadz",
+        destination: "/",
         permanent: true,
       },
     ];

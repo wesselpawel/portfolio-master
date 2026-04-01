@@ -18,6 +18,7 @@ import {
   getLandingPageBySlug,
   getPrimaryLandingPageLink,
   getPrimaryServiceLinks,
+  getServiceLabel,
   getSiblingCityLinks,
   type LandingPageLink,
 } from "@/data/landingPages";
@@ -105,6 +106,18 @@ export function NavRight() {
       activeHref
     : pathname || "/";
   const siblingCityLinks = getSiblingCityLinks(currentSlug, 8);
+  const currentCityName = currentPage?.cityName ?? "Grudziądz";
+  const currentServiceLabel = currentPage?.serviceKey
+    ? getServiceLabel(currentPage.serviceKey)
+    : "Strony internetowe";
+  const primaryGroupTitle = `Usługi w ${currentCityName}`;
+  const primaryGroupDescription = `Szybkie przejście do podstron: ${currentServiceLabel.toLowerCase()} ${currentCityName} i pozostałych usług w tym mieście.`;
+  const siblingGroupTitle = currentPage?.targetLabel
+    ? `Ten sam target w innych miastach`
+    : "Ta sama usługa w innych miastach";
+  const siblingGroupDescription = currentPage?.targetLabel
+    ? `Porównaj podstrony dla ${currentPage.targetLabel} w innych lokalizacjach.`
+    : `Sprawdź ${currentServiceLabel.toLowerCase()} także w innych miastach.`;
 
   useEffect(() => {
     setIsStructureMenuOpen(false);
@@ -307,15 +320,15 @@ export function NavRight() {
 
                 <div className="grid gap-4 xl:grid-cols-[1.2fr_1fr]">
                   <NavLinkGroup
-                    title="Moje usługi"
-                    description=""
+                    title={primaryGroupTitle}
+                    description={primaryGroupDescription}
                     links={primaryServiceLinks}
                     activeHref={activePrimaryServiceHref}
                     onNavigate={() => setIsStructureMenuOpen(false)}
                   />
                   <NavLinkGroup
-                    title="Ta sama usługa w innych miastach"
-                    description=""
+                    title={siblingGroupTitle}
+                    description={siblingGroupDescription}
                     links={siblingCityLinks}
                     activeHref={activeHref}
                     onNavigate={() => setIsStructureMenuOpen(false)}
@@ -356,10 +369,17 @@ export function NavRight() {
 
                 <div className="mt-4 space-y-4">
                   <NavLinkGroup
-                    title="Moje usługi"
-                    description=""
+                    title={primaryGroupTitle}
+                    description={primaryGroupDescription}
                     links={primaryServiceLinks}
                     activeHref={activePrimaryServiceHref}
+                    onNavigate={() => setIsMobileMenuOpen(false)}
+                  />
+                  <NavLinkGroup
+                    title={siblingGroupTitle}
+                    description={siblingGroupDescription}
+                    links={siblingCityLinks}
+                    activeHref={activeHref}
                     onNavigate={() => setIsMobileMenuOpen(false)}
                   />
                   

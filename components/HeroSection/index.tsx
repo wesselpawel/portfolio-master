@@ -16,6 +16,7 @@ import {
   getHomepageSectionLinks,
   type LandingPageContent,
 } from "@/data/landingPages";
+import { highlightLandingKeywords } from "@/utils/highlightLandingKeywords";
 const BOT_USER_AGENT_REGEX =
   /bot|crawler|spider|crawling|googlebot|google-inspectiontool|inspectiontool|bingbot|yandex|duckduckbot|baiduspider|slurp|lighthouse|pagespeed/i;
 
@@ -107,6 +108,25 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
   const contextualLandingLinks = getContextualLandingPageLinks(
     pageContent.slug,
   );
+
+  function renderInlineLinks() {
+    return contextualLandingLinks.map((link, index) => {
+      const isLast = index === contextualLandingLinks.length - 1;
+      const isSecondToLast = index === contextualLandingLinks.length - 2;
+
+      return (
+        <span key={link.href}>
+          <Link
+            href={link.href}
+            className="text-yellow-200 underline decoration-yellow-300/60 underline-offset-4 transition hover:text-yellow-100"
+          >
+            {link.label}
+          </Link>
+          {!isLast ? (isSecondToLast ? " oraz " : ", ") : null}
+        </span>
+      );
+    });
+  }
   const primaryQuickLinkClass =
     "inline-flex min-h-11 max-w-full items-center justify-center rounded-2xl border border-yellow-200/40 bg-yellow-300 px-5 py-3 text-center text-sm font-semibold leading-tight text-slate-950 shadow-[0_10px_30px_rgba(253,224,71,0.22)] transition duration-200 hover:-translate-y-0.5 hover:brightness-105";
   const secondaryQuickLinkClass =
@@ -168,8 +188,17 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
               </span>
             </h1>
             <p className="mt-4 text-base lg:text-lg 2xl:text-2xl font-dosis text-white">
-              {pageContent.hero.description}
+              {highlightLandingKeywords(pageContent.hero.description, pageContent)}
             </p>
+            <div className="mt-4 inline-flex items-center rounded-full border border-yellow-300/25 bg-yellow-300/10 px-4 py-2 text-sm font-medium text-yellow-100">
+              <span className="text-white/70">Dodano:</span>
+              <span className="ml-2">{pageContent.addedDate}</span>
+            </div>
+            {contextualLandingLinks.length ? (
+              <p className="mt-4 max-w-3xl font-dosis text-sm leading-relaxed text-white/70 lg:text-base">
+                Powiązane podstrony w tym mieście: {renderInlineLinks()}.
+              </p>
+            ) : null}
             <div className="mt-6 flex max-w-3xl flex-wrap items-stretch gap-3">
               {sectionLinks.map((link) => (
                 <Link

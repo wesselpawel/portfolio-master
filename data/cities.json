@@ -128,5 +128,395 @@
       "miejscownik": "Katowicach",
       "wolacz": "Katowice"
     }
+  },
+  {
+    "slug": "gdynia",
+    "name": "Gdynia",
+    "cases": {
+      "mianownik": "Gdynia",
+      "dopelniacz": "Gdyni",
+      "celownik": "Gdyni",
+      "biernik": "Gdynię",
+      "narzednik": "Gdynią",
+      "miejscownik": "Gdyni",
+      "wolacz": "Gdynio"
+    }
+  },
+  {
+    "slug": "czestochowa",
+    "name": "Częstochowa",
+    "cases": {
+      "mianownik": "Częstochowa",
+      "dopelniacz": "Częstochowy",
+      "celownik": "Częstochowie",
+      "biernik": "Częstochowę",
+      "narzednik": "Częstochową",
+      "miejscownik": "Częstochowie",
+      "wolacz": "Częstochowo"
+    }
+  },
+  {
+    "slug": "radom",
+    "name": "Radom",
+    "cases": {
+      "mianownik": "Radom",
+      "dopelniacz": "Radomia",
+      "celownik": "Radomiowi",
+      "biernik": "Radom",
+      "narzednik": "Radomiem",
+      "miejscownik": "Radomiu",
+      "wolacz": "Radomiu"
+    }
+  },
+  {
+    "slug": "torun",
+    "name": "Toruń",
+    "cases": {
+      "mianownik": "Toruń",
+      "dopelniacz": "Torunia",
+      "celownik": "Toruniowi",
+      "biernik": "Toruń",
+      "narzednik": "Toruniem",
+      "miejscownik": "Toruniu",
+      "wolacz": "Toruniu"
+    }
+  },
+  {
+    "slug": "sosnowiec",
+    "name": "Sosnowiec",
+    "cases": {
+      "mianownik": "Sosnowiec",
+      "dopelniacz": "Sosnowca",
+      "celownik": "Sosnowcowi",
+      "biernik": "Sosnowiec",
+      "narzednik": "Sosnowcem",
+      "miejscownik": "Sosnowcu",
+      "wolacz": "Sosnowcu"
+    }
+  },
+  {
+    "slug": "kielce",
+    "name": "Kielce",
+    "cases": {
+      "mianownik": "Kielce",
+      "dopelniacz": "Kielc",
+      "celownik": "Kielcom",
+      "biernik": "Kielce",
+      "narzednik": "Kielcami",
+      "miejscownik": "Kielcach",
+      "wolacz": "Kielce"
+    }
+  },
+  {
+    "slug": "gliwice",
+    "name": "Gliwice",
+    "cases": {
+      "mianownik": "Gliwice",
+      "dopelniacz": "Gliwic",
+      "celownik": "Gliwicom",
+      "biernik": "Gliwice",
+      "narzednik": "Gliwicami",
+      "miejscownik": "Gliwicach",
+      "wolacz": "Gliwice"
+    }
+  },
+  {
+    "slug": "zabrze",
+    "name": "Zabrze",
+    "cases": {
+      "mianownik": "Zabrze",
+      "dopelniacz": "Zabrza",
+      "celownik": "Zabrzu",
+      "biernik": "Zabrze",
+      "narzednik": "Zabrzem",
+      "miejscownik": "Zabrzu",
+      "wolacz": "Zabrze"
+    }
+  },
+  {
+    "slug": "olsztyn",
+    "name": "Olsztyn",
+    "cases": {
+      "mianownik": "Olsztyn",
+      "dopelniacz": "Olsztyna",
+      "celownik": "Olsztynowi",
+      "biernik": "Olsztyn",
+      "narzednik": "Olsztynem",
+      "miejscownik": "Olsztynie",
+      "wolacz": "Olsztynie"
+    }
+  },
+  {
+    "slug": "rzeszow",
+    "name": "Rzeszów",
+    "cases": {
+      "mianownik": "Rzeszów",
+      "dopelniacz": "Rzeszowa",
+      "celownik": "Rzeszowowi",
+      "biernik": "Rzeszów",
+      "narzednik": "Rzeszowem",
+      "miejscownik": "Rzeszowie",
+      "wolacz": "Rzeszowie"
+    }
+  },
+  {
+    "slug": "rybnik",
+    "name": "Rybnik",
+    "cases": {
+      "mianownik": "Rybnik",
+      "dopelniacz": "Rybnika",
+      "celownik": "Rybnikowi",
+      "biernik": "Rybnik",
+      "narzednik": "Rybnikiem",
+      "miejscownik": "Rybniku",
+      "wolacz": "Rybniku"
+    }
+  },
+  {
+    "slug": "tychy",
+    "name": "Tychy",
+    "cases": {
+      "mianownik": "Tychy",
+      "dopelniacz": "Tychów",
+      "celownik": "Tychom",
+      "biernik": "Tychy",
+      "narzednik": "Tychami",
+      "miejscownik": "Tychach",
+      "wolacz": "Tychy"
+    }
+  },
+  {
+    "slug": "opole",
+    "name": "Opole",
+    "cases": {
+      "mianownik": "Opole",
+      "dopelniacz": "Opola",
+      "celownik": "Opolu",
+      "biernik": "Opole",
+      "narzednik": "Opolem",
+      "miejscownik": "Opolu",
+      "wolacz": "Opole"
+    }
+  },
+  {
+    "slug": "elblag",
+    "name": "Elbląg",
+    "cases": {
+      "mianownik": "Elbląg",
+      "dopelniacz": "Elbląga",
+      "celownik": "Elblągowi",
+      "biernik": "Elbląg",
+      "narzednik": "Elblągiem",
+      "miejscownik": "Elblągu",
+      "wolacz": "Elblągu"
+    }
+  },
+  {
+    "slug": "plock",
+    "name": "Płock",
+    "cases": {
+      "mianownik": "Płock",
+      "dopelniacz": "Płocka",
+      "celownik": "Płockowi",
+      "biernik": "Płock",
+      "narzednik": "Płockiem",
+      "miejscownik": "Płocku",
+      "wolacz": "Płocku"
+    }
+  },
+  {
+    "slug": "walbrzych",
+    "name": "Wałbrzych",
+    "cases": {
+      "mianownik": "Wałbrzych",
+      "dopelniacz": "Wałbrzycha",
+      "celownik": "Wałbrzychowi",
+      "biernik": "Wałbrzych",
+      "narzednik": "Wałbrzychem",
+      "miejscownik": "Wałbrzychu",
+      "wolacz": "Wałbrzychu"
+    }
+  },
+  {
+    "slug": "wloclawek",
+    "name": "Włocławek",
+    "cases": {
+      "mianownik": "Włocławek",
+      "dopelniacz": "Włocławka",
+      "celownik": "Włocławkowi",
+      "biernik": "Włocławek",
+      "narzednik": "Włocławkiem",
+      "miejscownik": "Włocławku",
+      "wolacz": "Włocławku"
+    }
+  },
+  {
+    "slug": "tarnow",
+    "name": "Tarnów",
+    "cases": {
+      "mianownik": "Tarnów",
+      "dopelniacz": "Tarnowa",
+      "celownik": "Tarnowowi",
+      "biernik": "Tarnów",
+      "narzednik": "Tarnowem",
+      "miejscownik": "Tarnowie",
+      "wolacz": "Tarnowie"
+    }
+  },
+  {
+    "slug": "chorzow",
+    "name": "Chorzów",
+    "cases": {
+      "mianownik": "Chorzów",
+      "dopelniacz": "Chorzowa",
+      "celownik": "Chorzowowi",
+      "biernik": "Chorzów",
+      "narzednik": "Chorzowem",
+      "miejscownik": "Chorzowie",
+      "wolacz": "Chorzowie"
+    }
+  },
+  {
+    "slug": "koszalin",
+    "name": "Koszalin",
+    "cases": {
+      "mianownik": "Koszalin",
+      "dopelniacz": "Koszalina",
+      "celownik": "Koszalinowi",
+      "biernik": "Koszalin",
+      "narzednik": "Koszalinem",
+      "miejscownik": "Koszalinie",
+      "wolacz": "Koszalinie"
+    }
+  },
+  {
+    "slug": "kalisz",
+    "name": "Kalisz",
+    "cases": {
+      "mianownik": "Kalisz",
+      "dopelniacz": "Kalisza",
+      "celownik": "Kaliszowi",
+      "biernik": "Kalisz",
+      "narzednik": "Kaliszem",
+      "miejscownik": "Kaliszu",
+      "wolacz": "Kaliszu"
+    }
+  },
+  {
+    "slug": "legnica",
+    "name": "Legnica",
+    "cases": {
+      "mianownik": "Legnica",
+      "dopelniacz": "Legnicy",
+      "celownik": "Legnicy",
+      "biernik": "Legnicę",
+      "narzednik": "Legnicą",
+      "miejscownik": "Legnicy",
+      "wolacz": "Legnico"
+    }
+  },
+  {
+    "slug": "slupsk",
+    "name": "Słupsk",
+    "cases": {
+      "mianownik": "Słupsk",
+      "dopelniacz": "Słupska",
+      "celownik": "Słupskowi",
+      "biernik": "Słupsk",
+      "narzednik": "Słupskiem",
+      "miejscownik": "Słupsku",
+      "wolacz": "Słupsku"
+    }
+  },
+  {
+    "slug": "jaworzno",
+    "name": "Jaworzno",
+    "cases": {
+      "mianownik": "Jaworzno",
+      "dopelniacz": "Jaworzna",
+      "celownik": "Jaworznu",
+      "biernik": "Jaworzno",
+      "narzednik": "Jaworznem",
+      "miejscownik": "Jaworznie",
+      "wolacz": "Jaworzno"
+    }
+  },
+  {
+    "slug": "nowy-sacz",
+    "name": "Nowy Sącz",
+    "cases": {
+      "mianownik": "Nowy Sącz",
+      "dopelniacz": "Nowego Sącza",
+      "celownik": "Nowemu Sączowi",
+      "biernik": "Nowy Sącz",
+      "narzednik": "Nowym Sączem",
+      "miejscownik": "Nowym Sączu",
+      "wolacz": "Nowy Sączu"
+    }
+  },
+  {
+    "slug": "siedlce",
+    "name": "Siedlce",
+    "cases": {
+      "mianownik": "Siedlce",
+      "dopelniacz": "Siedlec",
+      "celownik": "Siedlcom",
+      "biernik": "Siedlce",
+      "narzednik": "Siedlcami",
+      "miejscownik": "Siedlcach",
+      "wolacz": "Siedlce"
+    }
+  },
+  {
+    "slug": "konin",
+    "name": "Konin",
+    "cases": {
+      "mianownik": "Konin",
+      "dopelniacz": "Konina",
+      "celownik": "Koninowi",
+      "biernik": "Konin",
+      "narzednik": "Koninem",
+      "miejscownik": "Koninie",
+      "wolacz": "Koninie"
+    }
+  },
+  {
+    "slug": "inowroclaw",
+    "name": "Inowrocław",
+    "cases": {
+      "mianownik": "Inowrocław",
+      "dopelniacz": "Inowrocławia",
+      "celownik": "Inowrocławiowi",
+      "biernik": "Inowrocław",
+      "narzednik": "Inowrocławiem",
+      "miejscownik": "Inowrocławiu",
+      "wolacz": "Inowrocławiu"
+    }
+  },
+  {
+    "slug": "pila",
+    "name": "Piła",
+    "cases": {
+      "mianownik": "Piła",
+      "dopelniacz": "Piły",
+      "celownik": "Pile",
+      "biernik": "Piłę",
+      "narzednik": "Piłą",
+      "miejscownik": "Pile",
+      "wolacz": "Piło"
+    }
+  },
+  {
+    "slug": "ostroleka",
+    "name": "Ostrołęka",
+    "cases": {
+      "mianownik": "Ostrołęka",
+      "dopelniacz": "Ostrołęki",
+      "celownik": "Ostrołęce",
+      "biernik": "Ostrołękę",
+      "narzednik": "Ostrołęką",
+      "miejscownik": "Ostrołęce",
+      "wolacz": "Ostrołęko"
+    }
   }
 ]

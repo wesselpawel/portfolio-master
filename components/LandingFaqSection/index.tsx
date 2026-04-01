@@ -4,16 +4,20 @@ import Link from "next/link";
 import {
   getContextualLandingPageLinks,
   getSiblingCityLinks,
+  type LandingPageContent,
   type LandingPageIntentContent,
   type LandingPageLink,
 } from "@/data/landingPages";
+import { highlightLandingKeywords } from "@/utils/highlightLandingKeywords";
 
 type LandingFaqSectionProps = {
+  pageContent: LandingPageContent;
   content: LandingPageIntentContent;
   currentSlug?: string;
 };
 
 export default function LandingFaqSection({
+  pageContent,
   content,
   currentSlug,
 }: LandingFaqSectionProps) {
@@ -62,7 +66,7 @@ export default function LandingFaqSection({
             Często zadawane pytania
           </h3>
           <p className="mt-3 font-dosis text-sm leading-relaxed text-white/70 sm:text-base">
-            {content.faqIntro}
+            {highlightLandingKeywords(content.faqIntro, pageContent)}
           </p>
           
         </div>
@@ -93,7 +97,7 @@ export default function LandingFaqSection({
             </summary>
             <div className="mt-4 border-t border-white/15 pt-4">
               <p className="whitespace-pre-line font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
-                {item.answer}
+                {highlightLandingKeywords(item.answer, pageContent)}
               </p>
               {item.relatedLinks?.length ? (
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -119,7 +123,7 @@ export default function LandingFaqSection({
             <div className="max-w-2xl">
             {contextualLandingLinks.length ? (
             <p className="font-dosis text-sm leading-relaxed text-white/60 sm:text-base">
-              Zobacz też{" "}
+              Powiązane usługi w tym mieście:{" "}
               {renderInlineLinks(contextualLandingLinks)}.
             </p>
           ) : null}
