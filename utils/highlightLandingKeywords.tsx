@@ -6,9 +6,9 @@ function escapeRegExp(value: string): string {
 }
 
 function getUniquePhrases(phrases: string[]): string[] {
-  return [...new Set(phrases.map((phrase) => phrase.trim()).filter(Boolean))].sort(
-    (a, b) => b.length - a.length,
-  );
+  return Array.from(
+    new Set(phrases.map((phrase) => phrase.trim()).filter(Boolean)),
+  ).sort((a, b) => b.length - a.length);
 }
 
 function getLandingPageKeywordPhrases(page: LandingPageContent): string[] {
