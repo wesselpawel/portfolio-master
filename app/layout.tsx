@@ -8,9 +8,9 @@ import { NavRight } from "@/components/Navigation";
 import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
-  title: "Strony internetowe | SEO | Strony firmowe Paweł Wessel",
+  title: "WWW Expert - Strony internetowe | SEO | Strony firmowe",
   description:
-    "Tworzę strony internetowe dla firm, landing page, sklepy internetowe i rozwiązania pod SEO lokalne. Projektuję, wdrażam i rozwijam strony internetowe w Grudziądzu.",
+    "Tworzę strony internetowe dla firm, landing page, sklepy i rozwiązania pod SEO lokalne w Grudziądzu.",
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -41,10 +41,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://wesselpawel.com/",
-    title: "Strony internetowe | SEO | Strony firmowe Paweł Wessel",
+    title: "WWW Expert - Strony internetowe | SEO | Strony firmowe",
     description:
-      "Tworzę strony internetowe dla firm, landing page, sklepy internetowe i rozwiązania pod SEO lokalne. Projektuję, wdrażam i rozwijam strony internetowe w Grudziądzu.",
-    siteName: "Paweł Wessel - WWW Expert",
+      "Tworzę strony internetowe dla firm, landing page, sklepy i rozwiązania pod SEO lokalne w Grudziądzu.",
+    siteName: "WWW Expert",
     images: [
       {
         url: "https://wesselpawel.com/assets/pinkdonut.png",
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     site: "@wesiudev",
-    title: "Strony internetowe | SEO | Strony firmowe Paweł Wessel",
+    title: "WWW Expert - Strony internetowe | SEO | Strony firmowe",
     description:
-      "Tworzę strony internetowe, landing page, sklepy internetowe i rozwiązania pod SEO lokalne dla firm.",
+      "Tworzę strony internetowe, landing page, sklepy i rozwiązania pod SEO lokalne dla firm.",
     images: [
       {
         url: "https://wesselpawel.com/assets/pinkdonut.png",

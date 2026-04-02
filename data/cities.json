@@ -143,6 +143,19 @@
     }
   },
   {
+    "slug": "grudziadz",
+    "name": "Grudziądz",
+    "cases": {
+      "mianownik": "Grudziądz",
+      "dopelniacz": "Grudziądza",
+      "celownik": "Grudziądzowi",
+      "biernik": "Grudziądz",
+      "narzednik": "Grudziądzem",
+      "miejscownik": "Grudziądzu",
+      "wolacz": "Grudziądzu"
+    }
+  },
+  {
     "slug": "czestochowa",
     "name": "Częstochowa",
     "cases": {

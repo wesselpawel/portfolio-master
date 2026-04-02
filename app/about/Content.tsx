@@ -34,15 +34,12 @@ export default function Content() {
                 </div>
 
                 <h1 className="mt-6 max-w-4xl font-anta text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">
-                  Projektuję i buduję strony, które wyglądają mocno, działają
-                  szybko i pracują na wynik.
+                  Tworzę strony, które dobrze wyglądają i po prostu działają.
                 </h1>
 
                 <p className="mt-6 max-w-3xl font-dosis text-lg leading-relaxed text-white/80 lg:text-2xl">
-                  Nie opowiadam o planach ani próbach. Opieram się na drodze,
-                  którą już przeszedłem: od technikum informatycznego, przez
-                  pierwsze wdrożenia, po strony, sklepy i platformy internetowe
-                  tworzone dla realnych biznesów.
+                  Zaczynałem od prostych projektów. Dziś robię strony, sklepy i
+                  platformy dla firm, łącząc front-end, UX i SEO.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -86,13 +83,11 @@ export default function Content() {
                 O mnie
               </span>
               <h2 className="mt-4 max-w-3xl font-anta text-3xl text-white sm:text-4xl lg:text-5xl">
-                Drogę w web developmencie zbudowałem krok po kroku.
+                Tak rozwijała się moja droga w web developmencie.
               </h2>
             </div>
             <p className="max-w-2xl font-dosis text-base leading-relaxed text-white/75 sm:text-lg">
-              Ta oś czasu pokazuje konkretny progres: od podstaw, przez własną
-              działalność, po projekty, które łączą front-end, SEO, UX i realne
-              potrzeby firm.
+              Od pierwszych stron po większe wdrożenia dla firm.
             </p>
           </div>
 
@@ -149,17 +144,15 @@ export default function Content() {
 
               <div className="mt-8 rounded-[1.75rem] border border-yellow-300/20 bg-gradient-to-br from-slate-900 to-black/80 p-6 shadow-xl shadow-black/20 sm:p-8">
                 <p className="font-dosis text-base leading-relaxed text-white/85 lg:text-xl">
-                  Wszystko zaczęło się od prostego pytania: jak to jest
-                  zrobione? Zamiast zatrzymać się na ciekawości, zacząłem
-                  budować własne odpowiedzi w kodzie. Tak weszły pierwsze strony,
-                  kolejne technologie i coraz większe projekty.
+                  Zaczęło się od ciekawości i pierwszych stron robionych po
+                  godzinach. Z czasem przyszły kolejne technologie, klienci i
+                  coraz większe projekty.
                 </p>
 
                 <p className="mt-5 font-dosis text-base leading-relaxed text-white/75 lg:text-xl">
-                  Dzisiaj łączę front-end, UX, SEO i wyczucie komunikacji
-                  sprzedażowej. Tworzę strony internetowe w Grudziądzu dla firm,
-                  które chcą wyglądać profesjonalnie, działać nowocześnie i być
-                  łatwiejsze do znalezienia przez klientów.
+                  Dziś łączę front-end, UX i SEO. Tworzę strony internetowe w
+                  Grudziądzu dla firm, które chcą wyglądać profesjonalnie i
+                  łatwiej zdobywać klientów.
                 </p>
 
                 <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5">
@@ -167,8 +160,8 @@ export default function Content() {
                     Mój kierunek jest prosty:
                   </p>
                   <p className="mt-3 font-dosis text-base leading-relaxed text-white/85 lg:text-lg">
-                    projektować strony, które nie tylko dobrze wyglądają, ale
-                    naprawdę wspierają rozwój biznesu.
+                    robić strony, które są estetyczne, czytelne i pomagają w
+                    rozwoju firmy.
                   </p>
                 </div>
               </div>
@@ -230,19 +223,19 @@ const POSITIONING_CARDS = [
   {
     title: "Mocne wykonanie",
     description:
-      "Buduję nowoczesne strony i interfejsy, które są szybkie, responsywne i dopracowane technicznie.",
+      "Tworzę szybkie, czytelne i dobrze dopracowane strony.",
     icon: FaRocket,
   },
   {
     title: "Podejście biznesowe",
     description:
-      "Projektuję z myślą o widoczności, konwersji i klarownym przekazie, nie tylko o samym efekcie wizualnym.",
+      "Myślę o kliencie, przekazie i wyniku, nie tylko o wyglądzie.",
     icon: FaBullseye,
   },
   {
     title: "Lokalny kontekst",
     description:
-      "Znam realia współpracy z małymi firmami i usługami lokalnymi, dlatego tworzenie stron w Grudziądzu ma dla mnie konkretny wymiar.",
+      "Dobrze znam potrzeby lokalnych firm i usług z Grudziądza.",
     icon: FaLocationDot,
   },
 ] as const;
@@ -251,16 +244,16 @@ const EXPERTISE_SECTIONS = [
   {
     title: "Kod, który robi porządną robotę",
     description:
-      "Pracuję nad logiką aplikacji, wydajnością, responsywnością i strukturą front-endu tak, żeby strona była stabilna, czytelna i gotowa do rozwoju.",
+      "Dbam o kod, szybkość i porządną strukturę strony.",
   },
   {
     title: "Design, który prowadzi użytkownika",
     description:
-      "Łączę estetykę z funkcją. Układ, hierarchia treści i doświadczenie użytkownika mają wspierać konkretne działanie, a nie być tylko ozdobą.",
+      "Projektuję tak, żeby układ był ładny i prosty w odbiorze.",
   },
   {
     title: "SEO, które wspiera sprzedaż",
     description:
-      "Wdrażam techniki SEO, optymalizację wydajności i rozwiązania pod widoczność lokalną, żeby strona pomagała docierać do właściwych klientów.",
+      "Wspieram stronę SEO lokalnym i optymalizacją pod widoczność.",
   },
 ] as const;

@@ -15,11 +15,13 @@ import {
 } from "react-icons/fa";
 import authorImage from "@/public/assets/author.png";
 import {
-  getLandingPageBySlug,
-  getPrimaryLandingPageLink,
-  getPrimaryServiceLinks,
+  getCityServiceLinks,
+  getLandingPageByPathname,
+  getLandingPageCityBySlug,
+  getLandingPageHref,
   getServiceLabel,
   getSiblingCityLinks,
+  getSiblingCityHubLinks,
   type LandingPageLink,
 } from "@/data/landingPages";
 
@@ -32,13 +34,12 @@ type NavLinkGroupProps = {
 };
 
 function getCurrentSlug(pathname: string): string | undefined {
-  const [firstSegment] = pathname.split("/").filter(Boolean);
+  return getLandingPageByPathname(pathname)?.slug;
+}
 
-  if (!firstSegment) {
-    return undefined;
-  }
-
-  return getLandingPageBySlug(firstSegment) ? firstSegment : undefined;
+function getCurrentHubCitySlug(pathname: string): string | undefined {
+  const matchedPath = pathname.match(/^\/projektowanie-internetowe\/([^/]+)(?:\/.*)?$/);
+  return matchedPath?.[1];
 }
 
 function getSectionHref(pathname: string, sectionId: string): string {
@@ -98,26 +99,44 @@ export function NavRight() {
     () => (pathname ? getCurrentSlug(pathname) : undefined),
     [pathname],
   );
-  const currentPage = currentSlug ? getLandingPageBySlug(currentSlug) : null;
-  const activeHref = currentSlug ? `/${currentSlug}` : pathname || "/";
-  const primaryServiceLinks = getPrimaryServiceLinks(currentSlug);
-  const activePrimaryServiceHref = currentPage?.serviceKey
-    ? getPrimaryLandingPageLink(currentPage.serviceKey, currentSlug)?.href ??
-      activeHref
+  const currentPage = useMemo(
+    () => (pathname ? getLandingPageByPathname(pathname) : null),
+    [pathname],
+  );
+  const currentHubCitySlug = useMemo(
+    () => (pathname ? getCurrentHubCitySlug(pathname) : undefined),
+    [pathname],
+  );
+  const currentCity =
+    getLandingPageCityBySlug(currentPage?.citySlug ?? currentHubCitySlug ?? "") ?? null;
+  const activeHref = currentPage ? getLandingPageHref(currentPage) : pathname || "/";
+  const primaryServiceLinks = currentCity
+    ? getCityServiceLinks(currentCity.slug)
+    : getCityServiceLinks("grudziadz");
+  const activePrimaryServiceHref = currentPage
+    ? getLandingPageHref(currentPage)
     : pathname || "/";
   const siblingCityLinks = getSiblingCityLinks(currentSlug, 8);
-  const currentCityName = currentPage?.cityName ?? "Grudziądz";
+  const currentHubLinks = currentCity
+    ? getSiblingCityHubLinks(currentCity.slug, 8)
+    : getSiblingCityHubLinks("grudziadz", 8);
+  const relatedLinks = currentPage ? siblingCityLinks : currentHubLinks;
+  const currentCityName = currentPage?.cityName ?? currentCity?.name ?? "Grudziądz";
   const currentServiceLabel = currentPage?.serviceKey
     ? getServiceLabel(currentPage.serviceKey)
-    : "Strony internetowe";
+    : "Projektowanie internetowe";
   const primaryGroupTitle = `Usługi w ${currentCityName}`;
   const primaryGroupDescription = `Szybkie przejście do podstron: ${currentServiceLabel.toLowerCase()} ${currentCityName} i pozostałych usług w tym mieście.`;
   const siblingGroupTitle = currentPage?.targetLabel
     ? `Ten sam target w innych miastach`
-    : "Ta sama usługa w innych miastach";
+    : currentPage
+      ? "Ta sama usługa w innych miastach"
+      : "Pozostałe huby miejskie";
   const siblingGroupDescription = currentPage?.targetLabel
     ? `Porównaj podstrony dla ${currentPage.targetLabel} w innych lokalizacjach.`
-    : `Sprawdź ${currentServiceLabel.toLowerCase()} także w innych miastach.`;
+    : currentPage
+      ? `Sprawdź ${currentServiceLabel.toLowerCase()} także w innych miastach.`
+      : `Przejdź do hubów miejskich i wzmacniaj linkowanie lokalne między miastami.`;
 
   useEffect(() => {
     setIsStructureMenuOpen(false);
@@ -182,8 +201,12 @@ export function NavRight() {
 
   const quickLinks = [
     {
+      href: "/realizations",
+      label: "Realizacje",
+    },
+    {
       href: "/about",
-      label: "Paweł Wessel - WWW Expert",
+      label: "WWW Expert",
     },
   ];
   return (
@@ -329,7 +352,7 @@ export function NavRight() {
                   <NavLinkGroup
                     title={siblingGroupTitle}
                     description={siblingGroupDescription}
-                    links={siblingCityLinks}
+                    links={relatedLinks}
                     activeHref={activeHref}
                     onNavigate={() => setIsStructureMenuOpen(false)}
                   />
@@ -378,7 +401,7 @@ export function NavRight() {
                   <NavLinkGroup
                     title={siblingGroupTitle}
                     description={siblingGroupDescription}
-                    links={siblingCityLinks}
+                    links={relatedLinks}
                     activeHref={activeHref}
                     onNavigate={() => setIsMobileMenuOpen(false)}
                   />

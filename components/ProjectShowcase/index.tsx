@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from "react";
 import { useScroll, useTransform, motion as motionDiv } from "framer-motion";
 import Link from "next/link";
@@ -49,9 +51,13 @@ function getRelatedServiceKeys(
 
 type ProjectShowcaseProps = {
   pageContent: LandingPageContent;
+  standalone?: boolean;
 };
 
-export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
+export default function ProjectShowcase({
+  pageContent,
+  standalone = false,
+}: ProjectShowcaseProps) {
   const mainWrapper = useRef<any>();
   const { scrollYProgress } = useScroll({
     target: mainWrapper,
@@ -73,13 +79,17 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
       <div
         ref={mainWrapper}
         id="projects"
-        className="flex-col flex w-screen relative mt-[470vh]"
+        className={`relative flex w-screen flex-col ${
+          standalone ? "mt-40 lg:mt-56" : "mt-[470vh]"
+        }`}
       >
-        <HomeIntentLayer
-          pageContent={pageContent}
-          content={pageContent.intent}
-          currentSlug={pageContent.slug}
-        />
+        {standalone ? null : (
+          <HomeIntentLayer
+            pageContent={pageContent}
+            content={pageContent.intent}
+            currentSlug={pageContent.slug}
+          />
+        )}
         <motionDiv.div
           style={{
             opacity: h1TextOpacity,
@@ -87,9 +97,15 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
             translateX: "50%",
             left: "-50%",
           }}
-          className="h-[20vh] lg:h-[50vh] relative w-screen flex justify-center"
+          className={`relative flex w-screen justify-center ${
+            standalone ? "h-[42vh] lg:h-[60vh]" : "h-[20vh] lg:h-[50vh]"
+          }`}
         >
-          <motionDiv.h2 className="h-max font-bold font-sans rounded-3xl bg-yellow-300 select-none p-6 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl w-[90%] md:w-[70%] lg:w-[50%] z-[550] sticky top-44 lg:top-32 text-black text-center shadow-[0_20px_60px_rgba(0,0,0,0.25)] border border-black/10">
+          <motionDiv.h2
+            className={`h-max w-[90%] rounded-3xl border border-black/10 bg-yellow-300 p-6 text-center font-sans text-2xl font-bold text-black shadow-[0_20px_60px_rgba(0,0,0,0.25)] select-none md:w-[70%] lg:w-[50%] lg:text-3xl xl:text-4xl 2xl:text-5xl z-[550] sticky ${
+              standalone ? "top-72 lg:top-64" : "top-44 lg:top-32"
+            }`}
+          >
             {pageContent.portfolioHeading}
           </motionDiv.h2>
         </motionDiv.div>
@@ -178,7 +194,7 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                           
                         </div>
 
-                        {/* {item.portfolioSections ? (
+                        {item.portfolioSections ? (
                           <div className="mt-6 space-y-6">
                             <div>
                               <p className="text-xs uppercase tracking-[0.18em] text-white/60">
@@ -266,7 +282,7 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
                               </div>
                             </div>
                           </div>
-                        ) : null} */}
+                        ) : null}
                       </div>
                     ) : null}
                   </div>{" "}
@@ -275,13 +291,15 @@ export default function ProjectShowcase({ pageContent }: ProjectShowcaseProps) {
             </div>
           ))}
         </div>{" "}
-        <div className="z-auto top-0 w-screen flex flex-col items-center px-6 lg:px-12">
-          <LandingFaqSection
-            pageContent={pageContent}
-            content={pageContent.intent}
-            currentSlug={pageContent.slug}
-          />
-        </div>
+        {standalone ? null : (
+          <div className="z-auto top-0 w-screen flex flex-col items-center px-6 lg:px-12">
+            <LandingFaqSection
+              pageContent={pageContent}
+              content={pageContent.intent}
+              currentSlug={pageContent.slug}
+            />
+          </div>
+        )}
         <ContactSection content={pageContent.contact} />
       </div>
     </ProjectGalleryProvider>

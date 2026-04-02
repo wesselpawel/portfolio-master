@@ -119,6 +119,14 @@ export type LandingPageContent = {
   contact: LandingPageContactContent;
 };
 
+export type LandingPageServiceRouteParam =
+  | "tworzenie-stron-internetowych"
+  | "projektowanie-stron-www"
+  | "tworzenie-landing-page"
+  | "tworzenie-sklepow-internetowych"
+  | "strony-internetowe-na-sprzedaz"
+  | "seo";
+
 type CityLandingPageInput = Omit<
   LandingPageContent,
   | "key"
@@ -156,16 +164,21 @@ type GenericLandingPageInput = Omit<
 
 const SITE_URL = "https://wesselpawel.com";
 const DEFAULT_CITY_SLUG = "grudziadz";
+export const CITY_HUB_BASE_SEGMENT = "projektowanie-internetowe";
 const ALL_SERVICE_KEYS: LandingPageServiceKey[] = [
   "website",
+  "design",
   "landing",
   "store",
+  "sale",
   "seo",
 ];
 const DEFAULT_CONTEXTUAL_SERVICE_KEYS: LandingPageServiceKey[] = [
   "website",
+  "design",
   "landing",
   "store",
+  "sale",
   "seo",
 ];
 
@@ -176,6 +189,18 @@ const SERVICE_LABELS: Record<LandingPageServiceKey, string> = {
   store: "Sklepy internetowe",
   sale: "Strony internetowe na sprzedaż",
   seo: "Pozycjonowanie stron internetowych",
+};
+
+const SERVICE_ROUTE_SEGMENTS: Record<
+  LandingPageServiceKey,
+  LandingPageServiceRouteParam
+> = {
+  website: "tworzenie-stron-internetowych",
+  design: "projektowanie-stron-www",
+  landing: "tworzenie-landing-page",
+  store: "tworzenie-sklepow-internetowych",
+  sale: "strony-internetowe-na-sprzedaz",
+  seo: "seo",
 };
 
 export function getServiceLabel(serviceKey: LandingPageServiceKey): string {
@@ -214,20 +239,20 @@ type LandingPageDateKey =
   | "target-city";
 
 const LANDING_PAGE_ADDED_DATES: Record<LandingPageDateKey, string> = {
-  home: "2024-04-08",
-  "website-overview": "2024-04-18",
-  "design-overview": "2024-04-26",
-  "landing-overview": "2024-05-04",
-  "store-overview": "2024-05-12",
-  "seo-overview": "2024-05-21",
-  "website-city": "2024-06-12",
-  "design-city": "2024-06-20",
-  "landing-city": "2024-07-03",
-  "store-city": "2024-07-14",
-  "seo-city": "2024-07-28",
-  "sale-overview": "2024-08-09",
-  "sale-city": "2024-08-22",
-  "target-city": "2024-09-05",
+  home: "2026-04-01",
+  "website-overview": "2026-04-02",
+  "design-overview": "2026-04-03",
+  "landing-overview": "2026-04-01",
+  "store-overview": "2026-04-02",
+  "seo-overview": "2026-04-03",
+  "website-city": "2026-04-01",
+  "design-city": "2026-04-02",
+  "landing-city": "2026-04-03",
+  "store-city": "2026-04-01",
+  "seo-city": "2026-04-02",
+  "sale-overview": "2026-04-03",
+  "sale-city": "2026-04-01",
+  "target-city": "2026-04-02",
 };
 
 function getLandingPageAddedDate(key: LandingPageDateKey): string {
@@ -241,8 +266,30 @@ if (!DEFAULT_CITY) {
   throw new Error(`Default city "${DEFAULT_CITY_SLUG}" was not found in the city dataset.`);
 }
 
+function toRadians(value: number): number {
+  return (value * Math.PI) / 180;
+}
+
+function getDistanceBetweenCitiesKm(
+  left: LandingPageCity,
+  right: LandingPageCity,
+): number {
+  const earthRadiusKm = 6371;
+  const latitudeDelta = toRadians(right.latitude - left.latitude);
+  const longitudeDelta = toRadians(right.longitude - left.longitude);
+  const leftLatitude = toRadians(left.latitude);
+  const rightLatitude = toRadians(right.latitude);
+  const haversine =
+    Math.sin(latitudeDelta / 2) ** 2 +
+    Math.cos(leftLatitude) *
+      Math.cos(rightLatitude) *
+      Math.sin(longitudeDelta / 2) ** 2;
+
+  return 2 * earthRadiusKm * Math.asin(Math.sqrt(haversine));
+}
+
 function createMetadata(page: LandingPageContent): Metadata {
-  const pathname = page.slug ? `/${page.slug}` : "/";
+  const pathname = getLandingPageHref(page);
   const url = `${SITE_URL}${pathname}`;
 
   return {
@@ -256,7 +303,7 @@ function createMetadata(page: LandingPageContent): Metadata {
       url,
       title: page.seo.title,
       description: page.seo.description,
-      siteName: "Paweł Wessel - WWW Expert",
+      siteName: "WWW Expert",
       images: [
         {
           url: `${SITE_URL}/assets/pinkdonut.png`,
@@ -315,12 +362,35 @@ function getCityServiceSlug(
   return createSlug(serviceKey, citySlug);
 }
 
-function getLandingPageHref(slug?: string): string {
-  return slug ? `/${slug}` : "/";
-}
-
 function createTargetSlug(targetSlug: string, citySlug: string): string {
   return `strona-internetowa-dla-${targetSlug}-${citySlug}`;
+}
+
+export function getCityHubHref(citySlug: string): string {
+  return `/${CITY_HUB_BASE_SEGMENT}/${citySlug}`;
+}
+
+export function getServiceRouteParam(
+  serviceKey: LandingPageServiceKey,
+): LandingPageServiceRouteParam {
+  return SERVICE_ROUTE_SEGMENTS[serviceKey];
+}
+
+export function getServiceHref(
+  serviceKey: LandingPageServiceKey,
+  citySlug: string,
+): string {
+  return `${getCityHubHref(citySlug)}/${getServiceRouteParam(serviceKey)}`;
+}
+
+export function getServiceKeyFromRouteParam(
+  routeParam: string,
+): LandingPageServiceKey | null {
+  const matchedEntry = Object.entries(SERVICE_ROUTE_SEGMENTS).find(
+    ([, segment]) => segment === routeParam,
+  );
+
+  return (matchedEntry?.[0] as LandingPageServiceKey | undefined) ?? null;
 }
 
 function getCityContext(city: LandingPageCity) {
@@ -335,10 +405,8 @@ function createServiceLink(
   serviceKey: LandingPageServiceKey,
   city: LandingPageCity,
 ): LandingPageLink {
-  const slug = getCityServiceSlug(serviceKey, city.slug);
-
   return {
-    href: getLandingPageHref(slug),
+    href: getServiceHref(serviceKey, city.slug),
     label: `${SERVICE_LABELS[serviceKey]} ${city.name}`,
   };
 }
@@ -1312,53 +1380,53 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
     {
     seo: {
       title: isDefaultCity
-        ? "Tworzenie Stron WWW Grudziądz - WWW Expert Paweł Wessel"
-        : `Tworzenie stron internetowych ${city.name} - Paweł Wessel`,
+        ? "WWW Expert Grudziądz - Tworzenie Stron WWW"
+        : `WWW Expert ${city.name} - Tworzenie stron WWW`,
       description: isDefaultCity
-        ? "Tworzenie stron WWW w Grudziądzu dla firm, które chcą zdobywać klientów lokalnie. Projekt, wdrożenie, SEO i rozwój stron internetowych - Paweł Wessel."
-        : `Projektuję i wdrażam strony internetowe dla firm ${c.fromGenitive}, które pomagają zdobywać klientów — nie tylko dobrze wyglądać.`,
+        ? "Tworzę strony WWW w Grudziądzu dla firm. Projekt, wdrożenie i SEO lokalne."
+        : `Tworzę strony internetowe dla firm ${c.fromGenitive}, które są czytelne, szybkie i gotowe na nowych klientów.`,
     },
     hero: {
       headingPrefix: "Tworzenie ",
-      headingHighlight: `stron internetowych ${c.inLocative}`,
-      headingSuffix: " - design, wdrożenie i rozwój",
-      description: `Projektuję i wdrażam strony internetowe dla firm ${c.fromGenitive}, które pomagają zdobywać klientów — nie tylko dobrze wyglądać.`,
-      floatingPromptPrimary: `Masz pomysł na stronę internetową ${c.inLocative}?`,
-      floatingPromptSecondary: `Porozmawiajmy o Twoim projekcie ${c.inLocative}.`,
+      headingHighlight: `stron WWW ${c.inLocative}`,
+      headingSuffix: " - Cennik Stron WWW Expert",
+      description: isDefaultCity ? `Zobacz mój cennik z ofertą stron WWW Grudziądz, które są szybkie i pomagają zdobywać klientów` : `Zobacz mój cennik stron WWW ${city.name}, które są szybkie i pomagają zdobywać klientów.`,
+      floatingPromptPrimary: `Potrzebujesz strony WWW ${c.inLocative}?`,
+      floatingPromptSecondary: `Napisz, czego potrzebujesz ${c.inLocative}.`,
     },
     intent: {
-      eyebrow: `Strony WWW ${city.name} - szybkie i solidne`,
-      heading: `Strony internetowe ${c.inLocative}, które realnie sprzedają — nie tylko dobrze wyglądają.`,
+      eyebrow: `Strony WWW ${city.name}`,
+      heading: `Strony internetowe ${c.inLocative}, które są czytelne, szybkie i gotowe na klientów.`,
       paragraphs: [
-        `Projektuję responsywne strony WWW dla firm ${c.fromGenitive}, z nowoczesnym designem i pozycjonowaniem SEO — większa widoczność witryny i klienci z Google? Skontaktuj się.`,
+        `Tworzę strony WWW dla firm ${c.fromGenitive}. Bez lania wody: dobra struktura, nowoczesny wygląd i SEO lokalne.`,
       ],
-      ctaTitle: "Chcesz omówić projekt?",
+      ctaTitle: "Chcesz zamówić stronę WWW?",
       ctaDescription:
-        "Przejdź do formularza i opisz, czego potrzebujesz.",
+        "Napisz krótko, czego potrzebujesz.",
       primaryCtaLabel: "Darmowa wycena",
       offerLabel: "Oferta",
       offerOptions: [
         {
-          name: "Landing page",
+          name: "Prosta strona WWW",
           description:
-            "Strona WWW dla jednej usługi lub kampanii Google Ads.",
+            "Jedna usługa, jedna oferta i mocne CTA.",
           image: "/images/projects/hexon/hero.png",
           imageAlt: "Landing page dla jednej usługi z wyraźnym CTA i sekcją hero",
           price: 700,
         },
         {
-          name: "Strona wizytówka",
+          name: "Wizytówka WWW",
           description:
-            "Strona internetowa wyświetlająca ofertę w Google.",
+            "Prosta strona firmy widoczna w Google.",
           highlighted: true,
           image: "/images/projects/kancelariadeluga/hero.webp",
           imageAlt: "Strona internetowa wizytówka kancelarii prawniczej w Grudziądzu",
           price: 1200,
         },
         {
-          name: "Strona firmowa",
+          name: "Strona WWW Firmowa",
           description:
-            "Strona internetowa dla firmy, z pozycjonowaniem SEO.",
+            "Większa strona firmy z miejscem na SEO.",
           image: "/images/projects/glazurnikgrudziadz/hero.png",
           imageAlt: "Strona firmowa dla glazurnika z Grudziądza",
           price: 2000,
@@ -1367,7 +1435,7 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
       offerSupportingLinks: createOfferSupportingLinks("website", city),
       whyTitle: "Dlaczego warto ze mną współpracować",
       whyIntro:
-        "Nie buduję tylko estetycznych ekranów. Skupiam się na tym, żeby strona pracowała na kontakt, sprzedaż i rozwój SEO.",
+        "Stawiam na stronę, która wygląda dobrze i ma ułatwiać kontakt.",
       whyPoints: [
         "Projekt i treści układane pod decyzję zakupową użytkownika",
         "Wdrożenie gotowe pod dalszy rozwój podstron SEO",
@@ -1375,12 +1443,12 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
         "Nacisk na szybkość działania, mobile i czytelne CTA",
         "Możliwość skalowania strony na kolejne miasta i usługi",
       ],
-      processTitle: "Jak powstaje strona, która zdobywa klientów",
+      processTitle: "Jak wygląda praca nad stroną",
       processSteps: [
         {
           title: "Ustalenie celu i zakresu",
           description:
-            "Nie zaczynam od designu — zaczynam od tego, co ma zarabiać. Ustalamy, kto jest Twoim klientem i co strona ma dla niego zrobić.",
+            "Najpierw ustalamy, dla kogo jest strona i co ma załatwiać.",
           image:
             "/tworzenie-strony-internetowej/poczatek-tworzenia-strony-internetowej.png",
           imageAlt:
@@ -1389,7 +1457,7 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
         {
           title: "Struktura i komunikacja",
           description:
-            "Układam stronę tak, żeby prowadziła użytkownika krok po kroku do kontaktu. Treści, nagłówki i sekcje mają sprzedawać — nie tylko wyglądać.",
+            "Układam treści i sekcje tak, żeby wszystko było jasne i prowadziło do kontaktu.",
           image:
             "/tworzenie-strony-internetowej/strona-internetowa-w-trakcie-tworzenia.png",
           imageAlt:
@@ -1398,7 +1466,7 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
         {
           title: "Wdrożenie i dopracowanie",
           description:
-            "Buduję stronę, dbam o szybkość, SEO i działanie na każdym urządzeniu. Testujemy, poprawiamy i dopinamy wszystko przed publikacją.",
+            "Buduję stronę, dbam o szybkość i SEO, a przed publikacją wszystko testuję.",
           image:
             "/tworzenie-strony-internetowej/strona-internetowa-jest-prawie-gotowa.png",
           imageAlt:
@@ -1407,7 +1475,7 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
         {
           title: "Rozwój i skalowanie",
           description:
-            "Strona startuje, ale to dopiero początek. Możemy ją rozwijać o kolejne podstrony, SEO i nowe źródła klientów.",
+            "Po starcie można rozwijać stronę o kolejne podstrony, usługi i SEO.",
           image:
             "/tworzenie-strony-internetowej/twoja-strona-internetowa-została-stworzona.png",
           imageAlt:
@@ -1461,9 +1529,9 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
       faqCtaLabel: "Przejdź do formularza",
       nextStepEyebrow: "Następny krok",
       nextStepTitle:
-        "Chcesz zbudować stronę, którą później łatwo skalować?",
+        "Chcesz prostą i skuteczną stronę?",
       nextStepDescription:
-        `Opisz, co sprzedajesz i na jakie miasta lub usługi chcesz się pozycjonować. Przygotuję propozycję kierunku i wycenę dla firmy ${c.fromGenitive}.`,
+        `Napisz, czym zajmuje się Twoja firma i na jakich klientach Ci zależy. Przygotuję kierunek i wycenę dla firmy ${c.fromGenitive}.`,
       nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
       nextStepSecondaryCtaLabel: "Wyślij brief",
     },
@@ -1471,7 +1539,7 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
     contact: {
       title: `Masz pomysł na stronę internetową ${c.inLocative}?`,
       subtitle:
-        "Zamów darmową wycenę, wypełniając formularz poniżej",
+        "Napisz kilka zdań i wrócę z wyceną.",
       imageAlt: `Strona internetowa dla firmy ${c.fromGenitive}`,
     },
     },
@@ -2637,8 +2705,10 @@ export const TARGET_AUDIENCE_LANDING_PAGES: LandingPageContent[] =
 export const SEO_LANDING_PAGES: LandingPageContent[] = [
   ...ALL_CITIES.flatMap((city) => [
     city.slug === DEFAULT_CITY_SLUG ? HOME_LANDING_PAGE : createWebsitePage(city),
+    createWebDesignPage(city),
     createLandingPageServicePage(city),
     createStorePage(city),
+    createSalePage(city),
     createSeoPage(city),
   ]),
   ...TARGET_AUDIENCE_LANDING_PAGES,
@@ -2658,6 +2728,10 @@ const LANDING_PAGE_BY_SERVICE_AND_CITY = new Map(
   ]),
 );
 
+const LANDING_PAGE_BY_PATH = new Map(
+  SEO_LANDING_PAGES.map((page) => [getLandingPageHref(page), page]),
+);
+
 const LANDING_PAGE_BY_TARGET_AND_CITY = new Map(
   TARGET_AUDIENCE_LANDING_PAGES.map((page) => [
     `${page.targetKey}:${page.citySlug}`,
@@ -2671,6 +2745,58 @@ function getCitySlugForContext(currentSlug?: string): string {
 
 export function getLandingPageBySlug(slug: string): LandingPageContent | null {
   return LANDING_PAGE_BY_SLUG.get(slug) ?? null;
+}
+
+export function getLandingPageByPathname(
+  pathname: string,
+): LandingPageContent | null {
+  return LANDING_PAGE_BY_PATH.get(pathname) ?? null;
+}
+
+export function getLandingPageCityBySlug(
+  citySlug: string,
+): LandingPageCity | null {
+  return ALL_CITIES.find((city) => city.slug === citySlug) ?? null;
+}
+
+export function getServiceLandingPage(
+  citySlug: string,
+  serviceKey: LandingPageServiceKey,
+): LandingPageContent | null {
+  return LANDING_PAGE_BY_SERVICE_AND_CITY.get(`${serviceKey}:${citySlug}`) ?? null;
+}
+
+export function getLandingPageByRouteParams(
+  citySlug: string,
+  serviceRouteParam: string,
+): LandingPageContent | null {
+  const serviceKey = getServiceKeyFromRouteParam(serviceRouteParam);
+
+  if (!serviceKey) {
+    return null;
+  }
+
+  return getServiceLandingPage(citySlug, serviceKey);
+}
+
+export function getAllCityHubSlugs(): string[] {
+  return ALL_CITIES.map((city) => city.slug);
+}
+
+export function getAllCityServiceRouteParams(): Array<{
+  city: string;
+  service: LandingPageServiceRouteParam;
+}> {
+  return ALL_CITIES.flatMap((city) =>
+    ALL_SERVICE_KEYS.map((serviceKey) => ({
+      city: city.slug,
+      service: getServiceRouteParam(serviceKey),
+    })),
+  );
+}
+
+export function getAllLandingPagePaths(): string[] {
+  return SEO_LANDING_PAGES.map((page) => getLandingPageHref(page));
 }
 
 export function getAllLandingPageSlugs(): string[] {
@@ -2693,7 +2819,7 @@ export function getBreadcrumbLinks(currentSlug?: string): LandingPageLink[] {
         label: "Start",
       },
       {
-        href: `/${page.slug}`,
+        href: getLandingPageHref(page),
         label: SERVICE_LABELS[page.serviceKey],
       },
     ];
@@ -2703,7 +2829,6 @@ export function getBreadcrumbLinks(currentSlug?: string): LandingPageLink[] {
     return [];
   }
 
-  const cityHubSlug = getCityServiceSlug("website", page.citySlug);
   const currentPageLabel = `${SERVICE_LABELS[page.serviceKey]} ${page.cityName}`;
 
   if (page.targetKey && page.targetLabel) {
@@ -2713,11 +2838,11 @@ export function getBreadcrumbLinks(currentSlug?: string): LandingPageLink[] {
         label: "Start",
       },
       {
-        href: getLandingPageHref(cityHubSlug),
+        href: getCityHubHref(page.citySlug),
         label: page.cityName,
       },
       {
-        href: getLandingPageHref(page.slug),
+        href: getLandingPageHref(page),
         label: `Dla ${page.targetLabel}`,
       },
     ];
@@ -2730,7 +2855,7 @@ export function getBreadcrumbLinks(currentSlug?: string): LandingPageLink[] {
         label: "Start",
       },
       {
-        href: getLandingPageHref(page.slug),
+        href: getCityHubHref(page.citySlug),
         label: page.cityName,
       },
     ];
@@ -2742,11 +2867,11 @@ export function getBreadcrumbLinks(currentSlug?: string): LandingPageLink[] {
       label: "Start",
     },
     {
-      href: getLandingPageHref(cityHubSlug),
+      href: getCityHubHref(page.citySlug),
       label: page.cityName,
     },
     {
-      href: getLandingPageHref(page.slug),
+      href: getLandingPageHref(page),
       label: currentPageLabel,
     },
   ];
@@ -2768,7 +2893,25 @@ export function getCurrentCityServiceLinks(
     )
     .filter((page) => includeCurrent || page.slug !== currentSlug)
     .map((page) => ({
-      href: getLandingPageHref(page.slug),
+      href: getLandingPageHref(page),
+      label: `${SERVICE_LABELS[page.serviceKey as LandingPageServiceKey]} ${page.cityName}`,
+    }));
+}
+
+export function getCityServiceLinks(
+  citySlug: string,
+  includeServiceKey?: LandingPageServiceKey,
+): LandingPageLink[] {
+  return ALL_SERVICE_KEYS.map((serviceKey) =>
+    LANDING_PAGE_BY_SERVICE_AND_CITY.get(`${serviceKey}:${citySlug}`),
+  )
+    .filter(
+      (page): page is LandingPageContent =>
+        Boolean(page && page.cityName && page.serviceKey),
+    )
+    .filter((page) => includeServiceKey !== page.serviceKey)
+    .map((page) => ({
+      href: getLandingPageHref(page),
       label: `${SERVICE_LABELS[page.serviceKey as LandingPageServiceKey]} ${page.cityName}`,
     }));
 }
@@ -2789,9 +2932,28 @@ export function getCurrentCityTargetLinks(
     )
     .filter((page) => includeCurrent || page.slug !== currentSlug)
     .map((page) => ({
-      href: getLandingPageHref(page.slug),
+      href: getLandingPageHref(page),
       label: `Strona dla ${page.targetLabel} ${page.cityName}`,
     }));
+}
+
+export function getCityTargetLinks(
+  citySlug: string,
+  limit?: number,
+): LandingPageLink[] {
+  const links = TARGET_LANDING_PAGE_RECORDS.map((target) =>
+    LANDING_PAGE_BY_TARGET_AND_CITY.get(`${target.key}:${citySlug}`),
+  )
+    .filter(
+      (page): page is LandingPageContent =>
+        Boolean(page?.slug && page.cityName && page.targetLabel),
+    )
+    .map((page) => ({
+      href: getLandingPageHref(page),
+      label: `Strona dla ${page.targetLabel} ${page.cityName}`,
+    }));
+
+  return typeof limit === "number" ? links.slice(0, limit) : links;
 }
 
 export function getSiblingCityLinks(
@@ -2811,7 +2973,7 @@ export function getSiblingCityLinks(
       )
       .slice(0, limit)
       .map((page) => ({
-        href: `/${page.slug}`,
+        href: getLandingPageHref(page),
         label: `Strona dla ${page.targetLabel} ${page.cityName}`,
       }));
   }
@@ -2829,8 +2991,31 @@ export function getSiblingCityLinks(
     )
     .slice(0, limit)
     .map((page) => ({
-      href: getLandingPageHref(page.slug),
+      href: getLandingPageHref(page),
       label: `${SERVICE_LABELS[serviceKey]} ${page.cityName}`,
+    }));
+}
+
+export function getSiblingCityHubLinks(
+  citySlug: string,
+  limit = 6,
+): LandingPageLink[] {
+  const currentCity = getLandingPageCityBySlug(citySlug);
+
+  if (!currentCity) {
+    return [];
+  }
+
+  return ALL_CITIES.filter((city) => city.slug !== citySlug)
+    .sort(
+      (left, right) =>
+        getDistanceBetweenCitiesKm(currentCity, left) -
+        getDistanceBetweenCitiesKm(currentCity, right),
+    )
+    .slice(0, limit)
+    .map((city) => ({
+      href: getCityHubHref(city.slug),
+      label: `Projektowanie stron WWW ${city.name}`,
     }));
 }
 
@@ -2857,7 +3042,7 @@ export function getLandingPageLink(
   }
 
   return {
-    href: getLandingPageHref(page.slug),
+    href: getLandingPageHref(page),
     label: `${SERVICE_LABELS[serviceKey]} ${page.cityName}`,
   };
 }
@@ -2874,7 +3059,7 @@ export function getPrimaryLandingPageLink(
   }
 
   return {
-    href: getLandingPageHref(page.slug),
+    href: getLandingPageHref(page),
     label: `${SERVICE_LABELS[serviceKey]} ${page.cityName}`,
   };
 }
@@ -2890,7 +3075,9 @@ export function getContextualLandingPageLinks(
   limit = 3,
 ): LandingPageLink[] {
   const currentPage = LANDING_PAGE_BY_SLUG.get(currentSlug ?? "");
-  const currentHref = getLandingPageHref(currentSlug);
+  const currentHref = currentPage
+    ? getLandingPageHref(currentPage)
+    : getLandingPageHref(currentSlug);
 
   return DEFAULT_CONTEXTUAL_SERVICE_KEYS.filter(
     (serviceKey) => serviceKey !== currentPage?.serviceKey,
@@ -2899,4 +3086,27 @@ export function getContextualLandingPageLinks(
     .filter((link): link is LandingPageLink => Boolean(link))
     .filter((link) => link.href !== currentHref)
     .slice(0, limit);
+}
+
+export function getLandingPageHref(
+  input?: LandingPageContent | string,
+): string {
+  if (!input) {
+    return "/";
+  }
+
+  if (typeof input === "string") {
+    const page = LANDING_PAGE_BY_SLUG.get(input);
+    return page ? getLandingPageHref(page) : `/${input}`;
+  }
+
+  if (!input.slug) {
+    return "/";
+  }
+
+  if (input.targetKey || !input.serviceKey || !input.citySlug) {
+    return `/${input.slug}`;
+  }
+
+  return getServiceHref(input.serviceKey, input.citySlug);
 }

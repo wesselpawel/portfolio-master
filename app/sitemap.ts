@@ -1,5 +1,9 @@
 import type { MetadataRoute } from "next";
-import { getAllLandingPageSlugs } from "@/data/landingPages";
+import {
+  getAllCityHubSlugs,
+  getAllLandingPagePaths,
+  getCityHubHref,
+} from "@/data/landingPages";
 
 const SITE_URL = "https://wesselpawel.com";
 
@@ -20,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${SITE_URL}/realizations`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${SITE_URL}/polityka-prywatnosci`,
       lastModified: now,
       changeFrequency: "yearly",
@@ -33,14 +43,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const landingPages: MetadataRoute.Sitemap = getAllLandingPageSlugs().map(
-    (slug) => ({
-      url: `${SITE_URL}/${slug}`,
+  const landingPages: MetadataRoute.Sitemap = getAllLandingPagePaths().map(
+    (pathname) => ({
+      url: `${SITE_URL}${pathname}`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     }),
   );
 
-  return [...staticRoutes, ...landingPages];
+  const cityHubs: MetadataRoute.Sitemap = getAllCityHubSlugs().map((citySlug) => ({
+    url: `${SITE_URL}${getCityHubHref(citySlug)}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.9,
+  }));
+
+  return [...staticRoutes, ...cityHubs, ...landingPages];
 }

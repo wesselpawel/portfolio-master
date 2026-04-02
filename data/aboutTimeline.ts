@@ -4,48 +4,48 @@ export const ABOUT_TIMELINE = [
     year: 2015,
     title: "Szkoła",
     description:
-      "W technikum informatycznym zbudowałem solidne podstawy programowania, baz danych, sieci komputerowych i pracy technicznej, która do dziś porządkuje moje podejście do tworzenia stron.",
+      "W technikum informatycznym zbudowałem mocne podstawy programowania, baz danych i pracy technicznej.",
   },
   {
     year: 2017,
     title: "Pierwsza strona WWW",
     description:
-      "W 2017 roku stworzyłem pierwszą stronę WWW w HTML, CSS i JavaScript. To był prosty projekt o klasycznych grach, ale właśnie wtedy wszedłem w web development na serio.",
+      "W 2017 stworzyłem pierwszą stronę w HTML, CSS i JavaScript. Wtedy web development wciągnął mnie na serio.",
   },
   {
     year: 2020,
     title: "Przygoda PHP",
     description:
-      "Po szkole wszedłem w PHP i uruchomiłem pierwszą jednoosobową działalność. Szybko połączyłem naukę kodu z realną odpowiedzialnością za projekt i klienta.",
+      "Po szkole wszedłem w PHP i uruchomiłem pierwszą działalność. Nauka szybko spotkała się z realną pracą z klientem.",
   },
   {
     year: 2021,
     title: "Nauka Reacta",
     description:
-      "Wszedłem w React i zacząłem budować nowoczesne interfejsy szybciej, czyściej i na wyższym poziomie. To był moment, w którym front-end stał się moją specjalizacją.",
+      "Wszedłem w React i zacząłem budować nowoczesne interfejsy szybciej i czyściej. Wtedy front-end stał się moją specjalizacją.",
   },
   {
     year: 2022,
     title: "Mentor",
     description:
-      "Praca z mentorem uporządkowała mój warsztat. Dzięki temu przyspieszyłem rozwój, lepiej rozumiałem architekturę projektów i podejmowałem trafniejsze decyzje techniczne.",
+      "Praca z mentorem uporządkowała mój warsztat i przyspieszyła rozwój.",
   },
   {
     year: 2023,
     title: "Tworzenie projektów",
     description:
-      "Rozbudowałem portfolio projektów i wdrożeń. Pracowałem na Next.js, Tailwind CSS, Firebase, Stripe, Three.js, Chart.js i wielu innych narzędziach, które dziś wykorzystuję w pracy komercyjnej.",
+      "Rozbudowałem portfolio i wdrożenia. Pracowałem m.in. z Next.js, Tailwind CSS, Firebase, Stripe i Three.js.",
   },
   {
     year: 2024,
     title: "Sklepy internetowe",
     description:
-      "Dostarczałem sklepy internetowe, m.in. Blackbell Studio i Zaklejki.pl. Skupiłem się nie tylko na wyglądzie, ale też na przejrzystej sprzedaży, wygodzie użytkownika i sprawnym wdrożeniu.",
+      "Realizowałem sklepy internetowe, m.in. Blackbell Studio i Zaklejki.pl, z naciskiem na prostą sprzedaż i wygodę użytkownika.",
   },
   {
     year: 2025,
     title: "Platformy internetowe",
     description:
-      "Skupiłem się na platformach internetowych. Realizowałem projekty takie jak Quixy.pl, Naily.pl i Pizzuj.pl, łącząc front-end, UX, SEO i funkcjonalność w większych produktach.",
+      "Skupiłem się na platformach internetowych, łącząc front-end, UX, SEO i funkcjonalność w większych produktach.",
   },
 ] as const;

@@ -4,24 +4,24 @@ import { Metadata } from "next";
 const SITE_URL = "https://wesselpawel.com";
 
 export const metadata: Metadata = {
-  title: "O mnie | Tworzenie stron internetowych Grudziądz",
+  title: "WWW Expert - O mnie",
   description:
-    "Poznaj moją drogę od technikum informatycznego do tworzenia stron, sklepów i platform internetowych. Front-end, SEO i strony internetowe w Grudziądzu.",
+    "Tworzę strony, sklepy i platformy internetowe dla firm. Zobacz, jak wyglądała moja droga w web developmencie.",
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: {
     type: "website",
     url: `${SITE_URL}/about`,
-    title: "O mnie | Tworzenie stron internetowych Grudziądz",
+    title: "WWW Expert - O mnie",
     description:
-      "Poznaj moją drogę od technikum informatycznego do tworzenia stron, sklepów i platform internetowych. Front-end, SEO i strony internetowe w Grudziądzu.",
-    siteName: "Paweł Wessel - WWW Expert",
+      "Tworzę strony, sklepy i platformy internetowe dla firm. Zobacz, jak wyglądała moja droga w web developmencie.",
+    siteName: "WWW Expert",
   },
   twitter: {
-    title: "O mnie | Tworzenie stron internetowych Grudziądz",
+    title: "WWW Expert - O mnie",
     description:
-      "Poznaj moją drogę od technikum informatycznego do tworzenia stron, sklepów i platform internetowych. Front-end, SEO i strony internetowe w Grudziądzu.",
+      "Tworzę strony, sklepy i platformy internetowe dla firm. Zobacz, jak wyglądała moja droga w web developmencie.",
   },
 };
 

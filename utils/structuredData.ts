@@ -1,4 +1,8 @@
-import { getBreadcrumbLinks, type LandingPageContent } from "@/data/landingPages";
+import {
+  getBreadcrumbLinks,
+  getLandingPageHref,
+  type LandingPageContent,
+} from "@/data/landingPages";
 import { PORTFOLIO_PROJECTS } from "@/data/portfolioProjects";
 
 const SITE_URL = "https://wesselpawel.com";
@@ -8,7 +12,7 @@ function toAbsoluteUrl(pathname: string): string {
 }
 
 export function getLandingPageStructuredData(page: LandingPageContent) {
-  const pageUrl = page.slug ? toAbsoluteUrl(`/${page.slug}`) : SITE_URL;
+  const pageUrl = toAbsoluteUrl(getLandingPageHref(page));
   const breadcrumbLinks = page.slug ? getBreadcrumbLinks(page.slug) : [];
   const projectImages = PORTFOLIO_PROJECTS.flatMap((project) =>
     project.images.map((image, index) => ({

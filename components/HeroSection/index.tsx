@@ -194,34 +194,19 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
               <span className="text-white/70">Dodano:</span>
               <span className="ml-2">{pageContent.addedDate}</span>
             </div>
-            {contextualLandingLinks.length ? (
-              <p className="mt-4 max-w-3xl font-dosis text-sm leading-relaxed text-white/70 lg:text-base">
-                Powiązane podstrony w tym mieście: {renderInlineLinks()}.
-              </p>
-            ) : null}
-            <div className="mt-6 flex max-w-3xl flex-wrap items-stretch gap-3">
-              {sectionLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={primaryQuickLinkClass}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            
           </div>
-          {/* <div className="flex items-center justify-center mt-8">
-            <WebsiteOrderForm content={pageContent.form} />
-          </div> */}
           <div className="w-full lg:w-auto flex items-center justify-center">
-           <Image 
+           {/* <Image 
              src={require('@/public/assets/herogif.gif')} 
              alt="Prezentacja responsywności stron internetowych na mockupie urządzenia mobilnego" 
              width={400} 
              height={400} 
              className="mt-12 -ml-3 w-[100vw] lg:w-auto flex max-h-[80vh] w-auto aspect-auto" 
-           />
+           /> */}
+          <div className="flex items-center justify-center mt-8">
+            <WebsiteOrderForm content={pageContent.form} />
+          </div>
           </div>
         </div>
       </motion.div>

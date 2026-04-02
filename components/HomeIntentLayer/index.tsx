@@ -177,7 +177,7 @@ export default function HomeIntentLayer({
       </div>
 
       <div className="mt-8">
-        {/* <section className="rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
+        <section className="rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
           <h3 className="text-xl font-bold text-white">{content.whyTitle}</h3>
           <p className="mt-3 font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
             {content.whyIntro}
@@ -209,7 +209,7 @@ export default function HomeIntentLayer({
               </Link>
             ))}
           </div>
-        </section> */}
+        </section>
 
         <section className="overflow-hidden rounded-[28px] border border-white/10 bg-slate-900/60 p-5 backdrop-blur-sm sm:p-6 lg:p-7">
           <div className="max-w-3xl">
@@ -245,7 +245,7 @@ export default function HomeIntentLayer({
         </section>
       </div>
 
-      {/* <section className="mt-6 rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
+      <section className="mt-6 rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
             <h3 className="text-xl font-bold text-white">
@@ -302,7 +302,7 @@ export default function HomeIntentLayer({
             </Link>
           ))}
         </div>
-      </section> */}
+      </section>
 
 
       <div className="bg-slate-800/50 backdrop-blur-sm mt-6 rounded-[28px] border border-yellow-300/35 bg-gradient-to-r from-yellow-300/15 to-transparent p-6">

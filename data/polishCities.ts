@@ -26,6 +26,7 @@ export type LandingPageCity = {
   slug: string;
   name: string;
   cases: LandingPageCityCases;
+  hasTrustedCases: boolean;
   context: {
     inLocative: string;
     fromGenitive: string;
@@ -122,6 +123,7 @@ function createLandingPageCity(locality: PolishLocalityRecord): LandingPageCity 
     slug: createCitySlug(locality, DUPLICATE_CITY_NAME_COUNTS.get(locality.Name) ?? 1),
     name: locality.Name,
     cases,
+    hasTrustedCases,
     context: createCityContext(locality.Name, cases, hasTrustedCases),
     province: locality.Province,
     district: locality.District,
