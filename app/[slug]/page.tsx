@@ -24,7 +24,13 @@ export function generateMetadata({ params }: LandingPageRouteProps) {
     return {};
   }
 
-  return getLandingPageMetadata(page);
+  return {
+    ...getLandingPageMetadata(page),
+    robots: {
+      index: false,
+      follow: true,
+    },
+  };
 }
 
 export default function LandingPageRoute({ params }: LandingPageRouteProps) {

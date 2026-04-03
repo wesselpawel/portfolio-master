@@ -1,5 +1,8 @@
 // @ts-check
 
+const CITY_HUB_BASE_PATH = "/projektowanie-stron";
+const DEFAULT_CITY_HUB_PATH = `${CITY_HUB_BASE_PATH}/grudziadz`;
+
 /**
  * @type {import('next').NextConfig}
  **/
@@ -11,108 +14,123 @@ const nextConfig = {
       { source: "/en", destination: "/", permanent: true },
       { source: "/en/:path*", destination: "/:path*", permanent: true },
       {
-        source: "/strony-internetowe",
-        destination: "/projektowanie-internetowe/grudziadz",
+        source: "/projektowanie-internetowe/:city/:service",
+        destination: `${CITY_HUB_BASE_PATH}/:city/:service`,
         permanent: true,
       },
       {
-        source: "/strony-internetowe-:city",
-        destination: "/projektowanie-internetowe/:city/tworzenie-stron-internetowych",
-        permanent: true,
-      },
-      {
-        source: "/projektowanie-stron-www",
-        destination: "/projektowanie-internetowe/grudziadz/projektowanie-stron-www",
-        permanent: true,
-      },
-      {
-        source: "/projektowanie-stron-www-:city",
-        destination: "/projektowanie-internetowe/:city/projektowanie-stron-www",
-        permanent: true,
-      },
-      {
-        source: "/tworzenie-landing-page-grudziadz",
-        destination: "/projektowanie-internetowe/grudziadz/tworzenie-landing-page",
-        permanent: true,
-      },
-      {
-        source: "/landing-page-:city",
-        destination: "/projektowanie-internetowe/:city/tworzenie-landing-page",
-        permanent: true,
-      },
-      {
-        source: "/landing-page",
-        destination: "/projektowanie-internetowe/grudziadz/tworzenie-landing-page",
-        permanent: true,
-      },
-      {
-        source: "/tworzenie-sklepow-internetowych-grudziadz",
-        destination: "/projektowanie-internetowe/grudziadz/tworzenie-sklepow-internetowych",
-        permanent: true,
-      },
-      {
-        source: "/sklepy-internetowe-:city",
-        destination: "/projektowanie-internetowe/:city/tworzenie-sklepow-internetowych",
-        permanent: true,
-      },
-      {
-        source: "/sklepy-internetowe",
-        destination: "/projektowanie-internetowe/grudziadz/tworzenie-sklepow-internetowych",
-        permanent: true,
-      },
-      {
-        source: "/strony-internetowe-na-sprzedaz",
-        destination: "/projektowanie-internetowe/grudziadz/strony-internetowe-na-sprzedaz",
-        permanent: true,
-      },
-      {
-        source: "/strony-internetowe-na-sprzedaz-:city",
-        destination: "/projektowanie-internetowe/:city/strony-internetowe-na-sprzedaz",
-        permanent: true,
-      },
-      {
-        source: "/pozycjonowanie-stron-internetowych",
-        destination: "/projektowanie-internetowe/grudziadz/seo",
-        permanent: true,
-      },
-      {
-        source: "/pozycjonowanie-stron-internetowych-grudziadz",
-        destination: "/projektowanie-internetowe/grudziadz/seo",
-        permanent: true,
-      },
-      {
-        source: "/seo-grudziadz",
-        destination: "/projektowanie-internetowe/grudziadz/seo",
-        permanent: true,
-      },
-      {
-        source: "/pozycjonowanie-stron-internetowych-:city",
-        destination: "/projektowanie-internetowe/:city/seo",
-        permanent: true,
-      },
-      {
-        source: "/seo-:city",
-        destination: "/projektowanie-internetowe/:city/seo",
-        permanent: true,
-      },
-      {
-        source: "/seo",
-        destination: "/projektowanie-internetowe/grudziadz/seo",
-        permanent: true,
-      },
-      {
-        source: "/tworzenie-stron-internetowych-grudziadz",
-        destination: "/projektowanie-internetowe/grudziadz/tworzenie-stron-internetowych",
-        permanent: true,
-      },
-      {
-        source: "/tworzenie-stron-internetowych-:city",
-        destination: "/projektowanie-internetowe/:city/tworzenie-stron-internetowych",
+        source: "/projektowanie-internetowe/:city",
+        destination: `${CITY_HUB_BASE_PATH}/:city`,
         permanent: true,
       },
       {
         source: "/projektowanie-internetowe",
-        destination: "/projektowanie-internetowe/grudziadz",
+        destination: DEFAULT_CITY_HUB_PATH,
+        permanent: true,
+      },
+      {
+        source: "/projektowanie-stron",
+        destination: DEFAULT_CITY_HUB_PATH,
+        permanent: true,
+      },
+      {
+        source: "/strony-internetowe",
+        destination: DEFAULT_CITY_HUB_PATH,
+        permanent: true,
+      },
+      {
+        source: "/strony-internetowe-:city",
+        destination: `${CITY_HUB_BASE_PATH}/:city/tworzenie-stron-internetowych`,
+        permanent: true,
+      },
+      {
+        source: "/projektowanie-stron-www",
+        destination: `${DEFAULT_CITY_HUB_PATH}/projektowanie-stron-www`,
+        permanent: true,
+      },
+      {
+        source: "/projektowanie-stron-www-:city",
+        destination: `${CITY_HUB_BASE_PATH}/:city/projektowanie-stron-www`,
+        permanent: true,
+      },
+      {
+        source: "/tworzenie-landing-page-grudziadz",
+        destination: `${DEFAULT_CITY_HUB_PATH}/tworzenie-landing-page`,
+        permanent: true,
+      },
+      {
+        source: "/landing-page-:city",
+        destination: `${CITY_HUB_BASE_PATH}/:city/tworzenie-landing-page`,
+        permanent: true,
+      },
+      {
+        source: "/landing-page",
+        destination: `${DEFAULT_CITY_HUB_PATH}/tworzenie-landing-page`,
+        permanent: true,
+      },
+      {
+        source: "/tworzenie-sklepow-internetowych-grudziadz",
+        destination: `${DEFAULT_CITY_HUB_PATH}/tworzenie-sklepow-internetowych`,
+        permanent: true,
+      },
+      {
+        source: "/sklepy-internetowe-:city",
+        destination: `${CITY_HUB_BASE_PATH}/:city/tworzenie-sklepow-internetowych`,
+        permanent: true,
+      },
+      {
+        source: "/sklepy-internetowe",
+        destination: `${DEFAULT_CITY_HUB_PATH}/tworzenie-sklepow-internetowych`,
+        permanent: true,
+      },
+      {
+        source: "/strony-internetowe-na-sprzedaz",
+        destination: `${DEFAULT_CITY_HUB_PATH}/strony-internetowe-na-sprzedaz`,
+        permanent: true,
+      },
+      {
+        source: "/strony-internetowe-na-sprzedaz-:city",
+        destination: `${CITY_HUB_BASE_PATH}/:city/strony-internetowe-na-sprzedaz`,
+        permanent: true,
+      },
+      {
+        source: "/pozycjonowanie-stron-internetowych",
+        destination: `${DEFAULT_CITY_HUB_PATH}/seo`,
+        permanent: true,
+      },
+      {
+        source: "/pozycjonowanie-stron-internetowych-grudziadz",
+        destination: `${DEFAULT_CITY_HUB_PATH}/seo`,
+        permanent: true,
+      },
+      {
+        source: "/seo-grudziadz",
+        destination: `${DEFAULT_CITY_HUB_PATH}/seo`,
+        permanent: true,
+      },
+      {
+        source: "/pozycjonowanie-stron-internetowych-:city",
+        destination: `${CITY_HUB_BASE_PATH}/:city/seo`,
+        permanent: true,
+      },
+      {
+        source: "/seo-:city",
+        destination: `${CITY_HUB_BASE_PATH}/:city/seo`,
+        permanent: true,
+      },
+      {
+        source: "/seo",
+        destination: `${DEFAULT_CITY_HUB_PATH}/seo`,
+        permanent: true,
+      },
+      {
+        source: "/tworzenie-stron-internetowych-grudziadz",
+        destination: `${DEFAULT_CITY_HUB_PATH}/tworzenie-stron-internetowych`,
+        permanent: true,
+      },
+      {
+        source: "/tworzenie-stron-internetowych-:city",
+        destination: `${CITY_HUB_BASE_PATH}/:city/tworzenie-stron-internetowych`,
         permanent: true,
       },
     ];

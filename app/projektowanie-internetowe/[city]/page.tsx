@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import CityHubPage from "@/components/CityHubPage";
-import { getAllCityHubSlugs, getLandingPageCityBySlug } from "@/data/landingPages";
+import {
+  getAllCityHubSlugs,
+  getCityHubHref,
+  getLandingPageCityBySlug,
+} from "@/data/landingPages";
 import { notFound } from "next/navigation";
 import { getCityPexelsPhotos } from "@/utils/pexels";
 
@@ -21,7 +25,7 @@ export function generateMetadata({ params }: CityHubRouteProps): Metadata {
     return {};
   }
 
-  const canonicalUrl = `https://wesselpawel.com/projektowanie-internetowe/${city.slug}`;
+  const canonicalUrl = `https://wesselpawel.com${getCityHubHref(city.slug)}`;
 
   return {
     title: `Projektowanie stron WWW ${city.name} - strony firmowe, landing page i SEO`,

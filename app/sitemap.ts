@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import {
   getAllCityHubSlugs,
-  getAllLandingPagePaths,
   getCityHubHref,
 } from "@/data/landingPages";
 
@@ -23,34 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
-    {
-      url: `${SITE_URL}/realizations`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/polityka-prywatnosci`,
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.2,
-    },
-    {
-      url: `${SITE_URL}/polityka-cookies`,
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.2,
-    },
   ];
-
-  const landingPages: MetadataRoute.Sitemap = getAllLandingPagePaths().map(
-    (pathname) => ({
-      url: `${SITE_URL}${pathname}`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    }),
-  );
 
   const cityHubs: MetadataRoute.Sitemap = getAllCityHubSlugs().map((citySlug) => ({
     url: `${SITE_URL}${getCityHubHref(citySlug)}`,
@@ -59,5 +31,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...cityHubs, ...landingPages];
+  return [...staticRoutes, ...cityHubs];
 }

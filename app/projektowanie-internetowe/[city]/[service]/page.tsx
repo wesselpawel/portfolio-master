@@ -25,7 +25,13 @@ export function generateMetadata({ params }: CityServiceRouteProps) {
     return {};
   }
 
-  return getLandingPageMetadata(page);
+  return {
+    ...getLandingPageMetadata(page),
+    robots: {
+      index: false,
+      follow: true,
+    },
+  };
 }
 
 export default function CityServiceRoute({ params }: CityServiceRouteProps) {

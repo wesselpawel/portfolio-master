@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/polityka-cookies`,
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
   openGraph: {
     type: "website",
     url: `${SITE_URL}/polityka-cookies`,

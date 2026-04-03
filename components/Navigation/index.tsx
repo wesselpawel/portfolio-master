@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa";
 import authorImage from "@/public/assets/author.png";
 import {
+  CITY_HUB_BASE_SEGMENT,
   getCityServiceLinks,
   getLandingPageByPathname,
   getLandingPageCityBySlug,
@@ -38,7 +39,9 @@ function getCurrentSlug(pathname: string): string | undefined {
 }
 
 function getCurrentHubCitySlug(pathname: string): string | undefined {
-  const matchedPath = pathname.match(/^\/projektowanie-internetowe\/([^/]+)(?:\/.*)?$/);
+  const matchedPath = pathname.match(
+    new RegExp(`^/${CITY_HUB_BASE_SEGMENT}/([^/]+)(?:/.*)?$`),
+  );
   return matchedPath?.[1];
 }
 

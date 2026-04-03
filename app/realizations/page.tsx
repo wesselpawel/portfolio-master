@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://wesselpawel.com/realizations",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function RealizationsPage() {

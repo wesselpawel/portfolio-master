@@ -88,8 +88,8 @@ function createCityContext(
   cases: LandingPageCityCases,
   hasTrustedCases: boolean,
 ) {
-  const inLocative = hasTrustedCases ? `w ${cases.miejscownik}` : `w mieście ${name}`;
-  const fromGenitive = hasTrustedCases ? `z ${cases.dopelniacz}` : `z miasta ${name}`;
+  const inLocative = hasTrustedCases ? `w ${cases.miejscownik}` : `${name}`;
+  const fromGenitive = hasTrustedCases ? `z ${cases.dopelniacz}` : `${name}`;
 
   return {
     inLocative,
