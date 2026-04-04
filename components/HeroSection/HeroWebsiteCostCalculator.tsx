@@ -77,7 +77,11 @@ export default function HeroWebsiteCostCalculator() {
       const allowed = new Set(
         addonsForPackage(spec, packageId).map((a) => a.id),
       );
-      return new Set([...prev].filter((id) => allowed.has(id)));
+      const next = new Set<string>();
+      prev.forEach((id) => {
+        if (allowed.has(id)) next.add(id);
+      });
+      return next;
     });
   }, [kind, packageId, spec]);
 
@@ -95,7 +99,8 @@ export default function HeroWebsiteCostCalculator() {
 
   function toggleAddon(id: string) {
     setAddonIds((prev) => {
-      const next = new Set(prev);
+      const next = new Set<string>();
+      prev.forEach((x) => next.add(x));
       if (next.has(id)) next.delete(id);
       else next.add(id);
       return next;
