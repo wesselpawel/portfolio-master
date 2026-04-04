@@ -49,4 +49,4 @@ export type CityHubPricingDocument = {
   tables: HubPricingTable[];
 };
 
-export const cityHubPricingData = raw as CityHubPricingDocument;
+export const cityHubPricingData = raw as unknown as CityHubPricingDocument;
