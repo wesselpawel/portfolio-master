@@ -516,14 +516,14 @@ function createHomepageLandingPage(): LandingPageContent {
           description:
             "Strona internetowa wyświetlająca ofertę w Google.",
           image:"/images/projects/kancelariadeluga/hero.webp",
-          imageAlt: "Strona internetowa wizytówka kancelarii prawniczej w Grudziądzu",price:1200,
+          imageAlt: "Strona internetowa wizytówka kancelarii prawniczej",price:1200,
         },
         {
           name: "Strona firmowa",
           description:
             "Strona internetowa dla firmy, z pozycjonowaniem SEO.",
           image:"/images/projects/glazurnikgrudziadz/hero.png",
-          imageAlt: "Strona firmowa dla glazurnika z Grudziądza",price:2000,
+          imageAlt: "Strona firmowa dla lokalnej firmy usługowej",price:2000,
         },
       ],
       whyTitle: "Dlaczego warto ze mną współpracować",
@@ -574,7 +574,7 @@ function createHomepageLandingPage(): LandingPageContent {
         "mocne CTA do formularza, telefonu i maila",
         "sekcje sprzedażowe: oferta, proces, argumenty, FAQ",
         "responsywność na telefon, tablet i desktop",
-        "przygotowanie pod dalszy rozwój city pages",
+        "przygotowanie pod dalszy rozwój podstron lokalnych",
         "wdrożenie i konfigurację formularza kontaktowego",
       ],
       includedCtaLabel: "Chcę dostać wycenę",
@@ -773,18 +773,18 @@ function createWebDesignOverviewPage(): LandingPageContent {
     {
     slug: "projektowanie-stron-www",
     seo: {
-      title: "Projektowanie stron www - UX, redesign i identyfikacja",
+      title: "Projektowanie stron www - Projekt i wdrożenie",
       description:
-        "Projektowanie stron www z naciskiem na UX, architekturę informacji, redesign, branding i kierunek wizualny dla firm.",
+        "Projektowanie stron www z naciskiem na UX, architekturę informacji, design, branding i kierunek wizualny dla firm.",
     },
     hero: {
-      headingPrefix: "PROJEKTUJĘ ",
-      headingHighlight: "STRONY WWW",
-      headingSuffix: " - UX, REDESIGN I SPÓJNA IDENTYFIKACJA",
+      headingPrefix: "Projektuję ",
+      headingHighlight: "Strony WWW",
+      headingSuffix: " - Projekt i wdrożenie",
       description:
         "Pomagam firmom uporządkować UX, strukturę treści i warstwę wizualną strony tak, aby marka wyglądała spójniej i była łatwiejsza w odbiorze.",
       floatingPromptPrimary: "Chcesz odświeżyć design strony lub marki?",
-      floatingPromptSecondary: "Porozmawiajmy o projekcie UX i redesignie",
+      floatingPromptSecondary: "Porozmawiajmy o projekcie UX i designie",
     },
     form: {
       requirementsPlaceholder:
@@ -795,7 +795,7 @@ function createWebDesignOverviewPage(): LandingPageContent {
       heading: "Projektowanie stron www, które poprawia UX, komunikację i odbiór marki",
       paragraphs: [
         "Projektuję strony www dla firm, które chcą poprawić doświadczenie użytkownika, uporządkować architekturę informacji i nadać marce bardziej dopracowany kierunek wizualny.",
-        "Jeśli interesuje Cię projektowanie strony www, redesign istniejącego serwisu albo odświeżenie identyfikacji, zacznijmy od analizy układu, treści i problemów UX.",
+        "Jeśli interesuje Cię projektowanie strony www, design istniejącego serwisu albo odświeżenie identyfikacji, zacznijmy od analizy układu, treści i problemów UX.",
       ],
       ctaTitle: "Chcesz zaprojektować stronę www?",
       ctaDescription:
@@ -804,20 +804,32 @@ function createWebDesignOverviewPage(): LandingPageContent {
       offerLabel: "Oferta",
       offerOptions: [
         {
-          name: "Redesign strony",
+          name: "Design strony",
           description:
             "Dla firm, które mają już stronę, ale chcą poprawić układ, czytelność, hierarchię treści i odbiór marki.",
+          image: "/images/projects/glazurnikgrudziadz/hero.PNG",
+          imageAlt:
+            "Przykład czytelnej sekcji oferty na stronie — design układu i hierarchii treści",
+          price: 1200,
         },
         {
           name: "Projekt UX/UI strony firmowej",
           description:
             "Najlepsza opcja dla firm, które chcą przemyśleć ścieżkę użytkownika, sekcje, komunikację i wygląd serwisu przed wdrożeniem.",
           highlighted: true,
+          image: "/images/projects/quixy/hero.png",
+          imageAlt:
+            "Nowoczesny interfejs strony www — projekt UX/UI i warstwa wizualna",
+          price: 3500,
         },
         {
           name: "Branding i kierunek wizualny",
           description:
             "Dla firm, które poza projektem strony chcą uporządkować identyfikację, styl komunikacji lub bazę pod logo i materiały wizualne.",
+          image: "/images/projects/blackbellart/hero.png",
+          imageAlt:
+            "Silna identyfikacja wizualna marki — branding i spójny kierunek graficzny",
+          price: 2500,
         },
       ],
       whyTitle: "Dlaczego warto zlecić mi projektowanie strony www",
@@ -827,10 +839,10 @@ function createWebDesignOverviewPage(): LandingPageContent {
         "Analiza problemów UX i miejsc, w których użytkownik gubi się na stronie",
         "Przemyślana hierarchia sekcji, nagłówków i komunikatów",
         "Design dopasowany do marki, oferty i sposobu podejmowania decyzji przez klienta",
-        "Redesign oparty na czytelności, zaufaniu i spójności wizualnej",
+        "Design oparty na czytelności, zaufaniu i spójności wizualnej",
         "Możliwość połączenia projektu strony z brandingiem lub odświeżeniem identyfikacji",
       ],
-      processTitle: "Jak wygląda projektowanie strony www i redesign",
+      processTitle: "Jak wygląda projektowanie strony www i design",
       processSteps: [
         {
           title: "1. Audyt obecnej strony lub brief nowego projektu",
@@ -850,7 +862,7 @@ function createWebDesignOverviewPage(): LandingPageContent {
         {
           title: "4. Przekazanie do wdrożenia i rozwój marki",
           description:
-            "Po projekcie wiadomo, jak wdrożyć stronę i jak dalej rozwijać branding, logo, kolejne podstrony lub redesign innych widoków.",
+            "Po projekcie wiadomo, jak wdrożyć stronę i jak dalej rozwijać branding, logo, kolejne podstrony lub design innych widoków.",
         },
       ],
       includedTitle: "Co otrzymujesz w ramach projektu strony www",
@@ -865,7 +877,7 @@ function createWebDesignOverviewPage(): LandingPageContent {
         "projekt dopasowany do marki, odbiorcy i celu strony",
         "założenia responsywne na telefon, tablet i desktop",
         "kierunek wizualny wspierający zaufanie i czytelność",
-        "bazę pod redesign, branding lub dalsze wdrożenie strony",
+        "bazę pod design, branding lub dalsze wdrożenie strony",
       ],
       includedCtaLabel: "Chcę dostać wycenę projektu",
       faqTitle: "FAQ o projektowaniu stron www",
@@ -904,7 +916,7 @@ function createWebDesignOverviewPage(): LandingPageContent {
       faqCtaLabel: "Przejdź do formularza",
       nextStepEyebrow: "Następny krok",
       nextStepTitle:
-        "Chcesz uporządkować UX, redesign lub kierunek wizualny swojej strony?",
+        "Chcesz uporządkować UX, design lub kierunek wizualny swojej strony?",
       nextStepDescription:
         "Opisz obecną stronę, problemy z komunikacją albo potrzebę redesignu. Wrócę z propozycją kierunku i wyceną projektu.",
       nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
@@ -915,7 +927,7 @@ function createWebDesignOverviewPage(): LandingPageContent {
       title: "Chcesz poprawić design, UX albo branding strony?",
       subtitle:
         "Opisz obecną stronę lub zakres redesignu, a przygotuję kierunek i wycenę",
-      imageAlt: "Projekt UX i redesign strony www",
+      imageAlt: "Projekt UX i design strony www",
     },
     },
   );
@@ -1206,7 +1218,7 @@ function createStoreOverviewPage(): LandingPageContent {
       faqCtaLabel: "Przejdź do formularza",
       nextStepEyebrow: "Następny krok",
       nextStepTitle:
-        "Chcesz uruchomić sklep internetowy bez chaotycznego wdrożenia?",
+        "Chcesz uruchomić sklep internetowy?",
       nextStepDescription:
         "Opisz, co sprzedajesz i czego potrzebujesz. Wrócę z propozycją rozwiązania oraz wyceną.",
       nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
@@ -1391,8 +1403,8 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
       headingHighlight: `stron WWW ${c.inLocative}`,
       headingSuffix: " - Cennik Stron WWW Expert",
       description: isDefaultCity ? `Zobacz mój cennik z ofertą stron WWW Grudziądz, które są szybkie i pomagają zdobywać klientów` : `Zobacz mój cennik stron WWW ${city.name}, które są szybkie i pomagają zdobywać klientów.`,
-      floatingPromptPrimary: `Potrzebujesz strony WWW ${c.inLocative}?`,
-      floatingPromptSecondary: `Napisz, czego potrzebujesz ${c.inLocative}.`,
+      floatingPromptPrimary: `Potrzebujesz strony WWW?`,
+      floatingPromptSecondary: `Porozmawiajmy o Twoim projekcie.`,
     },
     intent: {
       eyebrow: `Strony WWW ${city.name}`,
@@ -1555,27 +1567,27 @@ function createWebDesignPage(city: LandingPageCity): LandingPageContent {
     getLandingPageAddedDate("design-city"),
     {
     seo: {
-      title: `Projektowanie stron www ${city.name} - Paweł Wessel`,
-      description: `Projektowanie stron www ${c.inLocative} z naciskiem na UX, architekturę informacji, redesign, branding i kierunek wizualny dla firm.`,
+      title: `Projektowanie stron WWW ${city.name} - Paweł Wessel`,
+      description: `Projektowanie stron WWW ${c.inLocative} - Projekt i wdrożenie.`,
     },
     hero: {
       headingPrefix: "Projektowanie ",
-      headingHighlight: `stron www ${c.inLocative}`,
-      headingSuffix: " - UX, redesign i spójna identyfikacja",
-      description: `Projektuję strony www dla firm ${c.fromGenitive}, które chcą uporządkować komunikację, poprawić UX i lepiej wyglądać w oczach klientów.`,
-      floatingPromptPrimary: `Chcesz odświeżyć design strony ${c.inLocative}?`,
-      floatingPromptSecondary: `Porozmawiajmy o projekcie UX i redesignie ${c.inLocative}.`,
+      headingHighlight: `stron WWW ${c.inLocative}`,
+      headingSuffix: " - Projekt i wdrożenie",
+      description: `Projektuję strony WWW dla firm ${c.fromGenitive}, które chcą uporządkować komunikację, poprawić design swojej marki.`,
+      floatingPromptPrimary: `Chcesz odświeżyć design strony?`,
+      floatingPromptSecondary: `Porozmawiajmy o projekcie UX i designie`,
     },
     form: {
       requirementsPlaceholder:
         "Opisz obecną stronę, problemy UX, styl wizualny, potrzebę redesignu lub zakres brandingu...",
     },
     intent: {
-      eyebrow: `Projektowanie stron www ${city.name} - UX i redesign`,
+      eyebrow: `Projektowanie stron www ${city.name} - UX i design`,
       heading: `Projektowanie stron www ${c.inLocative}, które porządkuje UX, komunikację i odbiór marki.`,
       paragraphs: [
         `Projektuję strony www dla firm ${c.fromGenitive} i okolic, które chcą poprawić doświadczenie użytkownika, uporządkować architekturę informacji i nadać marce bardziej dopracowany kierunek wizualny.`,
-        `Jeśli interesuje Cię projektowanie strony www ${c.inLocative}, redesign istniejącego serwisu albo odświeżenie identyfikacji, zacznijmy od analizy układu, treści i problemów UX.`,
+        `Jeśli interesuje Cię projektowanie strony www ${c.inLocative}, design istniejącego serwisu albo odświeżenie identyfikacji, zacznijmy od analizy układu, treści i problemów UX.`,
       ],
       ctaTitle: "Chcesz omówić projekt strony?",
       ctaDescription:
@@ -1584,20 +1596,32 @@ function createWebDesignPage(city: LandingPageCity): LandingPageContent {
       offerLabel: "Oferta",
       offerOptions: [
         {
-          name: "Redesign strony",
+          name: "Design strony",
           description:
             "Dla firm, które mają już stronę, ale chcą poprawić układ, czytelność, hierarchię treści i odbiór marki.",
+          image: "/images/projects/glazurnikgrudziadz/hero.PNG",
+          imageAlt:
+            "Przykład czytelnej sekcji oferty na stronie — redesign układu i hierarchii treści",
+          price: 1200,
         },
         {
           name: "Projekt UX/UI strony firmowej",
           description:
             "Najlepsza opcja dla firm, które chcą przemyśleć ścieżkę użytkownika, sekcje, komunikację i wygląd serwisu przed wdrożeniem.",
           highlighted: true,
+          image: "/images/projects/quixy/hero.png",
+          imageAlt:
+            "Nowoczesny interfejs strony www — projekt UX/UI i warstwa wizualna",
+          price: 3500,
         },
         {
           name: "Branding i kierunek wizualny",
           description:
             "Dla firm, które poza projektem strony chcą uporządkować identyfikację, styl komunikacji lub bazę pod logo i materiały wizualne.",
+          image: "/images/projects/blackbellart/hero.png",
+          imageAlt:
+            "Silna identyfikacja wizualna marki — branding i spójny kierunek graficzny",
+          price: 2500,
         },
       ],
       offerSupportingLinks: createOfferSupportingLinks("design", city),
@@ -1608,10 +1632,10 @@ function createWebDesignPage(city: LandingPageCity): LandingPageContent {
         "Analiza problemów UX i miejsc, w których użytkownik gubi się na stronie",
         "Przemyślana hierarchia sekcji, nagłówków i komunikatów",
         "Design dopasowany do marki, oferty i sposobu podejmowania decyzji przez klienta",
-        "Redesign oparty na czytelności, zaufaniu i spójności wizualnej",
+        "Design oparty na czytelności, zaufaniu i spójności wizualnej",
         "Możliwość połączenia projektu strony z brandingiem lub odświeżeniem identyfikacji",
       ],
-      processTitle: "Jak wygląda projektowanie strony www i redesign",
+      processTitle: "Jak wygląda projektowanie strony www i design",
       processSteps: [
         {
           title: "Audyt obecnej strony lub brief nowego projektu",
@@ -1631,7 +1655,7 @@ function createWebDesignPage(city: LandingPageCity): LandingPageContent {
         {
           title: "Przekazanie do wdrożenia i rozwój marki",
           description:
-            "Po projekcie wiadomo, jak wdrożyć stronę i jak dalej rozwijać branding, logo, kolejne podstrony lub redesign innych widoków.",
+            "Po projekcie wiadomo, jak wdrożyć stronę i jak dalej rozwijać branding, logo, kolejne podstrony lub design innych widoków.",
         },
       ],
       includedTitle: "Co otrzymujesz w standardzie",
@@ -1646,7 +1670,7 @@ function createWebDesignPage(city: LandingPageCity): LandingPageContent {
         "projekt dopasowany do marki, odbiorcy i celu strony",
         "założenia responsywne na telefon, tablet i desktop",
         "kierunek wizualny wspierający zaufanie i czytelność",
-        "bazę pod redesign, branding lub dalsze wdrożenie strony",
+        "bazę pod design, branding lub dalsze wdrożenie strony",
       ],
       includedCtaLabel: "Chcę dostać wycenę projektu",
       faqTitle: "FAQ",
@@ -1684,7 +1708,7 @@ function createWebDesignPage(city: LandingPageCity): LandingPageContent {
       faqCtaLabel: "Przejdź do formularza",
       nextStepEyebrow: "Następny krok",
       nextStepTitle:
-        "Chcesz uporządkować UX, redesign lub kierunek wizualny swojej strony?",
+        "Chcesz uporządkować UX, design lub kierunek wizualny swojej strony?",
       nextStepDescription:
         `Opisz obecną stronę, problemy z komunikacją albo potrzebę redesignu. Przygotuję propozycję kierunku i wycenę dla firmy ${c.fromGenitive}.`,
       nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
@@ -1694,7 +1718,7 @@ function createWebDesignPage(city: LandingPageCity): LandingPageContent {
     contact: {
       title: `Chcesz poprawić design, UX albo branding strony ${c.inLocative}?`,
       subtitle: "Opisz obecną stronę lub zakres redesignu, a przygotuję kierunek i wycenę",
-      imageAlt: `Projekt UX i redesign strony www ${c.inLocative}`,
+      imageAlt: `Projekt UX i design strony www ${c.inLocative}`,
     },
     },
   );
@@ -1718,8 +1742,8 @@ function createLandingPageServicePage(city: LandingPageCity): LandingPageContent
       headingSuffix: " - pod leady, reklamy i konkretną ofertę",
       description:
         `Projektuję landing page dla firm ${c.fromGenitive}, które chcą szybko przetestować ofertę, wesprzeć kampanię i kierować użytkownika do jednego celu.`,
-      floatingPromptPrimary: `Chcesz uruchomić skuteczny landing page ${c.inLocative}?`,
-      floatingPromptSecondary: `Porozmawiajmy o landing page pod kampanię ${c.inLocative}.`,
+      floatingPromptPrimary: `Chcesz uruchomić skuteczny landing page?`,
+      floatingPromptSecondary: `Porozmawiajmy o landing page pod kampanię.`,
     },
     form: {
       requirementsPlaceholder:
@@ -1893,8 +1917,8 @@ function createStorePage(city: LandingPageCity): LandingPageContent {
       headingSuffix: " - ecommerce, wdrożenie i rozwój",
       description:
         `Projektuję sklepy internetowe dla firm ${c.fromGenitive}, które chcą sprzedawać online w uporządkowany, szybki i wygodny sposób.`,
-      floatingPromptPrimary: `Chcesz uruchomić sklep internetowy ${c.inLocative}?`,
-      floatingPromptSecondary: `Porozmawiajmy o Twojej sprzedaży online ${c.inLocative}.`,
+      floatingPromptPrimary: `Chcesz uruchomić sklep internetowy?`,
+      floatingPromptSecondary: `Porozmawiajmy o Twojej sprzedaży online.`,
     },
     form: {
       requirementsPlaceholder:
@@ -2035,7 +2059,7 @@ function createStorePage(city: LandingPageCity): LandingPageContent {
       faqCtaLabel: "Przejdź do formularza",
       nextStepEyebrow: "Następny krok",
       nextStepTitle:
-        "Chcesz uruchomić sklep internetowy bez chaotycznego wdrożenia?",
+        "Chcesz uruchomić sklep internetowy?",
       nextStepDescription:
         `Opisz, co sprzedajesz i czego potrzebujesz. Przygotuję propozycję rozwiązania oraz wycenę dla firmy ${c.fromGenitive}.`,
       nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
@@ -2043,7 +2067,7 @@ function createStorePage(city: LandingPageCity): LandingPageContent {
     },
     portfolioHeading: `Wybrane realizacje i wdrożenia ecommerce ${c.inLocative}`,
     contact: {
-      title: `Chcesz uruchomić sklep internetowy ${c.inLocative}?`,
+      title: `Chcesz uruchomić sklep internetowy?`,
       subtitle: "Zamów wycenę, wypełniając formularz poniżej",
       imageAlt: `Sklep internetowy ${c.inLocative}`,
     },
@@ -2053,6 +2077,7 @@ function createStorePage(city: LandingPageCity): LandingPageContent {
 
 function createSeoPage(city: LandingPageCity): LandingPageContent {
   const c = getCityContext(city);
+  const isDefaultCity = city.slug === DEFAULT_CITY_SLUG;
 
   return createCityLandingPage(
     "seo",
@@ -2060,28 +2085,51 @@ function createSeoPage(city: LandingPageCity): LandingPageContent {
     getLandingPageAddedDate("seo-city"),
     {
     seo: {
-      title: `Pozycjonowanie stron internetowych ${city.name} - Paweł Wessel`,
-      description: `Pomagam firmom ${c.fromGenitive} zwiększać widoczność w Google. SEO lokalne oparte na audycie, treści, strukturze i realnych intencjach użytkownika.`,
+      title: isDefaultCity
+        ? "Pozycjonowanie stron w Grudziądzu - Paweł Wessel"
+        : `Pozycjonowanie stron internetowych ${city.name} - Paweł Wessel`,
+      description: isDefaultCity
+        ? "Audyt SEO, treści i struktura strony pod widoczność w Google — bez lania wody."
+        : `Pomagam firmom ${c.fromGenitive} zwiększać widoczność w Google. SEO lokalne oparte na audycie, treści, strukturze i realnych intencjach użytkownika.`,
     },
     hero: {
-      headingPrefix: "Pozycjonowanie ",
-      headingHighlight: `stron internetowych ${c.inLocative}`,
-      headingSuffix: " - większa widoczność i lepsze zapytania z Google",
-      description: `Pomagam firmom ${c.fromGenitive} poprawić widoczność w Google, uporządkować treści i lepiej odpowiadać na lokalne zapytania klientów.`,
-      floatingPromptPrimary: `Chcesz pozycjonować stronę ${c.inLocative}?`,
-      floatingPromptSecondary: `Porozmawiajmy o SEO dla Twojej firmy ${c.inLocative}.`,
+      headingPrefix: "Pozycjonowanie SEO ",
+      headingHighlight: isDefaultCity
+        ? "w Grudziądzu"
+        : `${c.inLocative}`,
+      headingSuffix: isDefaultCity
+        ? " — Twoja widoczność w Google"
+        : " - Twoja widoczność w Google",
+      description: isDefaultCity
+        ? "Sprawdzam, co blokuje widoczność, porządkuję treści i ustawiam stronę tak, żeby lepiej odpowiadała na zapytania klientów."
+        : `Pomagam firmom ${c.fromGenitive} poprawić widoczność w Google, dzięki SEO`,
+      floatingPromptPrimary: isDefaultCity
+        ? "Chcesz poprawić pozycje w Google?"
+        : `Chcesz pozycjonować swoją stronę?`,
+      floatingPromptSecondary: isDefaultCity
+        ? "Napisz — omówimy audyt i sensowny kierunek."
+        : `Porozmawiajmy o SEO dla Twojej firmy.`,
     },
     form: {
       requirementsPlaceholder:
         "Opisz branżę, obecną stronę i cele pozycjonowania lokalnego...",
     },
     intent: {
-      eyebrow: `Pozycjonowanie stron internetowych ${city.name} - SEO lokalne`,
-      heading: `Pozycjonowanie stron internetowych ${c.inLocative}, które wspiera pozyskiwanie klientów.`,
-      paragraphs: [
-        `Pomagam firmom ${c.fromGenitive} zwiększać widoczność strony na lokalne frazy oraz lepiej odpowiadać na realne intencje użytkowników.`,
-        `Jeśli interesuje Cię pozycjonowanie strony internetowej ${c.inLocative}, zacznijmy od audytu SEO, analizy treści, struktury nagłówków i miejsc, w których tracisz widoczność lub zapytania.`,
-      ],
+      eyebrow: isDefaultCity
+        ? "SEO lokalne"
+        : `Pozycjonowanie stron internetowych ${city.name} - SEO lokalne`,
+      heading: isDefaultCity
+        ? "Strona widoczna w Google — bez przypadkowych treści."
+        : `Pozycjonowanie stron internetowych ${c.inLocative}, które wspiera pozyskiwanie klientów.`,
+      paragraphs: isDefaultCity
+        ? [
+            "Zaczynam od audytu: gdzie tracisz pozycje, co jest nieczytelne dla Google i dla klienta.",
+            "Potem ustalamy priorytety — treść, nagłówki, struktura — tak, żeby sensownie iść po kolejnych frazach.",
+          ]
+        : [
+            `Pomagam firmom ${c.fromGenitive} zwiększać widoczność strony na lokalne frazy oraz lepiej odpowiadać na realne intencje użytkowników.`,
+            `Jeśli interesuje Cię pozycjonowanie strony internetowej ${c.inLocative}, zacznijmy od audytu SEO, analizy treści, struktury nagłówków i miejsc, w których tracisz widoczność lub zapytania.`,
+          ],
       ctaTitle: "Chcesz omówić SEO lokalne?",
       ctaDescription:
         "Przejdź do formularza i opisz obecną stronę, branżę oraz cele SEO.",
@@ -2099,8 +2147,9 @@ function createSeoPage(city: LandingPageCity): LandingPageContent {
         },
         {
           name: "SEO lokalne",
-          description:
-            `Najlepsza opcja dla firm, które działają ${c.inLocative} i chcą być częściej znajdowane przez klientów.`,
+          description: isDefaultCity
+            ? "Dla firm z okolicy, które chcą być częściej widoczne przy zapytaniach lokalnych."
+            : `Najlepsza opcja dla firm, które działają ${c.inLocative} i chcą być częściej znajdowane przez klientów.`,
           highlighted: true,
           image: "/images/projects/glazurnikgrudziadz/hero.png",
           imageAlt:
@@ -2164,10 +2213,15 @@ function createSeoPage(city: LandingPageCity): LandingPageContent {
         },
       ],
       includedTitle: "Co otrzymujesz w standardzie",
-      includedParagraphs: [
-        "Zakres dopasowuję do tego, czy potrzebujesz szybkiego audytu SEO, lokalnego SEO czy dalszego rozwoju treści i struktury strony.",
-        `Celem jest lepsza widoczność strony firmy ${c.fromGenitive} na frazy lokalne, większa zgodność z intencją użytkownika i więcej wartościowych zapytań.`,
-      ],
+      includedParagraphs: isDefaultCity
+        ? [
+            "Zakres ustalamy po krótkiej rozmowie — od samego audytu po stałą pracę nad treścią.",
+            "Chodzi o to, żeby strona lepiej odpowiadała na to, czego szukają ludzie w Google, a nie o dokładanie słów na siłę.",
+          ]
+        : [
+            "Zakres dopasowuję do tego, czy potrzebujesz szybkiego audytu SEO, lokalnego SEO czy dalszego rozwoju treści i struktury strony.",
+            `Celem jest lepsza widoczność strony firmy ${c.fromGenitive} na frazy lokalne, większa zgodność z intencją użytkownika i więcej wartościowych zapytań.`,
+          ],
       includedListLabel: "Najczęściej w projekcie uwzględniam:",
       includedItems: [
         "audyt obecnej strony i lokalnych fraz",
@@ -2179,7 +2233,9 @@ function createSeoPage(city: LandingPageCity): LandingPageContent {
       ],
       includedCtaLabel: "Chcę dostać wycenę SEO",
       faqTitle: "FAQ",
-      faqIntro: `Najczęstsze pytania od firm, które planują pozycjonowanie strony internetowej ${c.inLocative}.`,
+      faqIntro: isDefaultCity
+        ? "Krótko o SEO bez żargonu."
+        : `Najczęstsze pytania od firm, które planują pozycjonowanie strony internetowej ${c.inLocative}.`,
       faqItems: [
         {
           question: "Czy pozycjonowanie lokalne ma sens dla małej firmy?",
@@ -2204,18 +2260,28 @@ function createSeoPage(city: LandingPageCity): LandingPageContent {
       ],
       faqCtaLabel: "Przejdź do formularza",
       nextStepEyebrow: "Następny krok",
-      nextStepTitle:
-        "Chcesz poprawić widoczność strony bez przypadkowych działań?",
-      nextStepDescription:
-        `Opisz swoją branżę, obecną stronę i cele. Przygotuję propozycję sensownego kierunku oraz wycenę dla firmy ${c.fromGenitive}.`,
+      nextStepTitle: isDefaultCity
+        ? "Chcesz zobaczyć, od czego zacząć?"
+        : "Chcesz poprawić widoczność strony bez przypadkowych działań?",
+      nextStepDescription: isDefaultCity
+        ? "Napisz branżę, adres strony i co Cię najbardziej boli — wrócę z konkretnym kierunkiem i wyceną."
+        : `Opisz swoją branżę, obecną stronę i cele. Przygotuję propozycję sensownego kierunku oraz wycenę dla firmy ${c.fromGenitive}.`,
       nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
       nextStepSecondaryCtaLabel: "Wyślij brief",
     },
-    portfolioHeading: `Wybrane audyty, treści i strony wspierające SEO lokalne ${c.inLocative}`,
+    portfolioHeading: isDefaultCity
+      ? "Wybrane realizacje i prace pod widoczność w Google"
+      : `Wybrane audyty, treści i strony wspierające SEO lokalne ${c.inLocative}`,
     contact: {
-      title: `Chcesz poprawić widoczność strony w Google ${c.inLocative}?`,
-      subtitle: "Opisz obecną stronę, problemy z widocznością i cele SEO, a przygotuję kierunek działań",
-      imageAlt: `Pozycjonowanie strony internetowej ${c.inLocative}`,
+      title: isDefaultCity
+        ? "Chcesz lepszą widoczność w Google?"
+        : `Chcesz poprawić widoczność strony w Google ${c.inLocative}?`,
+      subtitle: isDefaultCity
+        ? "Opisz stronę i cele — przygotuję kierunek działań."
+        : "Opisz obecną stronę, problemy z widocznością i cele SEO, a przygotuję kierunek działań",
+      imageAlt: isDefaultCity
+        ? "Pozycjonowanie i SEO lokalne"
+        : `Pozycjonowanie strony internetowej ${c.inLocative}`,
     },
     },
   );
@@ -2393,8 +2459,8 @@ function createSalePage(city: LandingPageCity): LandingPageContent {
       headingSuffix: " - strony, sklepy i systemy dla firm",
       description: `Pomagam firmom ${c.fromGenitive} uruchamiać gotowe strony internetowe, sklepy, platformy i rozwiązania dopasowane do sprzedaży, procesu działania oraz rozwoju biznesu.`,
       floatingPromptPrimary:
-        `Szukasz gotowej strony, sklepu lub platformy ${c.inLocative}?`,
-      floatingPromptSecondary: `Porozmawiajmy o wdrożeniu ${c.inLocative}.`,
+        `Szukasz gotowej strony, sklepu lub platformy?`,
+      floatingPromptSecondary: `Porozmawiajmy o wdrożeniu.`,
     },
     form: {
       requirementsPlaceholder:
@@ -2564,7 +2630,7 @@ function createTargetAudiencePage(
       headingSuffix: ` ${city.name} - więcej zaufania i zapytań`,
       description: `Tworzę strony internetowe dla ${target.businessLabel} ${c.inLocative}, które pokazują ofertę, budują wiarygodność i prowadzą klienta prosto do kontaktu.`,
       floatingPromptPrimary: `Potrzebujesz strony dla ${target.audienceLabel} ${c.inLocative}?`,
-      floatingPromptSecondary: `Przygotuję projekt dopasowany do ${target.categoryLabel} i klientów ${c.fromGenitive}.`,
+      floatingPromptSecondary: `Porozmawiajmy o Twoim projekcie.`,
     },
     form: {
       title: `Zapytaj o stronę dla ${target.audienceLabel}`,
@@ -2633,8 +2699,13 @@ function createTargetAudiencePage(
           description: `Układam strukturę pod sprzedaż, lokalne SEO i elementy budujące zaufanie jeszcze przed wdrożeniem designu.`,
         },
         {
-          title: "Wdrożenie i rozwój",
+          title: "Wdrożenie i publikacja",
           description: `Publikuję stronę, porządkuję CTA i zostawiam bazę pod kolejne podstrony dla usług lub następnych miast.`,
+        },
+        {
+          title: "Pomiary i kolejne iteracje",
+          description:
+            "Sprawdzamy, co działa, zbieramy sygnały i planujemy rozwój kolejnych podstron albo usług bez chaosu.",
         },
       ],
       includedTitle: "Co zawiera podstrona targetowa",
@@ -2693,7 +2764,7 @@ function createTargetAudiencePage(
   };
 }
 
-export const HOME_LANDING_PAGE = createWebsitePage(DEFAULT_CITY);
+export const HOME_LANDING_PAGE = createHomepageLandingPage();
 
 const TARGET_LANDING_PAGE_RECORDS = getLandingPageTargetRecords();
 
@@ -3051,6 +3122,22 @@ export function getPrimaryLandingPageLink(
   serviceKey: LandingPageServiceKey,
   currentSlug?: string,
 ): LandingPageLink | null {
+  if (!currentSlug) {
+    const overviewHrefMap: Record<LandingPageServiceKey, string> = {
+      website: "/strony-internetowe",
+      design: "/projektowanie-stron-www",
+      landing: "/landing-page",
+      store: "/sklepy-internetowe",
+      sale: "/strony-internetowe-na-sprzedaz",
+      seo: "/pozycjonowanie-stron-internetowych",
+    };
+
+    return {
+      href: overviewHrefMap[serviceKey],
+      label: SERVICE_LABELS[serviceKey],
+    };
+  }
+
   const citySlug = getCitySlugForContext(currentSlug);
   const page = LANDING_PAGE_BY_SERVICE_AND_CITY.get(`${serviceKey}:${citySlug}`);
 

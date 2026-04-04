@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image, { type StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import {
   getCurrentCityTargetLinks,
@@ -11,8 +12,42 @@ import {
   type LandingPageLink,
   type LandingPageIntentContent,
 } from "@/data/landingPages";
-import Image from "next/image";
+import step2 from "@/public/tworzenie-strony-internetowej/strona-internetowa-w-trakcie-tworzenia.png";
+import step3 from "@/public/tworzenie-strony-internetowej/strona-internetowa-jest-prawie-gotowa.png";
+import step1 from "@/public/tworzenie-strony-internetowej/poczatek-tworzenia-strony-internetowej.png";
+import step4 from "@/public/tworzenie-strony-internetowej/twoja-strona-internetowa-została-stworzona.png";
 import { highlightLandingKeywords } from "@/utils/highlightLandingKeywords";
+
+/** Same motyw co hero — okrągłe miniatury zamiast zrzutów stron w kartach procesu. */
+const PROCESS_STEP_DONUT_IMAGES: StaticImageData[] = [
+  step1,
+  step2,
+  step3,
+  step4,
+];
+
+const PROCESS_STEP_DONUT_ROTATES = [
+  "-rotate-6",
+  "rotate-3",
+  "-rotate-3",
+  "rotate-6",
+] as const;
+
+const DEFAULT_FOURTH_PROCESS_STEP: LandingPageStep = {
+  title: "Dalszy rozwój i optymalizacja",
+  description:
+    "Po starcie ustalamy kolejne kroki: treści, widoczność i usprawnienia dopasowane do Twoich celów.",
+};
+
+function ensureFourProcessSteps(steps: LandingPageStep[]): LandingPageStep[] {
+  if (steps.length >= 4) {
+    return steps;
+  }
+  if (steps.length === 3) {
+    return [...steps, DEFAULT_FOURTH_PROCESS_STEP];
+  }
+  return steps;
+}
 
 type HomeIntentLayerProps = {
   pageContent: LandingPageContent;
@@ -26,6 +61,11 @@ type ProcessStepCardProps = {
 };
 
 function ProcessStepCard({ step, index }: ProcessStepCardProps) {
+  const donutSrc =
+    PROCESS_STEP_DONUT_IMAGES[index % PROCESS_STEP_DONUT_IMAGES.length];
+  const donutRotate =
+    PROCESS_STEP_DONUT_ROTATES[index % PROCESS_STEP_DONUT_ROTATES.length];
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 28, scale: 0.985 }}
@@ -40,17 +80,18 @@ function ProcessStepCard({ step, index }: ProcessStepCardProps) {
       </div>
 
       <div className="flex items-start gap-3 sm:gap-4">
-        {step.image ? (
-          <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-white/10 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.12)] sm:h-20 sm:w-20">
-            <Image
-              src={step.image}
-              alt={step.imageAlt || step.title}
-              fill
-              className="object-cover transition duration-300 group-hover:scale-[1.04]"
-              sizes="80px"
-            />
-          </div>
-        ) : null}
+        <div
+          className={`relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-white/10 bg-gradient-to-br from-pink-100/90 to-amber-50/80 shadow-[0_10px_30px_rgba(0,0,0,0.12)] sm:h-20 sm:w-20 ${donutRotate} transition duration-300 group-hover:scale-[1.05]`}
+          aria-hidden
+        >
+          <Image
+            src={donutSrc}
+            alt=""
+            fill
+            className="object-cover object-center scale-110"
+            sizes="80px"
+          />
+        </div>
 
         <div className="min-w-0 flex-1 pr-0 sm:pr-16">
           <div className="flex flex-wrap items-center gap-2">
@@ -75,6 +116,7 @@ export default function HomeIntentLayer({
   content,
   currentSlug,
 }: HomeIntentLayerProps) {
+  const processSteps = ensureFourProcessSteps(content.processSteps);
   const sectionLinks = getHomepageSectionLinks(!currentSlug);
   const contextualLandingLinks = getContextualLandingPageLinks(currentSlug);
   const currentCityTargetLinks = getCurrentCityTargetLinks(currentSlug, false);
@@ -108,20 +150,21 @@ export default function HomeIntentLayer({
   }
 
   return (
-    <section className="z-[501] mx-auto w-[90vw] pt-8 pb-10 lg:pt-12 lg:pb-16">
-      <div className="rounded-[28px] border border-yellow-300/40 bg-slate-900/80 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-sm lg:p-8">
+    <section className="z-[501] w-full">
+      <div className="bg-slate-900/80 py-[var(--section-pad-y-sm)] lg:py-[var(--section-pad-y-lg)]">
+        <div className="layout-container">
         <p className="text-xs font-dosis uppercase tracking-[0.22em] text-yellow-200/90">
           {content.eyebrow}
         </p>
         <div className="mt-4 grid grid-cols-1 gap-6 lg:grid-cols-[1.35fr_0.9fr] lg:items-center">
           <div>
-            <h2 className="font-sans text-3xl font-extrabold text-white lg:text-4xl">
+            <h2 className="text-fluid-section-title font-sans font-extrabold text-white">
               {highlightLandingKeywords(content.heading, pageContent)}
             </h2>
             {content.paragraphs.map((paragraph) => (
               <p
                 key={paragraph}
-                className="mt-4 max-w-3xl font-dosis text-base leading-relaxed text-white/80 lg:text-lg"
+                className="mt-4 max-w-3xl font-dosis text-base leading-relaxed text-white/80 lg:max-w-[62ch] lg:text-[clamp(1rem,0.95rem+0.25vw,1.25rem)]"
               >
                 {highlightLandingKeywords(paragraph, pageContent)}
               </p>
@@ -161,8 +204,23 @@ export default function HomeIntentLayer({
                   : "border-white/10 bg-white/5"
               }`}
             >
-              <Image src={option.image!} alt={option.imageAlt!} width={200} height={200} className=" rounded-xl w-full h-auto" />
-              <p className="text-lg font-semibold text-white mt-4">{option.name} ~ od {option.price} zł</p>
+              {option.image ? (
+                <Image
+                  src={option.image}
+                  alt={option.imageAlt ?? option.name}
+                  width={400}
+                  height={240}
+                  className="h-auto w-full rounded-xl object-cover aspect-[5/3]"
+                />
+              ) : null}
+              <p className="mt-4 text-lg font-semibold text-white">
+                {option.name}
+                {option.price != null ? (
+                  <> ~ od {option.price} zł</>
+                ) : (
+                  <> — wycena po briefie</>
+                )}
+              </p>
               <p className="mt-2 font-dosis text-sm leading-relaxed text-white/75">
                 {option.description}
               </p>
@@ -174,11 +232,15 @@ export default function HomeIntentLayer({
             Jeśli porównujesz warianty, sprawdź też {renderInlineLinks(content.offerSupportingLinks)}.
           </p>
         ) : null}
+        </div>
       </div>
 
-      <div className="mt-8">
-        <section className="rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
-          <h3 className="text-xl font-bold text-white">{content.whyTitle}</h3>
+      <div className="">
+        <section className="bg-slate-800/50 backdrop-blur-sm py-[var(--section-pad-y-sm)] lg:py-[clamp(2.5rem,5vw,6rem)]">
+          <div className="layout-container">
+          <h3 className="text-xl font-bold text-white lg:text-[clamp(1.125rem,1rem+0.5vw,1.5rem)]">
+            {content.whyTitle}
+          </h3>
           <p className="mt-3 font-dosis text-sm leading-relaxed text-white/75 sm:text-base">
             {content.whyIntro}
           </p>
@@ -209,11 +271,13 @@ export default function HomeIntentLayer({
               </Link>
             ))}
           </div>
+          </div>
         </section>
 
-        <section className="overflow-hidden rounded-[28px] border border-white/10 bg-slate-900/60 p-5 backdrop-blur-sm sm:p-6 lg:p-7">
+        <section className="overflow-hidden bg-slate-800/50 backdrop-blur-sm py-[var(--section-pad-y-sm)] lg:py-[clamp(2.5rem,5vw,6rem)]">
+          <div className="layout-container">
           <div className="max-w-3xl">
-            <h3 className="text-2xl font-bold text-white sm:text-3xl">
+            <h3 className="text-2xl font-bold text-white sm:text-3xl lg:text-[clamp(1.35rem,1.1rem+0.9vw,2.25rem)]">
               {content.processTitle}
             </h3>
             <p className="mt-3 font-dosis text-sm leading-relaxed text-white/70 sm:text-base">
@@ -223,8 +287,12 @@ export default function HomeIntentLayer({
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-5">
-            {content.processSteps.map((step, index) => (
-              <ProcessStepCard key={step.title} step={step} index={index} />
+            {processSteps.map((step, index) => (
+              <ProcessStepCard
+                key={`${step.title}-${index}`}
+                step={step}
+                index={index}
+              />
             ))}
           </div>
 
@@ -242,10 +310,12 @@ export default function HomeIntentLayer({
               </div>
             </div>
           ) : null}
+          </div>
         </section>
       </div>
 
-      <section className="mt-6 rounded-2xl border border-white/10 bg-slate-900/60 p-6 backdrop-blur-sm">
+      <section className="bg-slate-800/50 backdrop-blur-sm py-[var(--section-pad-y-sm)] lg:py-[var(--section-pad-y-lg)]">
+        <div className="layout-container">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
             <h3 className="text-xl font-bold text-white">
@@ -302,11 +372,12 @@ export default function HomeIntentLayer({
             </Link>
           ))}
         </div>
+        </div>
       </section>
 
 
-      <div className="bg-slate-800/50 backdrop-blur-sm mt-6 rounded-[28px] border border-yellow-300/35 bg-gradient-to-r from-yellow-300/15 to-transparent p-6">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mb-24 bg-slate-800/50 bg-gradient-to-r from-yellow-300/15 to-transparent py-[var(--section-pad-y-sm)] backdrop-blur-sm lg:py-[clamp(2rem,4vw,5rem)]">
+        <div className="layout-container flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-yellow-200/90">

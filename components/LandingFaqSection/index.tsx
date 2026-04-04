@@ -56,7 +56,7 @@ export default function LandingFaqSection({
   }
 
   return (
-    <section className="mb-24 z-[502] mt-6 w-full max-w-[1100px] rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(253,224,71,0.08),transparent_24%),linear-gradient(180deg,rgba(15,23,42,0.94),rgba(15,23,42,0.84))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.25)] backdrop-blur-sm sm:p-6 lg:p-7">
+    <section className="mb-24 z-[502] mt-6 w-full max-w-[min(1100px,100%)] rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(253,224,71,0.08),transparent_24%),linear-gradient(180deg,rgba(15,23,42,0.94),rgba(15,23,42,0.84))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.25)] backdrop-blur-sm sm:p-6 lg:p-7 4xl:max-w-[min(1280px,100%)]">
       <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-yellow-200/85">

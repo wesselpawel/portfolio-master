@@ -99,6 +99,30 @@ async function updateBlogPost(postId, updatedPost) {
   }
 }
 
+/** Per-city hero background for /projektowanie-stron/{slug} (document id = city slug). */
+async function getCityHubBackground(citySlug) {
+  if (!citySlug) return null;
+  const docRef = doc(db, "cityHubBackgrounds", citySlug);
+  const docSnap = await getDoc(docRef);
+  if (!docSnap.exists()) return null;
+  return docSnap.data();
+}
+
+async function setCityHubBackground(citySlug, { backgroundImageUrl }) {
+  await setDoc(
+    doc(db, "cityHubBackgrounds", citySlug),
+    {
+      backgroundImageUrl,
+      updatedAt: Date.now(),
+    },
+    { merge: true },
+  );
+}
+
+async function clearCityHubBackground(citySlug) {
+  await deleteDoc(doc(db, "cityHubBackgrounds", citySlug));
+}
+
 export {
   addDocument,
   updateDocument,
@@ -107,6 +131,9 @@ export {
   updateBlogPost,
   getBlogPosts,
   getDocuments,
+  getCityHubBackground,
+  setCityHubBackground,
+  clearCityHubBackground,
   auth,
   db,
   storage,

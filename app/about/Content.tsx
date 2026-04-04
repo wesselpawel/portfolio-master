@@ -20,7 +20,7 @@ export default function Content() {
 
   return (
     <>
-      <div className="fixed left-0 top-0 h-screen w-screen scale-150 bg-gradient-to-br from-black via-zinc-800 to-black"></div>
+      <div className="fixed left-0 top-0 h-screen w-screen scale-150 bg-gradient-to-br from-zinc-950 via-zinc-800 to-zinc-900"></div>
       <StarsBg />
 
       <section className="relative z-[600] px-4 pb-16 pt-40 sm:px-6 lg:px-8">

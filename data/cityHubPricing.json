@@ -1,0 +1,323 @@
+{
+  "meta": {
+    "version": 1,
+    "description": "Tabela cenowa na hubach /projektowanie-stron/{miasto}. featureRows + packages + values = tabela. quoteSpec.packageBasePln + quoteSpec.addons = konfigurator „Zobacz wycenę” (ceny PLN, null = baza indywidualna). forPackages przy addonie ogranicza widoczność do wybranych package.id."
+  },
+  "tables": [
+    {
+      "id": "strony-www",
+      "eyebrow": "Cennik orientacyjny",
+      "title": "Strony WWW — porównanie wariantów",
+      "description": "Kwoty „od” — ostateczna wycena zależy od zakresu treści, integracji i grafik. Po szczegóły przejdź do danej usługi.",
+      "featureRows": [
+        {
+          "key": "podstrony",
+          "label": "Ilość podstron",
+          "hint": "W standardzie projektu; możliwość rozbudowy"
+        },
+        {
+          "key": "blog",
+          "label": "Blog / aktualności",
+          "hint": "Sekcja wpisów, kategorie, RSS opcjonalnie"
+        },
+        {
+          "key": "formularz",
+          "label": "Formularz kontaktowy",
+          "hint": "Wysyłka e-mail, pola konfigurowalne"
+        },
+        {
+          "key": "cms",
+          "label": "Edycja treści (CMS / panel)",
+          "hint": "Samodzielna edycja wybranych sekcji"
+        },
+        {
+          "key": "seo_onpage",
+          "label": "SEO on-page (podstawy)",
+          "hint": "Meta, nagłówki, struktura pod indeksację"
+        },
+        {
+          "key": "analytics",
+          "label": "Analytics / Search Console",
+          "hint": "Podpięcie narzędzi pomiarowych"
+        },
+        {
+          "key": "czas",
+          "label": "Czas realizacji (orientacyjnie)",
+          "hint": "Zależnie od dostarczonych materiałów"
+        },
+        {
+          "key": "wsparcie",
+          "label": "Wsparcie po wdrożeniu",
+          "hint": "Korekty i konsultacje w uzgodnionym zakresie"
+        }
+      ],
+      "packages": [
+        {
+          "id": "landing",
+          "name": "Landing page",
+          "priceFrom": "od 700 zł",
+          "priceNote": "Jedna oferta, jedno główne CTA",
+          "highlight": false,
+          "serviceKey": "landing"
+        },
+        {
+          "id": "wizytowka",
+          "name": "Wizytówka WWW",
+          "priceFrom": "od 1200 zł",
+          "priceNote": "Firma w sieci, szybki start",
+          "highlight": true,
+          "serviceKey": "website"
+        },
+        {
+          "id": "firmowa",
+          "name": "Strona firmowa",
+          "priceFrom": "od 2000 zł",
+          "priceNote": "Więcej podstron i miejsca pod SEO",
+          "highlight": false,
+          "serviceKey": "website"
+        },
+        {
+          "id": "rozbudowana",
+          "name": "Strona rozbudowana",
+          "priceFrom": "wycena indywidualna",
+          "priceNote": "Wiele sekcji, integracje, dedykowane moduły",
+          "highlight": false,
+          "serviceKey": "website"
+        }
+      ],
+      "quoteSpec": {
+        "packageBasePln": {
+          "landing": 700,
+          "wizytowka": 1200,
+          "firmowa": 2000,
+          "rozbudowana": null
+        },
+        "addons": [
+          {
+            "id": "www_blog",
+            "label": "Moduł blog / aktualności",
+            "description": "Lista wpisów, kategoria, szablon strony wpisu",
+            "pricePln": 450,
+            "forPackages": ["landing", "wizytowka"]
+          },
+          {
+            "id": "www_extra_pages",
+            "label": "Dodatkowe +5 podstron (treści w zakresie)",
+            "description": "Nowe podstrony w ramach uzgodnionej struktury",
+            "pricePln": 800,
+            "forPackages": ["wizytowka", "firmowa"]
+          },
+          {
+            "id": "www_copy",
+            "label": "Pakiet copywritingu (ok. 10 000 zzs)",
+            "description": "Teksty podstron głównych i oferty",
+            "pricePln": 1200
+          },
+          {
+            "id": "www_lang",
+            "label": "Druga wersja językowa strony",
+            "description": "Lustrzana struktura + tłumaczenia po Twojej stronie lub z dopłatą",
+            "pricePln": 1500,
+            "forPackages": ["wizytowka", "firmowa", "rozbudowana"]
+          },
+          {
+            "id": "www_ga4_extended",
+            "label": "Rozszerzona konfiguracja GA4 / GTM",
+            "description": "Cele, zdarzenia, podstawowe raporty",
+            "pricePln": 350
+          }
+        ]
+      },
+      "values": {
+        "landing": {
+          "podstrony": "1 strona (landing)",
+          "blog": "—",
+          "formularz": "Tak",
+          "cms": "Ograniczona lub brak",
+          "seo_onpage": "Pod kampanię / frazę",
+          "analytics": "Na życzenie",
+          "czas": "Krótszy termin",
+          "wsparcie": "Ustalany w umowie"
+        },
+        "wizytowka": {
+          "podstrony": "do ok. 5",
+          "blog": "Opcjonalnie (dopłata)",
+          "formularz": "Tak",
+          "cms": "Podstawowa edycja treści",
+          "seo_onpage": "Tak, podstawowy zakres",
+          "analytics": "Tak",
+          "czas": "Standardowy",
+          "wsparcie": "Ustalany w umowie"
+        },
+        "firmowa": {
+          "podstrony": "do ok. 10–15",
+          "blog": "Tak lub moduł aktualności",
+          "formularz": "Tak (+ warianty pól)",
+          "cms": "Tak",
+          "seo_onpage": "Rozszerzony układ treści",
+          "analytics": "Tak",
+          "czas": "Etapami",
+          "wsparcie": "Dłuższy okres w pakiecie"
+        },
+        "rozbudowana": {
+          "podstrony": "Bez sztywnego limitu",
+          "blog": "Tak / wieloautorski",
+          "formularz": "Wiele formularzy / logika",
+          "cms": "Rozbudowany lub headless",
+          "seo_onpage": "Architektura pod wiele fraz",
+          "analytics": "Zaawansowane cele",
+          "czas": "Projekt + iteracje",
+          "wsparcie": "Indywidualnie"
+        }
+      }
+    },
+    {
+      "id": "sklepy",
+      "eyebrow": "E-commerce",
+      "title": "Sklepy internetowe — warianty",
+      "description": "Sklepy dopasowane do skali katalogu i integracji. Wycena po liście produktów i wymaganych funkcjach.",
+      "featureRows": [
+        {
+          "key": "produkty",
+          "label": "Skala katalogu",
+          "hint": "Orientacyjna liczba SKU na start"
+        },
+        {
+          "key": "platnosci",
+          "label": "Płatności online",
+          "hint": "Bramki, przelewy, BLIK zależnie od integracji"
+        },
+        {
+          "key": "dostawy",
+          "label": "Metody dostawy",
+          "hint": "Kurier, odbiór, paczkomaty — wg konfiguracji"
+        },
+        {
+          "key": "blog",
+          "label": "Blog / content marketing",
+          "hint": "Wpisy przy sklepie"
+        },
+        {
+          "key": "cms",
+          "label": "Panel zarządzania",
+          "hint": "Produkty, zamówienia, stany"
+        },
+        {
+          "key": "seo_onpage",
+          "label": "SEO sklepu (podstawy)",
+          "hint": "Kategorie, filtry, opisy"
+        },
+        {
+          "key": "integracje",
+          "label": "Integracje zewnętrzne",
+          "hint": "ERP, Baselinker, faktury"
+        },
+        {
+          "key": "czas",
+          "label": "Czas wdrożenia (orientacyjnie)",
+          "hint": "Zależnie od importu i szablonów"
+        }
+      ],
+      "packages": [
+        {
+          "id": "sklep_start",
+          "name": "Sklep start",
+          "priceFrom": "wycena po briefie",
+          "priceNote": "Mniejszy katalog, podstawowy checkout",
+          "highlight": false,
+          "serviceKey": "store"
+        },
+        {
+          "id": "sklep_firmowy",
+          "name": "Sklep firmowy",
+          "priceFrom": "wycena po briefie",
+          "priceNote": "Pełniejszy katalog i branding",
+          "highlight": true,
+          "serviceKey": "store"
+        },
+        {
+          "id": "sklep_pro",
+          "name": "Sklep rozbudowany",
+          "priceFrom": "wycena indywidualna",
+          "priceNote": "Integracje, automatyzacje, B2B",
+          "highlight": false,
+          "serviceKey": "store"
+        }
+      ],
+      "values": {
+        "sklep_start": {
+          "produkty": "do ok. 50–100 SKU",
+          "platnosci": "Standard (np. przelew + wybrane online)",
+          "dostawy": "Podstawowe scenariusze",
+          "blog": "Opcjonalnie",
+          "cms": "Tak",
+          "seo_onpage": "Podstawowa optymalizacja",
+          "integracje": "Ograniczone / później",
+          "czas": "Szybszy start"
+        },
+        "sklep_firmowy": {
+          "produkty": "Średni katalog",
+          "platnosci": "Szerzej skonfigurowane",
+          "dostawy": "Więcej opcji i reguł",
+          "blog": "Zalecane",
+          "cms": "Tak",
+          "seo_onpage": "Kategorie + landingi pod frazy",
+          "integracje": "Wybrane na starcie",
+          "czas": "Standard / etapy"
+        },
+        "sklep_pro": {
+          "produkty": "Duży katalog / wiele magazynów",
+          "platnosci": "Złożone scenariusze",
+          "dostawy": "Zaawansowane reguły",
+          "blog": "Tak",
+          "cms": "Rozbudowany",
+          "seo_onpage": "Pełna architektura treści",
+          "integracje": "ERP, marketplace, custom",
+          "czas": "Projekt długoterminowy"
+        }
+      },
+      "quoteSpec": {
+        "packageBasePln": {
+          "sklep_start": 3900,
+          "sklep_firmowy": 6900,
+          "sklep_pro": null
+        },
+        "addons": [
+          {
+            "id": "sklep_blog",
+            "label": "Blog / content przy sklepie",
+            "description": "Sekcja artykułów powiązana ze sklepem",
+            "pricePln": 450,
+            "forPackages": ["sklep_start", "sklep_firmowy"]
+          },
+          {
+            "id": "sklep_import",
+            "label": "Import produktów z pliku (CSV / Excel)",
+            "description": "Jednorazowy import i mapowanie pól",
+            "pricePln": 600,
+            "forPackages": ["sklep_start", "sklep_firmowy"]
+          },
+          {
+            "id": "sklep_baselinker",
+            "label": "Integracja z Baselinker / hurtownią",
+            "description": "Konfiguracja pod uzgodniony kanał",
+            "pricePln": 1800,
+            "forPackages": ["sklep_firmowy", "sklep_pro"]
+          },
+          {
+            "id": "sklep_invoice",
+            "label": "Integracja fakturowania (np. Fakturownia)",
+            "description": "Podstawowa synchronizacja dokumentów",
+            "pricePln": 900,
+            "forPackages": ["sklep_firmowy", "sklep_pro"]
+          },
+          {
+            "id": "sklep_lang",
+            "label": "Drugi język sklepu",
+            "pricePln": 2200
+          }
+        ]
+      }
+    }
+  ]
+}

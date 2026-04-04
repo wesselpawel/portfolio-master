@@ -4,7 +4,7 @@ import { Metadata } from "next";
 const SITE_URL = "https://wesselpawel.com";
 
 export const metadata: Metadata = {
-  title: "WWW Expert - O mnie",
+  title: "Paweł Wessel - O mnie",
   description:
     "Tworzę strony, sklepy i platformy internetowe dla firm. Zobacz, jak wyglądała moja droga w web developmencie.",
   alternates: {
@@ -13,13 +13,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE_URL}/about`,
-    title: "WWW Expert - O mnie",
+    title: "Paweł Wessel - O mnie",
     description:
       "Tworzę strony, sklepy i platformy internetowe dla firm. Zobacz, jak wyglądała moja droga w web developmencie.",
-    siteName: "WWW Expert",
+    siteName: "Paweł Wessel",
   },
   twitter: {
-    title: "WWW Expert - O mnie",
+    title: "Paweł Wessel - O mnie",
     description:
       "Tworzę strony, sklepy i platformy internetowe dla firm. Zobacz, jak wyglądała moja droga w web developmencie.",
   },

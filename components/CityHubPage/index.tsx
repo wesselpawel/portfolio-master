@@ -9,6 +9,8 @@ import {
 } from "@/data/landingPages";
 import type { LandingPageCity } from "@/data/polishCities";
 import type { PexelsCityPhoto } from "@/utils/pexels";
+import CityHubHeroShell from "./CityHubHeroShell";
+import CityHubPricingSection from "./CityHubPricingSection";
 
 type CityHubPageProps = {
   city: LandingPageCity;
@@ -174,12 +176,9 @@ export default function CityHubPage({
 
   return (
     <div className="bg-slate-950 text-white">
-      <section className="relative overflow-hidden border-b border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(253,224,71,0.16),transparent_24%),linear-gradient(180deg,rgba(15,23,42,0.96),rgba(15,23,42,0.9))] pt-32 pb-16 lg:pt-40 lg:pb-24">
-        <div className="mx-auto grid w-[90vw] max-w-7xl gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+      <CityHubHeroShell citySlug={city.slug}>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-yellow-200/85">
-              Tworzenie stron internetowych {city.name}
-            </p>
+            
             <h1 className="mt-4 font-cocosharp text-4xl font-bold leading-tight text-yellow-300 sm:text-5xl">
               Tworzenie stron internetowych {city.name}
             </h1>
@@ -212,8 +211,20 @@ export default function CityHubPage({
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="#oferty"
+                href="#cennik-hub"
                 className="inline-flex min-h-12 items-center justify-center rounded-2xl bg-yellow-300 px-5 py-3 text-sm font-semibold text-slate-950 shadow-[0_12px_30px_rgba(253,224,71,0.25)] transition hover:brightness-105"
+              >
+                Zobacz cennik
+              </Link>
+              <Link
+                href="#konfigurator-wyceny"
+                className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-yellow-300/35 bg-yellow-300/10 px-5 py-3 text-sm font-semibold text-yellow-100 transition hover:border-yellow-300/50 hover:bg-yellow-300/15"
+              >
+                Skonfiguruj wycenę
+              </Link>
+              <Link
+                href="#oferty"
+                className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 transition hover:border-white/25 hover:bg-white/10 hover:text-white"
               >
                 Zobacz ofertę
               </Link>
@@ -262,8 +273,9 @@ export default function CityHubPage({
               .
             </p>
           </div>
-        </div>
-      </section>
+      </CityHubHeroShell>
+
+      <CityHubPricingSection citySlug={city.slug} cityName={city.name} />
 
       <section className="mx-auto w-[90vw] max-w-7xl py-16 lg:py-20">
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">

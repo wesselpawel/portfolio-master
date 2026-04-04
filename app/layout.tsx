@@ -8,9 +8,9 @@ import { NavRight } from "@/components/Navigation";
 import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
-  title: "WWW Expert - Strony internetowe | SEO | Strony firmowe",
+  title: "Paweł Wessel - Tworzę sklepy internetowe i strony WWW",
   description:
-    "Tworzę strony internetowe dla firm, landing page, sklepy i rozwiązania pod SEO lokalne w Grudziądzu.",
+    "Tworzę strony internetowe, prowadzę SEO i Google Ads. Tworzę sklepy internetowe i rozwiązania pod SEO lokalne w Grudziądzu.",
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -41,10 +41,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://wesselpawel.com/",
-    title: "WWW Expert - Strony internetowe | SEO | Strony firmowe",
+    title: "Paweł Wessel - Tworzę sklepy internetowe i strony WWW",
     description:
-      "Tworzę strony internetowe dla firm, landing page, sklepy i rozwiązania pod SEO lokalne w Grudziądzu.",
-    siteName: "WWW Expert",
+      "Tworzę strony internetowe, prowadzę SEO i Google Ads. Tworzę sklepy internetowe i rozwiązania pod SEO lokalne w Grudziądzu.",
+    siteName: "Paweł Wessel",
     images: [
       {
         url: "https://wesselpawel.com/assets/pinkdonut.png",
@@ -54,12 +54,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     site: "@wesiudev",
-    title: "WWW Expert - Strony internetowe | SEO | Strony firmowe",
+    title: "Paweł Wessel - Tworzę sklepy internetowe i strony WWW",
     description:
-      "Tworzę strony internetowe, landing page, sklepy i rozwiązania pod SEO lokalne dla firm.",
+      "Tworzę strony internetowe, prowadzę SEO i Google Ads. Tworzę sklepy internetowe i rozwiązania pod SEO lokalne w Grudziądzu.",
     images: [
       {
-        url: "https://wesselpawel.com/assets/pinkdonut.png",
+        url: "https://wesselpawel.com/images/projects/webadmin/statistics.png",
       },
     ],
   },
@@ -78,9 +78,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="scrollbarBlack" lang="pl">
+    <html className="" lang="pl">
       <body
-        className={`${cocosharp.variable} ${lato.variable} ${anta.variable} ${dosis.variable} font-sans scrollbarBlack overflow-x-hidden`}
+        className={`${cocosharp.variable} ${lato.variable} ${anta.variable} ${dosis.variable} font-sans overflow-x-hidden`}
       >
         <NavRight />
         {children}

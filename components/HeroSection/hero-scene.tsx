@@ -131,10 +131,11 @@ export default function HeroScene({
         zIndex: "50",
         position: "fixed",
         top: "50%",
-        transform: "translateY(-50%)",
-        left: "0px",
+        left: "50%",
         height: "100svh",
-        width: "100vw",
+        width: "min(100vw, var(--layout-max))",
+        maxWidth: "100vw",
+        transform: "translate(-50%, -50%)",
       }}
     >
       <ambientLight intensity={1.25} />

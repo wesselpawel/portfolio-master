@@ -84,6 +84,16 @@ export default function ProjectShowcase({
         }`}
       >
         {standalone ? null : (
+          <div className="z-[505] w-full">
+            <ContactSection
+              content={pageContent.contact}
+              showScrollAnchor={false}
+              showBusinessFooter={false}
+              showTopAccentBorder={false}
+            />
+          </div>
+        )}
+        {standalone ? null : (
           <HomeIntentLayer
             pageContent={pageContent}
             content={pageContent.intent}
@@ -102,18 +112,19 @@ export default function ProjectShowcase({
           }`}
         >
           <motionDiv.h2
-            className={`h-max w-[90%] rounded-3xl border border-black/10 bg-yellow-300 p-6 text-center font-sans text-2xl font-bold text-black shadow-[0_20px_60px_rgba(0,0,0,0.25)] select-none md:w-[70%] lg:w-[50%] lg:text-3xl xl:text-4xl 2xl:text-5xl z-[550] sticky ${
+            className={`h-max w-[90%] rounded-3xl border border-black/10 bg-yellow-300 p-[clamp(1rem,2vw,1.75rem)] text-center font-sans text-[clamp(1.125rem,0.88rem+1.15vw,3.25rem)] font-bold leading-tight text-black shadow-[0_20px_60px_rgba(0,0,0,0.25)] select-none md:w-[70%] lg:w-[50%] z-[550] sticky ${
               standalone ? "top-72 lg:top-64" : "top-44 lg:top-32"
             }`}
           >
             {pageContent.portfolioHeading}
           </motionDiv.h2>
         </motionDiv.div>
-        <div className="z-auto top-0 w-screen flex flex-col items-center">
+        <div className="z-auto top-0 flex w-full flex-col items-center">
+          <div className="layout-container flex flex-col items-center">
           {PORTFOLIO_PROJECTS.map((item, i) => (
             <div
               key={i}
-              className="w-full max-w-[1100px] relative h-max py-3 lg:py-24 my-12 lg:my-0 flex items-center duration-75 "
+              className="relative my-12 flex h-max w-full max-w-[1100px] items-center py-3 duration-75 lg:my-0 lg:py-24 4xl:max-w-[min(1280px,92vw)]"
             >
               <div className="w-full grid grid-cols-1 gap-6 h-max">
                 <div
@@ -197,9 +208,9 @@ export default function ProjectShowcase({
                         {item.portfolioSections ? (
                           <div className="mt-6 space-y-6">
                             <div>
-                              <p className="text-xs uppercase tracking-[0.18em] text-white/60">
-                                Cennik
-                              </p>
+                              <h3 className="text-xs uppercase tracking-[0.18em] text-white/60">
+                                Cennik i oferta numer #{i + 1}
+                              </h3>
                               <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
                                 {item.portfolioSections.pricing.map((plan) => (
                                   <div
@@ -290,14 +301,17 @@ export default function ProjectShowcase({
               </div>
             </div>
           ))}
+          </div>
         </div>{" "}
         {standalone ? null : (
-          <div className="z-auto top-0 w-screen flex flex-col items-center px-6 lg:px-12">
+          <div className="z-auto top-0 flex w-full flex-col items-center">
+            <div className="layout-container flex flex-col items-center">
             <LandingFaqSection
               pageContent={pageContent}
               content={pageContent.intent}
               currentSlug={pageContent.slug}
             />
+            </div>
           </div>
         )}
         <ContactSection content={pageContent.contact} />

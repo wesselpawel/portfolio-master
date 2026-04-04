@@ -16,10 +16,25 @@ const DEFAULT_CONTACT_CONTENT: LandingPageContactContent = {
 
 type ContactSectionProps = {
   content?: LandingPageContactContent;
+  /**
+   * Gdy false — nie renderuje #darmowa-wycena (kotwica zostaje przy dolnej instancji).
+   */
+  showScrollAnchor?: boolean;
+  /**
+   * Gdy false — bez dolnej ramki NIP / polityki / copyright (druga instancja na dole strony).
+   */
+  showBusinessFooter?: boolean;
+  /**
+   * Gdy false — bez żółtej linii border-t (np. blok osadzony nad inną sekcją).
+   */
+  showTopAccentBorder?: boolean;
 };
 
 export default function ContactSection({
   content = DEFAULT_CONTACT_CONTENT,
+  showScrollAnchor = true,
+  showBusinessFooter = true,
+  showTopAccentBorder = true,
 }: ContactSectionProps) {
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
@@ -121,21 +136,27 @@ export default function ContactSection({
   };
   return (
     <div className="relative w-full flex items-center justify-center">
+      {showScrollAnchor ? (
+        <div
+          className="absolute -top-32 left-0 h-[1px] w-[1px] bg-transparent"
+          id="darmowa-wycena"
+        />
+      ) : null}
       <div
-        className="w-[1px] h-[1px] bg-transparent -top-32 left-0 absolute"
-        id="darmowa-wycena"
-      ></div>
-      <div className="font-dosis w-full border-t-2 border-yellow-300 bg-slate-800/30 pb-24 pt-0 text-xl flex flex-col items-center justify-center z-[600] relative lg:pb-12">
-        <div className="w-full bg-slate-800 px-4 py-8 lg:px-24 lg:py-20">
-          <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 xl:grid-cols-[0.95fr_1.05fr] xl:gap-8">
+        className={`font-dosis relative z-[600] flex w-full flex-col items-center justify-center bg-slate-800/30 pt-0 text-xl ${
+          showTopAccentBorder ? "border-t-2 border-yellow-300" : ""
+        }`}
+      >
+        <div className="w-full bg-slate-800 py-[clamp(2rem,3.5vw,5rem)] lg:py-[clamp(2.5rem,4vw,6rem)]">
+          <div className="layout-container grid w-full grid-cols-1 gap-6 xl:grid-cols-[0.95fr_1.05fr] xl:gap-8">
             <section className="overflow-hidden rounded-[30px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(253,224,71,0.12),transparent_28%),linear-gradient(180deg,rgba(15,23,42,0.94),rgba(15,23,42,0.82))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.28)] sm:p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-yellow-200/85">
                 Kontakt
               </p>
-              <h2 className="mt-4 font-cocosharp text-3xl font-bold leading-tight text-yellow-300 sm:text-4xl">
+              <h2 className="text-fluid-contact-title mt-4 font-cocosharp font-bold text-yellow-300">
                 {content.title}
               </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/75 sm:text-base">
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/75 sm:text-base lg:max-w-[62ch] lg:text-[clamp(0.9375rem,0.88rem+0.2vw,1.125rem)]">
                 {content.subtitle}
               </p>
 
@@ -331,7 +352,8 @@ export default function ContactSection({
           </div>
         </div>
 
-        <div className="mt-12 w-full px-4 lg:px-6">
+        {showBusinessFooter ? (
+        <div className="layout-container mt-12">
           <div className="overflow-hidden rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(253,224,71,0.12),transparent_32%),linear-gradient(180deg,rgba(30,41,59,0.92),rgba(15,23,42,0.88))] shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
             <div className="grid grid-cols-1 gap-4 border-b border-white/10 p-5 md:grid-cols-3 lg:p-6">
               <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
@@ -416,6 +438,7 @@ export default function ContactSection({
             </div>
           </div>
         </div>
+        ) : null}
       </div>
     </div>
   );

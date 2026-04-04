@@ -20,6 +20,7 @@ import {
   getLandingPageByPathname,
   getLandingPageCityBySlug,
   getLandingPageHref,
+  getPrimaryServiceLinks,
   getServiceLabel,
   getSiblingCityLinks,
   getSiblingCityHubLinks,
@@ -112,10 +113,11 @@ export function NavRight() {
   );
   const currentCity =
     getLandingPageCityBySlug(currentPage?.citySlug ?? currentHubCitySlug ?? "") ?? null;
+  const isGenericPage = Boolean(currentPage && !currentPage.citySlug && !currentPage.targetKey);
   const activeHref = currentPage ? getLandingPageHref(currentPage) : pathname || "/";
   const primaryServiceLinks = currentCity
     ? getCityServiceLinks(currentCity.slug)
-    : getCityServiceLinks("grudziadz");
+    : getPrimaryServiceLinks(currentSlug);
   const activePrimaryServiceHref = currentPage
     ? getLandingPageHref(currentPage)
     : pathname || "/";
@@ -123,21 +125,26 @@ export function NavRight() {
   const currentHubLinks = currentCity
     ? getSiblingCityHubLinks(currentCity.slug, 8)
     : getSiblingCityHubLinks("grudziadz", 8);
-  const relatedLinks = currentPage ? siblingCityLinks : currentHubLinks;
-  const currentCityName = currentPage?.cityName ?? currentCity?.name ?? "Grudziądz";
+  const relatedLinks =
+    currentPage && currentPage.citySlug && !currentPage.targetKey
+      ? siblingCityLinks
+      : currentHubLinks;
+  const currentCityName = currentPage?.cityName ?? currentCity?.name ?? null;
   const currentServiceLabel = currentPage?.serviceKey
     ? getServiceLabel(currentPage.serviceKey)
-    : "Projektowanie internetowe";
-  const primaryGroupTitle = `Usługi w ${currentCityName}`;
-  const primaryGroupDescription = `Szybkie przejście do podstron: ${currentServiceLabel.toLowerCase()} ${currentCityName} i pozostałych usług w tym mieście.`;
+    : "Strony internetowe";
+  const primaryGroupTitle = currentCityName ? `Usługi w ${currentCityName}` : "Główne usługi";
+  const primaryGroupDescription = currentCityName
+    ? `Szybkie przejście do podstron: ${currentServiceLabel.toLowerCase()} ${currentCityName} i pozostałych usług w tym mieście.`
+    : "Szybkie przejście do głównych usług związanych ze stronami internetowymi.";
   const siblingGroupTitle = currentPage?.targetLabel
     ? `Ten sam target w innych miastach`
-    : currentPage
+    : currentPage && !isGenericPage
       ? "Ta sama usługa w innych miastach"
       : "Pozostałe huby miejskie";
   const siblingGroupDescription = currentPage?.targetLabel
     ? `Porównaj podstrony dla ${currentPage.targetLabel} w innych lokalizacjach.`
-    : currentPage
+    : currentPage && !isGenericPage
       ? `Sprawdź ${currentServiceLabel.toLowerCase()} także w innych miastach.`
       : `Przejdź do hubów miejskich i wzmacniaj linkowanie lokalne między miastami.`;
 
@@ -209,15 +216,16 @@ export function NavRight() {
     },
     {
       href: "/about",
-      label: "WWW Expert",
+      label: "Paweł Wessel",
     },
   ];
   return (
     <header
       ref={navRef}
-      className="fixed inset-x-0 top-4 z-[1100] mx-auto w-[90vw] text-white"
+      className="fixed top-3 z-[1100] w-full text-white"
     >
-      <div className="rounded-[30px] border border-white/10 bg-slate-950/72 px-3 py-3 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
+      <div className="mx-auto w-full max-w-[min(100%,var(--layout-max))] px-section">
+      <div className="rounded-3xl bg-slate-950/70 pl-3 pr-6 py-3 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
         <div className="flex items-center justify-between gap-3">
           <Link
             href="/"
@@ -233,15 +241,15 @@ export function NavRight() {
                 alt="Logo Paweł Wessel"
                 width={88}
                 height={88}
-                className="h-12 w-12 rounded-full border border-yellow-300/30 object-cover shadow-[0_12px_30px_rgba(253,224,71,0.2)] transition duration-300 group-hover:rotate-6"
+                className="h-12 w-12 rounded-full border border-yellow-300/30 object-cover shadow-[0_12px_30px_rgba(253,224,71,0.2)] transition duration-300 group-hover:rotate-6 4xl:h-14 4xl:w-14"
               />
               <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border border-slate-950 bg-emerald-400 shadow-[0_0_0_6px_rgba(52,211,153,0.12)]" />
             </div>
             <div className="min-w-0">
-              <div className="truncate text-base font-bold text-white sm:text-xl">
+              <div className="truncate text-base font-bold text-white sm:text-xl 4xl:text-2xl">
                 Paweł Wessel
               </div>
-              <div className="flex items-center gap-2 text-xs text-white/65 sm:text-sm">
+              <div className="flex items-center gap-2 text-xs text-white/65 sm:text-sm 4xl:text-base">
                 <span className="font-dosis">Tworzę strony internetowe</span>
                 <FaLongArrowAltRight className="hidden sm:block" />
               </div>
@@ -259,7 +267,7 @@ export function NavRight() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-medium text-white/80 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
+                className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-medium text-white/80 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white 4xl:min-h-12 4xl:px-5 4xl:text-base"
               >
                 {link.label}
               </Link>
@@ -442,6 +450,7 @@ export function NavRight() {
             </motion.div>
           ) : null}
         </AnimatePresence>
+      </div>
       </div>
     </header>
   );

@@ -1,19 +1,15 @@
 "use client";
-import authorImage from "@/public/assets/author.png";
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useScroll, useTransform, motion as motionDiv } from "framer-motion";
-import { motion } from "framer-motion-3d";
 import ProjectShowcase from "../ProjectShowcase";
-import Image from "next/image";
-import { FaQuoteLeft, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import type { HeroSceneProps } from "./hero-scene";
-import WebsiteOrderForm from "./WebsiteOrderForm";
+import HeroWebsiteCostCalculator from "./HeroWebsiteCostCalculator";
 import {
   getBreadcrumbLinks,
   getContextualLandingPageLinks,
-  getHomepageSectionLinks,
   type LandingPageContent,
 } from "@/data/landingPages";
 import { highlightLandingKeywords } from "@/utils/highlightLandingKeywords";
@@ -45,7 +41,7 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
   const donutPosY = useTransform(
     scrollYProgress,
     [0.1, 0.2, 0.5, 0.8, 1],
-    [-2, -0, 1, 3, 7],
+    [-4, -0, 1, 3, 7],
   );
   const donutPosZ = useTransform(scrollYProgress, [0.1, 0.5], [0.1, 0.5]);
 
@@ -86,25 +82,9 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
     pos <= 0.9 ? 1 : 0,
   );
 
-  //welcome box values
-  const welcomeBoxOpacity = useTransform(
-    scrollYProgress,
-    [0.1, 0.2, 0.3],
-    [1, 0.5, 0],
-  );
-  const welcomeBoxTranslateX = useTransform(
-    scrollYProgress,
-    [0.1, 0.2, 0.3],
-    ["-50%", "0%", "50%"],
-  );
-  const welcomeBoxTranslateY = useTransform(
-    scrollYProgress,
-    [0.1, 0.2, 0.3],
-    ["-50%", "0%", "100%"],
-  );
+
   const [canRender3D, setCanRender3D] = useState(false);
   const breadcrumbLinks = getBreadcrumbLinks(pageContent.slug);
-  const sectionLinks = getHomepageSectionLinks(!pageContent.slug);
   const contextualLandingLinks = getContextualLandingPageLinks(
     pageContent.slug,
   );
@@ -127,11 +107,6 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
       );
     });
   }
-  const primaryQuickLinkClass =
-    "inline-flex min-h-11 max-w-full items-center justify-center rounded-2xl border border-yellow-200/40 bg-yellow-300 px-5 py-3 text-center text-sm font-semibold leading-tight text-slate-950 shadow-[0_10px_30px_rgba(253,224,71,0.22)] transition duration-200 hover:-translate-y-0.5 hover:brightness-105";
-  const secondaryQuickLinkClass =
-    "inline-flex min-h-11 max-w-full items-center justify-center rounded-full border border-white/20 bg-slate-950/50 px-5 py-3 text-center text-sm font-medium leading-tight text-white/90 shadow-[0_10px_30px_rgba(15,23,42,0.18)] backdrop-blur-md transition duration-200 hover:-translate-y-0.5 hover:border-white/35 hover:bg-slate-950/35 hover:text-white";
-
   useEffect(() => {
     const userAgent = navigator.userAgent || "";
     const isBot = BOT_USER_AGENT_REGEX.test(userAgent);
@@ -145,16 +120,15 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
 
   return (
     <div>
-      <motion.div
-       
-        className="absolute left-0 top-0 z-[501] flex min-h-[100svh] w-full justify-center rounded-3xl pt-28 sm:pt-32 lg:items-center lg:pt-0"
+      <motionDiv.div
+        className="absolute left-0 top-0 z-[501] flex min-h-[100svh] w-full justify-center rounded-3xl"
       >
-        <div className="mx-auto items-center justify-center mt-12 justify-evenly grid grid-cols-1 lg:flex flex-row w-[90vw] max-h-[60vh] 2xl:h-[100vh]">
-          <div className="rounded-3xl relative lg:w-[40vw] bg-slate-800/40 p-8">
+        <div className="layout-container mt-12 w-full flex flex-col lg:flex-row items-center justify-center gap-[clamp(1.75rem,3.5vw,3.5rem)]  lg:max-h-none lg:min-h-0">
+          <div className="relative max-w-[min(100%,36rem)] shrink-0 rounded-3xl lg:max-w-[min(100%,60rem)] 4xl:max-w-[min(100%,44rem)]">
             {breadcrumbLinks.length ? (
               <nav
                 aria-label="Breadcrumb"
-                className="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/60"
+                className="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/60 4xl:text-sm"
               >
                 {breadcrumbLinks.map((link, index) => (
                   <React.Fragment key={link.href}>
@@ -171,45 +145,38 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
                 ))}
               </nav>
             ) : null}
-            <div className="flex flex-row gap-2 mb-2">
-              <FaStar className="w-5 h-5 text-yellow-300" />
-              <FaStar className="w-5 h-5 text-yellow-300" />
-              <FaStar className="w-5 h-5 text-yellow-300" />
-              <FaStar className="w-5 h-5 text-yellow-300" />
-              <FaStar className="w-5 h-5 text-yellow-300" />
+            <div className="mx-auto mb-2 flex flex-row gap-2">
+              <FaStar className="h-5 w-5 text-yellow-300 4xl:h-6 4xl:w-6" />
+              <FaStar className="h-5 w-5 text-yellow-300 4xl:h-6 4xl:w-6" />
+              <FaStar className="h-5 w-5 text-yellow-300 4xl:h-6 4xl:w-6" />
+              <FaStar className="h-5 w-5 text-yellow-300 4xl:h-6 4xl:w-6" />
+              <FaStar className="h-5 w-5 text-yellow-300 4xl:h-6 4xl:w-6" />
             </div>
-            <h1 className="lg:overflow-hidden text-2xl lg:text-3xl 2xl:text-4xl font-extrabold">
-              <span className="text-white font-sans">
+            <h1 className="text-fluid-hero-display font-extrabold lg:overflow-hidden">
+              <span className="font-sans text-white">
                 {pageContent.hero.headingPrefix}
-                <span className="text-yellow-300">
-                  {pageContent.hero.headingHighlight}
-                </span>
+                {pageContent.hero.headingHighlight}
                 {pageContent.hero.headingSuffix}
               </span>
             </h1>
-            <p className="mt-4 text-base lg:text-lg 2xl:text-2xl font-dosis text-white">
+            <p className="text-fluid-hero-lead mt-4 max-w-[62ch] font-dosis text-white">
               {highlightLandingKeywords(pageContent.hero.description, pageContent)}
             </p>
-            <div className="mt-4 inline-flex items-center rounded-full border border-yellow-300/25 bg-yellow-300/10 px-4 py-2 text-sm font-medium text-yellow-100">
-              <span className="text-white/70">Dodano:</span>
-              <span className="ml-2">{pageContent.addedDate}</span>
-            </div>
+            <Link href="#darmowa-wycena">
+            <button
+              type="button"
+              className="mt-4 inline-flex items-center rounded-lg bg-yellow-400 px-[clamp(1rem,0.85rem+0.5vw,1.5rem)] py-[clamp(0.5rem,0.4rem+0.35vw,0.85rem)] text-[clamp(0.9375rem,0.88rem+0.25vw,1.125rem)] font-semibold text-black"
+            >
+              Darmowa wycena
+            </button>
+            </Link>
             
           </div>
-          <div className="w-full lg:w-auto flex items-center justify-center">
-           {/* <Image 
-             src={require('@/public/assets/herogif.gif')} 
-             alt="Prezentacja responsywności stron internetowych na mockupie urządzenia mobilnego" 
-             width={400} 
-             height={400} 
-             className="mt-12 -ml-3 w-[100vw] lg:w-auto flex max-h-[80vh] w-auto aspect-auto" 
-           /> */}
-          <div className="flex items-center justify-center mt-8">
-            <WebsiteOrderForm content={pageContent.form} />
-          </div>
+          <div className="flex min-w-0 flex-1 items-center justify-center lg:justify-end">
+            <HeroWebsiteCostCalculator />
           </div>
         </div>
-      </motion.div>
+      </motionDiv.div>
       <ProjectShowcase pageContent={pageContent} />
       <motionDiv.div
         className="absolute left-0 top-0 h-[700vh] w-screen"
@@ -221,9 +188,9 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
             translateX: "-50%",
             translateY: h1TextTranslateY,
           }}
-          className="font-bold bottom-36 text-center w-[90%] md:w-[70%] lg:w-[60%] left-1/2 fixed z-[500] font-sans"
+          className="font-bold bottom-36 left-1/2 w-[min(90%,36rem)] max-w-[min(90vw,52rem)] text-center md:w-[min(80%,40rem)] lg:w-[min(75%,44rem)] 4xl:w-[min(70%,48rem)] 4xl:max-w-4xl fixed z-[500] font-sans"
         >
-          <div className="rounded-3xl bg-yellow-300 select-none p-6 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
+          <div className="text-fluid-floating-prompt rounded-3xl bg-yellow-300 p-[clamp(1rem,2vw,2rem)] font-bold select-none">
             {pageContent.hero.floatingPromptPrimary}
           </div>
         </motionDiv.div>
@@ -233,9 +200,9 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
             translateX: "-50%",
             translateY: h2TextTranslateY,
           }}
-          className="font-bold bottom-36 text-center w-[90%] md:w-[70%] lg:w-[60%] left-1/2 fixed z-[500] font-sans"
+          className="font-bold bottom-36 left-1/2 w-[min(90%,36rem)] max-w-[min(90vw,52rem)] text-center md:w-[min(80%,40rem)] lg:w-[min(75%,44rem)] 4xl:w-[min(70%,48rem)] 4xl:max-w-4xl fixed z-[500] font-sans"
         >
-          <div className="rounded-3xl bg-yellow-300 select-none p-6 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
+          <div className="text-fluid-floating-prompt rounded-3xl bg-yellow-300 p-[clamp(1rem,2vw,2rem)] font-bold select-none">
             {pageContent.hero.floatingPromptSecondary}
           </div>
         </motionDiv.div>
