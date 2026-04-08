@@ -26,18 +26,19 @@ export function generateMetadata({ params }: CityHubRouteProps): Metadata {
   }
 
   const canonicalUrl = `https://wesselpawel.com${getCityHubHref(city.slug)}`;
-
+  const   title = `Tworzenie stron internetowych ${city.name} | Strony WWW dla firm`;
+  const description = `Tworzenie stron internetowych ${city.context.inLocative}, które budują widoczność w Google. Wizytówka Twojej firmy w Google.`;
   return {
-    title: `Sklepy internetowe strony WWW Cennik ${city.name}`,
-    description: `Tworzenie sklepów internetowych i stron WWW ${city.context.inLocative}, ktore buduja widocznosc w Google i generuja realne zapytania. Strony firmowe, landing page, sklepy internetowe i SEO lokalne w jednym hubie.`,
+    title,
+    description,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
       type: "website",
       url: canonicalUrl,
-      title: `Projektowanie stron WWW ${city.name}`,
-      description: `Sprawdz oferte projektowania stron WWW, landing page, sklepow internetowych i SEO lokalnego ${city.context.inLocative}.`,
+      title,
+      description,
       siteName: "Paweł Wessel",
     },
   };

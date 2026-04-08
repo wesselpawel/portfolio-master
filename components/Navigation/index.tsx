@@ -73,7 +73,7 @@ function NavLinkGroup({
 
           return (
             <Link
-              key={link.href}
+              key={`${link.href}::${link.label}`}
               href={link.href}
               onClick={onNavigate}
               className={`inline-flex min-h-11 items-center justify-center rounded-2xl border px-4 py-2 text-sm font-medium transition ${
@@ -135,7 +135,7 @@ export function NavRight() {
     : "Strony internetowe";
   const primaryGroupTitle = currentCityName ? `Usługi w ${currentCityName}` : "Główne usługi";
   const primaryGroupDescription = currentCityName
-    ? `Szybkie przejście do podstron: ${currentServiceLabel.toLowerCase()} ${currentCityName} i pozostałych usług w tym mieście.`
+    ? `Szybkie przejście do sekcji oferty na hubie ${currentCityName}: ${currentServiceLabel.toLowerCase()} i pozostałe usługi w jednym miejscu.`
     : "Szybkie przejście do głównych usług związanych ze stronami internetowymi.";
   const siblingGroupTitle = currentPage?.targetLabel
     ? `Ten sam target w innych miastach`

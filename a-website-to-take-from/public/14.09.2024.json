@@ -1,0 +1,391 @@
+[
+  {
+    "title": "Rozwój Oprogramowania",
+    "data": [
+      {
+        "title": "Aplikacje Mobilne",
+        "data": [
+          {
+            "title": "Tworzenie Aplikacji Mobilnych"
+          },
+          {
+            "title": "iOS Developer"
+          },
+          {
+            "title": "Android Developer"
+          },
+          {
+            "title": "Tworzenie Gier Mobilnych"
+          },
+          {
+            "title": "Aplikacje Finansowe"
+          }
+        ]
+      },
+      {
+        "title": "Oprogramowanie",
+        "data": [
+          {
+            "title": "Programista"
+          },
+          {
+            "title": "Testowanie Oprogramowania"
+          },
+          {
+            "title": "Programista Laravel"
+          },
+          {
+            "title": "Microsoft SharePoint"
+          },
+          {
+            "title": "Webflow Developer"
+          }
+        ]
+      },
+      {
+        "title": "Web Development",
+        "data": [
+          {
+            "title": "Web Developer"
+          },
+          {
+            "title": "Programista Python & Django"
+          },
+          {
+            "title": "Programista PHP"
+          },
+          {
+            "title": "Programista Wordpress"
+          },
+          {
+            "title": "Programista Drupal"
+          }
+        ]
+      },
+      {
+        "title": "Frameworki",
+        "data": [
+          {
+            "title": "Programista React Native"
+          },
+          {
+            "title": "Programista Flutter"
+          },
+          {
+            "title": "Programista .NET"
+          },
+          {
+            "title": "Programista Ruby on Rails"
+          },
+          {
+            "title": "Programista Java"
+          }
+        ]
+      },
+      {
+        "title": "Nowe Technologie",
+        "data": [
+          {
+            "title": "Programista Sztucznej Inteligencji"
+          },
+          {
+            "title": "Programista Blockchain"
+          },
+          {
+            "title": "AR/VR Developer"
+          },
+          {
+            "title": "IoT Developer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "E-Commerce",
+    "data": [
+      {
+        "title": "Rozwiązania E-Commerce",
+        "data": [
+          {
+            "title": "Tworzenie sklepów internetowych"
+          },
+          {
+            "title": "Programista Magento"
+          },
+          {
+            "title": "Programista Shopify"
+          },
+          {
+            "title": "Programista BigCommerce"
+          },
+          {
+            "title": "Programista WooCommerce"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Usługi IT",
+    "data": [
+      {
+        "title": "Doradztwo IT",
+        "data": [
+          {
+            "title": "Integracja Systemów"
+          },
+          {
+            "title": "ERP"
+          },
+          {
+            "title": "Salesforce"
+          },
+          {
+            "title": "BI & Big Data"
+          },
+          {
+            "title": "Cloud Computing"
+          },
+          {
+            "title": "Konsulting w Chmurze"
+          },
+          {
+            "title": "Microsoft Azure"
+          },
+          {
+            "title": "AWS"
+          }
+        ]
+      },
+      {
+        "title": "Wsparcie IT",
+        "data": [
+          {
+            "title": "Helpdesk IT"
+          },
+          {
+            "title": "Wsparcie Techniczne"
+          },
+          {
+            "title": "Usługi IT"
+          },
+          {
+            "title": "Outsourcing Specjalistów IT"
+          },
+          {
+            "title": "Zarządzanie Usługami IT"
+          }
+        ]
+      },
+      {
+        "title": "Bezpieczeństwo IT",
+        "data": [
+          {
+            "title": "Cyberbezpieczeństwo"
+          },
+          {
+            "title": "Testy Penetracyjne"
+          },
+          {
+            "title": "Ochrona przed przejęciem kont"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Marketing",
+    "data": [
+      {
+        "title": "Marketing Cyfrowy",
+        "data": [
+          {
+            "title": "SEO"
+          },
+          {
+            "title": "Marketing w Social Media"
+          },
+          {
+            "title": "Email Marketing"
+          },
+          {
+            "title": "Content Marketing"
+          }
+        ]
+      },
+      {
+        "title": "Reklama",
+        "data": [
+          {
+            "title": "PPC (Pay Per Click)"
+          },
+          {
+            "title": "Planowanie Mediów i Zakup"
+          },
+          {
+            "title": "Branding"
+          },
+          {
+            "title": "Strategie Namingowe"
+          }
+        ]
+      },
+      {
+        "title": "Kreacja",
+        "data": [
+          {
+            "title": "Strategia Komunikacji"
+          },
+          {
+            "title": "Public Relations"
+          },
+          {
+            "title": "Badania Rynkowe"
+          },
+          {
+            "title": "Strategia Cyfrowa"
+          },
+          {
+            "title": "Produkcja Video"
+          },
+          {
+            "title": "Filmy Wyjaśniające"
+          },
+          {
+            "title": "Spoty Reklamowe"
+          },
+          {
+            "title": "Filmy Korporacyjne"
+          }
+        ]
+      },
+      {
+        "title": "Animacja",
+        "data": [
+          {
+            "title": "Animacja 2D"
+          },
+          {
+            "title": "Animacja 3D"
+          },
+          {
+            "title": "Motion Graphics"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Projektowanie",
+    "data": [
+      {
+        "title": "Web Design",
+        "data": [
+          {
+            "title": "Projektowanie Stron Internetowych"
+          },
+          {
+            "title": "UX/UI Design"
+          },
+          {
+            "title": "Koncepcje Projektowe"
+          },
+          {
+            "title": "Projektowanie Logo"
+          },
+          {
+            "title": "Projektowanie Graficzne"
+          },
+          {
+            "title": "Projektowanie Produktów"
+          },
+          {
+            "title": "Projektowanie Opakowań"
+          }
+        ]
+      },
+      {
+        "title": "Pełna Obsługa",
+        "data": [
+          {
+            "title": "Agencje Kreatywne"
+          },
+          {
+            "title": "Projektowanie Cyfrowe"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Usługi Biznesowe",
+    "data": [
+      {
+        "title": "Wsparcie Sprzedaży",
+        "data": [
+          {
+            "title": "Outsourcing Sprzedaży"
+          },
+          {
+            "title": "Obsługa Klienta"
+          },
+          {
+            "title": "Generowanie Leadów"
+          },
+          {
+            "title": "Kwalifikacja Leadów"
+          },
+          {
+            "title": "Usługi Call Center"
+          }
+        ]
+      },
+      {
+        "title": "Usługi Finansowe",
+        "data": [
+          {
+            "title": "Księgowość"
+          },
+          {
+            "title": "Przetwarzanie Płac"
+          },
+          {
+            "title": "Fuzje i Przejęcia"
+          },
+          {
+            "title": "Zarządzanie Budżetem"
+          }
+        ]
+      },
+      {
+        "title": "Wsparcie Administracyjne",
+        "data": [
+          {
+            "title": "Umawianie Spotkań"
+          },
+          {
+            "title": "Wirtualna Recepcja"
+          },
+          {
+            "title": "Wirtualny Asystent"
+          },
+          {
+            "title": "Wprowadzanie Danych"
+          }
+        ]
+      },
+      {
+        "title": "Zasoby Ludzkie",
+        "data": [
+          {
+            "title": "Outsourcing HR"
+          },
+          {
+            "title": "Rekrutacja"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -119,14 +119,6 @@ export type LandingPageContent = {
   contact: LandingPageContactContent;
 };
 
-export type LandingPageServiceRouteParam =
-  | "tworzenie-stron-internetowych"
-  | "projektowanie-stron-www"
-  | "tworzenie-landing-page"
-  | "tworzenie-sklepow-internetowych"
-  | "strony-internetowe-na-sprzedaz"
-  | "seo";
-
 type CityLandingPageInput = Omit<
   LandingPageContent,
   | "key"
@@ -189,18 +181,6 @@ const SERVICE_LABELS: Record<LandingPageServiceKey, string> = {
   store: "Sklepy internetowe",
   sale: "Strony internetowe na sprzedaż",
   seo: "Pozycjonowanie stron internetowych",
-};
-
-const SERVICE_ROUTE_SEGMENTS: Record<
-  LandingPageServiceKey,
-  LandingPageServiceRouteParam
-> = {
-  website: "tworzenie-stron-internetowych",
-  design: "projektowanie-stron-www",
-  landing: "tworzenie-landing-page",
-  store: "tworzenie-sklepow-internetowych",
-  sale: "strony-internetowe-na-sprzedaz",
-  seo: "seo",
 };
 
 export function getServiceLabel(serviceKey: LandingPageServiceKey): string {
@@ -273,7 +253,16 @@ function toRadians(value: number): number {
 function getDistanceBetweenCitiesKm(
   left: LandingPageCity,
   right: LandingPageCity,
-): number {
+): number | null {
+  if (
+    left.latitude == null ||
+    left.longitude == null ||
+    right.latitude == null ||
+    right.longitude == null
+  ) {
+    return null;
+  }
+
   const earthRadiusKm = 6371;
   const latitudeDelta = toRadians(right.latitude - left.latitude);
   const longitudeDelta = toRadians(right.longitude - left.longitude);
@@ -370,27 +359,11 @@ export function getCityHubHref(citySlug: string): string {
   return `/${CITY_HUB_BASE_SEGMENT}/${citySlug}`;
 }
 
-export function getServiceRouteParam(
-  serviceKey: LandingPageServiceKey,
-): LandingPageServiceRouteParam {
-  return SERVICE_ROUTE_SEGMENTS[serviceKey];
-}
-
 export function getServiceHref(
-  serviceKey: LandingPageServiceKey,
+  _serviceKey: LandingPageServiceKey,
   citySlug: string,
 ): string {
-  return `${getCityHubHref(citySlug)}/${getServiceRouteParam(serviceKey)}`;
-}
-
-export function getServiceKeyFromRouteParam(
-  routeParam: string,
-): LandingPageServiceKey | null {
-  const matchedEntry = Object.entries(SERVICE_ROUTE_SEGMENTS).find(
-    ([, segment]) => segment === routeParam,
-  );
-
-  return (matchedEntry?.[0] as LandingPageServiceKey | undefined) ?? null;
+  return getCityHubHref(citySlug);
 }
 
 function getCityContext(city: LandingPageCity) {
@@ -2837,33 +2810,8 @@ export function getServiceLandingPage(
   return LANDING_PAGE_BY_SERVICE_AND_CITY.get(`${serviceKey}:${citySlug}`) ?? null;
 }
 
-export function getLandingPageByRouteParams(
-  citySlug: string,
-  serviceRouteParam: string,
-): LandingPageContent | null {
-  const serviceKey = getServiceKeyFromRouteParam(serviceRouteParam);
-
-  if (!serviceKey) {
-    return null;
-  }
-
-  return getServiceLandingPage(citySlug, serviceKey);
-}
-
 export function getAllCityHubSlugs(): string[] {
   return ALL_CITIES.map((city) => city.slug);
-}
-
-export function getAllCityServiceRouteParams(): Array<{
-  city: string;
-  service: LandingPageServiceRouteParam;
-}> {
-  return ALL_CITIES.flatMap((city) =>
-    ALL_SERVICE_KEYS.map((serviceKey) => ({
-      city: city.slug,
-      service: getServiceRouteParam(serviceKey),
-    })),
-  );
 }
 
 export function getAllLandingPagePaths(): string[] {
@@ -2973,17 +2921,24 @@ export function getCityServiceLinks(
   citySlug: string,
   includeServiceKey?: LandingPageServiceKey,
 ): LandingPageLink[] {
-  return ALL_SERVICE_KEYS.map((serviceKey) =>
-    LANDING_PAGE_BY_SERVICE_AND_CITY.get(`${serviceKey}:${citySlug}`),
-  )
+  const hub = getCityHubHref(citySlug);
+
+  return ALL_SERVICE_KEYS.map((serviceKey, index) => ({
+    serviceKey,
+    index,
+    page: LANDING_PAGE_BY_SERVICE_AND_CITY.get(`${serviceKey}:${citySlug}`),
+  }))
     .filter(
-      (page): page is LandingPageContent =>
-        Boolean(page && page.cityName && page.serviceKey),
+      (item): item is {
+        serviceKey: LandingPageServiceKey;
+        index: number;
+        page: LandingPageContent;
+      } => Boolean(item.page?.cityName && item.page.serviceKey),
     )
-    .filter((page) => includeServiceKey !== page.serviceKey)
-    .map((page) => ({
-      href: getLandingPageHref(page),
-      label: `${SERVICE_LABELS[page.serviceKey as LandingPageServiceKey]} ${page.cityName}`,
+    .filter((item) => includeServiceKey !== item.page.serviceKey)
+    .map((item) => ({
+      href: `${hub}#hub-offer-${item.index}`,
+      label: `${SERVICE_LABELS[item.serviceKey]} ${item.page.cityName}`,
     }));
 }
 
@@ -3078,11 +3033,20 @@ export function getSiblingCityHubLinks(
   }
 
   return ALL_CITIES.filter((city) => city.slug !== citySlug)
-    .sort(
-      (left, right) =>
-        getDistanceBetweenCitiesKm(currentCity, left) -
-        getDistanceBetweenCitiesKm(currentCity, right),
-    )
+    .sort((left, right) => {
+      const distLeft = getDistanceBetweenCitiesKm(currentCity, left);
+      const distRight = getDistanceBetweenCitiesKm(currentCity, right);
+      if (distLeft != null && distRight != null) {
+        return distLeft - distRight;
+      }
+      if (distLeft != null) {
+        return -1;
+      }
+      if (distRight != null) {
+        return 1;
+      }
+      return left.name.localeCompare(right.name, "pl");
+    })
     .slice(0, limit)
     .map((city) => ({
       href: getCityHubHref(city.slug),

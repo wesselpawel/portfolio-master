@@ -1,8 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { cityHubPricingData } from "@/data/cityHubPricing";
+
+type HeroCalculatorPayload = {
+  source: "hero-kalkulator-kosztow";
+  kind: "www" | "sklep";
+  packageId: string;
+  packageName: string;
+  addonIds: string[];
+  addons: { id: string; label: string; pricePln: number }[];
+  basePln: number | null;
+  addonSum: number;
+  totalPln: number | null;
+};
 
 const WWW_TABLE = cityHubPricingData.tables.find((t) => t.id === "strony-www");
 const SHOP_TABLE = cityHubPricingData.tables.find((t) => t.id === "sklepy");
@@ -37,6 +49,16 @@ function addonsForPackage(
   );
 }
 
+function normalizePhoneNumber(raw: string): string {
+  const digits = raw.replace(/\D/g, "");
+  if (digits.length === 11 && digits.startsWith("48")) return digits.slice(2);
+  return digits;
+}
+
+function isValidPhoneNumber(raw: string): boolean {
+  return /^[0-9]{9}$/.test(normalizePhoneNumber(raw));
+}
+
 export default function HeroWebsiteCostCalculator() {
   const [step, setStep] = useState(0);
   const [kind, setKind] = useState<"www" | "sklep">("www");
@@ -61,6 +83,14 @@ export default function HeroWebsiteCostCalculator() {
 
   const [addonIds, setAddonIds] = useState<Set<string>>(() => new Set());
 
+  const [briefOpen, setBriefOpen] = useState(false);
+  const [briefName, setBriefName] = useState("");
+  const [briefPhone, setBriefPhone] = useState("");
+  const [briefStatus, setBriefStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+  const [briefMessage, setBriefMessage] = useState("");
+
   useEffect(() => {
     if (!spec || !table) return;
     const ordered = packageOrder(spec, table.packages);
@@ -84,6 +114,16 @@ export default function HeroWebsiteCostCalculator() {
       return next;
     });
   }, [kind, packageId, spec]);
+
+  useEffect(() => {
+    if (step !== 2) {
+      setBriefOpen(false);
+      setBriefName("");
+      setBriefPhone("");
+      setBriefStatus("idle");
+      setBriefMessage("");
+    }
+  }, [step]);
 
   const basePln = spec ? spec.packageBasePln[packageId] : null;
   const addonList = spec ? addonsForPackage(spec, packageId) : [];
@@ -113,6 +153,94 @@ export default function HeroWebsiteCostCalculator() {
 
   function goBack() {
     setStep((s) => Math.max(s - 1, 0));
+  }
+
+  function buildCalculatorPayload(): HeroCalculatorPayload {
+    const pkg = packages.find((p) => p.id === packageId);
+    const addons = addonList
+      .filter((a) => addonIds.has(a.id))
+      .map((a) => ({
+        id: a.id,
+        label: a.label,
+        pricePln: a.pricePln,
+      }));
+
+    return {
+      source: "hero-kalkulator-kosztow",
+      kind,
+      packageId,
+      packageName: pkg?.name ?? packageId,
+      addonIds: Array.from(addonIds),
+      addons,
+      basePln: basePln ?? null,
+      addonSum,
+      totalPln: totalPln ?? null,
+    };
+  }
+
+  async function handleBriefSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (briefStatus === "sending") return;
+
+    const form = e.currentTarget;
+    const honeypot = String(
+      (form.elements.namedItem("website") as HTMLInputElement | null)?.value ??
+        "",
+    ).trim();
+    if (honeypot.length > 0) {
+      setBriefStatus("success");
+      setBriefMessage("");
+      return;
+    }
+
+    const name = briefName.trim();
+    const phoneDigits = normalizePhoneNumber(briefPhone);
+
+    if (!name || !phoneDigits) {
+      setBriefStatus("error");
+      setBriefMessage("Uzupełnij imię i telefon.");
+      return;
+    }
+    if (!isValidPhoneNumber(briefPhone)) {
+      setBriefStatus("error");
+      setBriefMessage("Podaj 9-cyfrowy numer telefonu (np. 721 417 154).");
+      return;
+    }
+
+    setBriefStatus("sending");
+    setBriefMessage("");
+
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phoneNumber: phoneDigits,
+          calculator: buildCalculatorPayload(),
+        }),
+      });
+      const data = (await response.json().catch(() => null)) as {
+        success?: boolean;
+        message?: string;
+      } | null;
+
+      if (response.ok && data?.success) {
+        setBriefStatus("success");
+        setBriefMessage("");
+        form.reset();
+        setBriefName("");
+        setBriefPhone("");
+      } else {
+        setBriefStatus("error");
+        setBriefMessage(
+          data?.message ?? "Nie udało się zapisać. Spróbuj ponownie.",
+        );
+      }
+    } catch {
+      setBriefStatus("error");
+      setBriefMessage("Nie udało się zapisać. Spróbuj ponownie.");
+    }
   }
 
   if (!spec || !table || packages.length === 0) {
@@ -311,12 +439,102 @@ export default function HeroWebsiteCostCalculator() {
               </p>
             </div>
 
-            <Link
-              href="#darmowa-wycena"
-              className="flex w-full items-center justify-center rounded-xl bg-yellow-300 px-3 py-2.5 text-center text-xs font-bold text-slate-950 transition hover:brightness-105 sm:text-sm"
-            >
-              Wyślij brief — potwierdzę zakres
-            </Link>
+            {briefStatus === "success" ? (
+              <div className="rounded-xl border border-yellow-300/25 bg-yellow-300/[0.08] px-2.5 py-3 text-center">
+                <p className="font-dosis text-xs font-semibold text-yellow-100 sm:text-sm">
+                  Dzięki! Dostałem Twój brief z kalkulatora — odezwę się, żeby
+                  potwierdzić zakres i kolejne kroki.
+                </p>
+                <Link
+                  href="#darmowa-wycena"
+                  className="mt-2 inline-block font-dosis text-[11px] text-yellow-200/90 underline underline-offset-2 hover:text-yellow-100 sm:text-xs"
+                >
+                  Chcesz dopisać więcej? Pełny formularz kontaktowy
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setBriefOpen(false);
+                    setBriefStatus("idle");
+                  }}
+                  className="mt-2 w-full rounded-lg border border-white/15 bg-white/[0.06] py-1.5 font-dosis text-[11px] font-semibold text-white/90 hover:bg-white/10 sm:text-xs"
+                >
+                  Zamknij
+                </button>
+              </div>
+            ) : !briefOpen ? (
+              <button
+                type="button"
+                onClick={() => setBriefOpen(true)}
+                className="flex w-full items-center justify-center rounded-xl bg-yellow-300 px-3 py-2.5 text-center text-xs font-bold text-slate-950 transition hover:brightness-105 sm:text-sm"
+              >
+                Wyślij brief — potwierdzę zakres
+              </button>
+            ) : (
+              <form
+                onSubmit={handleBriefSubmit}
+                className="space-y-2 rounded-xl border border-white/12 bg-black/20 p-2.5"
+              >
+                <input
+                  type="text"
+                  autoComplete="off"
+                  tabIndex={-1}
+                  aria-hidden
+                  name="website"
+                  defaultValue=""
+                  className="pointer-events-none fixed left-[calc(-9999px)] top-0 h-0 w-0 opacity-0"
+                />
+                <p className="font-dosis text-[11px] text-white sm:text-xs">
+                  Zostaw dane — prześlę potwierdzenie zakresu z kalkulatora.
+                </p>
+                <input
+                  type="text"
+                  name="name"
+                  value={briefName}
+                  onChange={(e) => setBriefName(e.target.value)}
+                  autoComplete="given-name"
+                  placeholder="Imię"
+                  className="w-full rounded-lg border border-white/15 bg-white/[0.05] px-2.5 py-2 font-dosis text-xs text-white placeholder:text-white/35 focus:border-yellow-300/40 focus:outline-none focus:ring-1 focus:ring-yellow-300/30 sm:text-sm"
+                  disabled={briefStatus === "sending"}
+                />
+                <input
+                  type="tel"
+                  name="phoneNumber"
+                  value={briefPhone}
+                  onChange={(e) => setBriefPhone(e.target.value)}
+                  autoComplete="tel"
+                  placeholder="Telefon (np. 721 417 154)"
+                  className="w-full rounded-lg border border-white/15 bg-white/[0.05] px-2.5 py-2 font-dosis text-xs text-white placeholder:text-white/35 focus:border-yellow-300/40 focus:outline-none focus:ring-1 focus:ring-yellow-300/30 sm:text-sm"
+                  disabled={briefStatus === "sending"}
+                />
+                {briefStatus === "error" && briefMessage ? (
+                  <p className="font-dosis text-[11px] text-red-300/95 sm:text-xs">
+                    {briefMessage}
+                  </p>
+                ) : null}
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setBriefOpen(false);
+                      setBriefStatus("idle");
+                      setBriefMessage("");
+                    }}
+                    disabled={briefStatus === "sending"}
+                    className="min-h-9 flex-1 rounded-lg border border-white/15 bg-transparent font-dosis text-[11px] font-semibold text-white/85 hover:bg-white/5 disabled:opacity-50 sm:text-xs"
+                  >
+                    Anuluj
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={briefStatus === "sending"}
+                    className="min-h-9 flex-[1.35] rounded-lg bg-yellow-300 font-dosis text-[11px] font-bold text-slate-950 transition hover:brightness-105 disabled:opacity-60 sm:text-xs"
+                  >
+                    {briefStatus === "sending" ? "Wysyłanie…" : "Wyślij"}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         ) : null}
       </div>

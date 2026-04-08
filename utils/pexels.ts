@@ -41,11 +41,15 @@ function getPexelsHeaders() {
 }
 
 function getCityPhotoQueries(city: LandingPageCity): string[] {
+  const withProvince = city.province
+    ? `${city.name} ${city.province} Poland`
+    : `${city.name} Poland`;
+
   return [
     `${city.name} Poland city`,
     `${city.name} old town Poland`,
     `${city.name} architecture Poland`,
-    `${city.name} ${city.province} Poland`,
+    withProvince,
   ];
 }
 

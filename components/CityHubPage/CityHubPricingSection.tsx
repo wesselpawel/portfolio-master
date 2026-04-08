@@ -17,10 +17,10 @@ export default function CityHubPricingSection({
     <section
       id="cennik-hub"
       className="scroll-mt-28 border-b border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.98),rgba(15,23,42,0.92))] py-14 lg:py-20"
-      aria-label={`Cennik stron WWW i sklepów — ${cityName}`}
+      aria-label={`Cennik stron internetowych ${cityName}`}
     >
       <div className="mx-auto w-[90vw] max-w-7xl">
-        <div className="max-w-3xl">
+        {/* <div className="max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-yellow-200/85">
             Cennik {cityName}
           </p>
@@ -31,15 +31,15 @@ export default function CityHubPricingSection({
             Najpierw możesz złożyć własny zakres w konfiguratorze, potem
             porównaj szczegóły w tabelach poniżej.
           </p>
-        </div>
+        </div> */}
 
-        <div className="mt-10">
+        {/* <div className="mt-10">
           <CityHubQuoteConfigurator citySlug={citySlug} cityName={cityName} />
-        </div>
+        </div> */}
 
-        <div className="mt-16 flex flex-col gap-16">
-          {tables.map((table) => (
-            <div key={table.id}>
+        <div className="flex flex-col gap-16">
+          {tables.map((table, i) => (
+            <div key={table.id} className={`${i === 0 ? "block" : "hidden"}`}>
               {table.eyebrow ? (
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-yellow-200/75">
                   {table.eyebrow}

@@ -11,6 +11,10 @@ import type { LandingPageCity } from "@/data/polishCities";
 import type { PexelsCityPhoto } from "@/utils/pexels";
 import CityHubHeroShell from "./CityHubHeroShell";
 import CityHubPricingSection from "./CityHubPricingSection";
+import HeroWebsiteCostCalculator from "../HeroSection/HeroWebsiteCostCalculator";
+import Map from "./Map";
+import Opinions from "../opinions/Opinions";
+import OpinionsSection from "@/components/OpinionsSection";
 
 type CityHubPageProps = {
   city: LandingPageCity;
@@ -139,28 +143,85 @@ function getServiceCardContent(cityName: string) {
 function getTargetHubLabel(label: string, cityName: string): string {
   return label.replace(/^Strona dla /, "Strona WWW dla ").replace(cityName, cityName);
 }
-
-function renderInlineLinks(
-  links: Array<{ href: string; label: string }>,
-  transformLabel?: (label: string) => string,
-) {
-  return links.map((link, index) => {
-    const isLast = index === links.length - 1;
-    const isSecondToLast = index === links.length - 2;
-
-    return (
-      <span key={link.href}>
-        <Link
-          href={link.href}
-          className="text-yellow-200 underline decoration-yellow-300/60 underline-offset-4 transition hover:text-yellow-100"
-        >
-          {transformLabel ? transformLabel(link.label) : link.label}
-        </Link>
-        {!isLast ? (isSecondToLast ? " oraz " : ", ") : null}
-      </span>
-    );
-  });
-}
+const markers = [
+  {
+    style: "w-[8%] absolute top-[40%] left-[9.5%] sm:left-[8.5%]",
+    label: "Szczecin - Strona internetowa dla restauracji",
+  },
+  {
+    style: "w-[10%] absolute top-[58%] left-[18%]",
+    label: "Zielona Góra - Sklep online z elektroniką",
+  },
+  {
+    style: "w-[6%] absolute top-[69%] left-[33%]",
+    label: "Wrocław - Portfolio fotografa",
+  },
+  {
+    style: "w-[6%] absolute top-[76%] left-[43%]",
+    label: "Opole - Strona dla kancelarii prawnej",
+  },
+  {
+    style: "w-[6%] absolute top-[67%] left-[44.5%]",
+    label: "Katowice - Sklep internetowy z odzieżą",
+  },
+  {
+    style: "w-[8%] absolute top-[81%] left-[56.5%]",
+    label: "Kraków - Strona internetowa dla hotelu",
+  },
+  {
+    style: "w-[8%] absolute top-[78%] left-[72.5%]",
+    label: "Rzeszów - Portal edukacyjny",
+  },
+  {
+    style: "w-[10%] absolute top-[57%] left-[79%]",
+    label: "Lublin - Strona internetowa dla lekarza",
+  },
+  {
+    style: "w-[8%] absolute top-[65%] left-[60.5%]",
+    label: "Kielce - Blog kulinarny",
+  },
+  {
+    style: "w-[10%] absolute top-[50%] left-[47.5%]",
+    label: "Łódź - Portfolio grafika",
+  },
+  {
+    style: "w-[8%] absolute top-[46%] left-[30%]",
+    label: "Poznań - Strona internetowa dla agencji marketingowej",
+  },
+  {
+    style: "w-[8%] absolute top-[36%] left-[22%]",
+    label: "Gorzów Wlkp. - Strona internetowa dla szkoły językowej",
+  },
+  {
+    style: "w-[10%] absolute top-[27%] left-[37.5%]",
+    label: "Bydgoszcz - Sklep internetowy z zabawkami",
+  },
+  {
+    style: "w-[8%] absolute top-[44%] left-[65%]",
+    label: "Radom - Strona internetowa dla architekta",
+  },
+  {
+    style: "w-[8%] absolute top-[34%] left-[56%]",
+    label: "Białystok - Portal informacyjny",
+  },
+  {
+    style: "w-[10%] absolute top-[23%] left-[78%]",
+    label: "Suwałki - Strona internetowa dla firmy budowlanej",
+  },
+  {
+    style: "w-[10%] absolute top-[12%] left-[58%]",
+    label: "Olsztyn - Strona internetowa dla przedszkola",
+    
+  },
+  {
+    style: "w-[10%] absolute top-[6%] left-[32%]",
+    label: "Gdańsk - Strona internetowa dla salonu fryzjerskiego",
+  },
+  {
+    style: "w-[10%] absolute top-[15%] left-[10%]",
+    label: "Koszalin - Strona internetowa dla trenera personalnego",
+  },
+];
 
 export default function CityHubPage({
   city,
@@ -172,42 +233,32 @@ export default function CityHubPage({
   const serviceCards = getServiceCardContent(city.name);
   const cityGenitive = city.hasTrustedCases ? city.cases.dopelniacz : city.name;
   const cityLocative = city.hasTrustedCases ? city.cases.miejscownik : city.name;
-  const highlightedServiceLinks = serviceLinks.slice(0, 4);
 
   return (
     <div className="bg-slate-950 text-white">
       <CityHubHeroShell citySlug={city.slug}>
           <div>
             
-            <h1 className="mt-4 font-cocosharp text-4xl font-bold leading-tight text-yellow-300 sm:text-5xl">
+            <h1 className="mt-4 font-cocosharp text-2xl font-bold leading-tight text-white sm:text-3xl">
               Tworzenie stron internetowych {city.name}
             </h1>
-            <p className="mt-5 max-w-3xl font-dosis text-base leading-relaxed text-white/75 sm:text-lg">
+            <p className="mt-5 max-w-3xl font-dosis text-base leading-relaxed text-white">
+              Chcesz wiedzieć{" "}
+              <Link
+                href="/koszt-stworzenia-strony-internetowej-2026-rok"
+                className="text-yellow-200 underline decoration-yellow-300/60 underline-offset-4 transition hover:text-yellow-100"
+              >
+                ile kosztuje tworzenie strony internetowej
+              </Link>{" "}
               {highlightHubKeywords(
-                `Jeśli szukasz kogoś, kto zajmie się tworzeniem strony internetowej ${city.name} - jesteś w dobrym miejscu. Projektuję i tworzę strony internetowe dla firm z ${cityGenitive}, które chcą być widoczne w Google i zdobywać nowych klientów.`,
+                `${city.context.inLocative}? - Jesteś w dobrym miejscu. Skontaktuj się ze mną i otrzymaj darmową wycenę.`,
                 city.name,
               )}
             </p>
-            <p className="mt-4 max-w-3xl font-dosis text-base leading-relaxed text-white/70 sm:text-lg">
-              Nie robię "ładnych wizytówek" - buduję strony, które mają konkretny
-              cel: zapytania, telefony i sprzedaż. Ten hub porządkuje wszystkie
-              usługi związane z tworzeniem i projektowaniem stron WWW{" "}
-              {city.context.inLocative} w jednym miejscu.
+            <p className="mt-4 max-w-3xl font-dosis text-base leading-relaxed text-white">
+              Zajmuję się tworzeniem stron internetowych {city.context.inLocative}. Umieszczę Twój biznes w widocznym miejscu wyszukiwarki Google.
             </p>
-            <p className="mt-4 max-w-3xl font-dosis text-base leading-relaxed text-white/70 sm:text-lg">
-              Jeśli chcesz najpierw zobaczyć efekty, sprawdź{" "}
-              <Link
-                href="/realizations"
-                className="text-yellow-200 underline decoration-yellow-300/60 underline-offset-4 transition hover:text-yellow-100"
-              >
-                moje realizacje
-              </Link>
-              . Możesz też od razu przejść do usług takich jak{" "}
-              {renderInlineLinks(highlightedServiceLinks, (label) =>
-                label.replace("Pozycjonowanie stron internetowych", "Pozycjonowanie stron WWW"),
-              )}
-              .
-            </p>
+            
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -216,129 +267,27 @@ export default function CityHubPage({
               >
                 Zobacz cennik
               </Link>
-              <Link
-                href="#konfigurator-wyceny"
-                className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-yellow-300/35 bg-yellow-300/10 px-5 py-3 text-sm font-semibold text-yellow-100 transition hover:border-yellow-300/50 hover:bg-yellow-300/15"
-              >
-                Skonfiguruj wycenę
-              </Link>
-              <Link
-                href="#oferty"
-                className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 transition hover:border-white/25 hover:bg-white/10 hover:text-white"
-              >
-                Zobacz ofertę
-              </Link>
-              <Link
-                href="/realizations"
-                className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white/85 transition hover:bg-white/10 hover:text-white"
-              >
-                Zobacz wyniki i realizacje
-              </Link>
+              
             </div>
           </div>
 
           <div className="rounded-[28px] border border-white/10 bg-black/25 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
-            <p className="text-sm font-semibold text-white">
-              Strona internetowa {city.name} - od pomysłu do wdrożenia
-            </p>
-            <p className="mt-2 font-dosis text-sm leading-relaxed text-white/70">
-              Każda strona internetowa {city.context.inLocative}, którą tworzę,
-              zaczyna się od zrozumienia Twojego biznesu.
-            </p>
-            <div className="mt-5 grid grid-cols-1 gap-3">
-              {[
-                `projekt strony internetowej ${city.name}`,
-                `tworzenie strony internetowej ${city.name}`,
-                "wdrożenie i optymalizacja",
-                "przygotowanie pod pozycjonowanie lokalne",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm font-medium text-white/85"
-                >
-                  {highlightHubKeywords(item, city.name)}
-                </div>
-              ))}
-            </div>
-            <p className="mt-5 font-dosis text-sm leading-relaxed text-white/70">
-              Dzięki temu nie musisz koordynować kilku osób - wszystko masz w
-              jednym miejscu. A jeśli chcesz zobaczyć, jak taki proces kończy się
-              w praktyce, zajrzyj do{" "}
-              <Link
-                href="/realizations"
-                className="text-yellow-200 underline decoration-yellow-300/60 underline-offset-4 transition hover:text-yellow-100"
-              >
-                realizacji
-              </Link>
-              .
-            </p>
+           <HeroWebsiteCostCalculator />
           </div>
       </CityHubHeroShell>
 
       <CityHubPricingSection citySlug={city.slug} cityName={city.name} />
 
       <section className="mx-auto w-[90vw] max-w-7xl py-16 lg:py-20">
-        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="rounded-[28px] border border-white/10 bg-white/5 p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-yellow-200/80">
-              Projekt strony internetowej {city.name}
-            </p>
-            <h2 className="mt-4 text-2xl font-bold text-white sm:text-3xl">
-              Projekt strony internetowej to nie tylko wygląd
-            </h2>
-            <p className="mt-4 font-dosis text-sm leading-relaxed text-white/70 sm:text-base">
-              {highlightHubKeywords(
-                `Tworzę projekty, które są czytelne dla użytkownika, prowadzą klienta do kontaktu, dobrze wyglądają na telefonie i są przygotowane pod SEO w ${cityLocative}.`,
-                city.name,
-              )}
-            </p>
-            <p className="mt-4 font-dosis text-sm leading-relaxed text-white/70 sm:text-base">
-              Każdy projekt strony internetowej {city.context.inLocative}
-              dopasowuję do branży i tego, jak klienci faktycznie szukają usług.
-              Zobacz też, jak to łączę z{" "}
-              <Link
-                href={serviceLinks[5]?.href ?? "/realizations"}
-                className="text-yellow-200 underline decoration-yellow-300/60 underline-offset-4 transition hover:text-yellow-100"
-              >
-                pozycjonowaniem stron WWW
-              </Link>{" "}
-              i{" "}
-              <Link
-                href="/realizations"
-                className="text-yellow-200 underline decoration-yellow-300/60 underline-offset-4 transition hover:text-yellow-100"
-              >
-                realnymi wdrożeniami
-              </Link>
-              .
-            </p>
-          </div>
+        <h2 className="text-2xl font-bold text-white">Tworzymy strony internetowe w całej Polsce</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-8">
 
-          <div className="rounded-[28px] border border-white/10 bg-white/5 p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-yellow-200/80">
-              Strony internetowe {city.name} - podejście
-            </p>
-            <h2 className="mt-4 text-2xl font-bold text-white sm:text-3xl">
-              Patrzę na stronę jak na narzędzie do pozyskiwania klientów
-            </h2>
-            <p className="mt-4 font-dosis text-sm leading-relaxed text-white/70 sm:text-base">
-              Nie działam szablonowo. Każda strona internetowa dla firmy{" "}
-              {city.context.fromGenitive} jest projektowana tak, żeby wyróżniała
-              się na tle konkurencji, była szybka i prosta w obsłudze oraz
-              generowała realne zapytania.
-            </p>
-            <p className="mt-4 font-dosis text-sm leading-relaxed text-white/70 sm:text-base">
-              Łączę projekt strony internetowej, tworzenie strony WWW, myślenie pod
-              Google i SEO oraz doświadczenie z realnymi wynikami. Część z tych
-              efektów pokazuję bezpośrednio na stronie{" "}
-              <Link
-                href="/realizations"
-                className="text-yellow-200 underline decoration-yellow-300/60 underline-offset-4 transition hover:text-yellow-100"
-              >
-                realizacje
-              </Link>
-              .
-            </p>
-          </div>
+<div className="">
+
+        <Map markers={markers} /> 
+</div>
+        <Opinions />
+        <OpinionsSection />
         </div>
       </section>
 
@@ -420,9 +369,10 @@ export default function CityHubPage({
         <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
           {serviceLinks.map((link, index) => (
             <Link
-              key={link.href}
+              key={`${city.slug}-hub-offer-${index}`}
+              id={`hub-offer-${index}`}
               href={link.href}
-              className="group rounded-[26px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-5 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition hover:border-yellow-300/40 hover:bg-[linear-gradient(180deg,rgba(253,224,71,0.12),rgba(255,255,255,0.04))]"
+              className="group scroll-mt-28 rounded-[26px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-5 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition hover:border-yellow-300/40 hover:bg-[linear-gradient(180deg,rgba(253,224,71,0.12),rgba(255,255,255,0.04))]"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-yellow-200/80">
                 0{index + 1}

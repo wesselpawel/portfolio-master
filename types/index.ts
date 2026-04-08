@@ -1,3 +1,9 @@
+export type MapMarker = {
+  style: string;
+  label: string;
+  aos?: string;
+};
+
 export type Post = {
   postId: string;
   title: string;
