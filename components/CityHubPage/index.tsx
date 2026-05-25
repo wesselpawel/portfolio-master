@@ -23,27 +23,27 @@ type CityHubPageProps = {
 
 const RESULT_PROOFS = [
   {
-    src: "/results/google-search-console-summary.png",
+    src: "/images/google-search-console-summary.png",
     title: "Google Search Console",
     description: "Raport podsumowujący kliknięcia i wyświetlenia strony w wyszukiwarce.",
   },
   {
-    src: "/results/google-search-console-performance.png",
+    src: "/images/google-search-console-performance.png",
     title: "Skuteczność w Google",
     description: "Widoczność i ruch organiczny mierzone na realnych danych z Search Console.",
   },
   {
-    src: "/results/google-ads-results.png",
+    src: "/images/google-ads-results.png",
     title: "Google Ads",
     description: "Wyniki kampanii z kliknięciami, wyświetleniami, CPC i kosztem działań.",
   },
   {
-    src: "/results/google-analytics-recommendation.png",
+    src: "/images/google-analytics-recommendation.png",
     title: "Google Analytics",
     description: "Wzrost zainteresowania konkretną stroną i rekomendacje wynikające z danych.",
   },
   {
-    src: "/results/google-partner.png",
+    src: "/images/google-partner.png",
     title: "Google Partner",
     description: "Dowód pracy z ekosystemem Google i zrozumienia procesu pozyskiwania ruchu.",
   },

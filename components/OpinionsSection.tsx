@@ -14,7 +14,7 @@ const opinions = [
     role: "Właścicielka salonu fryzjerskiego",
     text: "Strona gotowa szybciej niż się spodziewałam! Wszystko działa super.",
   },
-  {
+  {   
     initial: "M",
     color: "bg-green-500",
     name: "Marek Z.",

@@ -12,10 +12,10 @@ import {
   type LandingPageLink,
   type LandingPageIntentContent,
 } from "@/data/landingPages";
-import step2 from "@/public/tworzenie-strony-internetowej/strona-internetowa-w-trakcie-tworzenia.png";
-import step3 from "@/public/tworzenie-strony-internetowej/strona-internetowa-jest-prawie-gotowa.png";
-import step1 from "@/public/tworzenie-strony-internetowej/poczatek-tworzenia-strony-internetowej.png";
-import step4 from "@/public/tworzenie-strony-internetowej/twoja-strona-internetowa-została-stworzona.png";
+import step2 from "@/public/images/strona-internetowa-w-trakcie-tworzenia.png";
+import step3 from "@/public/images/strona-internetowa-jest-prawie-gotowa.png";
+import step1 from "@/public/images/poczatek-tworzenia-strony-internetowej.png";
+import step4 from "@/public/images/twoja-strona-internetowa-została-stworzona.png";
 import { highlightLandingKeywords } from "@/utils/highlightLandingKeywords";
 
 /** Same motyw co hero — okrągłe miniatury zamiast zrzutów stron w kartach procesu. */

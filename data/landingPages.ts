@@ -449,9 +449,9 @@ function createHomepageLandingPage(): LandingPageContent {
     key: "home",
     addedDate: getLandingPageAddedDate("home"),
     seo: {
-      title: "Tworzenie stron internetowych - Paweł Wessel",
+      title: "Tworzenie stron internetowych Grudziądz cennik",
       description:
-        "Projektuję i wdrażam strony internetowe, które pomagają firmom zdobywać klientów — nie tylko dobrze wyglądać.",
+        "Cennik, realizacje, opinie o Paweł Wessel - tworzenie stron internetowych Grudziądz",
     },
     hero: {
       headingPrefix: "Tworzenie ",
@@ -515,25 +515,25 @@ function createHomepageLandingPage(): LandingPageContent {
           title: "Ustalenie celu i zakresu",
           description:
             "Nie zaczynam od designu — zaczynam od tego, co ma zarabiać. Ustalamy, kto jest Twoim klientem i co strona ma dla niego zrobić.",
-            image:"/tworzenie-strony-internetowej/poczatek-tworzenia-strony-internetowej.png",
+            image:"/images/poczatek-tworzenia-strony-internetowej.png",
         },
         {
           title: "Struktura i komunikacja",
           description:
             "Układam stronę tak, żeby prowadziła użytkownika krok po kroku do kontaktu. Treści, nagłówki i sekcje mają sprzedawać — nie tylko wyglądać.",
-            image:"/tworzenie-strony-internetowej/strona-internetowa-w-trakcie-tworzenia.png",
+            image:"/images/strona-internetowa-w-trakcie-tworzenia.png",
         },
         {
           title: "Wdrożenie i dopracowanie",
           description:
             "Buduję stronę, dbam o szybkość, SEO i działanie na każdym urządzeniu. Testujemy, poprawiamy i dopinamy wszystko przed publikacją.",
-            image:"/tworzenie-strony-internetowej/strona-internetowa-jest-prawie-gotowa.png",
+            image:"/images/strona-internetowa-jest-prawie-gotowa.png",
         },
         {
           title: "Rozwój i skalowanie",
           description:
             "Strona startuje, ale to dopiero początek. Możemy ją rozwijać o kolejne podstrony, SEO i nowe źródła klientów.",
-            image:"/tworzenie-strony-internetowej/twoja-strona-internetowa-została-stworzona.png",
+            image:"/images/twoja-strona-internetowa-została-stworzona.png",
         },
       ],
       includedTitle: "Co otrzymujesz w standardzie",
@@ -579,7 +579,7 @@ function createHomepageLandingPage(): LandingPageContent {
       nextStepPrimaryCtaLabel: "Przejdź do kontaktu",
       nextStepSecondaryCtaLabel: "Wyślij brief",
     },
-    portfolioHeading: "Wybrane realizacje stron internetowych",
+    portfolioHeading: "A może coś podobnego już stworzyłem? Zobacz moje realizacje",
     contact: DEFAULT_CONTACT_CONTENT,
   };
 }
@@ -1435,7 +1435,7 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
           description:
             "Najpierw ustalamy, dla kogo jest strona i co ma załatwiać.",
           image:
-            "/tworzenie-strony-internetowej/poczatek-tworzenia-strony-internetowej.png",
+            "/images/poczatek-tworzenia-strony-internetowej.png",
           imageAlt:
             "Pierwszy etap tworzenia strony internetowej: rozmowa o celu i zakresie projektu",
         },
@@ -1444,7 +1444,7 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
           description:
             "Układam treści i sekcje tak, żeby wszystko było jasne i prowadziło do kontaktu.",
           image:
-            "/tworzenie-strony-internetowej/strona-internetowa-w-trakcie-tworzenia.png",
+            "/images/strona-internetowa-w-trakcie-tworzenia.png",
           imageAlt:
             "Drugi etap tworzenia strony internetowej: projektowanie struktury i komunikacji",
         },
@@ -1453,7 +1453,7 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
           description:
             "Buduję stronę, dbam o szybkość i SEO, a przed publikacją wszystko testuję.",
           image:
-            "/tworzenie-strony-internetowej/strona-internetowa-jest-prawie-gotowa.png",
+            "/images/strona-internetowa-jest-prawie-gotowa.png",
           imageAlt:
             "Trzeci etap tworzenia strony internetowej: wdrożenie i dopracowanie szczegółów",
         },
@@ -1462,7 +1462,7 @@ function createWebsitePage(city: LandingPageCity): LandingPageContent {
           description:
             "Po starcie można rozwijać stronę o kolejne podstrony, usługi i SEO.",
           image:
-            "/tworzenie-strony-internetowej/twoja-strona-internetowa-została-stworzona.png",
+            "/images/twoja-strona-internetowa-została-stworzona.png",
           imageAlt:
             "Czwarty etap tworzenia strony internetowej: publikacja i dalszy rozwój serwisu",
         },
