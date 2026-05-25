@@ -114,7 +114,7 @@ export default function CityHubBackgroundsAdminPage() {
       <p className="mt-2 text-sm text-white/70">
         Unikalne zdjęcie w tle pierwszej sekcji strony{" "}
         <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs">
-          /projektowanie-stron/&#123;miasto&#125;
+          /tworzenie-stron-internetowych/&#123;miasto&#125;
         </code>
         . Dane: kolekcja Firestore{" "}
         <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs">

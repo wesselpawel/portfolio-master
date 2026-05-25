@@ -401,24 +401,12 @@ export default function CityHubPage({
         <div className="mx-auto w-[90vw] max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-yellow-200/80">
-              Wyniki naszych projektow
+              SKUTECZNOŚĆ
             </p>
             <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
-              Tworzenie stron internetowych to nie tylko wygląd - to realne efekty
+              Wyniki stron internetowych, które zrealizowałem
             </h2>
-            <p className="mt-4 font-dosis text-base leading-relaxed text-white/70 sm:text-lg">
-              Pokazuję dane z narzędzi Google, które potwierdzają skuteczność
-              działań: wzrost kliknięć, widoczności, ruchu i lepsze wykorzystanie
-              kampanii. Jeśli chcesz zobaczyć, jak te wyniki łączą się z gotowymi
-              wdrożeniami, przejdź też do{" "}
-              <Link
-                href="/realizations"
-                className="text-yellow-200 underline decoration-yellow-300/60 underline-offset-4 transition hover:text-yellow-100"
-              >
-                realizacji
-              </Link>
-              .
-            </p>
+
           </div>
 
           <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-2">

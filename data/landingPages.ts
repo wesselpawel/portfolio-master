@@ -156,7 +156,7 @@ type GenericLandingPageInput = Omit<
 
 const SITE_URL = "https://wesselpawel.com";
 const DEFAULT_CITY_SLUG = "grudziadz";
-export const CITY_HUB_BASE_SEGMENT = "projektowanie-stron";
+export const CITY_HUB_BASE_SEGMENT = "tworzenie-stron-internetowych";
 const ALL_SERVICE_KEYS: LandingPageServiceKey[] = [
   "website",
   "design",

@@ -99,7 +99,7 @@ async function updateBlogPost(postId, updatedPost) {
   }
 }
 
-/** Per-city hero background for /projektowanie-stron/{slug} (document id = city slug). */
+/** Per-city hero background for /tworzenie-stron-internetowych/{slug} (document id = city slug). */
 async function getCityHubBackground(citySlug) {
   if (!citySlug) return null;
   const docRef = doc(db, "cityHubBackgrounds", citySlug);

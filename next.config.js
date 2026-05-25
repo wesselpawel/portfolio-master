@@ -1,6 +1,6 @@
 // @ts-check
 
-const CITY_HUB_BASE_PATH = "/projektowanie-stron";
+const CITY_HUB_BASE_PATH = "/tworzenie-stron-internetowych";
 const DEFAULT_CITY_HUB_PATH = `${CITY_HUB_BASE_PATH}/grudziadz`;
 
 /**
@@ -31,6 +31,11 @@ const nextConfig = {
       {
         source: "/projektowanie-stron",
         destination: DEFAULT_CITY_HUB_PATH,
+        permanent: true,
+      },
+      {
+        source: "/projektowanie-stron/:city",
+        destination: `${CITY_HUB_BASE_PATH}/:city`,
         permanent: true,
       },
       {
@@ -136,6 +141,11 @@ const nextConfig = {
       {
         source: "/tworzenie-stron-internetowych-:city",
         destination: `${CITY_HUB_BASE_PATH}/:city`,
+        permanent: true,
+      },
+      {
+        source: "/tworzenie-stron-internetowych",
+        destination: DEFAULT_CITY_HUB_PATH,
         permanent: true,
       },
     ];
