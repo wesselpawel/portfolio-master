@@ -123,7 +123,7 @@ export default function HeroSection({ pageContent }: HeroSectionProps) {
       <motionDiv.div
         className="absolute left-0 top-0 z-[501] flex min-h-[100svh] w-full justify-center rounded-3xl"
       >
-        <div className="layout-container mt-12 w-full flex flex-col lg:flex-row items-center justify-center gap-[clamp(1.75rem,3.5vw,3.5rem)]  lg:max-h-none lg:min-h-0">
+        <div className="layout-container mt-36 lg:mt-12 w-full flex flex-col lg:flex-row items-center justify-center gap-[clamp(1.75rem,3.5vw,3.5rem)]  lg:max-h-none lg:min-h-0">
           <div className="relative max-w-[min(100%,36rem)] shrink-0 rounded-3xl lg:max-w-[min(100%,60rem)] 4xl:max-w-[min(100%,44rem)]">
             {breadcrumbLinks.length ? (
               <nav
